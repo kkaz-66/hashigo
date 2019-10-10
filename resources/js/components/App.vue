@@ -11,6 +11,7 @@
 </div>
 </template>
 <script>
+
 export default {
     data () {
         return {
@@ -30,5 +31,6 @@ export default {
 #map {
     width: 500px;
     height: 500px;
+    /* background-color:aquamarine; */
 } 
 </style>
