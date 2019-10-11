@@ -13,12 +13,13 @@ class HotpepperController extends Controller
      */
     public function index()
     {
+        $hpg_key = config('apikey.hpg-key');
         $shopid="";
         $name="";
         $address="";
         $lat="";
         $lng="";
-        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=<%= ENV['API_KEY']%>&large_area=Z011&id=".$shopid."&name=".$name."&address=".$address."&lat=".$lat."&lng=".$lng."&format=json";
+        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&large_area=Z011&id=".$shopid."&name=".$name."&address=".$address."&lat=".$lat."&lng=".$lng."&format=json";
         $json = file_get_contents($url);
         $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
         $arr = json_decode($json,true);
