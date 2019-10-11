@@ -1713,10 +1713,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  //追加事項（エリア検索）
+  mounted: function mounted() {// this.map = new google.maps.Map(document.getElementById('map'));
+    // this.geocoder = new google.maps.Geocoder();
+    // console.log("aaa")
+  },
   data: function data() {
     return {
+      //追加事項
+      map: {},
+      marker: null,
+      geocode: {},
+      address: '',
       center: {
         lat: 36.71,
         lng: 139.72
@@ -1751,7 +1764,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     currentPosition: function currentPosition() {
-      navigator.geolocation.getCurrentPosition(this.getCurrentPositionSuccess); // console.log("ccc");
+      navigator.geolocation.getCurrentPosition(this.getCurrentPositionSuccess);
     },
     getCurrentPositionSuccess: function getCurrentPositionSuccess(position) {
       var lat = position.coords.latitude;
@@ -1759,7 +1772,25 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.map.panTo({
         lat: lat,
         lng: lng
-      }); //this.center = {lat:lat, lng:lng}
+      });
+    },
+    //追加事項(検索)
+    mapSearch: function mapSearch() {
+      var _this = this;
+
+      this.geocoder = new google.maps.Geocoder();
+      this.geocoder.geocode({
+        'address': this.address
+      }, function (results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          _this.$refs.map.panTo(results[0].geometry.location);
+
+          _this.marker = new google.maps.Marker({
+            map: _this.map,
+            position: results[0].geometry.location
+          });
+        }
+      });
     }
   }
 });
@@ -46043,6 +46074,37 @@ var render = function() {
       "div",
       { attrs: { id: "map" } },
       [
+        _c("button", { on: { click: _vm.currentPosition } }, [
+          _vm._v("現在地へ移動")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.address,
+              expression: "address"
+            }
+          ],
+          attrs: { type: "text" },
+          domProps: { value: _vm.address },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.address = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          { attrs: { type: "button" }, on: { click: _vm.mapSearch } },
+          [_vm._v("検索")]
+        ),
+        _vm._v(" "),
         _c(
           "GmapMap",
           {
@@ -46062,11 +46124,7 @@ var render = function() {
             })
           }),
           1
-        ),
-        _vm._v(" "),
-        _c("button", { on: { click: _vm.currentPosition } }, [
-          _vm._v("現在地へ移動")
-        ])
+        )
       ],
       1
     )
@@ -61098,7 +61156,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue2_google_maps__WEBPACK_IMPORTED_MODULE_1__, {
   load: {
-    key: '自分の入れてね',
+    key: '',
     libraries: 'places'
   }
 });
