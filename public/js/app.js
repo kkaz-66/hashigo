@@ -1384,7 +1384,7 @@ module.exports = function spread(callback) {
 
 
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
-var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/axios/node_modules/is-buffer/index.js");
+var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/is-buffer/index.js");
 
 /*global toString:true*/
 
@@ -1688,28 +1688,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/axios/node_modules/is-buffer/index.js":
-/*!************************************************************!*\
-  !*** ./node_modules/axios/node_modules/is-buffer/index.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-module.exports = function isBuffer (obj) {
-  return obj != null && obj.constructor != null &&
-    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App.vue?vue&type=script&lang=js& ***!
@@ -1735,13 +1713,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       center: {
-        lat: 35.71,
+        lat: 36.71,
         lng: 139.72
       },
       zoom: 14,
@@ -1769,22 +1746,12 @@ __webpack_require__.r(__webpack_exports__);
           lng: 139.70
         },
         title: 'marker_4'
-      }] // currentPosition () {
-      // navigator.geolocation.getCurrentPosition(this.getCurrentPositionSuccess)
-      // },
-      // getCurrentPositionSuccess (position) {
-      //      let lat = position.coords.latitude
-      //      let lng = position.coords.longitude
-      //      this.$refs.map.panTo({lat: lat, lng: lng})
-      //     console.log("aaa");
-      // }
-
+      }]
     };
   },
   methods: {
     currentPosition: function currentPosition() {
-      navigator.geolocation.getCurrentPosition(this.getCurrentPositionSuccess);
-      console.log("ccc");
+      navigator.geolocation.getCurrentPosition(this.getCurrentPositionSuccess); // console.log("ccc");
     },
     getCurrentPositionSuccess: function getCurrentPositionSuccess(position) {
       var lat = position.coords.latitude;
@@ -1792,9 +1759,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.map.panTo({
         lat: lat,
         lng: lng
-      });
-      console.log(lat);
-      console.log(lng);
+      }); //this.center = {lat:lat, lng:lng}
     }
   }
 });
@@ -8489,7 +8454,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 500px;\r\n    /* background-color:aquamarine; */\n} \r\n", ""]);
+exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 500px;\n} \n", ""]);
 
 // exports
 
@@ -9171,6 +9136,28 @@ if (typeof Object.create === 'function') {
       ctor.prototype.constructor = ctor
     }
   }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/is-buffer/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/is-buffer/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+module.exports = function isBuffer (obj) {
+  return obj != null && obj.constructor != null &&
+    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
 }
 
 
@@ -40791,7 +40778,7 @@ var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_module
 
 /*<replacement>*/
 
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/readable-stream/node_modules/safe-buffer/index.js").Buffer;
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
 var OurUint8Array = global.Uint8Array || function () {};
 function _uint8ArrayToBuffer(chunk) {
   return Buffer.from(chunk);
@@ -42075,7 +42062,7 @@ var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_module
 
 /*<replacement>*/
 
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/readable-stream/node_modules/safe-buffer/index.js").Buffer;
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
 var OurUint8Array = global.Uint8Array || function () {};
 function _uint8ArrayToBuffer(chunk) {
   return Buffer.from(chunk);
@@ -42696,7 +42683,7 @@ Writable.prototype._destroy = function (err, cb) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/readable-stream/node_modules/safe-buffer/index.js").Buffer;
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
 var util = __webpack_require__(/*! util */ 2);
 
 function copyBuffer(src, target, offset) {
@@ -42871,79 +42858,6 @@ module.exports = __webpack_require__(/*! events */ "./node_modules/events/events
 
 /***/ }),
 
-/***/ "./node_modules/readable-stream/node_modules/safe-buffer/index.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/readable-stream/node_modules/safe-buffer/index.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* eslint-disable node/no-deprecated-api */
-var buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")
-var Buffer = buffer.Buffer
-
-// alternative to using Object.keys for old browsers
-function copyProps (src, dst) {
-  for (var key in src) {
-    dst[key] = src[key]
-  }
-}
-if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
-  module.exports = buffer
-} else {
-  // Copy properties from require('buffer')
-  copyProps(buffer, exports)
-  exports.Buffer = SafeBuffer
-}
-
-function SafeBuffer (arg, encodingOrOffset, length) {
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-// Copy static methods from Buffer
-copyProps(Buffer, SafeBuffer)
-
-SafeBuffer.from = function (arg, encodingOrOffset, length) {
-  if (typeof arg === 'number') {
-    throw new TypeError('Argument must not be a number')
-  }
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-SafeBuffer.alloc = function (size, fill, encoding) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  var buf = Buffer(size)
-  if (fill !== undefined) {
-    if (typeof encoding === 'string') {
-      buf.fill(fill, encoding)
-    } else {
-      buf.fill(fill)
-    }
-  } else {
-    buf.fill(0)
-  }
-  return buf
-}
-
-SafeBuffer.allocUnsafe = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return Buffer(size)
-}
-
-SafeBuffer.allocUnsafeSlow = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return buffer.SlowBuffer(size)
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/readable-stream/readable-browser.js":
 /*!**********************************************************!*\
   !*** ./node_modules/readable-stream/readable-browser.js ***!
@@ -42990,8 +42904,6 @@ if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow)
 function SafeBuffer (arg, encodingOrOffset, length) {
   return Buffer(arg, encodingOrOffset, length)
 }
-
-SafeBuffer.prototype = Object.create(Buffer.prototype)
 
 // Copy static methods from Buffer
 copyProps(Buffer, SafeBuffer)
@@ -46134,6 +46046,7 @@ var render = function() {
         _c(
           "GmapMap",
           {
+            ref: "map",
             staticStyle: { width: "100%", height: "100%" },
             attrs: { center: _vm.center, zoom: _vm.zoom }
           },
@@ -61185,7 +61098,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue2_google_maps__WEBPACK_IMPORTED_MODULE_1__, {
   load: {
-    key: '',
+    key: 'AIzaSyD1JaTO4Yyyax8Mz6u5LK7OdW_5JB4Yicw',
     libraries: 'places'
   }
 });
