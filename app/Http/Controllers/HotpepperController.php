@@ -22,9 +22,15 @@ class HotpepperController extends Controller
         $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&large_area=Z011&id=".$shopid."&name=".$name."&address=".$address."&lat=".$lat."&lng=".$lng."&format=json";
         $json = file_get_contents($url);
         $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+
+        // $json2 = response()->json(['results' => $json]);
+
         $arr = json_decode($json,true);
+        $json = json_encode($arr);
         
-        return view('hotpepper',compact('arr'));
+        // return view('hotpepper',compact('arr'));
+        return view('example',compact('json'));
+        // return view('example',compact('url'));
     }
 
     /**

@@ -10,7 +10,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
+
     <div id="app">
+        <test-component v-bind:data="{{$json}}"></test-component>
         <app-component></app-component>
     </div>
 
