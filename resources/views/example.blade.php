@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Google_Map</title>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -12,8 +11,7 @@
 <body>
 
     <div id="app">
-        <test-component v-bind:data="{{$json}}"></test-component>
-        <app-component></app-component>
+        <app-component ></app-component>
     </div>
 
     <script src=" {{ mix('js/app.js') }} "></script>

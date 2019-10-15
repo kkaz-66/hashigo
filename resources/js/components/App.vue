@@ -3,7 +3,7 @@
 <div id="map">
 <button @click="currentPosition">現在地へ移動</button>
 <input type="text" v-model="address">
-<button type="button" @click="mapSearch">検索</button>
+<button type="button" @click="test">検索</button>
 <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
 <GmapMarker v-for="(m,id) in marker_items"
 :position="m.position"
@@ -12,6 +12,7 @@
 </GmapMarker>
 </GmapMap>
 </div>
+
 </div>
 </template> 
 <script>
@@ -26,7 +27,6 @@ export default {
             marker: null,
             geocode:{},
             address: '',
-
             center: {lat: 36.71, lng: 139.72},
             zoom: 14,
             marker_items: [
@@ -35,7 +35,6 @@ export default {
             // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
             // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
             ],
-
         }
     },
 
@@ -45,28 +44,56 @@ export default {
             navigator.geolocation.getCurrentPosition(this.getCurrentPositionSuccess)
         },
             getCurrentPositionSuccess (position) {
-                 let lat = position.coords.latitude
-                 let lng = position.coords.longitude
-                 this.$refs.map.panTo({lat: lat, lng: lng})
-                 this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
+                    console.log(position);
+                    let lat = position.coords.latitude
+                    let lng = position.coords.longitude
+                    this.$refs.map.panTo({lat: lat, lng: lng})
+                    console.log(lat);
+                    console.log(lng);
+                    this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
             },
 
         //エリア検索
-            mapSearch() {
+        mapSearch() {
             this.geocoder = new google.maps.Geocoder();
             this.geocoder.geocode({
-                    'address': this.address
-                }, 
-                (results, status) => {
-                if (status === google.maps.GeocoderStatus.OK) {
-                this.$refs.map.panTo(results[0].geometry.location)
-                this.marker = new google.maps.Marker({
-                    map: this.map,
-                    position: results[0].geometry.location
-                })
-                this.marker_items.push({position: results[0].geometry.location, title: 'marker_6'})
-           　 }   
+                'address': this.address
+            }, 
+            (results, status) => {
+            if (status === google.maps.GeocoderStatus.OK) {
+            this.$refs.map.panTo(results[0].geometry.location)
+            this.marker = new google.maps.Marker({
+                map: this.map,
+                position: results[0].geometry.location
             })
+            this.marker_items.push({position: results[0].geometry.location, title: 'marker_6'})
+    　      }   
+            })
+        },
+
+        hotlist(){
+            return axios.get('/api/list',{
+                params: {
+                    lat: this.position.coords.latitude,
+                    lng: this.position.coords.longitude,
+                }
+            })
+            .then((res)=>{
+                console.log("lat");
+                console.log(lat);
+                // this.hot = res.data
+                console.log("3");
+                return res.data
+            })
+        },
+
+        async test(){
+            let test = await this.hotlist()
+            console.log("1");
+            console.log(test.results.shop);
+            console.log("2");
+            let lng = test.results.shop[0].lng;
+            console.log(lng);
         }
     }
 
