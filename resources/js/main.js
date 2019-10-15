@@ -3,7 +3,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import { callbackify } from 'util'
 Vue.use(VueGoogleMaps, {
 load: {
-    key: '',
-    libraries: 'places',
+    key: process.env.MIX_API_KEY,
+    libraries: 'places'
     }
 })

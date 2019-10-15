@@ -1717,11 +1717,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      //追加事項
+      //位置情報＆検索
       map: {},
       marker: null,
       geocode: {},
@@ -1731,11 +1742,30 @@ __webpack_require__.r(__webpack_exports__);
         lng: 139.72
       },
       zoom: 14,
-      marker_items: [// {position: {lat: 35.71, lng: 139.72}, title: 'marker_1'},
-        // {position: {lat: 35.72, lng: 139.73}, title: 'marker_2'},
-        // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
-        // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
-      ]
+      marker_items: [{
+        position: {
+          lat: 35.71,
+          lng: 139.72
+        },
+        title: 'marker_1'
+      } // {position: {lat: 35.72, lng: 139.73}, title: 'marker_2'},
+      // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
+      // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
+      ],
+      //クリックアクション
+      infoOptions: {
+        pixelOffset: {
+          width: 0,
+          height: -35
+        }
+      },
+      infoWindowPos: null,
+      infoWinOpen: false,
+      infoContent: {
+        imageurl: null,
+        title: null,
+        address: null
+      }
     };
   },
   methods: {
@@ -1780,6 +1810,13 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+    },
+    //クリックアクション
+    toggleInfoWindow: function toggleInfoWindow(marker, id) {
+      this.infoWinOpen = false;
+      this.infoWindowPos = marker.position;
+      this.infoContent = marker.content;
+      this.infoWinOpen = true;
     }
   }
 });
@@ -8474,7 +8511,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 500px;\n} \n", ""]);
+exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 910px;\n} \r\n", ""]);
 
 // exports
 
@@ -46866,18 +46903,52 @@ var render = function() {
             staticStyle: { width: "100%", height: "100%" },
             attrs: { center: _vm.center, zoom: _vm.zoom }
           },
-          _vm._l(_vm.marker_items, function(m, id) {
-            return _c("GmapMarker", {
-              key: id,
-              attrs: {
-                position: m.position,
-                title: m.title,
-                clickable: true,
-                draggable: false
-              }
+          [
+            _c(
+              "GmapInfoWindow",
+              {
+                attrs: {
+                  options: _vm.infoOptions,
+                  position: _vm.infoWindowPos,
+                  opened: _vm.infoWinOpen
+                },
+                on: {
+                  closeclick: function($event) {
+                    _vm.infoWinOpen = false
+                  }
+                }
+              },
+              [
+                _c("table", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Sample")]),
+                    _vm._v(" "),
+                    _c("td", { staticStyle: { "text-align": "left" } }, [
+                      _c("p", [_vm._v("Windows")])
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.marker_items, function(m, id) {
+              return _c("GmapMarker", {
+                key: id,
+                attrs: {
+                  position: m.position,
+                  title: m.title,
+                  clickable: true,
+                  draggable: false
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.toggleInfoWindow(m, id)
+                  }
+                }
+              })
             })
-          }),
-          1
+          ],
+          2
         )
       ],
       1
@@ -61913,7 +61984,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue2_google_maps__WEBPACK_IMPORTED_MODULE_1__, {
   load: {
-    key: 'AIzaSyD1JaTO4Yyyax8Mz6u5LK7OdW_5JB4Yicw',
+    key: "AIzaSyD1JaTO4Yyyax8Mz6u5LK7OdW_5JB4Yicw",
     libraries: 'places'
   }
 });
