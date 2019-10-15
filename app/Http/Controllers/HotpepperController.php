@@ -37,9 +37,9 @@ class HotpepperController extends Controller
         $shopid="";
         $name="";
         $address="";
-        $lat="";
-        $lng="";
-        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&large_area=Z011&id=".$shopid."&name=".$name."&address=".$address."&lat=".$lat."&lng=".$lng."&format=json";
+        $lat= $request->lat;
+        $lng= $request->lng;
+        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&lat=".$lat."&lng=".$lng."&range=5&format=json";
         $json = file_get_contents($url);
         $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
         // $json2 = response()->json(['results' => $json]);
@@ -50,7 +50,15 @@ class HotpepperController extends Controller
         // return view('hotpepper',compact('arr'));
         // return view('example',compact('json'));
         // return view('example',compact('url'));
-        return $arr;
+
+
+
+        return $arr['results']['shop'];
+    }
+
+    public function search(Request $request){
+        $word = $request->keyword;
+        return $word;
     }
 
     /**

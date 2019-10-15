@@ -3,7 +3,9 @@
 <div id="map">
 <button @click="currentPosition">現在地へ移動</button>
 <input type="text" v-model="address">
-<button type="button" @click="test">検索</button>
+<button type="button" @click="mapSearch">検索</button>
+<button type="button" @click="test">コンソール表示</button>
+<button type="button" @click="currentsearch">test</button>
 <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
 <GmapMarker v-for="(m,id) in marker_items"
 :position="m.position"
@@ -35,23 +37,18 @@ export default {
             // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
             // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
             ],
+
+            keyword: 'J000745437',
         }
     },
 
     methods: {
         //現在地取得
         currentPosition () {
-            navigator.geolocation.getCurrentPosition(this.getCurrentPositionSuccess)
+            return new Promise(function(resolve,reject){
+                navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
+            })
         },
-            getCurrentPositionSuccess (position) {
-                    console.log(position);
-                    let lat = position.coords.latitude
-                    let lng = position.coords.longitude
-                    this.$refs.map.panTo({lat: lat, lng: lng})
-                    console.log(lat);
-                    console.log(lng);
-                    this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
-            },
 
         //エリア検索
         mapSearch() {
@@ -71,22 +68,30 @@ export default {
             })
         },
 
-        hotlist(){
-            return axios.get('/api/list',{
-                params: {
-                    lat: this.position.coords.latitude,
-                    lng: this.position.coords.longitude,
-                }
+        setcentermarker(lat,lng){
+            this.$refs.map.panTo({lat: lat, lng: lng})
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
+        },
+
+        getList(lat,lng){
+            return axios.post('/api/list',{
+                lng: lng,
+                lat: lat
+            }).then((res)=>{
+                console.log(res.data);
+                return res.data
+                // this.programs = res.data
+                // this.history()
             })
-            .then((res)=>{
-                console.log("lat");
-                console.log(lat);
-                // this.hot = res.data
+        },
+
+        //レスポンスデータをコンソール表示
+        hotlist(){
+            return axios.get('/api/list').then((res)=>{
                 console.log("3");
                 return res.data
             })
         },
-
         async test(){
             let test = await this.hotlist()
             console.log("1");
@@ -94,7 +99,25 @@ export default {
             console.log("2");
             let lng = test.results.shop[0].lng;
             console.log(lng);
+        },
+
+        async currentsearch(){
+            let position = await this.currentPosition()
+            let lat = position.latitude
+            let lng = position.longitude
+            let shoplist = await this.getList(lat,lng)
+            this.setcentermarker(lat,lng)
+            this.setshopmarker(shoplist)
+        },
+
+        setshopmarker(shoplist){
+            shoplist.map((position)=>{
+                console.log(position.name_kana);
+                this.marker_items.push({position: {lat: parseFloat(position.lat), lng: parseFloat(position.lng)}, title: 'marker_5'})
+            });
         }
+
+       
     }
 
 }
@@ -106,3 +129,7 @@ export default {
     height: 500px;
 } 
 </style>
+
+
+
+

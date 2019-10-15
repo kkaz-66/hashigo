@@ -1736,6 +1736,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1754,30 +1756,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         // {position: {lat: 35.72, lng: 139.73}, title: 'marker_2'},
         // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
         // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
-      ]
+      ],
+      keyword: 'J000745437'
     };
   },
   methods: {
     //現在地取得
     currentPosition: function currentPosition() {
-      navigator.geolocation.getCurrentPosition(this.getCurrentPositionSuccess);
-    },
-    getCurrentPositionSuccess: function getCurrentPositionSuccess(position) {
-      console.log(position);
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
-      this.$refs.map.panTo({
-        lat: lat,
-        lng: lng
-      });
-      console.log(lat);
-      console.log(lng);
-      this.marker_items.push({
-        position: {
-          lat: lat,
-          lng: lng
-        },
-        title: 'marker_5'
+      return new Promise(function (resolve, reject) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          resolve(position.coords);
+        });
       });
     },
     //エリア検索
@@ -1803,16 +1792,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       });
     },
-    hotlist: function hotlist() {
-      return axios.get('/api/list', {
-        params: {
-          lat: this.position.coords.latitude,
-          lng: this.position.coords.longitude
-        }
+    setcentermarker: function setcentermarker(lat, lng) {
+      this.$refs.map.panTo({
+        lat: lat,
+        lng: lng
+      });
+      this.marker_items.push({
+        position: {
+          lat: lat,
+          lng: lng
+        },
+        title: 'marker_5'
+      });
+    },
+    getList: function getList(lat, lng) {
+      return axios.post('/api/list', {
+        lng: lng,
+        lat: lat
       }).then(function (res) {
-        console.log("lat");
-        console.log(lat); // this.hot = res.data
-
+        console.log(res.data);
+        return res.data; // this.programs = res.data
+        // this.history()
+      });
+    },
+    //レスポンスデータをコンソール表示
+    hotlist: function hotlist() {
+      return axios.get('/api/list').then(function (res) {
         console.log("3");
         return res.data;
       });
@@ -1850,7 +1855,60 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return test;
-    }()
+    }(),
+    currentsearch: function () {
+      var _currentsearch = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var position, lat, lng, shoplist;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return this.currentPosition();
+
+              case 2:
+                position = _context2.sent;
+                lat = position.latitude;
+                lng = position.longitude;
+                _context2.next = 7;
+                return this.getList(lat, lng);
+
+              case 7:
+                shoplist = _context2.sent;
+                this.setcentermarker(lat, lng);
+                this.setshopmarker(shoplist);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function currentsearch() {
+        return _currentsearch.apply(this, arguments);
+      }
+
+      return currentsearch;
+    }(),
+    setshopmarker: function setshopmarker(shoplist) {
+      var _this2 = this;
+
+      shoplist.map(function (position) {
+        console.log(position.name_kana);
+
+        _this2.marker_items.push({
+          position: {
+            lat: parseFloat(position.lat),
+            lng: parseFloat(position.lng)
+          },
+          title: 'marker_5'
+        });
+      });
+    }
   }
 });
 
@@ -47707,9 +47765,21 @@ var render = function() {
           }
         }),
         _vm._v(" "),
+        _c(
+          "button",
+          { attrs: { type: "button" }, on: { click: _vm.mapSearch } },
+          [_vm._v("検索")]
+        ),
+        _vm._v(" "),
         _c("button", { attrs: { type: "button" }, on: { click: _vm.test } }, [
-          _vm._v("検索")
+          _vm._v("コンソール表示")
         ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          { attrs: { type: "button" }, on: { click: _vm.currentsearch } },
+          [_vm._v("test")]
+        ),
         _vm._v(" "),
         _c(
           "GmapMap",
