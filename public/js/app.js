@@ -1769,6 +1769,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
       });
     },
+    keywordPosition: function keywordPosition() {
+      return new Promise(function (resolve, reject) {
+        this.geocoder = new google.maps.Geocoder();
+        this.geocoder.geocode({
+          'address': this.address
+        }), function (results, status) {
+          resolve();
+        }; // ((position)=>{resolve(position.coords)})
+      });
+    },
     //エリア検索
     mapSearch: function mapSearch() {
       var _this = this;
@@ -1789,9 +1799,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             position: results[0].geometry.location,
             title: 'marker_6'
           });
+
+          console.log(results[0].geometry.location);
         }
       });
     },
+    //ピン立て
     setcentermarker: function setcentermarker(lat, lng) {
       this.$refs.map.panTo({
         lat: lat,
@@ -1805,6 +1818,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         title: 'marker_5'
       });
     },
+    // hotpepperから店情報取得
     getList: function getList(lat, lng) {
       return axios.post('/api/list', {
         lng: lng,
@@ -1818,10 +1832,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //レスポンスデータをコンソール表示
     hotlist: function hotlist() {
       return axios.get('/api/list').then(function (res) {
-        console.log("3");
         return res.data;
       });
     },
+    // いらない？
     test: function () {
       var _test = _asyncToGenerator(
       /*#__PURE__*/
@@ -1836,13 +1850,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 test = _context.sent;
-                console.log("1");
-                console.log(test.results.shop);
-                console.log("2");
                 lng = test.results.shop[0].lng;
-                console.log(lng);
 
-              case 8:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -1856,6 +1866,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return test;
     }(),
+    // 現在位置取得
     currentsearch: function () {
       var _currentsearch = _asyncToGenerator(
       /*#__PURE__*/
@@ -1894,12 +1905,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return currentsearch;
     }(),
+    // shoplistピン立て
     setshopmarker: function setshopmarker(shoplist) {
       var _this2 = this;
 
       shoplist.map(function (position) {
-        console.log(position.name_kana);
-
         _this2.marker_items.push({
           position: {
             lat: parseFloat(position.lat),

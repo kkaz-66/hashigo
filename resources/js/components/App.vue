@@ -50,6 +50,18 @@ export default {
             })
         },
 
+         keywordPosition () {
+            return new Promise(function(resolve,reject){
+                 this.geocoder = new google.maps.Geocoder();
+                 this.geocoder.geocode({
+                'address': this.address
+            }),(results, status) =>{resolve()}
+                 
+                // ((position)=>{resolve(position.coords)})
+            })
+        },
+
+
         //エリア検索
         mapSearch() {
             this.geocoder = new google.maps.Geocoder();
@@ -64,15 +76,18 @@ export default {
                 position: results[0].geometry.location
             })
             this.marker_items.push({position: results[0].geometry.location, title: 'marker_6'})
+            console.log(results[0].geometry.location);
     　      }   
             })
         },
 
+        //ピン立て
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
             this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
         },
 
+        // hotpepperから店情報取得
         getList(lat,lng){
             return axios.post('/api/list',{
                 lng: lng,
@@ -88,19 +103,16 @@ export default {
         //レスポンスデータをコンソール表示
         hotlist(){
             return axios.get('/api/list').then((res)=>{
-                console.log("3");
                 return res.data
             })
         },
+
+        // いらない？
         async test(){
             let test = await this.hotlist()
-            console.log("1");
-            console.log(test.results.shop);
-            console.log("2");
             let lng = test.results.shop[0].lng;
-            console.log(lng);
         },
-
+        // 現在位置取得
         async currentsearch(){
             let position = await this.currentPosition()
             let lat = position.latitude
@@ -109,10 +121,9 @@ export default {
             this.setcentermarker(lat,lng)
             this.setshopmarker(shoplist)
         },
-
+        // shoplistピン立て
         setshopmarker(shoplist){
             shoplist.map((position)=>{
-                console.log(position.name_kana);
                 this.marker_items.push({position: {lat: parseFloat(position.lat), lng: parseFloat(position.lng)}, title: 'marker_5'})
             });
         }
