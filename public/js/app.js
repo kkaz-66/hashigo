@@ -1736,8 +1736,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1756,8 +1754,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         // {position: {lat: 35.72, lng: 139.73}, title: 'marker_2'},
         // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
         // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
-      ],
-      keyword: 'J000745437'
+      ]
     };
   },
   methods: {
@@ -1771,12 +1768,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     keywordPosition: function keywordPosition() {
       return new Promise(function (resolve, reject) {
-        this.geocoder = new google.maps.Geocoder();
+        console.log("geo");
+        var geocoder = new google.maps.Geocoder();
+        console.log("111");
+        console.log(geocoder);
+        console.log("222");
         this.geocoder.geocode({
           'address': this.address
-        }), function (results, status) {
-          resolve();
-        }; // ((position)=>{resolve(position.coords)})
+        }, function (results, status) {
+          resolve(results[0].geometry.location);
+        });
       });
     },
     //エリア検索
@@ -1786,7 +1787,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.geocoder = new google.maps.Geocoder();
       this.geocoder.geocode({
         'address': this.address
-      }, function (results, status) {
+      }, // results = lat,lng  status = success,or,false
+      function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
           _this.$refs.map.panTo(results[0].geometry.location);
 
@@ -1918,7 +1920,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           title: 'marker_5'
         });
       });
-    }
+    },
+    keywordSearch: function () {
+      var _keywordSearch = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var keyword_position;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                console.log("000");
+                _context3.next = 3;
+                return this.keywordPosition();
+
+              case 3:
+                keyword_position = _context3.sent;
+                console.log("001");
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function keywordSearch() {
+        return _keywordSearch.apply(this, arguments);
+      }
+
+      return keywordSearch;
+    }()
   }
 });
 
@@ -47750,7 +47783,7 @@ var render = function() {
       "div",
       { attrs: { id: "map" } },
       [
-        _c("button", { on: { click: _vm.currentPosition } }, [
+        _c("button", { on: { click: _vm.currentsearch } }, [
           _vm._v("現在地へ移動")
         ]),
         _vm._v(" "),
@@ -47777,18 +47810,8 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { attrs: { type: "button" }, on: { click: _vm.mapSearch } },
+          { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
           [_vm._v("検索")]
-        ),
-        _vm._v(" "),
-        _c("button", { attrs: { type: "button" }, on: { click: _vm.test } }, [
-          _vm._v("コンソール表示")
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          { attrs: { type: "button" }, on: { click: _vm.currentsearch } },
-          [_vm._v("test")]
         ),
         _vm._v(" "),
         _c(

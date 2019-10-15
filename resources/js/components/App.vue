@@ -1,11 +1,9 @@
 <template>
 <div class="app">
 <div id="map">
-<button @click="currentPosition">現在地へ移動</button>
+<button @click="currentsearch">現在地へ移動</button>
 <input type="text" v-model="address">
-<button type="button" @click="mapSearch">検索</button>
-<button type="button" @click="test">コンソール表示</button>
-<button type="button" @click="currentsearch">test</button>
+<button type="button" @click="keywordSearch">検索</button>
 <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
 <GmapMarker v-for="(m,id) in marker_items"
 :position="m.position"
@@ -37,8 +35,6 @@ export default {
             // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
             // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
             ],
-
-            keyword: 'J000745437',
         }
     },
 
@@ -52,14 +48,16 @@ export default {
 
          keywordPosition () {
             return new Promise(function(resolve,reject){
-                 this.geocoder = new google.maps.Geocoder();
-                 this.geocoder.geocode({
-                'address': this.address
-            }),(results, status) =>{resolve()}
-                 
-                // ((position)=>{resolve(position.coords)})
+                console.log("geo");
+                let geocoder = new google.maps.Geocoder();
+                console.log("111");
+                console.log(geocoder);
+                console.log("222");
+                this.geocoder.geocode({'address': this.address},
+                (results, status)=>{resolve(results[0].geometry.location)}
+                )
             })
-        },
+         },
 
 
         //エリア検索
@@ -68,6 +66,7 @@ export default {
             this.geocoder.geocode({
                 'address': this.address
             }, 
+            // results = lat,lng  status = success,or,false
             (results, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
             this.$refs.map.panTo(results[0].geometry.location)
@@ -126,9 +125,13 @@ export default {
             shoplist.map((position)=>{
                 this.marker_items.push({position: {lat: parseFloat(position.lat), lng: parseFloat(position.lng)}, title: 'marker_5'})
             });
-        }
+        },
 
-       
+       async keywordSearch(){
+           console.log("000");
+           let keyword_position = await this.keywordPosition()
+           console.log("001");
+        }
     }
 
 }
