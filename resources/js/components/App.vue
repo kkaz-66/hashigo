@@ -5,6 +5,8 @@
 <input type="text" v-model="address">
 <button type="button" @click="mapSearch">検索</button>
 <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
+
+
 <GmapMarker v-for="(m,id) in marker_items"
 :position="m.position"
 :title="m.title"
