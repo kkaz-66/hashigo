@@ -11,6 +11,7 @@
 <body>
     <div id="app">
         <header-component></header-component>
+        <mypage-component></mypage-component>
         <footer-component></footer-component>
     </div>
 

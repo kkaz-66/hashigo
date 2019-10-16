@@ -32,9 +32,9 @@ class MypageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function hashigo_history(Request $request)
     {
-        //
+        
     }
 
     /**
