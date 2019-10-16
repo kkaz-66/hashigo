@@ -10,9 +10,13 @@
 </head>
 <body>
 
-    <div id="app">
-        <app-component ></app-component>
-    </div>
+    <!-- <div id="app">
+        <app-component></app-component>
+    </div> -->
+    <?php
+    var_dump($product);
+    var_dump($place);
+    ?>
 
     <script src=" {{ mix('js/app.js') }} "></script>
 </body>
