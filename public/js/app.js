@@ -1713,6 +1713,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! http */ "./node_modules/stream-http/index.js");
 /* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1736,13 +1738,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       //追加事項
+      name: "",
+      url: "",
+      photo: "",
       map: {},
-      marker: null,
+      // marker: null,
       geocode: {},
       address: '',
       center: {
@@ -1750,11 +1763,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         lng: 139.72
       },
       zoom: 14,
-      marker_items: [// {position: {lat: 35.71, lng: 139.72}, title: 'marker_1'},
-        // {position: {lat: 35.72, lng: 139.73}, title: 'marker_2'},
-        // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
-        // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
-      ]
+      marker_items: []
     };
   },
   methods: {
@@ -1766,47 +1775,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
       });
     },
+    // キーワード位置取得
     keywordPosition: function keywordPosition() {
+      var _this = this;
+
       return new Promise(function (resolve, reject) {
         console.log("geo");
-        var geocoder = new google.maps.Geocoder();
-        console.log("111");
-        console.log(geocoder);
+        _this.geocoder = new google.maps.Geocoder();
+        console.log("111"); // console.log(geocoder);
+
         console.log("222");
-        this.geocoder.geocode({
-          'address': this.address
+
+        _this.geocoder.geocode({
+          'address': _this.address
         }, function (results, status) {
           resolve(results[0].geometry.location);
         });
       });
     },
     //エリア検索
-    mapSearch: function mapSearch() {
-      var _this = this;
-
-      this.geocoder = new google.maps.Geocoder();
-      this.geocoder.geocode({
-        'address': this.address
-      }, // results = lat,lng  status = success,or,false
-      function (results, status) {
-        if (status === google.maps.GeocoderStatus.OK) {
-          _this.$refs.map.panTo(results[0].geometry.location);
-
-          _this.marker = new google.maps.Marker({
-            map: _this.map,
-            position: results[0].geometry.location
-          });
-
-          _this.marker_items.push({
-            position: results[0].geometry.location,
-            title: 'marker_6'
-          });
-
-          console.log(results[0].geometry.location);
-        }
-      });
-    },
-    //ピン立て
+    //     mapSearch() {
+    //         this.geocoder = new google.maps.Geocoder();
+    //         this.geocoder.geocode({
+    //             'address': this.address
+    //         }, 
+    //         // results = lat,lng  status = success,or,false
+    //         (results, status) => {
+    //         if (status === google.maps.GeocoderStatus.OK) {
+    //         this.$refs.map.panTo(results[0].geometry.location)
+    //         this.marker = new google.maps.Marker({
+    //             map: this.map,
+    //             position: results[0].geometry.location
+    //         })
+    //         this.marker_items.push({position: results[0].geometry.location, title: 'marker_6'})
+    //         console.log(results[0].geometry.location);
+    // 　      }   
+    //         })
+    //     },
+    //ピン立て 現在地
     setcentermarker: function setcentermarker(lat, lng) {
       this.$refs.map.panTo({
         lat: lat,
@@ -1822,7 +1828,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // hotpepperから店情報取得
     getList: function getList(lat, lng) {
-      return axios.post('/api/list', {
+      return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/list', {
         lng: lng,
         lat: lat
       }).then(function (res) {
@@ -1831,30 +1837,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         // this.history()
       });
     },
-    //レスポンスデータをコンソール表示
-    hotlist: function hotlist() {
-      return axios.get('/api/list').then(function (res) {
-        return res.data;
-      });
-    },
-    // いらない？
-    test: function () {
-      var _test = _asyncToGenerator(
+    // 現在位置取得
+    currentsearch: function () {
+      var _currentsearch = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var test, lng;
+        var position, lat, lng, shoplist;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return this.hotlist();
+                return this.currentPosition();
 
               case 2:
-                test = _context.sent;
-                lng = test.results.shop[0].lng;
+                position = _context.sent;
+                lat = position.latitude;
+                lng = position.longitude;
+                _context.next = 7;
+                return this.getList(lat, lng);
 
-              case 4:
+              case 7:
+                shoplist = _context.sent;
+                this.setcentermarker(lat, lng);
+                this.setshopmarker(shoplist);
+
+              case 10:
               case "end":
                 return _context.stop();
             }
@@ -1862,29 +1870,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, this);
       }));
 
-      function test() {
-        return _test.apply(this, arguments);
+      function currentsearch() {
+        return _currentsearch.apply(this, arguments);
       }
 
-      return test;
+      return currentsearch;
     }(),
-    // 現在位置取得
-    currentsearch: function () {
-      var _currentsearch = _asyncToGenerator(
+    // shoplistピン立て
+    setshopmarker: function setshopmarker(shoplist) {
+      var _this2 = this;
+
+      shoplist.map(function (shopdata) {
+        var name = shopdata.name;
+        var url = shopdata.urls.pc;
+        var photo = shopdata.photo.pc.m;
+        var lat = shopdata.lat;
+        var lng = shopdata.lng;
+
+        _this2.marker_items.push({
+          position: {
+            lat: parseFloat(lat),
+            lng: parseFloat(lng)
+          },
+          title: name,
+          url: url,
+          photo: photo
+        });
+      });
+    },
+    // 検索ボタンclick発火
+    keywordSearch: function () {
+      var _keywordSearch = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var position, lat, lng, shoplist;
+        var keyword_position, lat, lng, shoplist;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return this.currentPosition();
+                return this.keywordPosition();
 
               case 2:
-                position = _context2.sent;
-                lat = position.latitude;
-                lng = position.longitude;
+                keyword_position = _context2.sent;
+                lat = keyword_position.lat();
+                lng = keyword_position.lng();
                 _context2.next = 7;
                 return this.getList(lat, lng);
 
@@ -1901,57 +1931,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2, this);
       }));
 
-      function currentsearch() {
-        return _currentsearch.apply(this, arguments);
-      }
-
-      return currentsearch;
-    }(),
-    // shoplistピン立て
-    setshopmarker: function setshopmarker(shoplist) {
-      var _this2 = this;
-
-      shoplist.map(function (position) {
-        _this2.marker_items.push({
-          position: {
-            lat: parseFloat(position.lat),
-            lng: parseFloat(position.lng)
-          },
-          title: 'marker_5'
-        });
-      });
-    },
-    keywordSearch: function () {
-      var _keywordSearch = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var keyword_position;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                console.log("000");
-                _context3.next = 3;
-                return this.keywordPosition();
-
-              case 3:
-                keyword_position = _context3.sent;
-                console.log("001");
-
-              case 5:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this);
-      }));
-
       function keywordSearch() {
         return _keywordSearch.apply(this, arguments);
       }
 
       return keywordSearch;
-    }()
+    }(),
+    clickMarker: function clickMarker(id) {
+      this.name = this.marker_items[id].title;
+      this.url = this.marker_items[id].url;
+      this.photo = this.marker_items[id].photo;
+    }
   }
 });
 
@@ -8643,7 +8633,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 500px;\n} \n", ""]);
+exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 500px;\n} \n\n", ""]);
 
 // exports
 
@@ -47813,6 +47803,10 @@ var render = function() {
           { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
           [_vm._v("検索")]
         ),
+        _vm._v("\n" + _vm._s(_vm.name) + "\n"),
+        _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
+        _vm._v(" "),
+        _c("img", { attrs: { src: _vm.photo } }),
         _vm._v(" "),
         _c(
           "GmapMap",
@@ -47827,8 +47821,14 @@ var render = function() {
               attrs: {
                 position: m.position,
                 title: m.title,
+                url: m.url,
                 clickable: true,
                 draggable: false
+              },
+              on: {
+                click: function($event) {
+                  return _vm.clickMarker(id)
+                }
               }
             })
           }),
@@ -47836,7 +47836,9 @@ var render = function() {
         )
       ],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "side" })
   ])
 }
 var staticRenderFns = []
