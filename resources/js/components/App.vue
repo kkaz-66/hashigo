@@ -38,17 +38,33 @@ export default {
     
     data () {
         return {
-            //追加事項
-            name: "",
-            url: "",
-            photo: "",
+            //位置情報＆検索
             map:{},
             // marker: null,
             geocode:{},
             address: '',
             center: {lat: 36.71, lng: 139.72},
             zoom: 14,
-            marker_items: [],
+            marker_items: [
+            {position: {lat: 35.71, lng: 139.72}, title: 'marker_1'},
+            // {position: {lat: 35.72, lng: 139.73}, title: 'marker_2'},
+            // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
+            // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
+            ],
+            //クリックアクション
+            infoOptions: {
+                pixelOffset: {
+                width: 0,
+                height: -35
+                }
+            },
+            infoWindowPos: null,
+            infoWinOpen: false,
+            infoContent: {
+                imageurl: null,
+                title: null,
+                address: null
+            }
         }
     },
 
@@ -59,19 +75,12 @@ export default {
                 navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
             })
         },
-
-        // キーワード位置取得
-        keywordPosition () {
-            return new Promise((resolve,reject)=>{
-                console.log("geo");
-                this.geocoder = new google.maps.Geocoder();
-                console.log("111");
-                // console.log(geocoder);
-                console.log("222");
-                this.geocoder.geocode({'address': this.address},(results, status)=>{resolve(results[0].geometry.location)})
-            })
-         },
-
+        getCurrentPositionSuccess (position) {
+                 let lat = position.coords.latitude
+                 let lng = position.coords.longitude
+                 this.$refs.map.panTo({lat: lat, lng: lng})
+                 this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
+        },
 
         //エリア検索
     //     mapSearch() {
@@ -111,44 +120,13 @@ export default {
                 // this.history()
             })
         },
-
-        // 現在位置取得
-        async currentsearch(){
-            let position = await this.currentPosition()
-            let lat = position.latitude
-            let lng = position.longitude
-            let shoplist = await this.getList(lat,lng)
-            this.setcentermarker(lat,lng)
-            this.setshopmarker(shoplist)
-        },
-
-        // shoplistピン立て
-        setshopmarker(shoplist){
-                shoplist.map((shopdata)=>{
-                let name = shopdata.name
-                let url = shopdata.urls.pc
-                let photo = shopdata.photo.pc.m
-                let lat = shopdata.lat
-                let lng = shopdata.lng
-                this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo})
-            });
-        },
-
-        // 検索ボタンclick発火
-       async keywordSearch(){
-           let keyword_position = await this.keywordPosition()
-           let lat = keyword_position.lat()
-           let lng = keyword_position.lng()
-            let shoplist = await this.getList(lat,lng)
-            this.setcentermarker(lat,lng)
-            this.setshopmarker(shoplist)
-        },
-
-        clickMarker(id){
-            this.name = this.marker_items[id].title
-            this.url = this.marker_items[id].url
-            this.photo = this.marker_items[id].photo
-            
+        
+        //クリックアクション
+        toggleInfoWindow (marker, id) {
+            this.infoWinOpen = false
+            this.infoWindowPos = marker.position
+            this.infoContent = marker.content
+            this.infoWinOpen = true
         },
     }
 
@@ -158,11 +136,7 @@ export default {
 <style scoped>
 #map {
     width: 100%;
-    height: 500px;
+    height: 910px;
 } 
 
 </style>
-
-
-
-
