@@ -1745,6 +1745,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8633,7 +8641,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 500px;\n} \n\n", ""]);
+exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 500px;\n} \r\n\r\n", ""]);
 
 // exports
 
@@ -8652,7 +8660,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\n  width: 100%;\n  height: 500px;\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\n  color: blue;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n", ""]);
+exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\r\n  width: 100%;\r\n  height: 500px;\r\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\r\n  color: blue;\r\n  font-weight: bold;\r\n  font-size: 1.5rem;\n}\r\n", ""]);
 
 // exports
 
@@ -47769,79 +47777,109 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "app" }, [
-    _c(
-      "div",
-      { attrs: { id: "map" } },
-      [
-        _c("button", { on: { click: _vm.currentsearch } }, [
-          _vm._v("現在地へ移動")
+    _c("div", { staticClass: "body" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-10" }, [
+          _c(
+            "div",
+            { attrs: { id: "map" } },
+            [
+              _c("button", { on: { click: _vm.currentsearch } }, [
+                _vm._v("現在地へ移動")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.address,
+                    expression: "address"
+                  }
+                ],
+                attrs: { type: "text" },
+                domProps: { value: _vm.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.address = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
+                [_vm._v("検索")]
+              ),
+              _vm._v(" "),
+              _c(
+                "GmapMap",
+                {
+                  ref: "map",
+                  staticStyle: { width: "100%", height: "100%" },
+                  attrs: { center: _vm.center, zoom: _vm.zoom }
+                },
+                _vm._l(_vm.marker_items, function(m, id) {
+                  return _c("GmapMarker", {
+                    key: id,
+                    attrs: {
+                      position: m.position,
+                      title: m.title,
+                      url: m.url,
+                      clickable: true,
+                      draggable: false
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.clickMarker(id)
+                      }
+                    }
+                  })
+                }),
+                1
+              )
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.address,
-              expression: "address"
-            }
-          ],
-          attrs: { type: "text" },
-          domProps: { value: _vm.address },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.address = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
         _c(
-          "button",
-          { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
-          [_vm._v("検索")]
-        ),
-        _vm._v("\n" + _vm._s(_vm.name) + "\n"),
-        _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-        _vm._v(" "),
-        _c("img", { attrs: { src: _vm.photo } }),
-        _vm._v(" "),
-        _c(
-          "GmapMap",
+          "div",
           {
-            ref: "map",
-            staticStyle: { width: "100%", height: "100%" },
-            attrs: { center: _vm.center, zoom: _vm.zoom }
+            staticClass: "col-md-2",
+            staticStyle: { "white-space": "pre-line" }
           },
-          _vm._l(_vm.marker_items, function(m, id) {
-            return _c("GmapMarker", {
-              key: id,
-              attrs: {
-                position: m.position,
-                title: m.title,
-                url: m.url,
-                clickable: true,
-                draggable: false
-              },
-              on: {
-                click: function($event) {
-                  return _vm.clickMarker(id)
-                }
-              }
-            })
-          }),
-          1
+          [
+            _c("img", { attrs: { src: _vm.photo } }),
+            _c("br"),
+            _vm._v("\r\n                " + _vm._s(_vm.name)),
+            _c("br"),
+            _vm._v(" "),
+            _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
+            _c("br"),
+            _vm._v(" "),
+            _c("button", { attrs: { type: "button" } }, [_vm._v("詳細")])
+          ]
         )
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "side" })
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [_vm._v("HashiGo!!")])
+    ])
+  }
+]
 render._withStripped = true
 
 

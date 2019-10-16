@@ -1,25 +1,33 @@
 <template>
 <div class="app">
-<div id="map">
-<button @click="currentsearch">現在地へ移動</button>
-<input type="text" v-model="address">
-<button type="button" @click="keywordSearch">検索</button>
-{{name}}
-<a v-bind:href="url">店情報</a>
-<img v-bind:src="photo">
-<GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
-<GmapMarker  v-for="(m,id) in marker_items"
-:position="m.position"
-:title="m.title"
-:url="m.url"
-:clickable="true" :draggable="false" :key="id" @click="clickMarker(id)">
-</GmapMarker>
-</GmapMap>
-
-</div>
-
-<div class="side"></div>
-
+    <div class="body">
+        <div class="row">
+            <div class="col-md-12">HashiGo!!</div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div id="map">
+                <button @click="currentsearch">現在地へ移動</button>
+                <input type="text" v-model="address">
+                <button type="button" @click="keywordSearch">検索</button>
+                <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
+                <GmapMarker  v-for="(m,id) in marker_items"
+                :position="m.position"
+                :title="m.title"
+                :url="m.url"
+                :clickable="true" :draggable="false" :key="id" @click="clickMarker(id)">
+                </GmapMarker>
+                </GmapMap>
+                </div>
+            </div>
+            <div class="col-md-2" style="white-space: pre-line">
+                <img v-bind:src="photo"><br>
+                {{name}}<br>
+                <a v-bind:href="url">店情報</a><br>
+                <button type="button">詳細</button>
+            </div>
+        </div>
+    </div>
 </div>
 </template> 
 <script>
