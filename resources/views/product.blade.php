@@ -11,7 +11,7 @@
 <body>
 
     <!-- <div id="app">
-        <app-component ></app-component>
+        <app-component></app-component>
     </div> -->
     <?php
     var_dump($product);

@@ -18,5 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/example', 'ExampleController@example')->name('hot');
 Route::get('/deteal', 'HotpepperController@deteal')->name('deteal');
+Route::get('/example', 'ExampleController@example')->name('example');
+Route::get('/mypage', 'MypageController@index')->name('mypage');
