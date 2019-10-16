@@ -1753,31 +1753,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-<<<<<<< HEAD
 
-=======
-//
-//
-//
-//
-//
-//
-//
-//
-//
->>>>>>> 1f62d9a11fd2cf3490eb5abd35cb2df550a2650f
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-<<<<<<< HEAD
       //追加事項
       name: "",
       url: "",
       photo: "",
-=======
-      //位置情報＆検索
->>>>>>> 1f62d9a11fd2cf3490eb5abd35cb2df550a2650f
       map: {},
       // marker: null,
       geocode: {},
@@ -1787,34 +1771,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         lng: 139.72
       },
       zoom: 14,
-<<<<<<< HEAD
       marker_items: []
-=======
-      marker_items: [{
-        position: {
-          lat: 35.71,
-          lng: 139.72
-        },
-        title: 'marker_1'
-      } // {position: {lat: 35.72, lng: 139.73}, title: 'marker_2'},
-      // {position: {lat: 35.70, lng: 139.71}, title: 'marker_3'},
-      // {position: {lat: 35.71, lng: 139.70}, title: 'marker_4'}
-      ],
-      //クリックアクション
-      infoOptions: {
-        pixelOffset: {
-          width: 0,
-          height: -35
-        }
-      },
-      infoWindowPos: null,
-      infoWinOpen: false,
-      infoContent: {
-        imageurl: null,
-        title: null,
-        address: null
-      }
->>>>>>> 1f62d9a11fd2cf3490eb5abd35cb2df550a2650f
     };
   },
   methods: {
@@ -1844,25 +1801,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
       });
     },
-    //エリア検索
-    //     mapSearch() {
-    //         this.geocoder = new google.maps.Geocoder();
-    //         this.geocoder.geocode({
-    //             'address': this.address
-    //         }, 
-    //         // results = lat,lng  status = success,or,false
-    //         (results, status) => {
-    //         if (status === google.maps.GeocoderStatus.OK) {
-    //         this.$refs.map.panTo(results[0].geometry.location)
-    //         this.marker = new google.maps.Marker({
-    //             map: this.map,
-    //             position: results[0].geometry.location
-    //         })
-    //         this.marker_items.push({position: results[0].geometry.location, title: 'marker_6'})
-    //         console.log(results[0].geometry.location);
-    // 　      }   
-    //         })
-    //     },
+    getCurrentPositionSuccess: function getCurrentPositionSuccess(position) {
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      this.$refs.map.panTo({
+        lat: lat,
+        lng: lng
+      });
+      this.marker_items.push({
+        position: {
+          lat: lat,
+          lng: lng
+        },
+        title: 'marker_5'
+      });
+    },
     //ピン立て 現在地
     setcentermarker: function setcentermarker(lat, lng) {
       this.$refs.map.panTo({
@@ -1949,7 +1902,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
       });
     },
-<<<<<<< HEAD
     // 検索ボタンclick発火
     keywordSearch: function () {
       var _keywordSearch = _asyncToGenerator(
@@ -1993,14 +1945,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.name = this.marker_items[id].title;
       this.url = this.marker_items[id].url;
       this.photo = this.marker_items[id].photo;
-=======
-    //クリックアクション
-    toggleInfoWindow: function toggleInfoWindow(marker, id) {
-      this.infoWinOpen = false;
-      this.infoWindowPos = marker.position;
-      this.infoContent = marker.content;
-      this.infoWinOpen = true;
->>>>>>> 1f62d9a11fd2cf3490eb5abd35cb2df550a2650f
     }
   }
 });
@@ -8693,8 +8637,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 500px;\n} \r\n\r\n", ""]);
+exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 910px;\n} \r\n", ""]);
 
 // exports
 
@@ -8714,9 +8657,6 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\r\n  width: 100%;\r\n  height: 500px;\r\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\r\n  color: blue;\r\n  font-weight: bold;\r\n  font-size: 1.5rem;\n}\r\n", ""]);
-=======
-exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 910px;\n} \r\n", ""]);
->>>>>>> 1f62d9a11fd2cf3490eb5abd35cb2df550a2650f
 
 // exports
 
@@ -47911,7 +47851,6 @@ var render = function() {
             staticStyle: { "white-space": "pre-line" }
           },
           [
-<<<<<<< HEAD
             _c("img", { attrs: { src: _vm.photo } }),
             _c("br"),
             _vm._v("\r\n                " + _vm._s(_vm.name)),
@@ -47922,53 +47861,6 @@ var render = function() {
             _vm._v(" "),
             _c("button", { attrs: { type: "button" } }, [_vm._v("詳細")])
           ]
-=======
-            _c(
-              "GmapInfoWindow",
-              {
-                attrs: {
-                  options: _vm.infoOptions,
-                  position: _vm.infoWindowPos,
-                  opened: _vm.infoWinOpen
-                },
-                on: {
-                  closeclick: function($event) {
-                    _vm.infoWinOpen = false
-                  }
-                }
-              },
-              [
-                _c("table", [
-                  _c("tr", [
-                    _c("td", [_vm._v("Sample")]),
-                    _vm._v(" "),
-                    _c("td", { staticStyle: { "text-align": "left" } }, [
-                      _c("p", [_vm._v("Windows")])
-                    ])
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _vm._l(_vm.marker_items, function(m, id) {
-              return _c("GmapMarker", {
-                key: id,
-                attrs: {
-                  position: m.position,
-                  title: m.title,
-                  clickable: true,
-                  draggable: false
-                },
-                on: {
-                  click: function($event) {
-                    return _vm.toggleInfoWindow(m, id)
-                  }
-                }
-              })
-            })
-          ],
-          2
->>>>>>> 1f62d9a11fd2cf3490eb5abd35cb2df550a2650f
         )
       ])
     ])
