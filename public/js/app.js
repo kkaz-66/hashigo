@@ -1768,6 +1768,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1778,14 +1779,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       photo: "",
       map: {},
       isActive: true,
-      // marker: null,
       id: "",
       lat: "",
       lng: "",
       test: "/detail?id=",
       test2: "&lat=",
       test3: "&lng=",
-      marker: null,
       geocode: {},
       address: '',
       center: {
@@ -1801,9 +1800,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
-  mounted: function mounted() {
-    currentPosition();
-  },
   methods: {
     //現在地取得
     currentPosition: function currentPosition() {
@@ -1818,11 +1814,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return new Promise(function (resolve, reject) {
-        console.log("geo");
         _this.geocoder = new google.maps.Geocoder();
-        console.log("111"); // console.log(geocoder);
-
-        console.log("222");
 
         _this.geocoder.geocode({
           'address': _this.address
@@ -1994,12 +1986,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else {
         this.isActive = false;
       }
-    } //詳細ページへの変数受け渡し
-    // onclick(){
-    //     this.$http.get('/detail', function (id, lat, lng) {     
-    //     }).error()
-    // }
-
+    }
   }
 });
 
@@ -2128,28 +2115,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     product: String,
-    place: String
+    place: String,
+    arr: []
   },
   data: function data() {
     return {
@@ -2170,7 +2142,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   //1件目の場所から
   mounted: function mounted() {
-    console.log(this.place.name_kana);
+    console.log(this.place[0]['name_kana']);
+    console.log(this.place);
+    console.log(this.arr);
     this.center = {
       lat: 35.6497371091,
       lng: 139.7026642849
@@ -9051,7 +9025,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 855px;\n} \n\n", ""]);
+exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 855px;\n} \r\n\r\n", ""]);
 
 // exports
 
@@ -9070,7 +9044,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.footer {\n    width: 100%;\n    height: 60px;\n    background-color: wheat;\n}\n\n", ""]);
+exports.push([module.i, "\n.footer {\r\n    width: 100%;\r\n    height: 60px;\r\n    background-color: wheat;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -9089,7 +9063,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.header {\n    width: 100%;\n    height: 60px;\n    background-color: wheat;\n    position: relative;\n}\n.logo {\n  width: 200px;\n  height: 60px;\n  background-color: aquamarine;\n}\n.button_box{\n  position: absolute;\n  flex-wrap: wrap;\n  top:0;\n  right: 0;\n  width: 400px;\n  height: 60px;\n}\n.user_name {\n  width: 200px;\n  height: 60px;\n  background-color: beige;\n}\n.login {\n  width: 200px;\n  height: 60px;\n  background-color: thistle;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.header {\r\n    width: 100%;\r\n    height: 60px;\r\n    background-color: wheat;\r\n    position: relative;\n}\n.logo {\r\n  width: 200px;\r\n  height: 60px;\r\n  background-color: aquamarine;\n}\n.button_box{\r\n  position: absolute;\r\n  flex-wrap: wrap;\r\n  top:0;\r\n  right: 0;\r\n  width: 400px;\r\n  height: 60px;\n}\n.user_name {\r\n  width: 200px;\r\n  height: 60px;\r\n  background-color: beige;\n}\n.login {\r\n  width: 200px;\r\n  height: 60px;\r\n  background-color: thistle;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -9108,7 +9082,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\n  width: 100%;\n  height: 500px;\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\n  color: blue;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n", ""]);
+exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\r\n  width: 100%;\r\n  height: 500px;\r\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\r\n  color: blue;\r\n  font-weight: bold;\r\n  font-size: 1.5rem;\n}\r\n", ""]);
 
 // exports
 
@@ -9127,7 +9101,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 910px;\n} \n", ""]);
+exports.push([module.i, "\n#map[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 910px;\n} \r\n", ""]);
 
 // exports
 
@@ -9146,7 +9120,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\n\n", ""]);
+exports.push([module.i, "\n.wrap {\r\n  width: 100%;\r\n  height: 300px;\r\n  background-color: tan;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -9165,7 +9139,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.hashigo {\n    width: 100px;\n    height: 100px;\n    background-color: aqua;\n}\n\n", ""]);
+exports.push([module.i, "\n.hashigo {\r\n    width: 100px;\r\n    height: 100px;\r\n    background-color: aqua;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -48471,7 +48445,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-10" }, [
+        _c("div", { staticClass: "col-md-9" }, [
           _c(
             "div",
             { attrs: { id: "map" } },
@@ -48514,22 +48488,22 @@ var render = function() {
             : _c(
                 "div",
                 {
-                  staticClass: "col-md-2",
+                  staticClass: "col-md-3",
                   staticStyle: { "white-space": "nowrap" }
                 },
                 [
                   _c("img", { attrs: { src: _vm.photo } }),
                   _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.name)),
+                  _vm._v("\r\n                    " + _vm._s(_vm.name)),
                   _c("br"),
                   _vm._v(" "),
                   _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
                   _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.id)),
+                  _vm._v("\r\n                    " + _vm._s(_vm.id)),
                   _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.lat)),
+                  _vm._v("\r\n                    " + _vm._s(_vm.lat)),
                   _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.lng)),
+                  _vm._v("\r\n                    " + _vm._s(_vm.lng)),
                   _c("br"),
                   _vm._v(" "),
                   _c(
@@ -48678,44 +48652,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "body" }, [
-    _c("div", { staticClass: "app" }, [
+  return _c("div", { staticClass: "app" }, [
+    _c("div", { staticClass: "body" }, [
       _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("button", { on: { click: _vm.currentsearch } }, [
-            _vm._v("現在地へ移動")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.address,
-                expression: "address"
-              }
-            ],
-            attrs: { type: "text" },
-            domProps: { value: _vm.address },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.address = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
-            [_vm._v("検索")]
-          )
-        ])
-      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-10" }, [
@@ -48723,6 +48662,37 @@ var render = function() {
             "div",
             { attrs: { id: "map" } },
             [
+              _c("button", { on: { click: _vm.currentsearch } }, [
+                _vm._v("現在地へ移動")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.address,
+                    expression: "address"
+                  }
+                ],
+                attrs: { type: "text" },
+                domProps: { value: _vm.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.address = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
+                [_vm._v("検索")]
+              ),
+              _vm._v(" "),
               _c(
                 "GmapMap",
                 {
@@ -48737,7 +48707,6 @@ var render = function() {
                       position: m.position,
                       title: m.title,
                       url: m.url,
-                      icon: m.icon,
                       clickable: true,
                       draggable: false
                     },
@@ -48755,48 +48724,22 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "shop" }, [
-          _vm.isActive
-            ? _c("div")
-            : _c(
-                "div",
-                {
-                  staticClass: "col-md-2",
-                  staticStyle: { "white-space": "nowrap" }
-                },
-                [
-                  _c("img", { attrs: { src: _vm.photo } }),
-                  _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.name)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-                  _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.id)),
-                  _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.lat)),
-                  _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.lng)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          _vm.test +
-                          _vm.id +
-                          _vm.test2 +
-                          _vm.lat +
-                          _vm.test3 +
-                          _vm.lng
-                      }
-                    },
-                    [_vm._v("詳細")]
-                  )
-                ]
-              )
-        ])
+        _c(
+          "div",
+          {
+            staticClass: "col-md-2",
+            staticStyle: { "white-space": "pre-line" }
+          },
+          [
+            _c("img", { attrs: { src: _vm.photo } }),
+            _c("br"),
+            _vm._v("\r\n                " + _vm._s(_vm.name)),
+            _c("br"),
+            _vm._v(" "),
+            _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
+            _c("br")
+          ]
+        )
       ])
     ])
   ])
@@ -48807,7 +48750,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [_c("p", [_vm._v("Hashigo")])])
+      _c("div", { staticClass: "col-md-12" }, [_vm._v("HashiGo!!")])
     ])
   }
 ]

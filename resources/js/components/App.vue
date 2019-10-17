@@ -8,13 +8,13 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                 <button @click="currentsearch">現在地へ移動</button>
-                 <input type="text" v-model="address">
-                 <button type="button" @click="keywordSearch">検索</button>
+                <button @click="currentsearch">現在地へ移動</button>
+                <input type="text" v-model="address">
+                <button type="button" @click="keywordSearch">検索</button>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <div id="map">
                     <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
                         <GmapMarker  v-for="(m,id) in marker_items"
@@ -29,9 +29,10 @@
             </div>
             <div class="shop">
                 <div v-if="isActive">
-
+                <!--初期値の店情報を隠す-->
                 </div>
-                <div class="col-md-2" style="white-space: nowrap" v-else>
+
+                <div class="col-md-3" style="white-space: nowrap" v-else>
                     <img v-bind:src="photo"><br>
                     {{name}}<br>
                     <a v-bind:href="url">店情報</a><br>
@@ -58,14 +59,12 @@ export default {
             photo: "",
             map:{},
             isActive: true,
-            // marker: null,
             id:"",
             lat:"",
             lng:"",
             test:"/detail?id=",
             test2:"&lat=",
             test3:"&lng=",
-            marker: null,
             geocode:{},
             address: '',
             center: {lat: 37.71, lng: 139.72},
@@ -73,9 +72,6 @@ export default {
             marker_items: [],
             icon: {url: "", scaledSize:"", scaledColor: ""},
         }
-    },
-    mounted(){
-        currentPosition();
     },
     methods: {
         //現在地取得
@@ -87,12 +83,8 @@ export default {
 
         // キーワード位置取得
         keywordPosition () {
-            return new Promise((resolve,reject)=>{
-                console.log("geo");
+            return new Promise((resolve,reject)=>{ 
                 this.geocoder = new google.maps.Geocoder();
-                console.log("111");
-                // console.log(geocoder);
-                console.log("222");
                 this.geocoder.geocode({'address': this.address},(results, status)=>{resolve(results[0].geometry.location)})
             })
          },
@@ -173,12 +165,6 @@ export default {
                 this.isActive = false
             }
         },
-
-        //詳細ページへの変数受け渡し
-        // onclick(){
-        //     this.$http.get('/detail', function (id, lat, lng) {     
-        //     }).error()
-        // }
     }
 }
 </script>
