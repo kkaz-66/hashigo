@@ -24,6 +24,7 @@ window.Vue = require('vue');
 Vue.component('app-component', require('./components/App.vue').default);
 Vue.component('hot-component', require('./components/HotComponent').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -1,30 +1,43 @@
 <template>
-<div class="app">
-    <div class="body">
+<div class="body">
+    <div class="app">
         <div class="row">
-            <div class="col-md-12">HashiGo!!</div>
+            <div class="col-md-12">
+               <p>Hashigo</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                 <button @click="currentsearch">現在地へ移動</button>
+                 <input type="text" v-model="address">
+                 <button type="button" @click="keywordSearch">検索</button>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-10">
                 <div id="map">
-                <button @click="currentsearch">現在地へ移動</button>
-                <input type="text" v-model="address">
-                <button type="button" @click="keywordSearch">検索</button>
-                <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
-                <GmapMarker  v-for="(m,id) in marker_items"
-                :position="m.position"
-                :title="m.title"
-                :url="m.url"
-                :clickable="true" :draggable="false" :key="id" @click="clickMarker(id)">
-                </GmapMarker>
-                </GmapMap>
+                    <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
+                        <GmapMarker  v-for="(m,id) in marker_items"
+                            :position="m.position"
+                            :title="m.title"
+                            :url="m.url"
+                            :icon="m.icon"
+                            :clickable="true" :draggable="false" :key="id" @click="clickMarker(id)">
+                        </GmapMarker>
+                    </GmapMap>
+
                 </div>
             </div>
-            <div class="col-md-2" style="white-space: pre-line">
-                <img v-bind:src="photo"><br>
-                {{name}}<br>
-                <a v-bind:href="url">店情報</a><br>
-                <button type="button">詳細</button>
+            <div class="shop">
+                <div v-if="isActive">
+
+                </div>
+                <div class="col-md-2" style="white-space: nowrap" v-else>
+                    <img v-bind:src="photo"><br>
+                    {{name}} <br>
+                    <a v-bind:href="url">店情報</a><br>
+                    <button type="button">詳細</button>
+                </div>
             </div>
         </div>
     </div>
@@ -43,18 +56,23 @@ export default {
             url: "",
             photo: "",
             map:{},
+            isActive: true,
             // marker: null,
             geocode:{},
             address: '',
-            center: {lat: 36.71, lng: 139.72},
+            center: {lat: 37.71, lng: 139.72},
             zoom: 14,
             marker_items: [],
+            icon: {url: "", scaledSize:"", scaledColor: ""},
         }
     },
 
     methods: {
         //現在地取得
         currentPosition () {
+            // if(marker_items != null){
+            //     marker_items.setMap(null)
+            // }
             return new Promise(function(resolve,reject){
                 navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
             })
@@ -72,17 +90,11 @@ export default {
             })
          },
 
-        getCurrentPositionSuccess (position) {
-                 let lat = position.coords.latitude
-                 let lng = position.coords.longitude
-                 this.$refs.map.panTo({lat: lat, lng: lng})
-                 this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
-        },
-
         //ピン立て 現在地
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', 
+                                    icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
         },
 
         // hotpepperから店情報取得
@@ -110,7 +122,7 @@ export default {
 
         // shoplistピン立て
         setshopmarker(shoplist){
-                shoplist.map((shopdata)=>{
+            shoplist.map((shopdata)=>{
                 let name = shopdata.name
                 let url = shopdata.urls.pc
                 let photo = shopdata.photo.pc.m
@@ -122,9 +134,9 @@ export default {
 
         // 検索ボタンclick発火
        async keywordSearch(){
-           let keyword_position = await this.keywordPosition()
-           let lat = keyword_position.lat()
-           let lng = keyword_position.lng()
+            let keyword_position = await this.keywordPosition()
+            let lat = keyword_position.lat()
+            let lng = keyword_position.lng()
             let shoplist = await this.getList(lat,lng)
             this.setcentermarker(lat,lng)
             this.setshopmarker(shoplist)
@@ -134,7 +146,11 @@ export default {
             this.name = this.marker_items[id].title
             this.url = this.marker_items[id].url
             this.photo = this.marker_items[id].photo
-            
+            if(this.marker_items[id].title == '現在地'){
+                this.isActive = true
+            }else{
+                this.isActive = false
+            }
         },
     }
 
@@ -144,7 +160,7 @@ export default {
 <style scoped>
 #map {
     width: 100%;
-    height: 910px;
+    height: 855px;
 } 
-</style>
 
+</style>

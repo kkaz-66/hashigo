@@ -1753,6 +1753,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1763,20 +1776,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: "",
       photo: "",
       map: {},
+      isActive: true,
       // marker: null,
       geocode: {},
       address: '',
       center: {
-        lat: 36.71,
+        lat: 37.71,
         lng: 139.72
       },
       zoom: 14,
-      marker_items: []
+      marker_items: [],
+      icon: {
+        url: "",
+        scaledSize: "",
+        scaledColor: ""
+      }
     };
   },
   methods: {
     //現在地取得
     currentPosition: function currentPosition() {
+      // if(marker_items != null){
+      //     marker_items.setMap(null)
+      // }
       return new Promise(function (resolve, reject) {
         navigator.geolocation.getCurrentPosition(function (position) {
           resolve(position.coords);
@@ -1801,21 +1823,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
       });
     },
-    getCurrentPositionSuccess: function getCurrentPositionSuccess(position) {
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
-      this.$refs.map.panTo({
-        lat: lat,
-        lng: lng
-      });
-      this.marker_items.push({
-        position: {
-          lat: lat,
-          lng: lng
-        },
-        title: 'marker_5'
-      });
-    },
     //ピン立て 現在地
     setcentermarker: function setcentermarker(lat, lng) {
       this.$refs.map.panTo({
@@ -1827,7 +1834,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           lat: lat,
           lng: lng
         },
-        title: 'marker_5'
+        title: '現在地',
+        icon: {
+          url: 'http://pictogram2.com/p/p0957/3.png',
+          scaledSize: new google.maps.Size(50, 55),
+          scaledColor: '#0000'
+        }
       });
     },
     // hotpepperから店情報取得
@@ -1945,6 +1957,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.name = this.marker_items[id].title;
       this.url = this.marker_items[id].url;
       this.photo = this.marker_items[id].photo;
+
+      if (this.marker_items[id].title == '現在地') {
+        this.isActive = true;
+      } else {
+        this.isActive = false;
+      }
     }
   }
 });
@@ -8637,7 +8655,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 910px;\n} \r\n", ""]);
+exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 855px;\n} \n\n", ""]);
 
 // exports
 
@@ -8656,7 +8674,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\r\n  width: 100%;\r\n  height: 500px;\r\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\r\n  color: blue;\r\n  font-weight: bold;\r\n  font-size: 1.5rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\n  width: 100%;\n  height: 500px;\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\n  color: blue;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n", ""]);
 
 // exports
 
@@ -47772,9 +47790,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "app" }, [
-    _c("div", { staticClass: "body" }, [
+  return _c("div", { staticClass: "body" }, [
+    _c("div", { staticClass: "app" }, [
       _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("button", { on: { click: _vm.currentsearch } }, [
+            _vm._v("現在地へ移動")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.address,
+                expression: "address"
+              }
+            ],
+            attrs: { type: "text" },
+            domProps: { value: _vm.address },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.address = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
+            [_vm._v("検索")]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-10" }, [
@@ -47782,37 +47835,6 @@ var render = function() {
             "div",
             { attrs: { id: "map" } },
             [
-              _c("button", { on: { click: _vm.currentsearch } }, [
-                _vm._v("現在地へ移動")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.address,
-                    expression: "address"
-                  }
-                ],
-                attrs: { type: "text" },
-                domProps: { value: _vm.address },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.address = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
-                [_vm._v("検索")]
-              ),
-              _vm._v(" "),
               _c(
                 "GmapMap",
                 {
@@ -47827,6 +47849,7 @@ var render = function() {
                       position: m.position,
                       title: m.title,
                       url: m.url,
+                      icon: m.icon,
                       clickable: true,
                       draggable: false
                     },
@@ -47844,24 +47867,28 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "col-md-2",
-            staticStyle: { "white-space": "pre-line" }
-          },
-          [
-            _c("img", { attrs: { src: _vm.photo } }),
-            _c("br"),
-            _vm._v("\r\n                " + _vm._s(_vm.name)),
-            _c("br"),
-            _vm._v(" "),
-            _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-            _c("br"),
-            _vm._v(" "),
-            _c("button", { attrs: { type: "button" } }, [_vm._v("詳細")])
-          ]
-        )
+        _c("div", { staticClass: "shop" }, [
+          _vm.isActive
+            ? _c("div")
+            : _c(
+                "div",
+                {
+                  staticClass: "col-md-2",
+                  staticStyle: { "white-space": "nowrap" }
+                },
+                [
+                  _c("img", { attrs: { src: _vm.photo } }),
+                  _c("br"),
+                  _vm._v("\n                    " + _vm._s(_vm.name) + " "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("button", { attrs: { type: "button" } }, [_vm._v("詳細")])
+                ]
+              )
+        ])
       ])
     ])
   ])
@@ -47872,7 +47899,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [_vm._v("HashiGo!!")])
+      _c("div", { staticClass: "col-md-12" }, [_c("p", [_vm._v("Hashigo")])])
     ])
   }
 ]
