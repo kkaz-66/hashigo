@@ -108,7 +108,7 @@ export default {
 
         // hotpepperから店情報取得
         getList(lat,lng){
-            return axios.post('/api/list',{
+            return axios.post('/api/location',{
                 lng: lng,
                 lat: lat
             }).then((res)=>{

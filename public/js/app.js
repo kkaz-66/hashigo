@@ -1862,7 +1862,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // hotpepperから店情報取得
     getList: function getList(lat, lng) {
-      return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/list', {
+      return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/location', {
         lng: lng,
         lat: lat
       }).then(function (res) {
@@ -2136,20 +2136,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         lat: 36.71,
         lng: 139.72
       },
-      zoom: 14,
+      zoom: 17,
       marker_items: []
     };
   },
   //1件目の場所から
   mounted: function mounted() {
-    console.log(this.place[0]['name_kana']);
-    console.log(this.place);
-    console.log(this.arr);
+    var json = JSON.parse(this.product);
+    console.log(json[0].name_kana);
     this.center = {
-      lat: 35.6497371091,
-      lng: 139.7026642849
+      lat: parseFloat(json[0].lat),
+      lng: parseFloat(json[0].lng)
     };
-    this.setcentermarker(35.6497371091, 139.7026642849);
+    this.setcentermarker(parseFloat(json[0].lat), parseFloat(json[0].lng));
+    this.setshopmarker(JSON.parse(this.place));
   },
   methods: {
     //現在地取得

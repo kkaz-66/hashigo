@@ -50,18 +50,18 @@ export default {
             geocode:{},
             address: '',
             center: {lat: 36.71, lng: 139.72},
-            zoom: 14,
+            zoom: 17,
             marker_items: [],
         }
     },
 
     //1件目の場所から
     mounted (){
-        console.log(this.place[0]['name_kana'])
-        console.log(this.place)
-        console.log(this.arr)
-        this.center = {lat:35.6497371091, lng:139.7026642849}
-        this.setcentermarker(35.6497371091,139.7026642849)
+        let json = JSON.parse(this.product)
+        console.log(json[0].name_kana)
+        this.center = {lat:parseFloat(json[0].lat), lng:parseFloat(json[0].lng)}
+        this.setcentermarker(parseFloat(json[0].lat),parseFloat(json[0].lng))
+        this.setshopmarker(JSON.parse(this.place))
     },
 
     methods: {
