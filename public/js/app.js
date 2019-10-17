@@ -1768,6 +1768,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1778,14 +1779,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       photo: "",
       map: {},
       isActive: true,
-      // marker: null,
       id: "",
       lat: "",
       lng: "",
       test: "/detail?id=",
       test2: "&lat=",
       test3: "&lng=",
-      marker: null,
       geocode: {},
       address: '',
       center: {
@@ -1804,9 +1803,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     //現在地取得
     currentPosition: function currentPosition() {
-      // if(marker_items != null){
-      //     marker_items.setMap(null)
-      // }
       return new Promise(function (resolve, reject) {
         navigator.geolocation.getCurrentPosition(function (position) {
           resolve(position.coords);
@@ -2126,28 +2122,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     product: String,
-    place: String
+    place: String,
+    arr: []
   },
   data: function data() {
     return {
@@ -2168,7 +2149,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   //1件目の場所から
   mounted: function mounted() {
-    console.log(this.place.name_kana);
+    console.log(this.place[0]['name_kana']);
+    console.log(this.place);
+    console.log(this.arr);
     this.center = {
       lat: 35.6497371091,
       lng: 139.7026642849
@@ -48469,7 +48452,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-10" }, [
+        _c("div", { staticClass: "col-md-9" }, [
           _c(
             "div",
             { attrs: { id: "map" } },
@@ -48512,7 +48495,7 @@ var render = function() {
             : _c(
                 "div",
                 {
-                  staticClass: "col-md-2",
+                  staticClass: "col-md-3",
                   staticStyle: { "white-space": "nowrap" }
                 },
                 [
@@ -48676,44 +48659,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "body" }, [
-    _c("div", { staticClass: "app" }, [
+  return _c("div", { staticClass: "app" }, [
+    _c("div", { staticClass: "body" }, [
       _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("button", { on: { click: _vm.currentsearch } }, [
-            _vm._v("現在地へ移動")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.address,
-                expression: "address"
-              }
-            ],
-            attrs: { type: "text" },
-            domProps: { value: _vm.address },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.address = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
-            [_vm._v("検索")]
-          )
-        ])
-      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-10" }, [
@@ -48721,6 +48669,37 @@ var render = function() {
             "div",
             { attrs: { id: "map" } },
             [
+              _c("button", { on: { click: _vm.currentsearch } }, [
+                _vm._v("現在地へ移動")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.address,
+                    expression: "address"
+                  }
+                ],
+                attrs: { type: "text" },
+                domProps: { value: _vm.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.address = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
+                [_vm._v("検索")]
+              ),
+              _vm._v(" "),
               _c(
                 "GmapMap",
                 {
@@ -48735,7 +48714,6 @@ var render = function() {
                       position: m.position,
                       title: m.title,
                       url: m.url,
-                      icon: m.icon,
                       clickable: true,
                       draggable: false
                     },
@@ -48753,48 +48731,22 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "shop" }, [
-          _vm.isActive
-            ? _c("div")
-            : _c(
-                "div",
-                {
-                  staticClass: "col-md-2",
-                  staticStyle: { "white-space": "nowrap" }
-                },
-                [
-                  _c("img", { attrs: { src: _vm.photo } }),
-                  _c("br"),
-                  _vm._v("\r\n                    " + _vm._s(_vm.name)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-                  _c("br"),
-                  _vm._v("\r\n                    " + _vm._s(_vm.id)),
-                  _c("br"),
-                  _vm._v("\r\n                    " + _vm._s(_vm.lat)),
-                  _c("br"),
-                  _vm._v("\r\n                    " + _vm._s(_vm.lng)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          _vm.test +
-                          _vm.id +
-                          _vm.test2 +
-                          _vm.lat +
-                          _vm.test3 +
-                          _vm.lng
-                      }
-                    },
-                    [_vm._v("詳細")]
-                  )
-                ]
-              )
-        ])
+        _c(
+          "div",
+          {
+            staticClass: "col-md-2",
+            staticStyle: { "white-space": "pre-line" }
+          },
+          [
+            _c("img", { attrs: { src: _vm.photo } }),
+            _c("br"),
+            _vm._v("\r\n                " + _vm._s(_vm.name)),
+            _c("br"),
+            _vm._v(" "),
+            _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
+            _c("br")
+          ]
+        )
       ])
     ])
   ])
@@ -48805,7 +48757,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [_c("p", [_vm._v("Hashigo")])])
+      _c("div", { staticClass: "col-md-12" }, [_vm._v("HashiGo!!")])
     ])
   }
 ]

@@ -9,12 +9,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
     <body>
-
-        <div id="app">
+        <div id="app"> 
+            {{ gettype($place) }}
             <product-component product="{{ json_encode($product, JSON_UNESCAPED_UNICODE)}}" place="{{ json_encode($place, JSON_UNESCAPED_UNICODE) }}">
             </product-component>
         </div>
-
         <script src=" {{ mix('js/app.js') }} "></script>
     </body>
 </html>
