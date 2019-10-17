@@ -50,37 +50,36 @@ import { METHODS } from 'http';
 import axios from 'axios';
 
 export default {
-    
+    props:{
+        product:String,
+        place:String
+    },
+
     data () {
         return {
+            //追加事項
             name: "",
             url: "",
             photo: "",
             map:{},
-            isActive: true,
-            // marker: null,
-            id:"",
-            lat:"",
-            lng:"",
-            test:"/detail?id=",
-            test2:"&lat=",
-            test3:"&lng=",
-            marker: null,
             geocode:{},
             address: '',
-            center: {lat: 37.71, lng: 139.72},
+            center: {lat: 36.71, lng: 139.72},
             zoom: 14,
             marker_items: [],
-            icon: {url: "", scaledSize:"", scaledColor: ""},
         }
+    },
+
+    //1件目の場所から
+    mounted (){
+        console.log(this.place.name_kana)
+        this.center = {lat:35.6497371091, lng:139.7026642849}
+        this.setcentermarker(35.6497371091,139.7026642849)
     },
 
     methods: {
         //現在地取得
         currentPosition () {
-            // if(marker_items != null){
-            //     marker_items.setMap(null)
-            // }
             return new Promise(function(resolve,reject){
                 navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
             })
@@ -89,28 +88,22 @@ export default {
         // キーワード位置取得
         keywordPosition () {
             return new Promise((resolve,reject)=>{
-                console.log("geo");
                 this.geocoder = new google.maps.Geocoder();
-                console.log("111");
-                // console.log(geocoder);
-                console.log("222");
                 this.geocoder.geocode({'address': this.address},(results, status)=>{resolve(results[0].geometry.location)})
             })
          },
 
-        //現在地のピン立て
         getCurrentPositionSuccess (position) {
-                 let lat = position.coords.latitude
-                 let lng = position.coords.longitude
-                 this.$refs.map.panTo({lat: lat, lng: lng})
-                 this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
+            let lat = position.coords.latitude
+            let lng = position.coords.longitude
+            this.$refs.map.panTo({lat: lat, lng: lng})
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
         },
 
-        //ピン立て 中央
+        //ピン立て 現在地
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', 
-                                    icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
         },
 
         // hotpepperから店情報取得
@@ -137,55 +130,39 @@ export default {
         // shoplistピン立て
         setshopmarker(shoplist){
             shoplist.map((shopdata)=>{
-                let name = shopdata.name
-                let url = shopdata.urls.pc
-                let photo = shopdata.photo.pc.m
-                let lat = shopdata.lat
-                let lng = shopdata.lng
-                let id = shopdata.id
-
-                this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo})
+            let name = shopdata.name
+            let url = shopdata.urls.pc
+            let photo = shopdata.photo.pc.m
+            let lat = shopdata.lat
+            let lng = shopdata.lng
+            this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo})
             });
         },
 
         // 検索ボタンclick発火
        async keywordSearch(){
-            let keyword_position = await this.keywordPosition()
-            let lat = keyword_position.lat()
-            let lng = keyword_position.lng()
-            let shoplist = await this.getList(lat,lng)
-            this.setcentermarker(lat,lng)
-            this.setshopmarker(shoplist)
+           let keyword_position = await this.keywordPosition()
+           let lat = keyword_position.lat()
+           let lng = keyword_position.lng()
+           let shoplist = await this.getList(lat,lng)
+           this.setcentermarker(lat,lng)
+           this.setshopmarker(shoplist)
         },
 
-        //マーカーの表示内容
         clickMarker(id){
-            this.name = this.marker_items[id].title
-            this.url = this.marker_items[id].url
-            this.photo = this.marker_items[id].photo
-            this.id =this.marker_items[id].id
-            this.lat =this.marker_items[id].position.lat
-            this.lng =this.marker_items[id].position.lng
-            if(this.marker_items[id].title == '現在地'){
-                this.isActive = true
-            }else{
-                this.isActive = false
-            }
+           this.name = this.marker_items[id].title
+           this.url = this.marker_items[id].url
+           this.photo = this.marker_items[id].photo
+            
         },
-
-        //詳細ページへの変数受け渡し
-        // onclick(){
-        //     this.$http.get('/detail', function (id, lat, lng) {     
-        //     }).error()
-        // }
     }
+
 }
 </script>
 
 <style scoped>
 #map {
     width: 100%;
-    height: 855px;
+    height: 910px;
 } 
-
 </style>

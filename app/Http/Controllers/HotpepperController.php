@@ -11,54 +11,42 @@ class HotpepperController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $hpg_key = config('apikey.hpg-key');
-        $shopid="";
-        $name="";
-        $address="";
-        $lat="";
-        $lng="";
-        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&large_area=Z011&id=".$shopid."&name=".$name."&address=".$address."&lat=".$lat."&lng=".$lng."&format=json";
-        $json = file_get_contents($url);
-        $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
-        // $json2 = response()->json(['results' => $json]);
-        $arr = json_decode($json,true);
-        $json = json_encode($arr);
-        // return view('hotpepper',compact('arr'));
-        return view('example',compact('json'));
-        // return view('example',compact('url'));
-    }
-
-    public function list(Request $request)
+    public function create_list($url)
     {
         $json = array();
-        $hpg_key = config('apikey.hpg-key');
-        $shopid="";
-        $name="";
-        $address="";
-        $lat= $request->lat;
-        $lng= $request->lng;
-        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&lat=".$lat."&lng=".$lng."&range=5&format=json";
         $json = file_get_contents($url);
         $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
-        // $json2 = response()->json(['results' => $json]);
         $arr = json_decode($json,true);
-        // $jsone = json_encode($arr, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
-
-        // $jsone = json_encode($arr);
-        // return view('hotpepper',compact('arr'));
-        // return view('example',compact('json'));
-        // return view('example',compact('url'));
-
-
-
         return $arr['results']['shop'];
     }
+    public function seach_range($lat,$lng)
+    {
+        $hpg_key = config('apikey.hpg-key');
+        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&lat=".$lat."&lng=".$lng."&range=3&format=json";
+        return $this->create_list($url);
+    }
+    public function seach_shop($id)
+    {
+        $hpg_key = config('apikey.hpg-key');
+        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&id=".$id."&format=json";
+        return $this->create_list($url);
+    }
 
-    public function search(Request $request){
-        $word = $request->keyword;
-        return $word;
+    public function list(Request $request)//変数名Location_clickに変更
+    {
+        $lat= $request->lat;
+        $lng= $request->lng;
+        return $this->seach_range($lat,$lng);
+    }
+
+    public function detail(Request $request)
+    {
+        $id= $request->id;
+        $lat= $request->lat;
+        $lng= $request->lng;
+        $product = $this->seach_shop($id);
+        $place = $this->seach_range($lat,$lng);
+        return view('product',compact('product','place'));
     }
 
     /**
