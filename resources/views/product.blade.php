@@ -8,16 +8,13 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body>
+    <body>
 
-    <!-- <div id="app">
-        <app-component></app-component>
-    </div> -->
-    <?php
-    var_dump($product);
-    var_dump($place);
-    ?>
+        <div id="app">
+            <product-component product="{{ json_encode($product, JSON_UNESCAPED_UNICODE)}}" place="{{ json_encode($place, JSON_UNESCAPED_UNICODE) }}">
+            </product-component>
+        </div>
 
-    <script src=" {{ mix('js/app.js') }} "></script>
-</body>
+        <script src=" {{ mix('js/app.js') }} "></script>
+    </body>
 </html>

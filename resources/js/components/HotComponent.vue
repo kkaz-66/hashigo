@@ -11,7 +11,6 @@ export default {
     inheritAttrs: false;
     let hot = this.$attrs;
     let shop = Object.keys(hot);
-    console.log('aaa'+ shop);
     console.log(hot.data.results.shop);
     console.log(this.$attrs);
     console.log('test data get');

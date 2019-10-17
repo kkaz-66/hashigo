@@ -26,6 +26,8 @@ Vue.component('hot-component', require('./components/HotComponent').default);
 Vue.component('header-component', require('./components/Header.vue').default);
 Vue.component('footer-component', require('./components/Footer.vue').default);
 Vue.component('mypage-component', require('./components/mypage/Mypage.vue').default);
+Vue.component('product-component', require('./components/Product').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
