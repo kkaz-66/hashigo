@@ -9,6 +9,17 @@
     <title>mypage</title>
 </head>
 <body>
+   
+    @foreach ($hashigo as $user)
+    {{$user->member_id}}
+    {{$user->id}}
+    {{$user->first_store_id}}
+    {{$user->second_store_id}}
+    {{$user->third_store_id}}
+    {{$user->created_at}}
+    <br>
+    @endforeach
+
     <div id="app">
         <header-component></header-component>
         <mypage-component></mypage-component>

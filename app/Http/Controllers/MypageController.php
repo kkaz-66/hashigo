@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+
 
 class MypageController extends Controller
 {
@@ -13,7 +17,8 @@ class MypageController extends Controller
      */
     public function index()
     {
-        return view('mypage');
+        $user = Auth::user();
+        return view('mypage',compact('user'));
     }
 
     /**
@@ -26,6 +31,11 @@ class MypageController extends Controller
         //
     }
 
+    public function insert()
+    {
+        //
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -33,8 +43,20 @@ class MypageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function hashigo_history(Request $request)
-    {
-        
+    {   
+        $user = Auth::user();
+        $id = ['user'=>$user];
+        // $id = Auth::id();
+        // $auths = Auth::user();
+        // return view('mypage', ([ 'user' => $user ]));
+        // if(Auth::check()){
+            return $id;
+        // }
+
+        // $userid = $request->userid;
+        // $profiles = User::where('userid', '=', $userid) ->get()->toArray();
+        // $data = response()->json($profiles[0]);
+        // return $data;
     }
 
     /**
@@ -43,9 +65,11 @@ class MypageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        // $hashigo = DB::table('hashigo_lists')->where('id',1)->first();
+        $hashigo = DB::table('hashigo_lists')->get();
+        return view('mypage',compact('hashigo'));
     }
 
     /**

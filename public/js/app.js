@@ -1847,6 +1847,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1886,11 +1893,57 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    //データの初期値を設定
+    return {
+      id: null,
+      userid: ""
+    };
+  },
+  // methods: {
+  //     getProfiles() {
+  //       const data = {
+  //       userid: '1' //今回投げるuserid
+  //     }
+  //     axios.post('/api/user',data)
+  //     .then(res =>  {
+  //     console.log(res.data);
+  //   })
+  // },
+  // created(){
+  //   this.getProfiles()
+  // },
+  mounted: function mounted() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/user').then(function (res) {
+      console.log(res.data);
+    });
+  } // }
+  // mounted() {
+  //     axios
+  //     .get('/api/user')
+  //     .then((res)=>{
+  //       console.log("id");
+  //       console.log(res.data);
+  //     })
+  //     axios
+  //     .get('/api/user')
+  //     .then(response => (this.id = response))
+  //     axios.post('/api/user',data)
+  //     .then(res =>  {
+  //     console.log(res.data);
+  //   })
+  // },
+
+});
 
 /***/ }),
 
@@ -8587,7 +8640,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.header {\n    width: 100%;\n    height: 60px;\n    background-color: wheat;\n}\n\n", ""]);
+exports.push([module.i, "\n.header {\n    width: 100%;\n    height: 60px;\n    background-color: wheat;\n    position: relative;\n}\n.logo {\n  width: 200px;\n  height: 60px;\n  background-color: aquamarine;\n}\n.button_box{\n  position: absolute;\n  flex-wrap: wrap;\n  top:0;\n  right: 0;\n  width: 400px;\n  height: 60px;\n}\n.user_name {\n  width: 200px;\n  height: 60px;\n  background-color: beige;\n}\n.login {\n  width: 200px;\n  height: 60px;\n  background-color: thistle;\n}\n\n\n", ""]);
 
 // exports
 
@@ -47248,9 +47301,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "header" }, [_vm._v("header")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _c("div", { staticClass: "logo" }, [_vm._v("hashigo")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "button_box" }, [
+        _c("div", { staticClass: "user_name" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "login" })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
