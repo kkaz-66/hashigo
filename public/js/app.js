@@ -1801,12 +1801,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
+  mounted: function mounted() {
+    currentPosition();
+  },
   methods: {
     //現在地取得
     currentPosition: function currentPosition() {
-      // if(marker_items != null){
-      //     marker_items.setMap(null)
-      // }
       return new Promise(function (resolve, reject) {
         navigator.geolocation.getCurrentPosition(function (position) {
           resolve(position.coords);
@@ -1833,6 +1833,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     //現在地のピン立て
     getCurrentPositionSuccess: function getCurrentPositionSuccess(position) {
+      this.marker_items = [];
       var lat = position.coords.latitude;
       var lng = position.coords.longitude;
       this.$refs.map.panTo({
@@ -1849,6 +1850,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     //ピン立て 中央
     setcentermarker: function setcentermarker(lat, lng) {
+      this.marker_items = [];
       this.$refs.map.panTo({
         lat: lat,
         lng: lng

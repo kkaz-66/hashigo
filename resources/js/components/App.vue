@@ -74,13 +74,12 @@ export default {
             icon: {url: "", scaledSize:"", scaledColor: ""},
         }
     },
-
+    mounted(){
+        currentPosition();
+    },
     methods: {
         //現在地取得
         currentPosition () {
-            // if(marker_items != null){
-            //     marker_items.setMap(null)
-            // }
             return new Promise(function(resolve,reject){
                 navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
             })
@@ -100,17 +99,19 @@ export default {
 
         //現在地のピン立て
         getCurrentPositionSuccess (position) {
-                 let lat = position.coords.latitude
-                 let lng = position.coords.longitude
-                 this.$refs.map.panTo({lat: lat, lng: lng})
-                 this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
+            this.marker_items=[];
+            let lat = position.coords.latitude
+            let lng = position.coords.longitude
+            this.$refs.map.panTo({lat: lat, lng: lng})
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
         },
 
         //ピン立て 中央
         setcentermarker(lat,lng){
+            this.marker_items=[];
             this.$refs.map.panTo({lat: lat, lng: lng})
             this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', 
-                                    icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
+            icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
         },
 
         // hotpepperから店情報取得
