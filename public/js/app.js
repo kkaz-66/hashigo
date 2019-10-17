@@ -1757,6 +1757,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1766,6 +1777,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: "",
       photo: "",
       map: {},
+      isActive: true,
+      // marker: null,
       id: "",
       lat: "",
       lng: "",
@@ -1776,16 +1789,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       geocode: {},
       address: '',
       center: {
-        lat: 36.71,
+        lat: 37.71,
         lng: 139.72
       },
       zoom: 14,
-      marker_items: []
+      marker_items: [],
+      icon: {
+        url: "",
+        scaledSize: "",
+        scaledColor: ""
+      }
     };
   },
   methods: {
     //現在地取得
     currentPosition: function currentPosition() {
+      // if(marker_items != null){
+      //     marker_items.setMap(null)
+      // }
       return new Promise(function (resolve, reject) {
         navigator.geolocation.getCurrentPosition(function (position) {
           resolve(position.coords);
@@ -1837,7 +1858,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           lat: lat,
           lng: lng
         },
-        title: 'marker_5'
+        title: '現在地',
+        icon: {
+          url: 'http://pictogram2.com/p/p0957/3.png',
+          scaledSize: new google.maps.Size(50, 55),
+          scaledColor: '#0000'
+        }
       });
     },
     // hotpepperから店情報取得
@@ -1960,6 +1986,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.id = this.marker_items[id].id;
       this.lat = this.marker_items[id].position.lat;
       this.lng = this.marker_items[id].position.lng;
+
+      if (this.marker_items[id].title == '現在地') {
+        this.isActive = true;
+      } else {
+        this.isActive = false;
+      }
     } //詳細ページへの変数受け渡し
     // onclick(){
     //     this.$http.get('/detail', function (id, lat, lng) {     
@@ -2063,6 +2095,22 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9001,7 +9049,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 910px;\n} \n", ""]);
+exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 855px;\n} \n\n", ""]);
 
 // exports
 
@@ -48381,9 +48429,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "app" }, [
-    _c("div", { staticClass: "body" }, [
+  return _c("div", { staticClass: "body" }, [
+    _c("div", { staticClass: "app" }, [
       _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("button", { on: { click: _vm.currentsearch } }, [
+            _vm._v("現在地へ移動")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.address,
+                expression: "address"
+              }
+            ],
+            attrs: { type: "text" },
+            domProps: { value: _vm.address },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.address = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
+            [_vm._v("検索")]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-10" }, [
@@ -48391,37 +48474,6 @@ var render = function() {
             "div",
             { attrs: { id: "map" } },
             [
-              _c("button", { on: { click: _vm.currentsearch } }, [
-                _vm._v("現在地へ移動")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.address,
-                    expression: "address"
-                  }
-                ],
-                attrs: { type: "text" },
-                domProps: { value: _vm.address },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.address = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
-                [_vm._v("検索")]
-              ),
-              _vm._v(" "),
               _c(
                 "GmapMap",
                 {
@@ -48436,6 +48488,7 @@ var render = function() {
                       position: m.position,
                       title: m.title,
                       url: m.url,
+                      icon: m.icon,
                       clickable: true,
                       draggable: false
                     },
@@ -48453,44 +48506,48 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "col-md-2",
-            staticStyle: { "white-space": "pre-line" }
-          },
-          [
-            _c("img", { attrs: { src: _vm.photo } }),
-            _c("br"),
-            _vm._v("\n                " + _vm._s(_vm.name)),
-            _c("br"),
-            _vm._v(" "),
-            _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-            _c("br"),
-            _vm._v("\n                " + _vm._s(_vm.id)),
-            _c("br"),
-            _vm._v("\n                " + _vm._s(_vm.lat)),
-            _c("br"),
-            _vm._v("\n                " + _vm._s(_vm.lng)),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                attrs: {
-                  href:
-                    _vm.test +
-                    _vm.id +
-                    _vm.test2 +
-                    _vm.lat +
-                    _vm.test3 +
-                    _vm.lng
-                }
-              },
-              [_vm._v("詳細")]
-            )
-          ]
-        )
+        _c("div", { staticClass: "shop" }, [
+          _vm.isActive
+            ? _c("div")
+            : _c(
+                "div",
+                {
+                  staticClass: "col-md-2",
+                  staticStyle: { "white-space": "nowrap" }
+                },
+                [
+                  _c("img", { attrs: { src: _vm.photo } }),
+                  _c("br"),
+                  _vm._v("\n                    " + _vm._s(_vm.name)),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
+                  _c("br"),
+                  _vm._v("\n                    " + _vm._s(_vm.id)),
+                  _c("br"),
+                  _vm._v("\n                    " + _vm._s(_vm.lat)),
+                  _c("br"),
+                  _vm._v("\n                    " + _vm._s(_vm.lng)),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          _vm.test +
+                          _vm.id +
+                          _vm.test2 +
+                          _vm.lat +
+                          _vm.test3 +
+                          _vm.lng
+                      }
+                    },
+                    [_vm._v("詳細")]
+                  )
+                ]
+              )
+        ])
       ])
     ])
   ])
@@ -48501,7 +48558,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [_vm._v("HashiGo!!")])
+      _c("div", { staticClass: "col-md-12" }, [_c("p", [_vm._v("Hashigo")])])
     ])
   }
 ]
@@ -48619,9 +48676,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "app" }, [
-    _c("div", { staticClass: "body" }, [
+  return _c("div", { staticClass: "body" }, [
+    _c("div", { staticClass: "app" }, [
       _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("button", { on: { click: _vm.currentsearch } }, [
+            _vm._v("現在地へ移動")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.address,
+                expression: "address"
+              }
+            ],
+            attrs: { type: "text" },
+            domProps: { value: _vm.address },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.address = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
+            [_vm._v("検索")]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-10" }, [
@@ -48629,37 +48721,6 @@ var render = function() {
             "div",
             { attrs: { id: "map" } },
             [
-              _c("button", { on: { click: _vm.currentsearch } }, [
-                _vm._v("現在地へ移動")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.address,
-                    expression: "address"
-                  }
-                ],
-                attrs: { type: "text" },
-                domProps: { value: _vm.address },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.address = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                { attrs: { type: "button" }, on: { click: _vm.keywordSearch } },
-                [_vm._v("検索")]
-              ),
-              _vm._v(" "),
               _c(
                 "GmapMap",
                 {
@@ -48674,6 +48735,7 @@ var render = function() {
                       position: m.position,
                       title: m.title,
                       url: m.url,
+                      icon: m.icon,
                       clickable: true,
                       draggable: false
                     },
@@ -48691,22 +48753,48 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "col-md-2",
-            staticStyle: { "white-space": "pre-line" }
-          },
-          [
-            _c("img", { attrs: { src: _vm.photo } }),
-            _c("br"),
-            _vm._v("\n                " + _vm._s(_vm.name)),
-            _c("br"),
-            _vm._v(" "),
-            _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-            _c("br")
-          ]
-        )
+        _c("div", { staticClass: "shop" }, [
+          _vm.isActive
+            ? _c("div")
+            : _c(
+                "div",
+                {
+                  staticClass: "col-md-2",
+                  staticStyle: { "white-space": "nowrap" }
+                },
+                [
+                  _c("img", { attrs: { src: _vm.photo } }),
+                  _c("br"),
+                  _vm._v("\n                    " + _vm._s(_vm.name)),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
+                  _c("br"),
+                  _vm._v("\n                    " + _vm._s(_vm.id)),
+                  _c("br"),
+                  _vm._v("\n                    " + _vm._s(_vm.lat)),
+                  _c("br"),
+                  _vm._v("\n                    " + _vm._s(_vm.lng)),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          _vm.test +
+                          _vm.id +
+                          _vm.test2 +
+                          _vm.lat +
+                          _vm.test3 +
+                          _vm.lng
+                      }
+                    },
+                    [_vm._v("詳細")]
+                  )
+                ]
+              )
+        ])
       ])
     ])
   ])
@@ -48717,7 +48805,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [_vm._v("HashiGo!!")])
+      _c("div", { staticClass: "col-md-12" }, [_c("p", [_vm._v("Hashigo")])])
     ])
   }
 ]
