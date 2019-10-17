@@ -14,12 +14,14 @@ class CreateHashigoListsTable extends Migration
     public function up()
     {
         Schema::create('hashigo_lists', function (Blueprint $table) {
-            $table->increments('member_id');
-            // $table->increments('id');
+            $table->integer('member_id')->unsigned();
+            $table->integer('id')->unsigned();
             $table->string('first_store_id',255);
             $table->string('second_store_id',255);
             $table->string('third_store_id',255)->default("");
             $table->timestamp('created_at');
+
+            $table->unique(['member_id', 'id']);
         });
     }
 
