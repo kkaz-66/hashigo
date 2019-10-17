@@ -39,7 +39,7 @@ class HotpepperController extends Controller
         return $this->seach_range($lat,$lng);
     }
 
-    public function deteal(Request $request)
+    public function detail(Request $request)
     {
         $id= $request->id;
         $lat= $request->lat;
