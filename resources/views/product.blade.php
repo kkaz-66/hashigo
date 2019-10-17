@@ -11,7 +11,7 @@
     <body>
 
         <div id="app">
-            <product-component test="{{ json_encode($product, JSON_UNESCAPED_UNICODE)}}" test2="{{ json_encode($place, JSON_UNESCAPED_UNICODE) }}">
+            <product-component product="{{ json_encode($product, JSON_UNESCAPED_UNICODE)}}" place="{{ json_encode($place, JSON_UNESCAPED_UNICODE) }}">
             </product-component>
         </div>
 

@@ -1993,7 +1993,6 @@ __webpack_require__.r(__webpack_exports__);
 
     var hot = this.$attrs;
     var shop = Object.keys(hot);
-    console.log('aaa' + shop);
     console.log(hot.data.results.shop);
     console.log(this.$attrs);
     console.log('test data get');
@@ -2058,8 +2057,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    test: String,
-    test2: String
+    product: String,
+    place: String
   },
   data: function data() {
     return {
@@ -2068,7 +2067,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: "",
       photo: "",
       map: {},
-      // marker: null,
       geocode: {},
       address: '',
       center: {
@@ -2079,7 +2077,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       marker_items: []
     };
   },
+  //1件目の場所から
   mounted: function mounted() {
+    console.log(this.place.name_kana);
+    this.center = {
+      lat: 35.6497371091,
+      lng: 139.7026642849
+    };
     this.setcentermarker(35.6497371091, 139.7026642849);
   },
   methods: {

@@ -35,8 +35,8 @@ import axios from 'axios';
 
 export default {
     props:{
-        test:String,
-        test2:String
+        product:String,
+        place:String
     },
 
     data () {
@@ -46,7 +46,6 @@ export default {
             url: "",
             photo: "",
             map:{},
-            // marker: null,
             geocode:{},
             address: '',
             center: {lat: 36.71, lng: 139.72},
@@ -55,7 +54,10 @@ export default {
         }
     },
 
+    //1件目の場所から
     mounted (){
+        console.log(this.place.name_kana)
+        this.center = {lat:35.6497371091, lng:139.7026642849}
         this.setcentermarker(35.6497371091,139.7026642849)
     },
 
