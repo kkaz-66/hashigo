@@ -1800,9 +1800,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
-  mounted: function mounted() {
-    currentPosition();
-  },
   methods: {
     //現在地取得
     currentPosition: function currentPosition() {
@@ -1817,11 +1814,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return new Promise(function (resolve, reject) {
-        console.log("geo");
         _this.geocoder = new google.maps.Geocoder();
-        console.log("111"); // console.log(geocoder);
-
-        console.log("222");
 
         _this.geocoder.geocode({
           'address': _this.address
@@ -1993,12 +1986,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else {
         this.isActive = false;
       }
-    } //詳細ページへの変数受け渡し
-    // onclick(){
-    //     this.$http.get('/detail', function (id, lat, lng) {     
-    //     }).error()
-    // }
-
+    }
   }
 });
 

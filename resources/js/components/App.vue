@@ -73,9 +73,6 @@ export default {
             icon: {url: "", scaledSize:"", scaledColor: ""},
         }
     },
-    mounted(){
-        currentPosition();
-    },
     methods: {
         //現在地取得
         currentPosition () {
@@ -86,12 +83,8 @@ export default {
 
         // キーワード位置取得
         keywordPosition () {
-            return new Promise((resolve,reject)=>{
-                console.log("geo");
+            return new Promise((resolve,reject)=>{ 
                 this.geocoder = new google.maps.Geocoder();
-                console.log("111");
-                // console.log(geocoder);
-                console.log("222");
                 this.geocoder.geocode({'address': this.address},(results, status)=>{resolve(results[0].geometry.location)})
             })
          },
@@ -172,12 +165,6 @@ export default {
                 this.isActive = false
             }
         },
-
-        //詳細ページへの変数受け渡し
-        // onclick(){
-        //     this.$http.get('/detail', function (id, lat, lng) {     
-        //     }).error()
-        // }
     }
 }
 </script>
