@@ -15,7 +15,7 @@ class CreateHashigoListsTable extends Migration
     {
         Schema::create('hashigo_lists', function (Blueprint $table) {
             $table->integer('member_id')->unsigned();
-            $table->integer('id')->unsigned();
+            $table->integer('id')->autoIncrement();
             $table->string('first_store_id',255);
             $table->string('second_store_id',255);
             $table->string('third_store_id',255)->default("");
