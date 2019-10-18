@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@inject('hahigo_history','App\Http\Controllers\MypageController')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +13,16 @@
 </head>
 <body>
    
-    @foreach ($hashigo as $user)
-    {{$user->member_id}}
-    {{$user->id}}
-    {{$user->first_store_id}}
-    {{$user->second_store_id}}
-    {{$user->third_store_id}}
-    {{$user->created_at}}
-    <br>
+    @foreach ($hashigos as $hashigo)
+        @if($user->id == $hashigo->id)
+            {{$hashigo->member_id}}
+            {{$hashigo->id}}
+            {{$hashigo->first_store_id}}
+            {{$hashigo->second_store_id}}
+            {{$hashigo->third_store_id}}
+            {{$hashigo->created_at}}
+            <br>
+        @endif
     @endforeach
 
     <div id="app">

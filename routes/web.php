@@ -20,4 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/detail', 'HotpepperController@detail')->name('detail');
 Route::get('/top', 'ExampleController@example')->name('example');
-Route::get('/mypage', 'MypageController@show')->name('mypage')->middleware('auth');
+Route::get('/mypage', 'MypageController@hashigo_history')->name('mypage')->middleware('auth');
