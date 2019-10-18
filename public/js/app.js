@@ -1765,7 +1765,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1819,23 +1818,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, function (results, status) {
           resolve(results[0].geometry.location);
         });
-      });
-    },
-    //現在地のピン立て
-    getCurrentPositionSuccess: function getCurrentPositionSuccess(position) {
-      this.marker_items = [];
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
-      this.$refs.map.panTo({
-        lat: lat,
-        lng: lng
-      });
-      this.marker_items.push({
-        position: {
-          lat: lat,
-          lng: lng
-        },
-        title: 'marker_5'
       });
     },
     //ピン立て 中央
@@ -2135,10 +2117,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2162,7 +2140,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       zoom: 17,
       marker_items: [],
-      isActive: true,
       id: "",
       lat: "",
       lng: "",
@@ -2197,6 +2174,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.capa = json[0].capacity;
     this.pet = json[0].pet;
     this.credit = json[0].card;
+    this.setCurrentMarker();
   },
   methods: {
     //現在地取得
@@ -2219,22 +2197,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, function (results, status) {
           resolve(results[0].geometry.location);
         });
-      });
-    },
-    //現在地のピン立て
-    getCurrentPositionSuccess: function getCurrentPositionSuccess(position) {
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
-      this.$refs.map.panTo({
-        lat: lat,
-        lng: lng
-      });
-      this.marker_items.push({
-        position: {
-          lat: lat,
-          lng: lng
-        },
-        title: 'marker_5'
       });
     },
     //ピン立て 中央
@@ -2261,12 +2223,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return res.data;
       });
     },
-    // 現在位置取得
-    currentsearch: function () {
-      var _currentsearch = _asyncToGenerator(
+    // 現在位置更新
+    setCurrentMarker: function () {
+      var _setCurrentMarker = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var position, lat, lng, shoplist;
+        var position, lat, lng;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2278,15 +2240,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 position = _context.sent;
                 lat = position.latitude;
                 lng = position.longitude;
-                _context.next = 7;
-                return this.getList(lat, lng);
+                this.marker_items.push({
+                  position: {
+                    lat: lat,
+                    lng: lng
+                  },
+                  title: 'ANSJXN'
+                }); //this.setcentermarker(lat,lng)
 
-              case 7:
-                shoplist = _context.sent;
-                this.setcentermarker(lat, lng);
-                this.setshopmarker(shoplist);
-
-              case 10:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -2294,11 +2256,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, this);
       }));
 
-      function currentsearch() {
-        return _currentsearch.apply(this, arguments);
+      function setCurrentMarker() {
+        return _setCurrentMarker.apply(this, arguments);
       }
 
-      return currentsearch;
+      return setCurrentMarker;
     }(),
     // shoplistピン立て
     setshopmarker: function setshopmarker(shoplist) {
@@ -2369,12 +2331,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.id = this.marker_items[id].id;
       this.lat = this.marker_items[id].position.lat;
       this.lng = this.marker_items[id].position.lng;
-
-      if (this.marker_items[id].title == '現在地') {
-        this.isActive = true;
-      } else {
-        this.isActive = false;
-      }
     }
   }
 });
@@ -48552,11 +48508,6 @@ var render = function() {
                 [
                   _c("img", { attrs: { src: _vm.photo } }),
                   _c("br"),
-                  _vm._v("\r\n                    " + _vm._s(_vm.name)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-                  _c("br"),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -48571,7 +48522,7 @@ var render = function() {
                           _vm.lng
                       }
                     },
-                    [_vm._v("詳細")]
+                    [_vm._v(_vm._s(_vm.name))]
                   )
                 ]
               )
@@ -48716,7 +48667,7 @@ var render = function() {
             _c("img", { attrs: { src: _vm.f_photo } }),
             _c("br"),
             _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(_vm.shop_name))])
+            _c("h3", [_vm._v(_vm._s(_vm.shop_name))])
           ]
         ),
         _vm._v(" "),
@@ -48738,6 +48689,7 @@ var render = function() {
             _c("br"),
             _c("hr"),
             _vm._v("\r\n                クレジット：" + _vm._s(_vm.credit)),
+            _c("br"),
             _c("hr")
           ]
         )
@@ -48781,42 +48733,45 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "shop" }, [
-          _vm.isActive
-            ? _c("div")
-            : _c(
-                "div",
-                {
-                  staticClass: "col-md-3",
-                  staticStyle: { "white-space": "nowrap" }
-                },
-                [
-                  _c("img", { attrs: { src: _vm.photo } }),
-                  _c("br"),
-                  _vm._v("\r\n                    " + _vm._s(_vm.name)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
+        _c(
+          "div",
+          { staticClass: "col-md-3", staticStyle: { "white-space": "nowrap" } },
+          [
+            _c(
+              "table",
+              _vm._l(_vm.marker_items, function(m, id) {
+                return _c(
+                  "tr",
+                  {
+                    key: id,
+                    on: {
+                      click: function($event) {
+                        return _vm.clickMarker(id)
+                      }
+                    }
+                  },
+                  [
+                    _c("img", { attrs: { src: m.photo } }),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("a", {
                       attrs: {
                         href:
                           _vm.detail +
-                          _vm.id +
+                          id +
                           _vm.f_lat +
                           _vm.lat +
                           _vm.f_lng +
                           _vm.lng
                       }
-                    },
-                    [_vm._v("詳細")]
-                  )
-                ]
-              )
-        ])
+                    })
+                  ]
+                )
+              }),
+              0
+            )
+          ]
+        )
       ])
     ])
   ])

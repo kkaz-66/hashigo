@@ -34,9 +34,8 @@
 
                 <div class="col-md-3" style="white-space: nowrap" v-else>
                     <img v-bind:src="photo"><br>
-                    {{name}}<br>
-                    <a v-bind:href="url">店情報</a><br>
-                    <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">詳細</a>
+                    <!--<a v-bind:href="url">お店公式</a><br>-->
+                    <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}}</a>
                 </div>
             </div>
         </div>
@@ -87,15 +86,6 @@ export default {
             })
          },
 
-        //現在地のピン立て
-        getCurrentPositionSuccess (position) {
-            this.marker_items=[];
-            let lat = position.coords.latitude
-            let lng = position.coords.longitude
-            this.$refs.map.panTo({lat: lat, lng: lng})
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
-        },
-
         //ピン立て 中央
         setcentermarker(lat,lng){
             this.marker_items=[];
@@ -138,7 +128,6 @@ export default {
                 this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo})
             });
         },
-
         // 検索ボタンclick発火
        async keywordSearch(){
             let keyword_position = await this.keywordPosition()
