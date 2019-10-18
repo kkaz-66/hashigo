@@ -1,29 +1,51 @@
 <template>
-<div class="app">
-    <div class="body">
+<div class="body">
+    <div class="app">
         <div class="row">
-            <div class="col-md-12">HashiGo!!</div>
+            <div class="col-md-12">
+               <p>Hashigo</p>
+               <!--<button @click="setCurrentMarker">現在地更新</button>-->
+            </div>
+        </div>
+        <!--詳細表示-->
+        <div class="row">
+            <!--店画像-->
+            <div class="col-md-3"  style="white-space: nowrap">
+                <img v-bind:src="f_photo"><br>
+               <h3>{{ shop_name }}</h3>
+            </div>
+            <!--店詳細-->
+            <div class="col-md-9" style="white-space: nowrap">
+                <p>パンくずリスト</p>
+                住所：{{ tel_add }}<br><hr>
+                営業時間：{{ time }}<br><hr>
+                収容人数：{{ capa }}<br><hr>
+                ペット連れ込み：{{ pet }}<br><hr>
+                クレジット：{{ credit }}<br><hr>
+                <!--URL：<a v-bind:href="url">お店TOP</a><hr>-->
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <div id="map">
-                <button @click="currentsearch">現在地へ移動</button>
-                <input type="text" v-model="address">
-                <button type="button" @click="keywordSearch">検索</button>
-                <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
-                <GmapMarker  v-for="(m,id) in marker_items"
-                :position="m.position"
-                :title="m.title"
-                :url="m.url"
-                :clickable="true" :draggable="false" :key="id" @click="clickMarker(id)">
-                </GmapMarker>
-                </GmapMap>
+                    <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
+                        <GmapMarker  v-for="(m,id) in marker_items"
+                            :position="m.position"
+                            :title="m.title"
+                            :url="m.url"
+                            :icon="m.icon"
+                            :clickable="true" :draggable="false" :key="id" @click="clickMarker(id)">
+                        </GmapMarker>
+                    </GmapMap>
                 </div>
             </div>
-            <div class="col-md-2" style="white-space: pre-line">
-                <img v-bind:src="photo"><br>
-                {{name}}<br>
-                <a v-bind:href="url">店情報</a><br>
+            <div class="col-md-3" style="white-space: nowrap" >
+                <table>
+                    <tr v-for="(m,id) in marker_items" :key="id" @click="clickMarker(id)" >
+                        <img v-bind:src="m.photo"><br>
+                        <a v-bind:href="detail + id + f_lat + lat + f_lng + lng"> </a>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -52,16 +74,39 @@ export default {
             center: {lat: 36.71, lng: 139.72},
             zoom: 17,
             marker_items: [],
+            id:"",
+            lat:"",
+            lng:"",
+            //送る情報
+            detail:"/detail?id=",
+            f_lat:"&lat=",
+            f_lng:"&lng=",
+            //店詳細
+            f_photo:"",
+            shop_name:"",
+            tel_add:"",
+            time:"",
+            capa:"",
+            pet:"",
+            credit:""
         }
     },
 
-    //1件目の場所から
+    //i件目の詳細
     mounted (){
         let json = JSON.parse(this.product)
-        console.log(json[0].name_kana)
+        console.log(json[0])
         this.center = {lat:parseFloat(json[0].lat), lng:parseFloat(json[0].lng)}
         this.setcentermarker(parseFloat(json[0].lat),parseFloat(json[0].lng))
         this.setshopmarker(JSON.parse(this.place))
+        this.f_photo = json[0].photo.pc.l
+        this.shop_name = json[0].name
+        this.tel_add = json[0].address
+        this.time = json[0].open
+        this.capa = json[0].capacity
+        this.pet= json[0].pet
+        this.credit = json[0].card
+        this.setCurrentMarker()
     },
 
     methods: {
@@ -80,14 +125,7 @@ export default {
             })
          },
 
-        getCurrentPositionSuccess (position) {
-            let lat = position.coords.latitude
-            let lng = position.coords.longitude
-            this.$refs.map.panTo({lat: lat, lng: lng})
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
-        },
-
-        //ピン立て 現在地
+        //ピン立て 中央
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
             this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
@@ -104,14 +142,13 @@ export default {
             })
         },
 
-        // 現在位置取得
-        async currentsearch(){
+        // 現在位置更新
+        async setCurrentMarker(){
             let position = await this.currentPosition()
             let lat = position.latitude
             let lng = position.longitude
-            let shoplist = await this.getList(lat,lng)
-            this.setcentermarker(lat,lng)
-            this.setshopmarker(shoplist)
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'ANSJXN'})
+            //this.setcentermarker(lat,lng)
         },
 
         // shoplistピン立て
@@ -119,7 +156,7 @@ export default {
             shoplist.map((shopdata)=>{
             let name = shopdata.name
             let url = shopdata.urls.pc
-            let photo = shopdata.photo.pc.m
+            let photo = shopdata.photo.pc.l
             let lat = shopdata.lat
             let lng = shopdata.lng
             this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo})
@@ -136,11 +173,14 @@ export default {
            this.setshopmarker(shoplist)
         },
 
+        //マーカーの表示内容
         clickMarker(id){
            this.name = this.marker_items[id].title
            this.url = this.marker_items[id].url
            this.photo = this.marker_items[id].photo
-            
+           this.id =this.marker_items[id].id
+           this.lat =this.marker_items[id].position.lat
+           this.lng =this.marker_items[id].position.lng
         },
     }
 

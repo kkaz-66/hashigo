@@ -37,10 +37,8 @@
                         <img v-bind:src="photo"><br>
                         <h3><span class="shopname">{{name}}</span><br></h3><br>
                         <a v-bind:href="url">ホットぺッパー</a><br>
-                        <h5>{{ id }}</h5><br>
-                        <h5>{{ lat }}</h5><br>
-                        <h5>{{ lng }}</h5><br>
-                        <a v-bind:href="test + id + test2 + lat + test3 + lng">詳細</a>
+                        
+                        <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}}</a>
                     </div>
                 </div>
             </div>
@@ -65,9 +63,10 @@ export default {
             id:"",
             lat:"",
             lng:"",
-            test:"/detail?id=",
-            test2:"&lat=",
-            test3:"&lng=",
+            //送る情報
+            detail:"/detail?id=",
+            f_lat:"&lat=",
+            f_lng:"&lng=",
             geocode:{},
             address: '',
             center: {lat: 35.6581, lng: 139.7017},
@@ -92,15 +91,6 @@ export default {
                 this.isActive = true;
             })
          },
-
-        //現在地のピン立て
-        // getCurrentPositionSuccess (position) {
-        //     this.marker_items=[];
-        //     let lat = position.coords.latitude
-        //     let lng = position.coords.longitude
-        //     this.$refs.map.panTo({lat: lat, lng: lng})
-        //     this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
-        // },
 
         //ピン立て 中央
         setcentermarker(lat,lng){
@@ -136,7 +126,7 @@ export default {
             shoplist.map((shopdata)=>{
                 let name = shopdata.name
                 let url = shopdata.urls.pc
-                let photo = shopdata.photo.pc.m
+                let photo = shopdata.photo.pc.l
                 let lat = shopdata.lat
                 let lng = shopdata.lng
                 let id = shopdata.id
@@ -144,7 +134,6 @@ export default {
                 this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo})
             });
         },
-
         // 検索ボタンclick発火
        async keywordSearch(){
             let keyword_position = await this.keywordPosition()

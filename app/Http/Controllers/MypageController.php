@@ -10,83 +10,70 @@ use App\User;
 
 class MypageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $user = Auth::user();
         return view('mypage',compact('user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function seach_shop($id)
     {
-        //
+        $hpg_key = config('apikey.hpg-key');
+        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key.$id."&format=json";
+        // return $url;
+        // return $this->create_list($url);
+        $hashigo_arr = $this->create_list($url);
+        return $hashigo_arr;
     }
 
-    public function insert()
+    public function create_list($url)
     {
-        //
+        $json = array();
+        $json = file_get_contents($url);
+        $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+        $arr = json_decode($json,true);
+        // return $arr['results']['shop'];
+        return $arr['results']['shop'];
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
+    public function hashigo_history()
     {
-        // $hashigo = DB::table('hashigo_lists')->where('id',1)->first();
-        $hashigo = DB::table('hashigo_lists')->get();
-        return view('mypage',compact('hashigo'));
+        $user = Auth::user();
+        $hashigos = DB::table('hashigo_lists')->where('member_id',$user->id)->get();
+        $url_ids = "";
+        foreach($hashigos as $hashigo){
+            
+            $first = "&id=".$hashigo->first_store_id;
+            $second = "&id=".$hashigo->second_store_id;
+            $third = !isset($hashigo->third_store_id)?"&id=".$hashigo->third_store_id:'';
+            $url_ids = $url_ids.$first.$second.$third;
+
+        }
+
+        $hashigo_shops = $this->seach_shop($url_ids);
+        $user_history = array();
+        foreach($hashigos as $hashigo){
+        
+            foreach($hashigo_shops as $hashigo_shop){
+            
+                if($hashigo->first_store_id === $hashigo_shop["id"]){
+
+                    $user_history[$hashigo->id] = $hashigo_shop;
+                }
+                if($hashigo->second_store_id === $hashigo_shop["id"]){
+             
+                    $user_history[$hashigo->id] = $hashigo_shop;
+                }
+                if($hashigo->third_store_id === $hashigo_shop["id"]){
+             
+                    $user_history[$hashigo->id] = $hashigo_shop;
+                }
+            }
+        }
+        echo ("<pre>");
+        var_dump($user_history);
+        echo ("</pre>");
+        // return view('mypage',compact('user','hashigos'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
