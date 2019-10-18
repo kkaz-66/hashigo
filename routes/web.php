@@ -20,7 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/detail', 'HotpepperController@detail')->name('detail');
 Route::get('/top', 'ExampleController@example')->name('example');
-Route::get('/header', 'HeaderController@index')->name('header');
-Route::get('/hot', 'HotpepperController@index')->name('hotpepper');
-Route::get('/mypage', 'MypageController@index')->name('mypage');
-Route::get('/show', 'MypageController@show')->name('mypage')->middleware('auth');
+Route::get('/mypage', 'MypageController@show')->name('mypage')->middleware('auth');
