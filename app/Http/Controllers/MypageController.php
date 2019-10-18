@@ -49,12 +49,14 @@ class MypageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+
+    public function hashigo_history()
     {
-        // $hashigo = DB::table('hashigo_lists')->where('id',1)->first();
-        $hashigo = DB::table('hashigo_lists')->get();
-        return view('mypage',compact('hashigo'));
+        $user = Auth::user();
+        $hashigos = DB::table('hashigo_lists')->get();
+        return view('mypage',compact('user','hashigos'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
