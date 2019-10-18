@@ -49,8 +49,30 @@ class MypageController extends Controller
             $url_ids = $url_ids.$first.$second.$third;
 
         }
-        $hashigo_shops = $this->seach_shop($url_ids);
 
+        $hashigo_shops = $this->seach_shop($url_ids);
+        $user_history = array();
+        foreach($hashigos as $hashigo){
+        
+            foreach($hashigo_shops as $hashigo_shop){
+            
+                if($hashigo->first_store_id === $hashigo_shop["id"]){
+
+                    $user_history[$hashigo->id] = $hashigo_shop;
+                }
+                if($hashigo->second_store_id === $hashigo_shop["id"]){
+             
+                    $user_history[$hashigo->id] = $hashigo_shop;
+                }
+                if($hashigo->third_store_id === $hashigo_shop["id"]){
+             
+                    $user_history[$hashigo->id] = $hashigo_shop;
+                }
+            }
+        }
+        echo ("<pre>");
+        var_dump($user_history);
+        echo ("</pre>");
         // return view('mypage',compact('user','hashigos'));
     }
 
