@@ -4,6 +4,7 @@
         <div class="row">
             <div class="col-md-12">
                <p>Hashigo</p>
+               <!--<button @click="setCurrentMarker">現在地更新</button>-->
             </div>
         </div>
         <!--詳細表示-->
@@ -11,7 +12,7 @@
             <!--店画像-->
             <div class="col-md-3"  style="white-space: nowrap">
                 <img v-bind:src="f_photo"><br>
-               <p>{{ shop_name }}</p>
+               <h3>{{ shop_name }}</h3>
             </div>
             <!--店詳細-->
             <div class="col-md-9" style="white-space: nowrap">
@@ -20,7 +21,8 @@
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
                 ペット連れ込み：{{ pet }}<br><hr>
-                クレジット：{{ credit }}<hr>
+                クレジット：{{ credit }}<br><hr>
+                <!--URL：<a v-bind:href="url">お店TOP</a><hr>-->
             </div>
         </div>
         <div class="row">
@@ -37,20 +39,14 @@
                     </GmapMap>
                 </div>
             </div>
-
-           <div class="shop">
-                <div v-if="isActive">
-                <!--初期値の店情報を隠す-->
-                </div>
-
-                <div class="col-md-3" style="white-space: nowrap" v-else>
-                    <img v-bind:src="photo"><br>
-                    {{name}}<br>
-                    <a v-bind:href="url">店情報</a><br>
-                    <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">詳細</a>
-                </div>
+            <div class="col-md-3" style="white-space: nowrap" >
+                <table>
+                    <tr v-for="(m,id) in marker_items" :key="id" @click="clickMarker(id)" >
+                        <img v-bind:src="m.photo"><br>
+                        <a v-bind:href="detail + id + f_lat + lat + f_lng + lng"> </a>
+                    </tr>
+                </table>
             </div>
-
         </div>
     </div>
 </div>
@@ -78,7 +74,6 @@ export default {
             center: {lat: 36.71, lng: 139.72},
             zoom: 17,
             marker_items: [],
-            isActive:true,
             id:"",
             lat:"",
             lng:"",
@@ -111,6 +106,7 @@ export default {
         this.capa = json[0].capacity
         this.pet= json[0].pet
         this.credit = json[0].card
+        this.setCurrentMarker()
     },
 
     methods: {
@@ -129,14 +125,6 @@ export default {
             })
          },
 
-        //現在地のピン立て
-        getCurrentPositionSuccess (position) {
-            let lat = position.coords.latitude
-            let lng = position.coords.longitude
-            this.$refs.map.panTo({lat: lat, lng: lng})
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
-        },
-
         //ピン立て 中央
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
@@ -154,14 +142,13 @@ export default {
             })
         },
 
-        // 現在位置取得
-        async currentsearch(){
+        // 現在位置更新
+        async setCurrentMarker(){
             let position = await this.currentPosition()
             let lat = position.latitude
             let lng = position.longitude
-            let shoplist = await this.getList(lat,lng)
-            this.setcentermarker(lat,lng)
-            this.setshopmarker(shoplist)
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'ANSJXN'})
+            //this.setcentermarker(lat,lng)
         },
 
         // shoplistピン立て
@@ -194,11 +181,6 @@ export default {
            this.id =this.marker_items[id].id
            this.lat =this.marker_items[id].position.lat
            this.lng =this.marker_items[id].position.lng
-           if(this.marker_items[id].title == '現在地'){
-                this.isActive = true
-            }else{
-                this.isActive = false
-            }
         },
     }
 
