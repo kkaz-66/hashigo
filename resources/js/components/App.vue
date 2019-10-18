@@ -36,10 +36,7 @@
                     <img v-bind:src="photo"><br>
                     {{name}}<br>
                     <a v-bind:href="url">店情報</a><br>
-                    {{ id }}<br>
-                    {{ lat }}<br>
-                    {{ lng }}<br>
-                    <a v-bind:href="test + id + test2 + lat + test3 + lng">詳細</a>
+                    <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">詳細</a>
                 </div>
             </div>
         </div>
@@ -62,13 +59,14 @@ export default {
             id:"",
             lat:"",
             lng:"",
-            test:"/detail?id=",
-            test2:"&lat=",
-            test3:"&lng=",
+            //送る情報
+            detail:"/detail?id=",
+            f_lat:"&lat=",
+            f_lng:"&lng=",
             geocode:{},
             address: '',
-            center: {lat: 37.71, lng: 139.72},
-            zoom: 14,
+            center: {lat: 35.681236, lng: 139.767125},
+            zoom: 15,
             marker_items: [],
             icon: {url: "", scaledSize:"", scaledColor: ""},
         }
@@ -132,7 +130,7 @@ export default {
             shoplist.map((shopdata)=>{
                 let name = shopdata.name
                 let url = shopdata.urls.pc
-                let photo = shopdata.photo.pc.m
+                let photo = shopdata.photo.pc.l
                 let lat = shopdata.lat
                 let lng = shopdata.lng
                 let id = shopdata.id
