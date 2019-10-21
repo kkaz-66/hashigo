@@ -15,7 +15,7 @@
                <p>{{ shop_name }}</p>
             </div>
             <!--店詳細-->
-            <div class="col-md-9" style="white-space: nowrap">
+            <div class="col-md-8" style="white-space: nowrap">
                 <p>パンくずリスト -> <a href="">はしご保存</a></p>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
@@ -40,7 +40,9 @@
                 </div>
             </div>
             <div class="col-md-3" style="white-space: nowrap" >
-                <table>
+                <div id="tape"></div>
+                <div id="products">
+                    <table>
                     <tr v-for="(s,id) in marker_items" :key="id">
                         <div v-if="id !== 0">
                             <img v-bind:src="s.photo"><br>
@@ -48,6 +50,7 @@
                         </div>
                     </tr>
                 </table>
+                </div>
             </div>
         </div>
             <a id="hot" href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス"></a>
@@ -214,7 +217,7 @@ export default {
 <style scoped>
 #map {
     width: 100%;
-    height: 540px;
+    height: 580px;
 } 
 .col-md-9 {
     margin-left: 20px;
