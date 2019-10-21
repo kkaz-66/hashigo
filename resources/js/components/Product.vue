@@ -15,8 +15,8 @@
                <p>{{ shop_name }}</p>
             </div>
             <!--店詳細-->
-            <div class="col-md-8" style="white-space: nowrap">
-                <p>パンくずリスト</p>
+            <div class="col-md-9" style="white-space: nowrap">
+                <p>パンくずリスト -> <a href="">はしご保存</a></p>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
@@ -40,20 +40,17 @@
                 </div>
             </div>
             <div class="col-md-3" style="white-space: nowrap" >
-                <div id="tape">
-
-                </div>
-                <div id="products">
-                    <table>
-                    <tr v-for="(m,id) in marker_items" :key="id" @click="clickMarker(id)" >
-                        <img v-bind:src="m.photo"><br>
-                        <a v-bind:href="detail + id + f_lat + lat + f_lng + lng"> </a>
+                <table>
+                    <tr v-for="(s,id) in marker_items" :key="id">
+                        <div v-if="id !== 0">
+                            <img v-bind:src="s.photo"><br>
+                            <button v-on:click="s_click(id)">店舗名</button>
+                        </div>
                     </tr>
                 </table>
-                </div>
             </div>
-            <a id="hot" href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス"></a>
         </div>
+            <a id="hot" href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス"></a>
     </div>
 </div>
 </template> 
@@ -99,7 +96,7 @@ export default {
         }
     },
 
-    //i件目の詳細
+    //1件目の詳細
     mounted (){
         let json = JSON.parse(this.product)
         console.log(json[0])
@@ -113,16 +110,16 @@ export default {
         this.capa = json[0].capacity
         this.pet= json[0].pet
         this.credit = json[0].card
-        this.setCurrentMarker()
+        //this.setCurrentMarker()
     },
 
     methods: {
         //現在地取得
-        currentPosition () {
-            return new Promise(function(resolve,reject){
-                navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
-            })
-        },
+        // currentPosition () {
+        //     return new Promise(function(resolve,reject){
+        //         navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
+        //     })
+        // },
 
         // キーワード位置取得
         keywordPosition () {
@@ -135,7 +132,7 @@ export default {
         //ピン立て 中央
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地'})
         },
 
         // hotpepperから店情報取得
@@ -158,6 +155,13 @@ export default {
             icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
             //this.setcentermarker(lat,lng)
         },
+        // async setCurrentMarker(){
+        //     let position = await this.currentPosition()
+        //     let lat = position.latitude
+        //     let lng = position.longitude
+        //     this.marker_items.push({position: {lat: lat, lng: lng}, title: 'ANSJXN'})
+        //     //this.setcentermarker(lat,lng)
+        // },
 
         // shoplistピン立て
         setshopmarker(shoplist){
@@ -167,7 +171,8 @@ export default {
             let photo = shopdata.photo.pc.l
             let lat = shopdata.lat
             let lng = shopdata.lng
-            this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo})
+            this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo,
+             address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, pet:shopdata.pet, card:shopdata.card})
             });
         },
 
@@ -190,6 +195,17 @@ export default {
            this.lat =this.marker_items[id].position.lat
            this.lng =this.marker_items[id].position.lng
         },
+
+        //2件目
+        s_click(id){
+            this.shop_name = this.marker_items[id].title
+            this.f_photo = this.marker_items[id].photo
+            this.tel_add = this.marker_items[id].address
+            this.time = this.marker_items[id].open
+            this.capa = this.marker_items[id].capacity
+            this.pet = this.marker_items[id].pet
+            this.credit = this.marker_items[id].card
+        }
     }
 
 }

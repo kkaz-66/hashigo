@@ -2126,10 +2126,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
 //
+=======
+>>>>>>> 56a158697cbe91858a02e367424621c83c6784ac
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2175,7 +2178,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       credit: ""
     };
   },
-  //i件目の詳細
+  //1件目の詳細
   mounted: function mounted() {
     var json = JSON.parse(this.product);
     console.log(json[0]);
@@ -2191,18 +2194,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.time = json[0].open;
     this.capa = json[0].capacity;
     this.pet = json[0].pet;
-    this.credit = json[0].card;
-    this.setCurrentMarker();
+    this.credit = json[0].card; //this.setCurrentMarker()
   },
   methods: {
     //現在地取得
-    currentPosition: function currentPosition() {
-      return new Promise(function (resolve, reject) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          resolve(position.coords);
-        });
-      });
-    },
+    // currentPosition () {
+    //     return new Promise(function(resolve,reject){
+    //         navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
+    //     })
+    // },
     // キーワード位置取得
     keywordPosition: function keywordPosition() {
       var _this = this;
@@ -2228,7 +2228,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           lat: lat,
           lng: lng
         },
-        title: 'marker_5'
+        title: '現在地'
       });
     },
     // hotpepperから店情報取得
@@ -2242,6 +2242,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     // 現在位置更新
+<<<<<<< HEAD
     setCurrentMarker: function () {
       var _setCurrentMarker = _asyncToGenerator(
       /*#__PURE__*/
@@ -2285,6 +2286,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return setCurrentMarker;
     }(),
+=======
+    // async setCurrentMarker(){
+    //     let position = await this.currentPosition()
+    //     let lat = position.latitude
+    //     let lng = position.longitude
+    //     this.marker_items.push({position: {lat: lat, lng: lng}, title: 'ANSJXN'})
+    //     //this.setcentermarker(lat,lng)
+    // },
+>>>>>>> 56a158697cbe91858a02e367424621c83c6784ac
     // shoplistピン立て
     setshopmarker: function setshopmarker(shoplist) {
       var _this2 = this;
@@ -2303,7 +2313,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           },
           title: name,
           url: url,
-          photo: photo
+          photo: photo,
+          address: shopdata.address,
+          open: shopdata.open,
+          capacity: shopdata.capacity,
+          pet: shopdata.pet,
+          card: shopdata.card
         });
       });
     },
@@ -2311,33 +2326,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     keywordSearch: function () {
       var _keywordSearch = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var keyword_position, lat, lng, shoplist;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context.prev = _context.next) {
               case 0:
-                _context2.next = 2;
+                _context.next = 2;
                 return this.keywordPosition();
 
               case 2:
-                keyword_position = _context2.sent;
+                keyword_position = _context.sent;
                 lat = keyword_position.lat();
                 lng = keyword_position.lng();
-                _context2.next = 7;
+                _context.next = 7;
                 return this.getList(lat, lng);
 
               case 7:
-                shoplist = _context2.sent;
+                shoplist = _context.sent;
                 this.setcentermarker(lat, lng);
                 this.setshopmarker(shoplist);
 
               case 10:
               case "end":
-                return _context2.stop();
+                return _context.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee, this);
       }));
 
       function keywordSearch() {
@@ -2354,6 +2369,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.id = this.marker_items[id].id;
       this.lat = this.marker_items[id].position.lat;
       this.lng = this.marker_items[id].position.lng;
+    },
+    //2件目
+    s_click: function s_click(id) {
+      this.shop_name = this.marker_items[id].title;
+      this.f_photo = this.marker_items[id].photo;
+      this.tel_add = this.marker_items[id].address;
+      this.time = this.marker_items[id].open;
+      this.capa = this.marker_items[id].capacity;
+      this.pet = this.marker_items[id].pet;
+      this.credit = this.marker_items[id].card;
     }
   }
 });
@@ -9062,7 +9087,11 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
+<<<<<<< HEAD
 exports.push([module.i, "\n.row[data-v-332fccf4] {\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 10px;\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#shop[data-v-332fccf4] {\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 5px; /* 外側の余白 上下・左右 */\n    padding: 10px; /* 内側の余白 上・右・下・左 */\n    position: relative;\n    z-index: 0;\n}\n#shop[data-v-332fccf4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#shop[data-v-332fccf4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\5019\\88DC';\n    display: block;\n    margin-left: 160px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: -10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+=======
+exports.push([module.i, "\n.row[data-v-332fccf4] {\r\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\r\n    display: inline-block;\r\n    padding: 0.5em 1em;\r\n    text-decoration: none;\r\n    background: #668ad8;/*ボタン色*/\r\n    color: #FFF;\r\n    border-bottom: solid 4px #627295;\r\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\r\n    /*ボタンを押したとき*/\r\n    transform: translateY(4px);/*下に動く*/\r\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\r\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\r\n    width: 360px;\r\n    padding: 5px 8px;\r\n    border-radius: 6px;\r\n    border-top: 1px solid #aaa;\r\n    border-left: 1px solid #aaa;\r\n    border-right: 2px solid #aaa;\r\n    border-bottom: 2px solid #aaa;\r\n    background-image: none;\r\n    background-color: rgb(255, 254, 254);\r\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\r\n    display: inline-block;\r\n    padding: 0.5em 1em;\r\n    text-decoration: none;\r\n    background: #668ad8;/*ボタン色*/\r\n    color: #FFF;\r\n    border-bottom: solid 4px #627295;\r\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\r\n    /*ボタンを押したとき*/\r\n    transform: translateY(4px);/*下に動く*/\r\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\r\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\r\n    margin-left: 20px;\r\n    margin-right: -20px;\r\n    position: relative;\r\n    border-top: solid 2px black;\r\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\r\n    content: '';\r\n    position: absolute;\r\n    top: -10px;\r\n    width: 2px;\r\n    height: calc(100% + 20px);\r\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\r\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\r\n    right: 10px;\n}\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\r\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#shop[data-v-332fccf4] {\r\n    text-align: center;\r\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\r\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\r\n    box-shadow:1px 1px 6px 0px #ccc;\r\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\r\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\r\n    -o-box-shadow:1px 1px 6px 0px #ccc;\r\n    margin: 20px 5px; /* 外側の余白 上下・左右 */\r\n    padding: 10px; /* 内側の余白 上・右・下・左 */\r\n    position: relative;\r\n    z-index: 0;\n}\n#shop[data-v-332fccf4]:before {\r\n    border: 1px solid #fff; /* 白い実線 */\r\n    border-radius: 5px;\r\n    content: '';\r\n    display: block;\r\n    margin: 4px;\r\n    position: absolute;\r\n    top: 0px;\r\n    bottom: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    z-index: -1;\n}\n#shop[data-v-332fccf4]:after {\r\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\r\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\r\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\r\n    background-size: 15px 15px; /* 水玉の大きさ */\r\n    border-left: 2px dotted rgba(0,0,0,0.1);\r\n    border-right: 2px dotted rgba(0,0,0,0.1);\r\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\r\n    content: '\\5019\\88DC';\r\n    display: block;\r\n    margin-left: 160px;\r\n    padding: 5px 20px;  \r\n    text-align: center;\r\n    position: absolute;\r\n    top: -10px;\r\n    left: 20px;\r\n    transform: rotate(-3deg);\r\n    -moz-transform: rotate(-3deg);\r\n    -webkit-transform: rotate(-3deg);\r\n    -o-transform: rotate(-3deg);\n}\n#hot[data-v-332fccf4] {\r\n    padding-left: 35px;\r\n    padding-top: 10px;\n}\r\n", ""]);
+>>>>>>> 56a158697cbe91858a02e367424621c83c6784ac
 
 // exports
 
@@ -48565,7 +48594,11 @@ var render = function() {
                             _vm.lng
                         }
                       },
+<<<<<<< HEAD
                       [_vm._v(_vm._s(_vm.name) + " の詳細ヘ")]
+=======
+                      [_vm._v(_vm._s(_vm.name))]
+>>>>>>> 56a158697cbe91858a02e367424621c83c6784ac
                     )
                   ]
                 )
@@ -48732,8 +48765,13 @@ var render = function() {
           "div",
           { staticClass: "col-md-8", staticStyle: { "white-space": "nowrap" } },
           [
+<<<<<<< HEAD
             _c("p", [_vm._v("パンくずリスト")]),
             _vm._v("\n                住所：" + _vm._s(_vm.tel_add)),
+=======
+            _vm._m(1),
+            _vm._v("\r\n                住所：" + _vm._s(_vm.tel_add)),
+>>>>>>> 56a158697cbe91858a02e367424621c83c6784ac
             _c("br"),
             _c("hr"),
             _vm._v("\n                営業時間：" + _vm._s(_vm.time)),
@@ -48794,6 +48832,7 @@ var render = function() {
           "div",
           { staticClass: "col-md-3", staticStyle: { "white-space": "nowrap" } },
           [
+<<<<<<< HEAD
             _c("div", { attrs: { id: "tape" } }),
             _vm._v(" "),
             _c("div", { attrs: { id: "products" } }, [
@@ -48831,6 +48870,34 @@ var render = function() {
                 0
               )
             ])
+=======
+            _c(
+              "table",
+              _vm._l(_vm.marker_items, function(s, id) {
+                return _c("tr", { key: id }, [
+                  id !== 0
+                    ? _c("div", [
+                        _c("img", { attrs: { src: s.photo } }),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.s_click(id)
+                              }
+                            }
+                          },
+                          [_vm._v("店舗名")]
+                        )
+                      ])
+                    : _vm._e()
+                ])
+              }),
+              0
+            )
+>>>>>>> 56a158697cbe91858a02e367424621c83c6784ac
           ]
         ),
         _vm._v(" "),
@@ -48844,6 +48911,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+<<<<<<< HEAD
     return _c(
       "a",
       { attrs: { id: "hot", href: "http://webservice.recruit.co.jp/" } },
@@ -48860,6 +48928,20 @@ var staticRenderFns = [
         })
       ]
     )
+=======
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [_c("p", [_vm._v("Hashigo")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("パンくずリスト -> "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("はしご保存")])
+    ])
+>>>>>>> 56a158697cbe91858a02e367424621c83c6784ac
   }
 ]
 render._withStripped = true
