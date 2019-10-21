@@ -2400,8 +2400,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    history: String
+  },
   components: {
     MypageHashigo: _MypageHashigo_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    var json = JSON.parse(this.history);
+    console.log(json);
   }
 });
 
@@ -9083,7 +9090,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 855px;\n} \r\n\r\n", ""]);
+exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 855px;\n} \n\n", ""]);
 
 // exports
 
@@ -9102,7 +9109,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.footer {\r\n    width: 100%;\r\n    height: 60px;\r\n    background-color: wheat;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.footer {\n    width: 100%;\n    height: 60px;\n    background-color: wheat;\n}\n\n", ""]);
 
 // exports
 
@@ -9121,7 +9128,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.header {\r\n    width: 100%;\r\n    height: 60px;\r\n    background-color: wheat;\r\n    position: relative;\n}\n.logo {\r\n  width: 200px;\r\n  height: 60px;\r\n  background-color: aquamarine;\n}\n.button_box{\r\n  position: absolute;\r\n  flex-wrap: wrap;\r\n  top:0;\r\n  right: 0;\r\n  width: 400px;\r\n  height: 60px;\n}\n.user_name {\r\n  width: 200px;\r\n  height: 60px;\r\n  background-color: beige;\n}\n.login {\r\n  width: 200px;\r\n  height: 60px;\r\n  background-color: thistle;\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.header {\n    width: 100%;\n    height: 60px;\n    background-color: wheat;\n    position: relative;\n}\n.logo {\n  width: 200px;\n  height: 60px;\n  background-color: aquamarine;\n}\n.button_box{\n  position: absolute;\n  flex-wrap: wrap;\n  top:0;\n  right: 0;\n  width: 400px;\n  height: 60px;\n}\n.user_name {\n  width: 200px;\n  height: 60px;\n  background-color: beige;\n}\n.login {\n  width: 200px;\n  height: 60px;\n  background-color: thistle;\n}\n\n\n", ""]);
 
 // exports
 
@@ -9140,7 +9147,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\r\n  width: 100%;\r\n  height: 500px;\r\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\r\n  color: blue;\r\n  font-weight: bold;\r\n  font-size: 1.5rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\n  width: 100%;\n  height: 500px;\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\n  color: blue;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n", ""]);
 
 // exports
 
@@ -9159,7 +9166,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 910px;\n} \r\n", ""]);
+exports.push([module.i, "\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 910px;\n} \n", ""]);
 
 // exports
 
@@ -9178,7 +9185,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wrap {\r\n  width: 100%;\r\n  height: 300px;\r\n  background-color: tan;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\n\n", ""]);
 
 // exports
 
@@ -9197,7 +9204,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.hashigo {\r\n    width: 100px;\r\n    height: 100px;\r\n    background-color: aqua;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.hashigo {\n    width: 100px;\n    height: 100px;\n    background-color: aqua;\n}\n\n", ""]);
 
 // exports
 
@@ -48552,7 +48559,7 @@ var render = function() {
                 [
                   _c("img", { attrs: { src: _vm.photo } }),
                   _c("br"),
-                  _vm._v("\r\n                    " + _vm._s(_vm.name)),
+                  _vm._v("\n                    " + _vm._s(_vm.name)),
                   _c("br"),
                   _vm._v(" "),
                   _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
@@ -48725,19 +48732,19 @@ var render = function() {
           { staticClass: "col-md-9", staticStyle: { "white-space": "nowrap" } },
           [
             _c("p", [_vm._v("パンくずリスト")]),
-            _vm._v("\r\n                住所：" + _vm._s(_vm.tel_add)),
+            _vm._v("\n                住所：" + _vm._s(_vm.tel_add)),
             _c("br"),
             _c("hr"),
-            _vm._v("\r\n                営業時間：" + _vm._s(_vm.time)),
+            _vm._v("\n                営業時間：" + _vm._s(_vm.time)),
             _c("br"),
             _c("hr"),
-            _vm._v("\r\n                収容人数：" + _vm._s(_vm.capa)),
+            _vm._v("\n                収容人数：" + _vm._s(_vm.capa)),
             _c("br"),
             _c("hr"),
-            _vm._v("\r\n                ペット連れ込み：" + _vm._s(_vm.pet)),
+            _vm._v("\n                ペット連れ込み：" + _vm._s(_vm.pet)),
             _c("br"),
             _c("hr"),
-            _vm._v("\r\n                クレジット：" + _vm._s(_vm.credit)),
+            _vm._v("\n                クレジット：" + _vm._s(_vm.credit)),
             _c("hr")
           ]
         )
@@ -48793,7 +48800,7 @@ var render = function() {
                 [
                   _c("img", { attrs: { src: _vm.photo } }),
                   _c("br"),
-                  _vm._v("\r\n                    " + _vm._s(_vm.name)),
+                  _vm._v("\n                    " + _vm._s(_vm.name)),
                   _c("br"),
                   _vm._v(" "),
                   _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),

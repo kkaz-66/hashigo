@@ -1,6 +1,5 @@
 <template>
   <div class="wrap">
-      mypage 
       <MypageHashigo />
   </div>
 </template>
@@ -9,8 +8,15 @@
 import MypageHashigo from './MypageHashigo.vue'
 
 export default {
+  props:{
+    history: String,
+  },
   components: {
     MypageHashigo,
+  },
+  mounted (){
+    let json = JSON.parse(this.history)
+    console.log(json)
   }
 
 }
