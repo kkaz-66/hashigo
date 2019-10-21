@@ -1765,16 +1765,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-<<<<<<< HEAD
 //
 //
 //
 //
 //
-//
-//
-=======
->>>>>>> 71ee3a4bd4a3f046aae9b6ce6972082697ef8358
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1795,17 +1790,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       geocode: {},
       address: '',
       center: {
-<<<<<<< HEAD
         lat: 35.6581,
         lng: 139.7017
       },
       zoom: 18,
-=======
-        lat: 35.681236,
-        lng: 139.767125
-      },
-      zoom: 15,
->>>>>>> 71ee3a4bd4a3f046aae9b6ce6972082697ef8358
       marker_items: [],
       icon: {
         url: "",
@@ -1839,17 +1827,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this.isActive = true;
       });
     },
-<<<<<<< HEAD
-    //現在地のピン立て
-    // getCurrentPositionSuccess (position) {
-    //     this.marker_items=[];
-    //     let lat = position.coords.latitude
-    //     let lng = position.coords.longitude
-    //     this.$refs.map.panTo({lat: lat, lng: lng})
-    //     this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
-    // },
-=======
->>>>>>> 71ee3a4bd4a3f046aae9b6ce6972082697ef8358
     //ピン立て 中央
     setcentermarker: function setcentermarker(lat, lng) {
       this.marker_items = [];
@@ -2147,6 +2124,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2168,8 +2151,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         lat: 36.71,
         lng: 139.72
       },
-      zoom: 17,
+      zoom: 18,
       marker_items: [],
+      icon: {
+        url: "",
+        scaledSize: "",
+        scaledColor: ""
+      },
       id: "",
       lat: "",
       lng: "",
@@ -2275,7 +2263,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     lat: lat,
                     lng: lng
                   },
-                  title: 'ANSJXN'
+                  title: '中心地',
+                  icon: {
+                    url: 'http://pictogram2.com/p/p0957/3.png',
+                    scaledSize: new google.maps.Size(50, 55),
+                    scaledColor: '#0000'
+                  }
                 }); //this.setcentermarker(lat,lng)
 
               case 6:
@@ -9069,11 +9062,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-<<<<<<< HEAD
 exports.push([module.i, "\n.row[data-v-332fccf4] {\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 10px;\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#shop[data-v-332fccf4] {\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 5px; /* 外側の余白 上下・左右 */\n    padding: 10px; /* 内側の余白 上・右・下・左 */\n    position: relative;\n    z-index: 0;\n}\n#shop[data-v-332fccf4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#shop[data-v-332fccf4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\5019\\88DC';\n    display: block;\n    margin-left: 160px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: -10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
-=======
-exports.push([module.i, "\n#map[data-v-332fccf4] {\r\n    width: 100%;\r\n    height: 855px;\n} \r\n\r\n", ""]);
->>>>>>> 71ee3a4bd4a3f046aae9b6ce6972082697ef8358
 
 // exports
 
@@ -9092,7 +9081,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.footer {\r\n    width: 100%;\r\n    height: 60px;\r\n    background-color: wheat;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.footer {\n    width: 100%;\n    height: 60px;\n    background-color: wheat;\n}\n\n", ""]);
 
 // exports
 
@@ -9111,7 +9100,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.header {\r\n    width: 100%;\r\n    height: 60px;\r\n    background-color: wheat;\r\n    position: relative;\n}\n.logo {\r\n  width: 200px;\r\n  height: 60px;\r\n  background-color: aquamarine;\n}\n.button_box{\r\n  position: absolute;\r\n  flex-wrap: wrap;\r\n  top:0;\r\n  right: 0;\r\n  width: 400px;\r\n  height: 60px;\n}\n.user_name {\r\n  width: 200px;\r\n  height: 60px;\r\n  background-color: beige;\n}\n.login {\r\n  width: 200px;\r\n  height: 60px;\r\n  background-color: thistle;\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.header {\n    width: 100%;\n    height: 60px;\n    background-color: wheat;\n    position: relative;\n}\n.logo {\n  width: 200px;\n  height: 60px;\n  background-color: aquamarine;\n}\n.button_box{\n  position: absolute;\n  flex-wrap: wrap;\n  top:0;\n  right: 0;\n  width: 400px;\n  height: 60px;\n}\n.user_name {\n  width: 200px;\n  height: 60px;\n  background-color: beige;\n}\n.login {\n  width: 200px;\n  height: 60px;\n  background-color: thistle;\n}\n\n\n", ""]);
 
 // exports
 
@@ -9130,7 +9119,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\r\n  width: 100%;\r\n  height: 500px;\r\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\r\n  color: blue;\r\n  font-weight: bold;\r\n  font-size: 1.5rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.test-wrap[data-v-1bf4e9ca]{\n  width: 100%;\n  height: 500px;\n  background-color: antiquewhite;\n}\n.title[data-v-1bf4e9ca] {\n  color: blue;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n", ""]);
 
 // exports
 
@@ -9149,7 +9138,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 910px;\n} \r\n", ""]);
+exports.push([module.i, "\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 540px;\n}\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    width: 100%;\n    height: 540px;\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 0px; /* 外側の余白 上下・左右 */\n    padding: 10px; /* 内側の余白 上・右・下・左 */\n    position: relative;\n    z-index: 0;\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\n    display: block;\n    margin-left: 110px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: 10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n    position: absolute;\n    z-index: 2;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -9168,7 +9157,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wrap {\r\n  width: 100%;\r\n  height: 300px;\r\n  background-color: tan;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\n\n", ""]);
 
 // exports
 
@@ -9187,7 +9176,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.hashigo {\r\n    width: 100px;\r\n    height: 100px;\r\n    background-color: aqua;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.hashigo {\n    width: 100px;\n    height: 100px;\n    background-color: aqua;\n}\n\n", ""]);
 
 // exports
 
@@ -48536,7 +48525,6 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-<<<<<<< HEAD
         _c("div", { staticClass: "col-md-3" }, [
           _c("div", [
             _vm.isActive
@@ -48564,29 +48552,20 @@ var render = function() {
                     ]),
                     _c("br"),
                     _vm._v(" "),
-                    _c("h5", [_vm._v(_vm._s(_vm.id))]),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("h5", [_vm._v(_vm._s(_vm.lat))]),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("h5", [_vm._v(_vm._s(_vm.lng))]),
-                    _c("br"),
-                    _vm._v(" "),
                     _c(
                       "a",
                       {
                         attrs: {
                           href:
-                            _vm.test +
+                            _vm.detail +
                             _vm.id +
-                            _vm.test2 +
+                            _vm.f_lat +
                             _vm.lat +
-                            _vm.test3 +
+                            _vm.f_lng +
                             _vm.lng
                         }
                       },
-                      [_vm._v("詳細")]
+                      [_vm._v(_vm._s(_vm.name) + " の詳細ヘ")]
                     )
                   ]
                 )
@@ -48594,39 +48573,6 @@ var render = function() {
         ]),
         _vm._v(" "),
         _vm._m(0)
-=======
-        _c("div", { staticClass: "shop" }, [
-          _vm.isActive
-            ? _c("div")
-            : _c(
-                "div",
-                {
-                  staticClass: "col-md-3",
-                  staticStyle: { "white-space": "nowrap" }
-                },
-                [
-                  _c("img", { attrs: { src: _vm.photo } }),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          _vm.detail +
-                          _vm.id +
-                          _vm.f_lat +
-                          _vm.lat +
-                          _vm.f_lng +
-                          _vm.lng
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.name))]
-                  )
-                ]
-              )
-        ])
->>>>>>> 71ee3a4bd4a3f046aae9b6ce6972082697ef8358
       ])
     ])
   ])
@@ -48770,38 +48716,36 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "body" }, [
     _c("div", { staticClass: "app" }, [
-      _vm._m(0),
-      _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c(
           "div",
-          { staticClass: "col-md-3", staticStyle: { "white-space": "nowrap" } },
+          { staticClass: "col-md-4", staticStyle: { "white-space": "nowrap" } },
           [
             _c("img", { attrs: { src: _vm.f_photo } }),
             _c("br"),
             _vm._v(" "),
-            _c("h3", [_vm._v(_vm._s(_vm.shop_name))])
+            _c("p", [_vm._v(_vm._s(_vm.shop_name))])
           ]
         ),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-md-9", staticStyle: { "white-space": "nowrap" } },
+          { staticClass: "col-md-8", staticStyle: { "white-space": "nowrap" } },
           [
             _c("p", [_vm._v("パンくずリスト")]),
-            _vm._v("\r\n                住所：" + _vm._s(_vm.tel_add)),
+            _vm._v("\n                住所：" + _vm._s(_vm.tel_add)),
             _c("br"),
             _c("hr"),
-            _vm._v("\r\n                営業時間：" + _vm._s(_vm.time)),
+            _vm._v("\n                営業時間：" + _vm._s(_vm.time)),
             _c("br"),
             _c("hr"),
-            _vm._v("\r\n                収容人数：" + _vm._s(_vm.capa)),
+            _vm._v("\n                収容人数：" + _vm._s(_vm.capa)),
             _c("br"),
             _c("hr"),
-            _vm._v("\r\n                ペット連れ込み：" + _vm._s(_vm.pet)),
+            _vm._v("\n                ペット連れ込み：" + _vm._s(_vm.pet)),
             _c("br"),
             _c("hr"),
-            _vm._v("\r\n                クレジット：" + _vm._s(_vm.credit)),
+            _vm._v("\n                クレジット：" + _vm._s(_vm.credit)),
             _c("br"),
             _c("hr")
           ]
@@ -48850,41 +48794,47 @@ var render = function() {
           "div",
           { staticClass: "col-md-3", staticStyle: { "white-space": "nowrap" } },
           [
-            _c(
-              "table",
-              _vm._l(_vm.marker_items, function(m, id) {
-                return _c(
-                  "tr",
-                  {
-                    key: id,
-                    on: {
-                      click: function($event) {
-                        return _vm.clickMarker(id)
+            _c("div", { attrs: { id: "tape" } }),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "products" } }, [
+              _c(
+                "table",
+                _vm._l(_vm.marker_items, function(m, id) {
+                  return _c(
+                    "tr",
+                    {
+                      key: id,
+                      on: {
+                        click: function($event) {
+                          return _vm.clickMarker(id)
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("img", { attrs: { src: m.photo } }),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("a", {
-                      attrs: {
-                        href:
-                          _vm.detail +
-                          id +
-                          _vm.f_lat +
-                          _vm.lat +
-                          _vm.f_lng +
-                          _vm.lng
-                      }
-                    })
-                  ]
-                )
-              }),
-              0
-            )
+                    },
+                    [
+                      _c("img", { attrs: { src: m.photo } }),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("a", {
+                        attrs: {
+                          href:
+                            _vm.detail +
+                            id +
+                            _vm.f_lat +
+                            _vm.lat +
+                            _vm.f_lng +
+                            _vm.lng
+                        }
+                      })
+                    ]
+                  )
+                }),
+                0
+              )
+            ])
           ]
-        )
+        ),
+        _vm._v(" "),
+        _vm._m(0)
       ])
     ])
   ])
@@ -48894,9 +48844,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [_c("p", [_vm._v("Hashigo")])])
-    ])
+    return _c(
+      "a",
+      { attrs: { id: "hot", href: "http://webservice.recruit.co.jp/" } },
+      [
+        _c("img", {
+          attrs: {
+            src: "http://webservice.recruit.co.jp/banner/hotpepper-s.gif",
+            alt: "ホットペッパー Webサービス",
+            width: "135",
+            height: "17",
+            border: "0",
+            title: "ホットペッパー Webサービス"
+          }
+        })
+      ]
+    )
   }
 ]
 render._withStripped = true
