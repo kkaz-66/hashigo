@@ -16,7 +16,7 @@
             </div>
             <!--店詳細-->
             <div class="col-md-9" style="white-space: nowrap">
-                <p>パンくずリスト</p>
+                <p>パンくずリスト -> <a href="">はしご保存</a></p>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
@@ -41,9 +41,11 @@
             </div>
             <div class="col-md-3" style="white-space: nowrap" >
                 <table>
-                    <tr v-for="(m,id) in marker_items" :key="id" @click="clickMarker(id)" >
-                        <img v-bind:src="m.photo"><br>
-                        <a v-bind:href="detail + id + f_lat + lat + f_lng + lng"> </a>
+                    <tr v-for="(s,id) in marker_items" :key="id">
+                        <div v-if="id !== 0">
+                            <img v-bind:src="s.photo"><br>
+                            <button v-on:click="s_click(id)">店舗名</button>
+                        </div>
                     </tr>
                 </table>
             </div>
@@ -92,7 +94,7 @@ export default {
         }
     },
 
-    //i件目の詳細
+    //1件目の詳細
     mounted (){
         let json = JSON.parse(this.product)
         console.log(json[0])
@@ -106,16 +108,16 @@ export default {
         this.capa = json[0].capacity
         this.pet= json[0].pet
         this.credit = json[0].card
-        this.setCurrentMarker()
+        //this.setCurrentMarker()
     },
 
     methods: {
         //現在地取得
-        currentPosition () {
-            return new Promise(function(resolve,reject){
-                navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
-            })
-        },
+        // currentPosition () {
+        //     return new Promise(function(resolve,reject){
+        //         navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
+        //     })
+        // },
 
         // キーワード位置取得
         keywordPosition () {
@@ -128,7 +130,7 @@ export default {
         //ピン立て 中央
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'marker_5'})
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地'})
         },
 
         // hotpepperから店情報取得
@@ -143,13 +145,13 @@ export default {
         },
 
         // 現在位置更新
-        async setCurrentMarker(){
-            let position = await this.currentPosition()
-            let lat = position.latitude
-            let lng = position.longitude
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: 'ANSJXN'})
-            //this.setcentermarker(lat,lng)
-        },
+        // async setCurrentMarker(){
+        //     let position = await this.currentPosition()
+        //     let lat = position.latitude
+        //     let lng = position.longitude
+        //     this.marker_items.push({position: {lat: lat, lng: lng}, title: 'ANSJXN'})
+        //     //this.setcentermarker(lat,lng)
+        // },
 
         // shoplistピン立て
         setshopmarker(shoplist){
@@ -159,7 +161,8 @@ export default {
             let photo = shopdata.photo.pc.l
             let lat = shopdata.lat
             let lng = shopdata.lng
-            this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo})
+            this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo,
+             address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, pet:shopdata.pet, card:shopdata.card})
             });
         },
 
@@ -182,6 +185,17 @@ export default {
            this.lat =this.marker_items[id].position.lat
            this.lng =this.marker_items[id].position.lng
         },
+
+        //2件目
+        s_click(id){
+            this.shop_name = this.marker_items[id].title
+            this.f_photo = this.marker_items[id].photo
+            this.tel_add = this.marker_items[id].address
+            this.time = this.marker_items[id].open
+            this.capa = this.marker_items[id].capacity
+            this.pet = this.marker_items[id].pet
+            this.credit = this.marker_items[id].card
+        }
     }
 
 }
