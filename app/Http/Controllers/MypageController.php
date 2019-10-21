@@ -20,8 +20,6 @@ class MypageController extends Controller
     {
         $hpg_key = config('apikey.hpg-key');
         $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key.$id."&format=json";
-        // return $url;
-        // return $this->create_list($url);
         $hashigo_arr = $this->create_list($url);
         return $hashigo_arr;
     }
@@ -32,7 +30,6 @@ class MypageController extends Controller
         $json = file_get_contents($url);
         $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
         $arr = json_decode($json,true);
-        // return $arr['results']['shop'];
         return $arr['results']['shop'];
     }
 
@@ -54,7 +51,7 @@ class MypageController extends Controller
         $user_history = array();
         foreach($hashigos as $hashigo){
             
-            $user_history[$hashigo->id]["data"]= $hashigo->created_at;
+            $user_history[$hashigo->id]["date"]= $hashigo->created_at;
             foreach($hashigo_shops as $hashigo_shop){
             
                 if($hashigo->first_store_id === $hashigo_shop["id"]){

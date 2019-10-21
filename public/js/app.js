@@ -2398,10 +2398,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     history: String
+  },
+  data: function data() {
+    return {
+      jsons: null,
+      date: [],
+      first_store: "",
+      second_store: "",
+      thirs_store: ""
+    };
   },
   components: {
     MypageHashigo: _MypageHashigo_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -2409,7 +2424,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var json = JSON.parse(this.history);
     console.log(json);
-  }
+    this.jsons = json;
+    console.log(this.jsons);
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -9185,7 +9203,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\n\n", ""]);
+exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\nul {\n  list-style: none;\n  background-color: aquamarine;\n}\n\n", ""]);
 
 // exports
 
@@ -48859,12 +48877,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "wrap" },
-    [_vm._v("\n    mypage \n    "), _c("MypageHashigo")],
-    1
-  )
+  return _c("div", { staticClass: "wrap" }, [
+    _c(
+      "ul",
+      _vm._l(_vm.jsons, function(json, id) {
+        return _c("li", { key: id }, [
+          _vm._v(
+            "\n      " +
+              _vm._s(json.date) +
+              "\n      " +
+              _vm._s(json.first.id) +
+              "\n      " +
+              _vm._s(json.second.id) +
+              "\n      " +
+              _vm._s(json.third.id) +
+              "\n    "
+          )
+        ])
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -63629,6 +63662,7 @@ Vue.component('hot-component', __webpack_require__(/*! ./components/HotComponent
 Vue.component('header-component', __webpack_require__(/*! ./components/Header.vue */ "./resources/js/components/Header.vue")["default"]);
 Vue.component('footer-component', __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]);
 Vue.component('mypage-component', __webpack_require__(/*! ./components/mypage/Mypage.vue */ "./resources/js/components/mypage/Mypage.vue")["default"]);
+Vue.component('hashigo-component', __webpack_require__(/*! ./components/mypage/MypageHashigo.vue */ "./resources/js/components/mypage/MypageHashigo.vue")["default"]);
 Vue.component('product-component', __webpack_require__(/*! ./components/Product */ "./resources/js/components/Product.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
