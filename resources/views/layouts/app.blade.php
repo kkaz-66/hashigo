@@ -54,6 +54,11 @@
                                         @csrf
                                     </form>
                                 </div>
+                                <div class="mypage" >
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('mypage')}}">{{__('マイページ')}}</a>
+                                    </li>
+                                </div>
                             </li>
                         @endguest
                     </ul>
