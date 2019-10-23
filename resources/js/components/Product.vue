@@ -46,7 +46,7 @@
                     <tr v-for="(s,id) in marker_items" :key="id">
                         <div v-if="id !== 0">
                             <img v-bind:src="s.photo"><br>
-                            <button v-on:click="s_click(id)">店舗名</button>
+                            <button v-on:click="s_click(id)">{{ s.title }}</button>
                         </div>
                     </tr>
                 </table>
