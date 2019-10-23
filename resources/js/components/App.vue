@@ -38,7 +38,7 @@
                         <h3><span class="shopname">{{name}}</span><br></h3><br>
                         <a v-bind:href="url">ホットぺッパー</a><br>
                         
-                        <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}}</a>
+                        <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}} の詳細ヘ</a>
                     </div>
                 </div>
             </div>

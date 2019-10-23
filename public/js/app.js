@@ -2126,6 +2126,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2147,8 +2151,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         lat: 36.71,
         lng: 139.72
       },
-      zoom: 17,
+      zoom: 18,
       marker_items: [],
+      icon: {
+        url: "",
+        scaledSize: "",
+        scaledColor: ""
+      },
       id: "",
       lat: "",
       lng: "",
@@ -2230,6 +2239,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     // 現在位置更新
+    setCurrentMarker: function () {
+      var _setCurrentMarker = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var position, lat, lng;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.currentPosition();
+
+              case 2:
+                position = _context.sent;
+                lat = position.latitude;
+                lng = position.longitude;
+                this.marker_items.push({
+                  position: {
+                    lat: lat,
+                    lng: lng
+                  },
+                  title: '中心地',
+                  icon: {
+                    url: 'http://pictogram2.com/p/p0957/3.png',
+                    scaledSize: new google.maps.Size(50, 55),
+                    scaledColor: '#0000'
+                  }
+                }); //this.setcentermarker(lat,lng)
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function setCurrentMarker() {
+        return _setCurrentMarker.apply(this, arguments);
+      }
+
+      return setCurrentMarker;
+    }(),
     // async setCurrentMarker(){
     //     let position = await this.currentPosition()
     //     let lat = position.latitude
@@ -2268,33 +2320,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     keywordSearch: function () {
       var _keywordSearch = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var keyword_position, lat, lng, shoplist;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context.next = 2;
+                _context2.next = 2;
                 return this.keywordPosition();
 
               case 2:
-                keyword_position = _context.sent;
+                keyword_position = _context2.sent;
                 lat = keyword_position.lat();
                 lng = keyword_position.lng();
-                _context.next = 7;
+                _context2.next = 7;
                 return this.getList(lat, lng);
 
               case 7:
-                shoplist = _context.sent;
+                shoplist = _context2.sent;
                 this.setcentermarker(lat, lng);
                 this.setshopmarker(shoplist);
 
               case 10:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
 
       function keywordSearch() {
@@ -2344,11 +2396,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    history: String
+  },
+  data: function data() {
+    return {
+      jsons: null,
+      date: [],
+      first_store: "",
+      second_store: "",
+      thirs_store: ""
+    };
+  },
   components: {
     MypageHashigo: _MypageHashigo_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  },
+  mounted: function mounted() {
+    var json = JSON.parse(this.history);
+    console.log(json);
+    this.jsons = json;
+    console.log(this.jsons);
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -9105,7 +9182,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 910px;\n} \r\n", ""]);
+exports.push([module.i, "\n#map[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 580px;\n}\n.col-md-9[data-v-7e94e6d4] {\r\n    margin-left: 20px;\r\n    margin-right: -20px;\r\n    position: relative;\r\n    border-top: solid 2px black;\r\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\r\n    content: '';\r\n    position: absolute;\r\n    top: -10px;\r\n    width: 2px;\r\n    height: calc(100% + 20px);\r\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\r\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\r\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\r\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 540px;\r\n    text-align: center;\r\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\r\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\r\n    box-shadow:1px 1px 6px 0px #ccc;\r\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\r\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\r\n    -o-box-shadow:1px 1px 6px 0px #ccc;\r\n    margin: 20px 0px; /* 外側の余白 上下・左右 */\r\n    padding: 10px; /* 内側の余白 上・右・下・左 */\r\n    position: relative;\r\n    z-index: 0;\r\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\r\n    border: 1px solid #fff; /* 白い実線 */\r\n    border-radius: 5px;\r\n    content: '';\r\n    display: block;\r\n    margin: 4px;\r\n    position: absolute;\r\n    top: 0px;\r\n    bottom: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\r\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\r\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\r\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\r\n    background-size: 15px 15px; /* 水玉の大きさ */\r\n    border-left: 2px dotted rgba(0,0,0,0.1);\r\n    border-right: 2px dotted rgba(0,0,0,0.1);\r\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\r\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\r\n    display: block;\r\n    margin-left: 110px;\r\n    padding: 5px 20px;  \r\n    text-align: center;\r\n    position: absolute;\r\n    top: 10px;\r\n    left: 20px;\r\n    transform: rotate(-3deg);\r\n    -moz-transform: rotate(-3deg);\r\n    -webkit-transform: rotate(-3deg);\r\n    -o-transform: rotate(-3deg);\r\n    position: absolute;\r\n    z-index: 2;\n}\n#hot[data-v-7e94e6d4] {\r\n    padding-left: 35px;\r\n    padding-top: 10px;\n}\r\n", ""]);
 
 // exports
 
@@ -9124,7 +9201,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wrap {\r\n  width: 100%;\r\n  height: 300px;\r\n  background-color: tan;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.wrap {\r\n  width: 100%;\r\n  height: 300px;\r\n  background-color: tan;\n}\nul {\r\n  list-style: none;\r\n  background-color: aquamarine;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -48532,7 +48609,7 @@ var render = function() {
                             _vm.lng
                         }
                       },
-                      [_vm._v(_vm._s(_vm.name))]
+                      [_vm._v(_vm._s(_vm.name) + " の詳細ヘ")]
                     )
                   ]
                 )
@@ -48683,25 +48760,23 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "body" }, [
     _c("div", { staticClass: "app" }, [
-      _vm._m(0),
-      _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c(
           "div",
-          { staticClass: "col-md-3", staticStyle: { "white-space": "nowrap" } },
+          { staticClass: "col-md-4", staticStyle: { "white-space": "nowrap" } },
           [
             _c("img", { attrs: { src: _vm.f_photo } }),
             _c("br"),
             _vm._v(" "),
-            _c("h3", [_vm._v(_vm._s(_vm.shop_name))])
+            _c("p", [_vm._v(_vm._s(_vm.shop_name))])
           ]
         ),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-md-9", staticStyle: { "white-space": "nowrap" } },
+          { staticClass: "col-md-8", staticStyle: { "white-space": "nowrap" } },
           [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v("\r\n                住所：" + _vm._s(_vm.tel_add)),
             _c("br"),
             _c("hr"),
@@ -48763,35 +48838,41 @@ var render = function() {
           "div",
           { staticClass: "col-md-3", staticStyle: { "white-space": "nowrap" } },
           [
-            _c(
-              "table",
-              _vm._l(_vm.marker_items, function(s, id) {
-                return _c("tr", { key: id }, [
-                  id !== 0
-                    ? _c("div", [
-                        _c("img", { attrs: { src: s.photo } }),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            on: {
-                              click: function($event) {
-                                return _vm.s_click(id)
+            _c("div", { attrs: { id: "tape" } }),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "products" } }, [
+              _c(
+                "table",
+                _vm._l(_vm.marker_items, function(s, id) {
+                  return _c("tr", { key: id }, [
+                    id !== 0
+                      ? _c("div", [
+                          _c("img", { attrs: { src: s.photo } }),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              on: {
+                                click: function($event) {
+                                  return _vm.s_click(id)
+                                }
                               }
-                            }
-                          },
-                          [_vm._v(_vm._s(s.title))]
-                        )
-                      ])
-                    : _vm._e()
-                ])
-              }),
-              0
-            )
+                            },
+                            [_vm._v(_vm._s(s.title))]
+                          )
+                        ])
+                      : _vm._e()
+                  ])
+                }),
+                0
+              )
+            ])
           ]
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
     ])
   ])
 }
@@ -48800,18 +48881,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [_c("p", [_vm._v("Hashigo")])])
+    return _c("p", [
+      _vm._v("パンくずリスト -> "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("はしご保存")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v("パンくずリスト -> "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("はしご保存")])
-    ])
+    return _c(
+      "a",
+      { attrs: { id: "hot", href: "http://webservice.recruit.co.jp/" } },
+      [
+        _c("img", {
+          attrs: {
+            src: "http://webservice.recruit.co.jp/banner/hotpepper-s.gif",
+            alt: "ホットペッパー Webサービス",
+            width: "135",
+            height: "17",
+            border: "0",
+            title: "ホットペッパー Webサービス"
+          }
+        })
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -48835,12 +48929,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "wrap" },
-    [_vm._v("\n    mypage \n    "), _c("MypageHashigo")],
-    1
-  )
+  return _c("div", { staticClass: "wrap" }, [
+    _c(
+      "ul",
+      _vm._l(_vm.jsons, function(json, id) {
+        return _c("li", { key: id }, [
+          _vm._v(
+            "\n      " +
+              _vm._s(json.date) +
+              "\n      " +
+              _vm._s(json.first.id) +
+              "\n      " +
+              _vm._s(json.second.id) +
+              "\n      " +
+              _vm._s(json.third.id) +
+              "\n    "
+          )
+        ])
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -63605,6 +63714,7 @@ Vue.component('hot-component', __webpack_require__(/*! ./components/HotComponent
 Vue.component('header-component', __webpack_require__(/*! ./components/Header.vue */ "./resources/js/components/Header.vue")["default"]);
 Vue.component('footer-component', __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]);
 Vue.component('mypage-component', __webpack_require__(/*! ./components/mypage/Mypage.vue */ "./resources/js/components/mypage/Mypage.vue")["default"]);
+Vue.component('hashigo-component', __webpack_require__(/*! ./components/mypage/MypageHashigo.vue */ "./resources/js/components/mypage/MypageHashigo.vue")["default"]);
 Vue.component('product-component', __webpack_require__(/*! ./components/Product */ "./resources/js/components/Product.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
