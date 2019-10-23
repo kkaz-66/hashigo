@@ -5,8 +5,12 @@
         <div class="row">
             <!--店画像-->
             <div class="col-md-4"  style="white-space: nowrap">
-                <img v-bind:src="f_photo"><br>
-               <p>{{ shop_name }}</p>
+                <div id="photo">
+                    <img v-bind:src="f_photo"><br><br>
+                </div>
+                <div id="name">
+                    <h4>{{ shop_name }}</h4>
+                </div>
             </div>
             <!--店詳細-->
             <div class="col-md-8" style="white-space: nowrap">
@@ -165,14 +169,14 @@ export default {
         },
 
         // 検索ボタンclick発火
-       async keywordSearch(){
-           let keyword_position = await this.keywordPosition()
-           let lat = keyword_position.lat()
-           let lng = keyword_position.lng()
-           let shoplist = await this.getList(lat,lng)
-           this.setcentermarker(lat,lng)
-           this.setshopmarker(shoplist)
-        },
+    //    async keywordSearch(){
+    //        let keyword_position = await this.keywordPosition()
+    //        let lat = keyword_position.lat()
+    //        let lng = keyword_position.lng()
+    //        let shoplist = await this.getList(lat,lng)
+    //        this.setcentermarker(lat,lng)
+    //        this.setshopmarker(shoplist)
+    //     },
 
         //マーカーの表示内容
         clickMarker(id){
@@ -201,10 +205,22 @@ export default {
 </script>
 
 <style scoped>
+.app {
+    margin: 10px 50px;
+}
 #map {
     width: 100%;
-    height: 580px;
+    height: 520px;
 } 
+.col-md-4 {
+    /* 左上の写真・店名の設定 */
+    text-align: center;
+    padding-left: 100px;
+}
+#name {
+    padding: 10px;
+    overflow: auto;
+}
 .col-md-9 {
     margin-left: 20px;
     margin-right: -20px;
@@ -232,7 +248,7 @@ export default {
 }
 #products {
     width: 100%;
-    height: 540px;
+    height: 460px;
     text-align: center;
     background-color: rgb(255, 247, 170);	/* 背景色 */
     border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */
@@ -241,7 +257,7 @@ export default {
     -webkit-box-shadow:1px 1px 6px 0px #ccc;
     -o-box-shadow:1px 1px 6px 0px #ccc;
     margin: 20px 0px; /* 外側の余白 上下・左右 */
-    padding: 10px; /* 内側の余白 上・右・下・左 */
+    padding: 10px 60px; /* 内側の余白 上下・左右 */
     position: relative;
     z-index: 0;
     overflow-y: scroll;
