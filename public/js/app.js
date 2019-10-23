@@ -2388,7 +2388,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _MypageHashigo_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MypageHashigo.vue */ "./resources/js/components/mypage/MypageHashigo.vue");
 //
 //
 //
@@ -2402,7 +2401,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+// import MypageHashigo from './MypageHashigo.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     history: String
@@ -2416,8 +2415,7 @@ __webpack_require__.r(__webpack_exports__);
       thirs_store: ""
     };
   },
-  components: {
-    MypageHashigo: _MypageHashigo_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  components: {// MypageHashigo,
   },
   mounted: function mounted() {
     var json = JSON.parse(this.history);
@@ -9106,11 +9104,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 855px;\n} \n\n", ""]);
-=======
 exports.push([module.i, "\n.row[data-v-332fccf4] {\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 10px;\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#shop[data-v-332fccf4] {\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 5px; /* 外側の余白 上下・左右 */\n    padding: 10px; /* 内側の余白 上・右・下・左 */\n    position: relative;\n    z-index: 0;\n}\n#shop[data-v-332fccf4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#shop[data-v-332fccf4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\5019\\88DC';\n    display: block;\n    margin-left: 160px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: -10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
->>>>>>> ea6a8d900c314d9583fea84795b9df398d1f29f2
 
 // exports
 
@@ -9186,11 +9180,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 910px;\n} \n", ""]);
-=======
 exports.push([module.i, "\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 580px;\n}\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    width: 100%;\n    height: 540px;\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 0px; /* 外側の余白 上下・左右 */\n    padding: 10px; /* 内側の余白 上・右・下・左 */\n    position: relative;\n    z-index: 0;\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\n    display: block;\n    margin-left: 110px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: 10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n    position: absolute;\n    z-index: 2;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
->>>>>>> ea6a8d900c314d9583fea84795b9df398d1f29f2
 
 // exports
 
@@ -9209,11 +9199,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\nul {\n  list-style: none;\n  background-color: aquamarine;\n}\n\n", ""]);
-=======
-exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\n\n", ""]);
->>>>>>> ea6a8d900c314d9583fea84795b9df398d1f29f2
+exports.push([module.i, "\n.wrap {\n  width: 100%;\n  margin: auto;\n  background-color: tan;\n}\n.wrap ul li {\n  list-style-type: none;\n  margin: auto;\n  padding: 5px;\n  width: 600px;\n  height: 150px;\n  background-color: aquamarine;\n}\n\n", ""]);
 
 // exports
 
@@ -48581,44 +48567,6 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-<<<<<<< HEAD
-        _c("div", { staticClass: "shop" }, [
-          _vm.isActive
-            ? _c("div")
-            : _c(
-                "div",
-                {
-                  staticClass: "col-md-3",
-                  staticStyle: { "white-space": "nowrap" }
-                },
-                [
-                  _c("img", { attrs: { src: _vm.photo } }),
-                  _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.name)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          _vm.detail +
-                          _vm.id +
-                          _vm.f_lat +
-                          _vm.lat +
-                          _vm.f_lng +
-                          _vm.lng
-                      }
-                    },
-                    [_vm._v("詳細")]
-                  )
-                ]
-              )
-        ])
-=======
         _c("div", { staticClass: "col-md-3" }, [
           _c("div", [
             _vm.isActive
@@ -48667,7 +48615,6 @@ var render = function() {
         ]),
         _vm._v(" "),
         _vm._m(0)
->>>>>>> ea6a8d900c314d9583fea84795b9df398d1f29f2
       ])
     ])
   ])
@@ -48827,11 +48774,7 @@ var render = function() {
           "div",
           { staticClass: "col-md-8", staticStyle: { "white-space": "nowrap" } },
           [
-<<<<<<< HEAD
-            _c("p", [_vm._v("パンくずリスト")]),
-=======
             _vm._m(0),
->>>>>>> ea6a8d900c314d9583fea84795b9df398d1f29f2
             _vm._v("\n                住所：" + _vm._s(_vm.tel_add)),
             _c("br"),
             _c("hr"),
@@ -48845,10 +48788,7 @@ var render = function() {
             _c("br"),
             _c("hr"),
             _vm._v("\n                クレジット：" + _vm._s(_vm.credit)),
-<<<<<<< HEAD
-=======
             _c("br"),
->>>>>>> ea6a8d900c314d9583fea84795b9df398d1f29f2
             _c("hr")
           ]
         )
@@ -48892,42 +48832,6 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-<<<<<<< HEAD
-        _c("div", { staticClass: "shop" }, [
-          _vm.isActive
-            ? _c("div")
-            : _c(
-                "div",
-                {
-                  staticClass: "col-md-3",
-                  staticStyle: { "white-space": "nowrap" }
-                },
-                [
-                  _c("img", { attrs: { src: _vm.photo } }),
-                  _c("br"),
-                  _vm._v("\n                    " + _vm._s(_vm.name)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("a", { attrs: { href: _vm.url } }, [_vm._v("店情報")]),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          _vm.detail +
-                          _vm.id +
-                          _vm.f_lat +
-                          _vm.lat +
-                          _vm.f_lng +
-                          _vm.lng
-                      }
-                    },
-                    [_vm._v("詳細")]
-                  )
-                ]
-=======
         _c(
           "div",
           { staticClass: "col-md-3", staticStyle: { "white-space": "nowrap" } },
@@ -48960,7 +48864,6 @@ var render = function() {
                   ])
                 }),
                 0
->>>>>>> ea6a8d900c314d9583fea84795b9df398d1f29f2
               )
             ])
           ]
@@ -49027,19 +48930,20 @@ var render = function() {
   return _c("div", { staticClass: "wrap" }, [
     _c(
       "ul",
+      { staticClass: "ul_hashigo" },
       _vm._l(_vm.jsons, function(json, id) {
         return _c("li", { key: id }, [
+          _vm._v("\n      日付：" + _vm._s(json.date)),
+          _c("br"),
+          _vm._v("\n      １軒目：" + _vm._s(json.first.name)),
+          _c("br"),
+          _vm._v("\n      ２軒目：" + _vm._s(json.second.name)),
+          _c("br"),
           _vm._v(
-            "\n      " +
-              _vm._s(json.date) +
-              "\n      " +
-              _vm._s(json.first.id) +
-              "\n      " +
-              _vm._s(json.second.id) +
-              "\n      " +
-              _vm._s(json.third.id) +
-              "\n    "
-          )
+            "\n      ３軒目：" +
+              _vm._s(json.third ? json.third.name : "no store")
+          ),
+          _c("br")
         ])
       }),
       0
