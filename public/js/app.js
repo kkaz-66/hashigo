@@ -48781,7 +48781,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("店舗名")]
+                          [_vm._v(_vm._s(s.title))]
                         )
                       ])
                     : _vm._e()
