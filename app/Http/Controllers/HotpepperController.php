@@ -22,7 +22,7 @@ class HotpepperController extends Controller
     public function seach_range($lat,$lng)
     {
         $hpg_key = config('apikey.hpg-key');
-        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&lat=".$lat."&lng=".$lng."&range=4&format=json";
+        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&lat=".$lat."&lng=".$lng."&code=g001&keyword=居酒屋&range=4&format=json";
         return $this->create_list($url);
     }
     public function seach_shop($id)
