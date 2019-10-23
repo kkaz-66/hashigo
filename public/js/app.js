@@ -2059,16 +2059,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! http */ "./node_modules/stream-http/index.js");
-/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! http */ "./node_modules/stream-http/index.js");
+/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2168,7 +2170,10 @@ __webpack_require__.r(__webpack_exports__);
       time: "",
       capa: "",
       pet: "",
-      credit: ""
+      credit: "",
+      f_name: "",
+      s_name: "",
+      t_name: ""
     };
   },
   //1件目の詳細
@@ -2188,14 +2193,10 @@ __webpack_require__.r(__webpack_exports__);
     this.capa = json[0].capacity;
     this.pet = json[0].pet;
     this.credit = json[0].card; //this.setCurrentMarker()
+
+    this.f_name = json[0].name;
   },
   methods: {
-    //現在地取得
-    // currentPosition () {
-    //     return new Promise(function(resolve,reject){
-    //         navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
-    //     })
-    // },
     // キーワード位置取得
     keywordPosition: function keywordPosition() {
       var _this = this;
@@ -2226,7 +2227,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     // hotpepperから店情報取得
     getList: function getList(lat, lng) {
-      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/list', {
+      return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/list', {
         lng: lng,
         lat: lat
       }).then(function (res) {
@@ -2235,21 +2236,49 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     // 現在位置更新
-    // async setCurrentMarker(){
-    //     let position = await this.currentPosition()
-    //     let lat = position.latitude
-    //     let lng = position.longitude
-    //     this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
-    //     icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
-    //     //this.setcentermarker(lat,lng)
-    // },
-    // async setCurrentMarker(){
-    //     let position = await this.currentPosition()
-    //     let lat = position.latitude
-    //     let lng = position.longitude
-    //     this.marker_items.push({position: {lat: lat, lng: lng}, title: 'ANSJXN'})
-    //     //this.setcentermarker(lat,lng)
-    // },
+    setCurrentMarker: function () {
+      var _setCurrentMarker = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var position, lat, lng;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.currentPosition();
+
+              case 2:
+                position = _context.sent;
+                lat = position.latitude;
+                lng = position.longitude;
+                this.marker_items.push({
+                  position: {
+                    lat: lat,
+                    lng: lng
+                  },
+                  title: '中心地',
+                  icon: {
+                    url: 'http://pictogram2.com/p/p0957/3.png',
+                    scaledSize: new google.maps.Size(50, 55),
+                    scaledColor: '#0000'
+                  }
+                }); //this.setcentermarker(lat,lng)
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function setCurrentMarker() {
+        return _setCurrentMarker.apply(this, arguments);
+      }
+
+      return setCurrentMarker;
+    }(),
     // shoplistピン立て
     setshopmarker: function setshopmarker(shoplist) {
       var _this2 = this;
@@ -2304,6 +2333,7 @@ __webpack_require__.r(__webpack_exports__);
       this.capa = this.marker_items[id].capacity;
       this.pet = this.marker_items[id].pet;
       this.credit = this.marker_items[id].card;
+      this.s_name = this.marker_items[id].title;
     }
   }
 });
@@ -2327,11 +2357,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    history: String
+  },
+  data: function data() {
+    return {
+      jsons: null,
+      date: [],
+      first_store: "",
+      second_store: "",
+      thirs_store: ""
+    };
+  },
   components: {
     MypageHashigo: _MypageHashigo_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  },
+  mounted: function mounted() {
+    var json = JSON.parse(this.history);
+    console.log(json);
+    this.jsons = json;
+    console.log(this.jsons);
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -9088,7 +9143,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.app[data-v-7e94e6d4] {\n    margin: 10px 50px;\n}\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 540px;\n}\n.col-md-4[data-v-7e94e6d4] {\n    /* 左上の写真・店名の設定 */\n    text-align: center;\n    padding-left: 100px;\n}\n#name[data-v-7e94e6d4] {\n    padding: 10px;\n    overflow: auto;\n}\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    width: 100%;\n    height: 460px;\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 0px; /* 外側の余白 上下・左右 */\n    padding: 10px 60px; /* 内側の余白 上下・左右 */\n    position: relative;\n    z-index: 0;\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\n    display: block;\n    margin-left: 110px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: 10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n    position: absolute;\n    z-index: 2;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.app[data-v-7e94e6d4] {\n    margin: 10px 50px;\n}\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\n    /* 左上の写真・店名の設定 */\n    text-align: center;\n    padding-left: 100px;\n}\n#name[data-v-7e94e6d4] {\n    padding: 10px;\n    overflow: auto;\n}\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    width: 100%;\n    height: 460px;\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 0px; /* 外側の余白 上下・左右 */\n    padding: 10px 60px; /* 内側の余白 上下・左右 */\n    position: relative;\n    z-index: 0;\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\n    display: block;\n    margin-left: 110px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: 10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n    position: absolute;\n    z-index: 2;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -9107,7 +9162,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\n\n", ""]);
+exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\nul {\n  list-style: none;\n  background-color: aquamarine;\n}\n\n", ""]);
 
 // exports
 
@@ -48687,7 +48742,12 @@ var render = function() {
           "div",
           { staticClass: "col-md-8", staticStyle: { "white-space": "nowrap" } },
           [
-            _vm._m(0),
+            _c("br"),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(_vm._s(_vm.f_name) + " > " + _vm._s(_vm.s_name) + "　　"),
+              _c("a", { attrs: { href: "" } }, [_vm._v("はしご保存")])
+            ]),
             _vm._v("\n                住所：" + _vm._s(_vm.tel_add)),
             _c("br"),
             _c("hr"),
@@ -48756,7 +48816,7 @@ var render = function() {
                 "table",
                 _vm._l(_vm.marker_items, function(s, id) {
                   return _c("tr", { key: id }, [
-                    id >= 2
+                    id !== 0 && id !== 1
                       ? _c("div", [
                           _c("img", { attrs: { src: s.photo } }),
                           _c("br"),
@@ -48770,10 +48830,8 @@ var render = function() {
                                 }
                               }
                             },
-                            [_vm._v("詳細表示")]
-                          ),
-                          _c("br"),
-                          _c("br")
+                            [_vm._v(_vm._s(s.title))]
+                          )
                         ])
                       : _vm._e()
                   ])
@@ -48785,20 +48843,11 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _vm._m(0)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v("パンくずリスト -> "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("はしご保存")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -48842,12 +48891,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "wrap" },
-    [_vm._v("\n    mypage \n    "), _c("MypageHashigo")],
-    1
-  )
+  return _c("div", { staticClass: "wrap" }, [
+    _c(
+      "ul",
+      _vm._l(_vm.jsons, function(json, id) {
+        return _c("li", { key: id }, [
+          _vm._v(
+            "\n      " +
+              _vm._s(json.date) +
+              "\n      " +
+              _vm._s(json.first.id) +
+              "\n      " +
+              _vm._s(json.second.id) +
+              "\n      " +
+              _vm._s(json.third.id) +
+              "\n    "
+          )
+        ])
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -63612,6 +63676,7 @@ Vue.component('hot-component', __webpack_require__(/*! ./components/HotComponent
 Vue.component('header-component', __webpack_require__(/*! ./components/Header.vue */ "./resources/js/components/Header.vue")["default"]);
 Vue.component('footer-component', __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]);
 Vue.component('mypage-component', __webpack_require__(/*! ./components/mypage/Mypage.vue */ "./resources/js/components/mypage/Mypage.vue")["default"]);
+Vue.component('hashigo-component', __webpack_require__(/*! ./components/mypage/MypageHashigo.vue */ "./resources/js/components/mypage/MypageHashigo.vue")["default"]);
 Vue.component('product-component', __webpack_require__(/*! ./components/Product */ "./resources/js/components/Product.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -1,12 +1,6 @@
 <template>
 <div class="body">
     <div class="app">
-        <!-- <div class="row">
-            <div class="col-md-12">
-               <p>Hashigo</p>
-               <button @click="setCurrentMarker">現在地更新</button>
-            </div>
-        </div> -->
         <!--詳細表示-->
         <div class="row">
             <!--店画像-->
@@ -20,13 +14,13 @@
             </div>
             <!--店詳細-->
             <div class="col-md-8" style="white-space: nowrap">
-                <p>パンくずリスト -> <a href="">はしご保存</a></p>
+                <br>
+                <p>{{ f_name }} > {{ s_name }}　　<a href="">はしご保存</a></p>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
                 ペット連れ込み：{{ pet }}<br><hr>
                 クレジット：{{ credit }}<br><hr>
-                <!--URL：<a v-bind:href="url">お店TOP</a><hr>-->
             </div>
         </div>
         <div class="row">
@@ -48,9 +42,9 @@
                 <div id="products">
                     <table>
                     <tr v-for="(s,id) in marker_items" :key="id">
-                        <div v-if="id >= 2">
+                        <div v-if="id !== 0 && id !==1">
                             <img v-bind:src="s.photo"><br>
-                            <button v-on:click="s_click(id)">詳細表示</button><br><br>
+                            <button v-on:click="s_click(id)">{{ s.title }}</button>
                         </div>
                     </tr>
                 </table>
@@ -99,7 +93,10 @@ export default {
             time:"",
             capa:"",
             pet:"",
-            credit:""
+            credit:"",
+            f_name:"",
+            s_name:"",
+            t_name:""
         }
     },
 
@@ -118,15 +115,10 @@ export default {
         this.pet= json[0].pet
         this.credit = json[0].card
         //this.setCurrentMarker()
+        this.f_name = json[0].name
     },
 
     methods: {
-        //現在地取得
-        // currentPosition () {
-        //     return new Promise(function(resolve,reject){
-        //         navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
-        //     })
-        // },
 
         // キーワード位置取得
         keywordPosition () {
@@ -154,22 +146,15 @@ export default {
         },
 
         // 現在位置更新
-        // async setCurrentMarker(){
-        //     let position = await this.currentPosition()
-        //     let lat = position.latitude
-        //     let lng = position.longitude
-        //     this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
-        //     icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
-        //     //this.setcentermarker(lat,lng)
-        // },
-        // async setCurrentMarker(){
-        //     let position = await this.currentPosition()
-        //     let lat = position.latitude
-        //     let lng = position.longitude
-        //     this.marker_items.push({position: {lat: lat, lng: lng}, title: 'ANSJXN'})
-        //     //this.setcentermarker(lat,lng)
-        // },
-
+        async setCurrentMarker(){
+            let position = await this.currentPosition()
+            let lat = position.latitude
+            let lng = position.longitude
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
+            icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
+            //this.setcentermarker(lat,lng)
+        },
+        
         // shoplistピン立て
         setshopmarker(shoplist){
             shoplist.map((shopdata)=>{
@@ -178,8 +163,8 @@ export default {
             let photo = shopdata.photo.pc.l
             let lat = shopdata.lat
             let lng = shopdata.lng
-            this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo,
-             address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, pet:shopdata.pet, card:shopdata.card})
+            this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},        title: name, url: url, photo: photo,
+                address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, pet:shopdata.pet, card:shopdata.card})
             });
         },
 
@@ -212,6 +197,7 @@ export default {
             this.capa = this.marker_items[id].capacity
             this.pet = this.marker_items[id].pet
             this.credit = this.marker_items[id].card
+            this.s_name = this.marker_items[id].title
         }
     }
 
@@ -224,7 +210,7 @@ export default {
 }
 #map {
     width: 100%;
-    height: 540px;
+    height: 520px;
 } 
 .col-md-4 {
     /* 左上の写真・店名の設定 */

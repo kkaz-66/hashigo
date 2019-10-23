@@ -1,16 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@inject('hashigo_arr','App\Http\Controllers\MypageController')
-
-{{$hashigos}}<br>
-@foreach($hashigos as $hashigo)
-{{ $hashigo->id }}
-@endforeach
-
-
-@php
-var_dump($hashigos);
-@endphp
-<mypage-component></mypage-component>
+<mypage-component history="{{ json_encode($user_history, JSON_UNESCAPED_UNICODE)}}"></mypage-component>
 <footer-component></footer-component>
 @endsection
