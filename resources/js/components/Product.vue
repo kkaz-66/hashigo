@@ -168,16 +168,6 @@ export default {
             });
         },
 
-        // 検索ボタンclick発火
-    //    async keywordSearch(){
-    //        let keyword_position = await this.keywordPosition()
-    //        let lat = keyword_position.lat()
-    //        let lng = keyword_position.lng()
-    //        let shoplist = await this.getList(lat,lng)
-    //        this.setcentermarker(lat,lng)
-    //        this.setshopmarker(shoplist)
-    //     },
-
         //マーカーの表示内容
         clickMarker(id){
            this.name = this.marker_items[id].title
