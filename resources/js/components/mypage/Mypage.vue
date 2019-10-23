@@ -1,18 +1,18 @@
 <template>
   <div class="wrap">
-    <ul>
-      <li v-for="(json,id) in jsons" :key="id">
-        {{ json.date }}
-        {{ json.first.id}}
-        {{ json.second.id}}
-        {{ json.third.id}}
+    <ul class="ul_hashigo">
+      <li v-for="(json,id) in jsons" :key="id" >
+        日付：{{ json.date }}<br>
+        １軒目：{{ json.first.name}}<br>
+        ２軒目：{{ json.second.name}}<br>
+        ３軒目：{{ json.third?json.third.name:'no store'}}<br>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import MypageHashigo from './MypageHashigo.vue'
+// import MypageHashigo from './MypageHashigo.vue'
 
 export default {
   props:{
@@ -28,7 +28,7 @@ export default {
     }
   },
   components: {
-    MypageHashigo,
+    // MypageHashigo,
   },
   mounted (){
     let json = JSON.parse(this.history)
@@ -47,12 +47,16 @@ export default {
 <style>
 .wrap {
   width: 100%;
-  height: 300px;
+  margin: auto;
   background-color: tan;
 }
 
-ul {
-  list-style: none;
+.wrap ul li {
+  list-style-type: none;
+  margin: auto;
+  padding: 5px;
+  width: 600px;
+  height: 150px;
   background-color: aquamarine;
 }
 

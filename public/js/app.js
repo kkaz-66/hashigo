@@ -2059,18 +2059,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! http */ "./node_modules/stream-http/index.js");
-/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! http */ "./node_modules/stream-http/index.js");
+/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2169,11 +2161,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       tel_add: "",
       time: "",
       capa: "",
-      pet: "",
       credit: "",
       f_name: "",
       s_name: "",
-      t_name: ""
+      t_name: "",
+      o_url: ""
     };
   },
   //1件目の詳細
@@ -2191,8 +2183,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.tel_add = json[0].address;
     this.time = json[0].open;
     this.capa = json[0].capacity;
-    this.pet = json[0].pet;
-    this.credit = json[0].card; //this.setCurrentMarker()
+    this.credit = json[0].card;
+    this.o_url = json[0].urls.pc; //パンくずリスト一件目（固定）
 
     this.f_name = json[0].name;
   },
@@ -2222,12 +2214,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           lat: lat,
           lng: lng
         },
-        title: '現在地'
+        title: '現在地',
+        icon: {
+          url: 'http://maps.google.co.jp/mapfiles/ms/icons/blue-dot.png',
+          scaledSize: {
+            width: 50,
+            height: 55
+          },
+          scaledColor: '#0000'
+        }
       });
     },
     // hotpepperから店情報取得
     getList: function getList(lat, lng) {
-      return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/list', {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/list', {
         lng: lng,
         lat: lat
       }).then(function (res) {
@@ -2236,49 +2236,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     // 現在位置更新
-    setCurrentMarker: function () {
-      var _setCurrentMarker = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var position, lat, lng;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return this.currentPosition();
-
-              case 2:
-                position = _context.sent;
-                lat = position.latitude;
-                lng = position.longitude;
-                this.marker_items.push({
-                  position: {
-                    lat: lat,
-                    lng: lng
-                  },
-                  title: '中心地',
-                  icon: {
-                    url: 'http://pictogram2.com/p/p0957/3.png',
-                    scaledSize: new google.maps.Size(50, 55),
-                    scaledColor: '#0000'
-                  }
-                }); //this.setcentermarker(lat,lng)
-
-              case 6:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function setCurrentMarker() {
-        return _setCurrentMarker.apply(this, arguments);
-      }
-
-      return setCurrentMarker;
-    }(),
+    // async setCurrentMarker(){
+    //     let position = await this.currentPosition()
+    //     let lat = position.latitude
+    //     let lng = position.longitude
+    //     this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
+    //     icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
+    //     //this.setcentermarker(lat,lng)
+    // },
     // shoplistピン立て
     setshopmarker: function setshopmarker(shoplist) {
       var _this2 = this;
@@ -2301,8 +2266,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           address: shopdata.address,
           open: shopdata.open,
           capacity: shopdata.capacity,
-          pet: shopdata.pet,
-          card: shopdata.card
+          card: shopdata.card,
+          icon: {
+            url: 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png',
+            scaledSize: {
+              width: 50,
+              height: 55
+            },
+            scaledColor: '#0000'
+          }
         });
       });
     },
@@ -2319,12 +2291,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     s_click: function s_click(id) {
       this.shop_name = this.marker_items[id].title;
       this.f_photo = this.marker_items[id].photo;
+      this.o_url = this.marker_items[id].url;
       this.tel_add = this.marker_items[id].address;
       this.time = this.marker_items[id].open;
       this.capa = this.marker_items[id].capacity;
-      this.pet = this.marker_items[id].pet;
       this.credit = this.marker_items[id].card;
-      this.s_name = this.marker_items[id].title;
+      this.s_name = this.marker_items[id].title; //this.marker_items[id].icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png' 
+
+      this.$refs.map.panTo({
+        lat: this.marker_items[id].position.lat,
+        lng: this.marker_items[id].position.lng
+      });
+      console.log(this.marker_items);
+      this.$refs.markerRefValue.$markerObject.setIcon('http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png');
     }
   }
 });
@@ -2340,7 +2319,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _MypageHashigo_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MypageHashigo.vue */ "./resources/js/components/mypage/MypageHashigo.vue");
 //
 //
 //
@@ -2354,7 +2332,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+// import MypageHashigo from './MypageHashigo.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     history: String
@@ -2368,8 +2346,7 @@ __webpack_require__.r(__webpack_exports__);
       thirs_store: ""
     };
   },
-  components: {
-    MypageHashigo: _MypageHashigo_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  components: {// MypageHashigo,
   },
   mounted: function mounted() {
     var json = JSON.parse(this.history);
@@ -9153,7 +9130,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wrap {\r\n  width: 100%;\r\n  height: 300px;\r\n  background-color: tan;\n}\nul {\r\n  list-style: none;\r\n  background-color: aquamarine;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.wrap {\r\n  width: 100%;\r\n  margin: auto;\r\n  background-color: tan;\n}\n.wrap ul li {\r\n  list-style-type: none;\r\n  margin: auto;\r\n  padding: 5px;\r\n  width: 600px;\r\n  height: 150px;\r\n  background-color: aquamarine;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -48748,11 +48725,16 @@ var render = function() {
             _vm._v("\r\n                収容人数：" + _vm._s(_vm.capa)),
             _c("br"),
             _c("hr"),
-            _vm._v("\r\n                ペット連れ込み：" + _vm._s(_vm.pet)),
-            _c("br"),
-            _c("hr"),
             _vm._v("\r\n                クレジット：" + _vm._s(_vm.credit)),
             _c("br"),
+            _c("hr"),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v("URL："),
+              _c("a", { attrs: { href: _vm.o_url } }, [
+                _vm._v(_vm._s(_vm.shop_name) + "の公式")
+              ])
+            ]),
             _c("hr")
           ]
         )
@@ -48885,19 +48867,20 @@ var render = function() {
   return _c("div", { staticClass: "wrap" }, [
     _c(
       "ul",
+      { staticClass: "ul_hashigo" },
       _vm._l(_vm.jsons, function(json, id) {
         return _c("li", { key: id }, [
+          _vm._v("\n      日付：" + _vm._s(json.date)),
+          _c("br"),
+          _vm._v("\n      １軒目：" + _vm._s(json.first.name)),
+          _c("br"),
+          _vm._v("\n      ２軒目：" + _vm._s(json.second.name)),
+          _c("br"),
           _vm._v(
-            "\n      " +
-              _vm._s(json.date) +
-              "\n      " +
-              _vm._s(json.first.id) +
-              "\n      " +
-              _vm._s(json.second.id) +
-              "\n      " +
-              _vm._s(json.third.id) +
-              "\n    "
-          )
+            "\n      ３軒目：" +
+              _vm._s(json.third ? json.third.name : "no store")
+          ),
+          _c("br")
         ])
       }),
       0
