@@ -2124,12 +2124,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2172,7 +2166,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       time: "",
       capa: "",
       pet: "",
-      credit: ""
+      credit: "",
+      f_name: "",
+      s_name: "",
+      t_name: ""
     };
   },
   //1件目の詳細
@@ -2192,14 +2189,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.capa = json[0].capacity;
     this.pet = json[0].pet;
     this.credit = json[0].card; //this.setCurrentMarker()
+
+    this.f_name = json[0].name;
   },
   methods: {
-    //現在地取得
-    // currentPosition () {
-    //     return new Promise(function(resolve,reject){
-    //         navigator.geolocation.getCurrentPosition((position)=>{resolve(position.coords)})
-    //     })
-    // },
     // キーワード位置取得
     keywordPosition: function keywordPosition() {
       var _this = this;
@@ -2282,13 +2275,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return setCurrentMarker;
     }(),
-    // async setCurrentMarker(){
-    //     let position = await this.currentPosition()
-    //     let lat = position.latitude
-    //     let lng = position.longitude
-    //     this.marker_items.push({position: {lat: lat, lng: lng}, title: 'ANSJXN'})
-    //     //this.setcentermarker(lat,lng)
-    // },
     // shoplistピン立て
     setshopmarker: function setshopmarker(shoplist) {
       var _this2 = this;
@@ -2373,6 +2359,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.capa = this.marker_items[id].capacity;
       this.pet = this.marker_items[id].pet;
       this.credit = this.marker_items[id].card;
+      this.s_name = this.marker_items[id].title;
     }
   }
 });
@@ -48776,7 +48763,12 @@ var render = function() {
           "div",
           { staticClass: "col-md-8", staticStyle: { "white-space": "nowrap" } },
           [
-            _vm._m(0),
+            _c("br"),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(_vm._s(_vm.f_name) + " > " + _vm._s(_vm.s_name) + "　　"),
+              _c("a", { attrs: { href: "" } }, [_vm._v("はしご保存")])
+            ]),
             _vm._v("\r\n                住所：" + _vm._s(_vm.tel_add)),
             _c("br"),
             _c("hr"),
@@ -48845,7 +48837,7 @@ var render = function() {
                 "table",
                 _vm._l(_vm.marker_items, function(s, id) {
                   return _c("tr", { key: id }, [
-                    id !== 0
+                    id !== 0 && id !== 1
                       ? _c("div", [
                           _c("img", { attrs: { src: s.photo } }),
                           _c("br"),
@@ -48872,20 +48864,11 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _vm._m(0)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v("パンくずリスト -> "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("はしご保存")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
