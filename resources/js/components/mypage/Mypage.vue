@@ -1,17 +1,32 @@
 <template>
   <div class="wrap">
-    <ul class="ul_hashigo">
-      <li v-for="(json,id) in jsons" :key="id" >
-        日付：{{ json.date }}<br>
-        １軒目：{{ json.first.name}}<img v-bind:src="json.first.photo.pc.m"><br>
-        ２軒目：{{ json.second.name}}<img v-bind:src="json.second.photo.pc.m"><br>
-        ３軒目：{{ json.third?json.third.name:'no store'}}<br>
-        <!-- <div class="date">日付：{{ json.date }}</div>
-        <div class="firtst">１軒目：{{ json.first.name}}<img v-bind:src="json.first.photo.pc.m"></div>
-        <div class="second">２軒目：{{ json.second.name}}<img v-bind:src="json.second.photo.pc.m"></div>
-        <div class="third">３軒目：{{ json.third?json.third.name:'no store'}}</div> -->
-      </li>
-    </ul>
+      <!-- <ul>
+        <li v-for="(json,id) in jsons" :key="id">
+          1軒目：{{ json.first?json.first.name:'no store'}}<br>
+          2軒目：{{ json.second?json.second.name:'no store'}}<br>
+          3軒目：{{ json.third?json.third.name:'no store'}}<br>
+        </li>
+      </ul> -->
+
+      <!-- jsonのlengthで判定 -->
+      <div v-if="Object.keys(this.jsons).length == 0">
+        <ul>
+          <li>1軒目：no store</li>
+          <li>2軒目：no store</li>
+          <li>3軒目：no store</li>
+        </ul>
+      </div>
+      <div v-else>
+        <ul>
+          <li v-for="(json,id) in jsons" :key="id">
+            1軒目：{{ json.first?json.first.name:'no store'}}<img v-bind:src="json.first.photo.pc.m"><br>
+            2軒目：{{ json.second?json.second.name:'no store'}}<img v-bind:src="json.second.photo.pc.m"><br>
+            3軒目：{{ (json.third)?json.third.name:'no store'}}
+            <span v-if="json.third"><img v-bind:src="json.third.photo.pc.m"></span>
+            <span v-else><button>3軒目を探す</button></span>
+          </li>
+        </ul>
+      </div>
   </div>
 </template>
 
@@ -24,12 +39,11 @@ export default {
   },
   data () {
     return {
-      jsons: null,
+      jsons: [],
       date: [],
       first_store: "",
       second_store: "",
       thirs_store: "",
-      f_photo: "",
     }
   },
   components: {
@@ -40,6 +54,7 @@ export default {
     console.log(json)
     this.jsons = json
     console.log(this.jsons)
+    console.log(Object.keys(this.jsons).length);
   },
 
   methods: {
@@ -65,8 +80,15 @@ export default {
   background-color: aquamarine;
 }
 
+.li_span {
+  width: 300px;
+  background-color: violet;
+}
+
 .date.first.second.third {
   width: 600px;
   height: 600px;
 }
+
+
 </style>

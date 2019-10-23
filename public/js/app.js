@@ -2366,6 +2366,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import MypageHashigo from './MypageHashigo.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2373,12 +2388,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      jsons: null,
+      jsons: [],
       date: [],
       first_store: "",
       second_store: "",
-      thirs_store: "",
-      f_photo: ""
+      thirs_store: ""
     };
   },
   components: {// MypageHashigo,
@@ -2388,6 +2402,7 @@ __webpack_require__.r(__webpack_exports__);
     console.log(json);
     this.jsons = json;
     console.log(this.jsons);
+    console.log(Object.keys(this.jsons).length);
   },
   methods: {}
 });
@@ -9165,7 +9180,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wrap {\n  width: 100%;\n  margin: auto;\n  background-color: tan;\n}\n.wrap ul li {\n  list-style-type: none;\n  margin: auto;\n  padding: 5px;\n  width: 900px;\n  height: 150px;\n  background-color: aquamarine;\n}\n.date.first.second.third {\n  width: 600px;\n  height: 600px;\n}\n", ""]);
+exports.push([module.i, "\n.wrap {\n  width: 100%;\n  margin: auto;\n  background-color: tan;\n}\n.wrap ul li {\n  list-style-type: none;\n  margin: auto;\n  padding: 5px;\n  width: 900px;\n  height: 150px;\n  background-color: aquamarine;\n}\n.li_span {\n  width: 300px;\n  background-color: violet;\n}\n.date.first.second.third {\n  width: 600px;\n  height: 600px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -48895,31 +48910,56 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrap" }, [
-    _c(
-      "ul",
-      { staticClass: "ul_hashigo" },
-      _vm._l(_vm.jsons, function(json, id) {
-        return _c("li", { key: id }, [
-          _vm._v("\n      日付：" + _vm._s(json.date)),
-          _c("br"),
-          _vm._v("\n      １軒目：" + _vm._s(json.first.name)),
-          _c("img", { attrs: { src: json.first.photo.pc.m } }),
-          _c("br"),
-          _vm._v("\n      ２軒目：" + _vm._s(json.second.name)),
-          _c("img", { attrs: { src: json.second.photo.pc.m } }),
-          _c("br"),
-          _vm._v(
-            "\n      ３軒目：" +
-              _vm._s(json.third ? json.third.name : "no store")
-          ),
-          _c("br")
+    Object.keys(this.jsons).length == 0
+      ? _c("div", [_vm._m(0)])
+      : _c("div", [
+          _c(
+            "ul",
+            _vm._l(_vm.jsons, function(json, id) {
+              return _c("li", { key: id }, [
+                _vm._v(
+                  "\n          1軒目：" +
+                    _vm._s(json.first ? json.first.name : "no store")
+                ),
+                _c("img", { attrs: { src: json.first.photo.pc.m } }),
+                _c("br"),
+                _vm._v(
+                  "\n          2軒目：" +
+                    _vm._s(json.second ? json.second.name : "no store")
+                ),
+                _c("img", { attrs: { src: json.second.photo.pc.m } }),
+                _c("br"),
+                _vm._v(
+                  "\n          3軒目：" +
+                    _vm._s(json.third ? json.third.name : "no store") +
+                    "\n          "
+                ),
+                json.third
+                  ? _c("span", [
+                      _c("img", { attrs: { src: json.third.photo.pc.m } })
+                    ])
+                  : _c("span", [_c("button", [_vm._v("3軒目を探す")])])
+              ])
+            }),
+            0
+          )
         ])
-      }),
-      0
-    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", [
+      _c("li", [_vm._v("1軒目：no store")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("2軒目：no store")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("3軒目：no store")])
+    ])
+  }
+]
 render._withStripped = true
 
 
