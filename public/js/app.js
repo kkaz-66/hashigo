@@ -1770,6 +1770,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2059,18 +2062,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! http */ "./node_modules/stream-http/index.js");
-/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! http */ "./node_modules/stream-http/index.js");
+/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
 //
 //
 //
@@ -2227,7 +2225,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // hotpepperから店情報取得
     getList: function getList(lat, lng) {
-      return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/list', {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/list', {
         lng: lng,
         lat: lat
       }).then(function (res) {
@@ -2235,50 +2233,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return res.data;
       });
     },
-    // 現在位置更新
-    setCurrentMarker: function () {
-      var _setCurrentMarker = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var position, lat, lng;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return this.currentPosition();
-
-              case 2:
-                position = _context.sent;
-                lat = position.latitude;
-                lng = position.longitude;
-                this.marker_items.push({
-                  position: {
-                    lat: lat,
-                    lng: lng
-                  },
-                  title: '中心地',
-                  icon: {
-                    url: 'http://pictogram2.com/p/p0957/3.png',
-                    scaledSize: new google.maps.Size(50, 55),
-                    scaledColor: '#0000'
-                  }
-                }); //this.setcentermarker(lat,lng)
-
-              case 6:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function setCurrentMarker() {
-        return _setCurrentMarker.apply(this, arguments);
-      }
-
-      return setCurrentMarker;
-    }(),
+    // // 現在位置更新
+    // async setCurrentMarker(){
+    //     let position = await this.currentPosition()
+    //     let lat = position.latitude
+    //     let lng = position.longitude
+    //     this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
+    //     icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
+    //     //this.setcentermarker(lat,lng)
+    // },
     // shoplistピン立て
     setshopmarker: function setshopmarker(shoplist) {
       var _this2 = this;
@@ -9056,7 +9019,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.row[data-v-332fccf4] {\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 10px;\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#shop[data-v-332fccf4] {\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 5px; /* 外側の余白 上下・左右 */\n    padding: 10px; /* 内側の余白 上・右・下・左 */\n    position: relative;\n    z-index: 0;\n}\n#shop[data-v-332fccf4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#shop[data-v-332fccf4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\5019\\88DC';\n    display: block;\n    margin-left: 160px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: -10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.row[data-v-332fccf4] {\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 10px;\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#box[data-v-332fccf4] {\n    text-align: center;\n    position: relative;\n    background: #F8F0D7;\n    border-left:4px dotted rgba(0,0,0,.1);\n    border-right:4px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 1em;\n    margin-top: 10px;\n    margin-left: 30px;\n    color: #65513f;\n    width: 350px;\n    height: 400px;\n    /* overflow-x: scroll; */\n    word-wrap: break-word;\n}\n/* #box:before {\n    border: 1px solid #fff; 白い実線\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n} */\n#tape[data-v-332fccf4]:after {\n    position: absolute;\n    top: -1em;\n    left: 26%;\n    width:100px;\n    height:30px;\n    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);\n    background-size: 20px 20px;\n    border-left:2px dotted rgba(0,0,0,.1);\n    border-right:2px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 0.25em 2em;\n    color: #65513f;\n    transform: rotate(-4deg);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -9132,15 +9095,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\n.app[data-v-7e94e6d4] {\n    margin: 10px 50px;\n}\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\n    /* 左上の写真・店名の設定 */\n    text-align: center;\n    padding-left: 100px;\n    margin-top: 30px;\n}\n#name[data-v-7e94e6d4] {\n    padding: 20px;\n    overflow: auto;\n}\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    width: 100%;\n    height: 480px;\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 20px; /* 外側の余白 上下・左右 */\n    padding: 10px 20px; /* 内側の余白 上下・左右 */\n    position: relative;\n    z-index: 0;\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\n    display: block;\n    margin-left: 150px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: 10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n    position: absolute;\n    z-index: 2;\n}\n#detail[data-v-7e94e6d4] {\n    display: inline-block;\n    margin-top: 10px;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-7e94e6d4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
-=======
-<<<<<<< HEAD
-exports.push([module.i, "\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 580px;\n}\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    width: 100%;\n    height: 540px;\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 0px; /* 外側の余白 上下・左右 */\n    padding: 10px; /* 内側の余白 上・右・下・左 */\n    position: relative;\n    z-index: 0;\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\n    display: block;\n    margin-left: 110px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: 10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n    position: absolute;\n    z-index: 2;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
-=======
-exports.push([module.i, "\n.app[data-v-7e94e6d4] {\n    margin: 10px 50px;\n}\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\n    /* 左上の写真・店名の設定 */\n    text-align: center;\n    padding-left: 100px;\n}\n#name[data-v-7e94e6d4] {\n    padding: 10px;\n    overflow: auto;\n}\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    width: 100%;\n    height: 460px;\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 0px; /* 外側の余白 上下・左右 */\n    padding: 10px 60px; /* 内側の余白 上下・左右 */\n    position: relative;\n    z-index: 0;\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\n    display: block;\n    margin-left: 110px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: 10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n    position: absolute;\n    z-index: 2;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
->>>>>>> 7b9dd01763b83c6c465e21aac52f3f1cab7ff2bc
->>>>>>> 602203befbea1f73a83a8de0897b3e371346613f
+exports.push([module.i, "\n.body[data-v-7e94e6d4] {\n    width: 100%;\n    height: 920px;\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n}\n.app[data-v-7e94e6d4] {\n    margin:0px 50px;\n}\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\n    /* 左上の写真・店名の設定 */\n    text-align: center;\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n    background: -webkit-gradient(linear,\n        left top,\n        left bottom,\n        from(#091938),\n        to(#1e3971));\n    border-radius: 3px;\n    color: #fff;\n    font-size: 36px;\n    font-family:\"Haruhi Gakuen\", sans-serif;\n    letter-spacing: 2px;\n    margin: 0 auto;\n    padding: 10px;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n    height: 350px;\n}\n.col-md-8[data-v-7e94e6d4] {\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n    background: -webkit-gradient(linear,\n        left top,\n        left bottom,\n        from(#091938),\n        to(#1e3971));\n    border-radius: 3px;\n    color: #fff;\n    font-size: 14px;\n    font-family:\"Haruhi Gakuen\", sans-serif;\n    letter-spacing: 2px;\n    margin: 0 auto;\n    padding: 10px;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n    height: 350px;\n}\n.pan_name[data-v-7e94e6d4]{\n    max-width: 180px;\n    min-width: 100px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n}\n.pan_name a[data-v-7e94e6d4] {\n    color: #fff;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n}\n.pan_space[data-v-7e94e6d4] {\n    max-width: 20px;\n    min-width: 20px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n}\n#photo[data-v-7e94e6d4] {\n    color: #333;\n    text-shadow: 0 20px 10px rgba(0, 0, 0, .5);\n}\n#name[data-v-7e94e6d4] {\n    display: block;\n    font-size: 16px;\n    margin-top: 10px;\n    padding: 0 0 10px 0;\n    overflow-wrap: break-word;\n    /* display: inline-block;\n    padding: 20px;\n    overflow-wrap: break-word; */\n    /* overflow-wrap: break-word; */\n}\n.col-md-4 #name[data-v-7e94e6d4] {\n    display: block;\n    font-size: 16px;\n    margin-top: 10px;\n    padding: 0 0 10px 0;\n}\n/* .shop_name{\n    display: inline-block;\n    width: 100px;\n} */\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    text-align: center;\n    position: relative;\n    background: #F8F0D7;\n    border-left:4px dotted rgba(0,0,0,.1);\n    border-right:4px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 1em;\n    margin-top: 10px;\n    margin-left: 70px;\n    color: #65513f;\n    width: 300px;\n    height: 500px;\n    overflow-y: scroll;\n}\n/* #products:before {\n    border: 1px solid #fff; 白い実線\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n} */\n#tape[data-v-7e94e6d4]:after {\n    position: absolute;\n    top: -1em;\n    left: 26%;\n    width:100px;\n    height:30px;\n    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);\n    background-size: 20px 20px;\n    border-left:2px dotted rgba(0,0,0,.1);\n    border-right:2px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 0.25em 2em;\n    color: #65513f;\n    transform: rotate(-4deg);\n}\n#detail[data-v-7e94e6d4] {\n    max-width: 200px;\n    min-width: 200px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    display: inline-block;\n    margin-top: 10px;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-7e94e6d4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -9159,11 +9114,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-<<<<<<< HEAD
 exports.push([module.i, "\n.wrap {\n  width: 100%;\n  margin: auto;\n  background-color: tan;\n}\n.wrap ul li {\n  list-style-type: none;\n  margin: auto;\n  padding: 5px;\n  width: 600px;\n  height: 150px;\n  background-color: aquamarine;\n}\n\n", ""]);
-=======
-exports.push([module.i, "\n.wrap {\n  width: 100%;\n  height: 300px;\n  background-color: tan;\n}\nul {\n  list-style: none;\n  background-color: aquamarine;\n}\n\n", ""]);
->>>>>>> 7b9dd01763b83c6c465e21aac52f3f1cab7ff2bc
 
 // exports
 
@@ -48542,37 +48493,41 @@ var render = function() {
                     attrs: { id: "shop" }
                   },
                   [
-                    _c("img", { attrs: { src: _vm.photo } }),
-                    _c("br"),
+                    _c("div", { attrs: { id: "tape" } }),
                     _vm._v(" "),
-                    _c("h3", [
-                      _c("span", { staticClass: "shopname" }, [
-                        _vm._v(_vm._s(_vm.name))
+                    _c("div", { attrs: { id: "box" } }, [
+                      _c("img", { attrs: { src: _vm.photo } }),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("h3", [
+                        _c("span", { staticClass: "shopname" }, [
+                          _vm._v(_vm._s(_vm.name))
+                        ]),
+                        _c("br")
                       ]),
-                      _c("br")
-                    ]),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("a", { attrs: { href: _vm.url } }, [
-                      _vm._v("ホットぺッパー")
-                    ]),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            _vm.detail +
-                            _vm.id +
-                            _vm.f_lat +
-                            _vm.lat +
-                            _vm.f_lng +
-                            _vm.lng
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.name) + " の詳細ヘ")]
-                    )
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("a", { attrs: { href: _vm.url } }, [
+                        _vm._v("ホットぺッパー")
+                      ]),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href:
+                              _vm.detail +
+                              _vm.id +
+                              _vm.f_lat +
+                              _vm.lat +
+                              _vm.f_lng +
+                              _vm.lng
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.name) + " の詳細ヘ")]
+                      )
+                    ])
                   ]
                 )
           ])
@@ -48733,7 +48688,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { attrs: { id: "name" } }, [
-              _c("h4", [_vm._v(_vm._s(_vm.shop_name))])
+              _c("h3", [_vm._v(_vm._s(_vm.shop_name))])
             ])
           ]
         ),
@@ -48742,16 +48697,21 @@ var render = function() {
           "div",
           { staticClass: "col-md-8", staticStyle: { "white-space": "nowrap" } },
           [
-<<<<<<< HEAD
-            _vm._m(0),
-=======
             _c("br"),
             _vm._v(" "),
             _c("p", [
-              _vm._v(_vm._s(_vm.f_name) + " > " + _vm._s(_vm.s_name) + "　　"),
-              _c("a", { attrs: { href: "" } }, [_vm._v("はしご保存")])
+              _c("span", { staticClass: "pan_name" }, [
+                _vm._v(_vm._s(_vm.f_name))
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "pan_space" }, [_vm._v(">")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "pan_name" }, [
+                _vm._v(_vm._s(_vm.s_name))
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
             ]),
->>>>>>> 7b9dd01763b83c6c465e21aac52f3f1cab7ff2bc
             _vm._v("\n                住所：" + _vm._s(_vm.tel_add)),
             _c("br"),
             _c("hr"),
@@ -48823,6 +48783,7 @@ var render = function() {
                     id >= 2
                       ? _c("div", [
                           _c("img", { attrs: { src: s.photo } }),
+                          _c("img"),
                           _c("br"),
                           _vm._v(" "),
                           _c(
@@ -48837,8 +48798,7 @@ var render = function() {
                             },
                             [_vm._v(_vm._s(s.title))]
                           ),
-                          _c("br"),
-                          _c("br")
+                          _c("hr")
                         ])
                       : _vm._e()
                   ])
@@ -48850,11 +48810,19 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _vm._m(1)
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "pan_name" }, [
+      _c("a", { attrs: { href: "" } }, [_vm._v("はしご保存")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
