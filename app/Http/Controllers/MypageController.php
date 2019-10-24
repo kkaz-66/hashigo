@@ -74,5 +74,14 @@ class MypageController extends Controller
         return view('mypage',compact('user_history'));
 
     }
+    
+    //テスト
+    public function insert(Request $request)
+    {
+        $f_id= $request->f_id;
+        $s_id= $request->s_id;
+        return "data";
+    }
+
 
 }

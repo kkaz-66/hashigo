@@ -67,6 +67,7 @@ export default {
             detail:"/detail?id=",
             f_lat:"&lat=",
             f_lng:"&lng=",
+            //緯度経度
             geocode:{},
             address: '',
             center: {lat: 35.6581, lng: 139.7017},
@@ -100,7 +101,7 @@ export default {
             icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
         },
 
-        // hotpepperから店情報取得
+        // hotpepperから店情報取得(ほんとはPOSTlist)
         getList(lat,lng){
             return axios.post('/api/location',{
                 lng: lng,
