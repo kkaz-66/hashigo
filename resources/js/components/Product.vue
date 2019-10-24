@@ -6,7 +6,7 @@
             <!--店画像-->
             <div class="col-md-4"  style="white-space: nowrap">
                 <div id="photo">
-                    <img v-bind:src="f_photo"><br><br>
+                    <img v-bind:src="f_photo"><br>
                 </div>
                 <div id="name">
                     <h4>{{ shop_name }}</h4>
@@ -32,7 +32,7 @@
                             :title="m.title"
                             :url="m.url"
                             :icon="m.icon"
-                            :clickable="true" :draggable="false" :key="id" @click="clickMarker(id)">
+                            :clickable="true" :draggable="false" :key="id" @click="clickMarker(id)" ref ="icon">
                         </GmapMarker>
                     </GmapMap>
                 </div>
@@ -42,9 +42,9 @@
                 <div id="products">
                     <table>
                     <tr v-for="(s,id) in marker_items" :key="id">
-                        <div v-if="id !== 0 && id !==1">
+                        <div v-if="id >= 2">
                             <img v-bind:src="s.photo"><br>
-                            <button v-on:click="s_click(id)">{{ s.title }}</button>
+                            <button  id="detail" v-on:click="s_click(id)">{{ s.title }}</button><br><br>
                         </div>
                     </tr>
                 </table>
@@ -190,10 +190,9 @@ export default {
             this.capa = this.marker_items[id].capacity
             this.credit = this.marker_items[id].card
             this.s_name = this.marker_items[id].title
-            //this.marker_items[id].icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png' 
+            //2件目、マーカー色チェンジ
+            this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png'
             this.$refs.map.panTo({lat: this.marker_items[id].position.lat, lng: this.marker_items[id].position.lng})
-            console.log(this.marker_items)
-            this.$refs.markerRefValue.$markerObject.setIcon('http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png')
         }
     }
 
@@ -212,9 +211,11 @@ export default {
     /* 左上の写真・店名の設定 */
     text-align: center;
     padding-left: 100px;
+    margin-top: 30px;
 }
+
 #name {
-    padding: 10px;
+    padding: 20px;
     overflow: auto;
 }
 .col-md-9 {
@@ -244,7 +245,7 @@ export default {
 }
 #products {
     width: 100%;
-    height: 460px;
+    height: 480px;
     text-align: center;
     background-color: rgb(255, 247, 170);	/* 背景色 */
     border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */
@@ -252,8 +253,8 @@ export default {
     -moz-box-shadow:1px 1px 6px 0px #ccc;
     -webkit-box-shadow:1px 1px 6px 0px #ccc;
     -o-box-shadow:1px 1px 6px 0px #ccc;
-    margin: 20px 0px; /* 外側の余白 上下・左右 */
-    padding: 10px 60px; /* 内側の余白 上下・左右 */
+    margin: 20px 20px; /* 外側の余白 上下・左右 */
+    padding: 10px 20px; /* 内側の余白 上下・左右 */
     position: relative;
     z-index: 0;
     overflow-y: scroll;
@@ -282,7 +283,7 @@ export default {
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     content: 'はしごリスト';
     display: block;
-    margin-left: 110px;
+    margin-left: 150px;
     padding: 5px 20px;  
     text-align: center;
     position: absolute;
@@ -294,6 +295,23 @@ export default {
     -o-transform: rotate(-3deg);
     position: absolute;
     z-index: 2;
+}
+#detail {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+#area:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-bottom: none;
 }
 #hot {
     padding-left: 35px;

@@ -2298,12 +2298,12 @@ __webpack_require__.r(__webpack_exports__);
       this.credit = this.marker_items[id].card;
       this.s_name = this.marker_items[id].title; //this.marker_items[id].icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png' 
 
+      this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png';
       this.$refs.map.panTo({
         lat: this.marker_items[id].position.lat,
         lng: this.marker_items[id].position.lng
-      });
-      console.log(this.marker_items);
-      this.$refs.markerRefValue.$markerObject.setIcon('http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png');
+      }); //console.log(this.marker_items)
+      //this.$refs.markerRefValue.$markerObject.setIcon('http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png')
     }
   }
 });
@@ -9111,7 +9111,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.app[data-v-7e94e6d4] {\r\n    margin: 10px 50px;\n}\n#map[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\r\n    /* 左上の写真・店名の設定 */\r\n    text-align: center;\r\n    padding-left: 100px;\n}\n#name[data-v-7e94e6d4] {\r\n    padding: 10px;\r\n    overflow: auto;\n}\n.col-md-9[data-v-7e94e6d4] {\r\n    margin-left: 20px;\r\n    margin-right: -20px;\r\n    position: relative;\r\n    border-top: solid 2px black;\r\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\r\n    content: '';\r\n    position: absolute;\r\n    top: -10px;\r\n    width: 2px;\r\n    height: calc(100% + 20px);\r\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\r\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\r\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\r\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 460px;\r\n    text-align: center;\r\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\r\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\r\n    box-shadow:1px 1px 6px 0px #ccc;\r\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\r\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\r\n    -o-box-shadow:1px 1px 6px 0px #ccc;\r\n    margin: 20px 0px; /* 外側の余白 上下・左右 */\r\n    padding: 10px 60px; /* 内側の余白 上下・左右 */\r\n    position: relative;\r\n    z-index: 0;\r\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\r\n    border: 1px solid #fff; /* 白い実線 */\r\n    border-radius: 5px;\r\n    content: '';\r\n    display: block;\r\n    margin: 4px;\r\n    position: absolute;\r\n    top: 0px;\r\n    bottom: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\r\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\r\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\r\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\r\n    background-size: 15px 15px; /* 水玉の大きさ */\r\n    border-left: 2px dotted rgba(0,0,0,0.1);\r\n    border-right: 2px dotted rgba(0,0,0,0.1);\r\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\r\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\r\n    display: block;\r\n    margin-left: 110px;\r\n    padding: 5px 20px;  \r\n    text-align: center;\r\n    position: absolute;\r\n    top: 10px;\r\n    left: 20px;\r\n    transform: rotate(-3deg);\r\n    -moz-transform: rotate(-3deg);\r\n    -webkit-transform: rotate(-3deg);\r\n    -o-transform: rotate(-3deg);\r\n    position: absolute;\r\n    z-index: 2;\n}\n#hot[data-v-7e94e6d4] {\r\n    padding-left: 35px;\r\n    padding-top: 10px;\n}\r\n", ""]);
+exports.push([module.i, "\n.app[data-v-7e94e6d4] {\r\n    margin: 10px 50px;\n}\n#map[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\r\n    /* 左上の写真・店名の設定 */\r\n    text-align: center;\r\n    padding-left: 100px;\r\n    margin-top: 30px;\n}\n#name[data-v-7e94e6d4] {\r\n    padding: 20px;\r\n    overflow: auto;\n}\n.col-md-9[data-v-7e94e6d4] {\r\n    margin-left: 20px;\r\n    margin-right: -20px;\r\n    position: relative;\r\n    border-top: solid 2px black;\r\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\r\n    content: '';\r\n    position: absolute;\r\n    top: -10px;\r\n    width: 2px;\r\n    height: calc(100% + 20px);\r\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\r\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\r\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\r\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\r\n    width: 100%;\r\n    height: 480px;\r\n    text-align: center;\r\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\r\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\r\n    box-shadow:1px 1px 6px 0px #ccc;\r\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\r\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\r\n    -o-box-shadow:1px 1px 6px 0px #ccc;\r\n    margin: 20px 20px; /* 外側の余白 上下・左右 */\r\n    padding: 10px 20px; /* 内側の余白 上下・左右 */\r\n    position: relative;\r\n    z-index: 0;\r\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\r\n    border: 1px solid #fff; /* 白い実線 */\r\n    border-radius: 5px;\r\n    content: '';\r\n    display: block;\r\n    margin: 4px;\r\n    position: absolute;\r\n    top: 0px;\r\n    bottom: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\r\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\r\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\r\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\r\n    background-size: 15px 15px; /* 水玉の大きさ */\r\n    border-left: 2px dotted rgba(0,0,0,0.1);\r\n    border-right: 2px dotted rgba(0,0,0,0.1);\r\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\r\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\r\n    display: block;\r\n    margin-left: 150px;\r\n    padding: 5px 20px;  \r\n    text-align: center;\r\n    position: absolute;\r\n    top: 10px;\r\n    left: 20px;\r\n    transform: rotate(-3deg);\r\n    -moz-transform: rotate(-3deg);\r\n    -webkit-transform: rotate(-3deg);\r\n    -o-transform: rotate(-3deg);\r\n    position: absolute;\r\n    z-index: 2;\n}\n#detail[data-v-7e94e6d4] {\r\n    display: inline-block;\r\n    margin-top: 10px;\r\n    padding: 0.5em 1em;\r\n    text-decoration: none;\r\n    background: #668ad8;/*ボタン色*/\r\n    color: #FFF;\r\n    border-bottom: solid 4px #627295;\r\n    border-radius: 3px;\n}\n#area[data-v-7e94e6d4]:active {\r\n    /*ボタンを押したとき*/\r\n    transform: translateY(4px);/*下に動く*/\r\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\r\n    border-bottom: none;\n}\n#hot[data-v-7e94e6d4] {\r\n    padding-left: 35px;\r\n    padding-top: 10px;\n}\r\n", ""]);
 
 // exports
 
@@ -48696,7 +48696,6 @@ var render = function() {
           [
             _c("div", { attrs: { id: "photo" } }, [
               _c("img", { attrs: { src: _vm.f_photo } }),
-              _c("br"),
               _c("br")
             ]),
             _vm._v(" "),
@@ -48756,6 +48755,8 @@ var render = function() {
                 _vm._l(_vm.marker_items, function(m, id) {
                   return _c("GmapMarker", {
                     key: id,
+                    ref: "icon",
+                    refInFor: true,
                     attrs: {
                       position: m.position,
                       title: m.title,
@@ -48789,7 +48790,7 @@ var render = function() {
                 "table",
                 _vm._l(_vm.marker_items, function(s, id) {
                   return _c("tr", { key: id }, [
-                    id !== 0 && id !== 1
+                    id >= 2
                       ? _c("div", [
                           _c("img", { attrs: { src: s.photo } }),
                           _c("br"),
@@ -48797,6 +48798,7 @@ var render = function() {
                           _c(
                             "button",
                             {
+                              attrs: { id: "detail" },
                               on: {
                                 click: function($event) {
                                   return _vm.s_click(id)
@@ -48804,7 +48806,9 @@ var render = function() {
                               }
                             },
                             [_vm._v(_vm._s(s.title))]
-                          )
+                          ),
+                          _c("br"),
+                          _c("br")
                         ])
                       : _vm._e()
                   ])
