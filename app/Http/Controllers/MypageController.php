@@ -72,14 +72,13 @@ class MypageController extends Controller
             }
         }
         return view('mypage',compact('user_history'));
-
     }
     public function insert(Request $request){
         $first=$request->f_id;
         $second=$request->s_id;
-        $id=Auth::id();
-        DB::table('hashigo_lists')->insert(['member_id'=>$id,'first_store_id'=>$first,'second_store_id'=>$second,'created_at'=>NOW()]);
-        return ture;
+        $user_id = $request->userid;
+        DB::table('hashigo_lists')->insert(['member_id'=>(int)$user_id,'first_store_id'=>$first,'second_store_id'=>$second,'created_at'=>NOW()]);
+        return $user_id;
     }
     public function third_insert(){
         $third=$request->t_id;

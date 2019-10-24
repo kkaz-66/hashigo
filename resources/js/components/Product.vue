@@ -9,18 +9,31 @@
                     <img v-bind:src="f_photo"><br>
                 </div>
                 <div id="name">
-                    <h4>{{ shop_name }}</h4>
+                    <h3>{{ shop_name }}</h3>
                 </div>
             </div>
             <!--店詳細-->
             <div class="col-md-8" style="white-space: nowrap">
                 <br>
-                <p>{{ f_name }} > {{ s_name }}　　<a href="">はしご保存</a></p>
+                <!-- ボタンのクリックアクション -->
+                <div>
+                   <div v-if="isActive">
+                    <!-- 隠す -->
+                   </div>
+                   <div v-else>
+                       <p><span class="pan_name">{{ f_name }}</span> 
+                          <span class="pan_space">></span>
+                          <span class="pan_name">{{ s_name }}</span>
+                    　 <button  v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></p>
+                   </div> 
+                </div>
+
+                <br>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
                 クレジット：{{ credit }}<br><hr>
-                <p>URL：<a v-bind:href="o_url" target="_blank">{{ shop_name }}の公式</a></p><hr>
+                <p>URL：<a v-bind:href="o_url" target="_blank"><span class="pan_name">{{ shop_name }}の公式</span></a></p><hr>
             </div>
         </div>
         <div class="row">
@@ -43,8 +56,8 @@
                     <table>
                     <tr v-for="(s,id) in marker_items" :key="id">
                         <div v-if="id >= 2">
-                            <img v-bind:src="s.photo"><br>
-                            <button  id="detail" v-on:click="s_click(id)">{{ s.title }}</button><br><br>
+                            <img v-bind:src="s.photo"><img><br>
+                            <button  id="detail" v-on:click="s_click(id)">{{ s.title }}</button><hr>
                         </div>
                     </tr>
                 </table>
@@ -63,7 +76,8 @@ export default {
     props:{
         product:String,
         place:String,
-        arr:[]
+        arr:[],
+        userid:String
     },
 
     data () {
@@ -97,13 +111,20 @@ export default {
             s_name:"",
             t_name:"",
             o_url:"",
+            b_id:null,
+            //postするid
+            f_id:"",
+            s_id:"",
+            t_id:"",
+            //ボタンのクリックアクション
+            isActive:true,
+            insertClick:false
         }
     },
 
     //1件目の詳細
     mounted (){
         let json = JSON.parse(this.product)
-        console.log(json[0])
         this.center = {lat:parseFloat(json[0].lat), lng:parseFloat(json[0].lng)}
         this.setcentermarker(parseFloat(json[0].lat),parseFloat(json[0].lng))
         this.setshopmarker(JSON.parse(this.place))
@@ -116,6 +137,7 @@ export default {
         this.o_url = json[0].urls.pc
         //パンくずリスト一件目（固定）
         this.f_name = json[0].name
+        this.f_id =json[0].id
     },
 
     methods: {
@@ -141,21 +163,10 @@ export default {
                 lng: lng,
                 lat: lat
             }).then((res)=>{
-                console.log(res.data);
                 return res.data
             })
         },
 
-        // 現在位置更新
-        // async setCurrentMarker(){
-        //     let position = await this.currentPosition()
-        //     let lat = position.latitude
-        //     let lng = position.longitude
-        //     this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
-        //     icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
-        //     //this.setcentermarker(lat,lng)
-        // },
-        
         // shoplistピン立て
         setshopmarker(shoplist){
             shoplist.map((shopdata)=>{
@@ -165,7 +176,7 @@ export default {
             let lat = shopdata.lat
             let lng = shopdata.lng
             this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo,
-                address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, card:shopdata.card,
+                address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, card:shopdata.card, id:shopdata.id,
                 icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png',scaledSize:{width:50,height:55} ,scaledColor: '#0000'}})
             });
         },
@@ -190,9 +201,28 @@ export default {
             this.capa = this.marker_items[id].capacity
             this.credit = this.marker_items[id].card
             this.s_name = this.marker_items[id].title
+            this.s_id = this.marker_items[id].id
+            this.isActive = false;
+
             //2件目、マーカー色チェンジ
+            if(this.b_id !== null){
+                this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png'
+            }
             this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png'
             this.$refs.map.panTo({lat: this.marker_items[id].position.lat, lng: this.marker_items[id].position.lng})
+            this.b_id = id
+        },
+
+        insertList(f_id, s_id,userid){
+            this.insertClick=true
+            return axios.post('/api/insert',{
+                f_id:f_id,
+                s_id:s_id,
+                userid:userid,
+            }).then((res)=>{
+                console.log(res.data);
+                return res.data
+            })
         }
     }
 
@@ -200,8 +230,14 @@ export default {
 </script>
 
 <style scoped>
+.body {
+    width: 100%;
+    height: 920px;
+    background: #1e3971;
+    background: -moz-linear-gradient(top, #091938, #1e3971);
+}
 .app {
-    margin: 10px 50px;
+    margin:0px 50px;
 }
 #map {
     width: 100%;
@@ -210,14 +246,84 @@ export default {
 .col-md-4 {
     /* 左上の写真・店名の設定 */
     text-align: center;
-    padding-left: 100px;
-    margin-top: 30px;
+    background: #1e3971;
+    background: -moz-linear-gradient(top, #091938, #1e3971);
+    background: -webkit-gradient(linear,
+        left top,
+        left bottom,
+        from(#091938),
+        to(#1e3971));
+    border-radius: 3px;
+    color: #fff;
+    font-size: 36px;
+    font-family:"Haruhi Gakuen", sans-serif;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    padding: 10px;
+    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+    height: 350px;
 }
-
+.col-md-8 {
+    background: #1e3971;
+    background: -moz-linear-gradient(top, #091938, #1e3971);
+    background: -webkit-gradient(linear,
+        left top,
+        left bottom,
+        from(#091938),
+        to(#1e3971));
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+    font-family:"Haruhi Gakuen", sans-serif;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    padding: 10px;
+    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+    height: 350px;
+}
+.pan_name{
+    max-width: 180px;
+    min-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+.pan_name a {
+    color: #fff;
+    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+}
+.pan_space {
+    max-width: 20px;
+    min-width: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+#photo {
+    color: #333;
+    text-shadow: 0 20px 10px rgba(0, 0, 0, .5);
+}
 #name {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 0 0 10px 0;
+    overflow-wrap: break-word;
+    /* display: inline-block;
     padding: 20px;
-    overflow: auto;
+    overflow-wrap: break-word; */
+    /* overflow-wrap: break-word; */
 }
+.col-md-4 #name {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 0 0 10px 0;
+}
+/* .shop_name{
+    display: inline-block;
+    width: 100px;
+} */
 .col-md-9 {
     margin-left: 20px;
     margin-right: -20px;
@@ -244,24 +350,22 @@ export default {
     position: relative;
 }
 #products {
-    width: 100%;
-    height: 480px;
     text-align: center;
-    background-color: rgb(255, 247, 170);	/* 背景色 */
-    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */
-    box-shadow:1px 1px 6px 0px #ccc;
-    -moz-box-shadow:1px 1px 6px 0px #ccc;
-    -webkit-box-shadow:1px 1px 6px 0px #ccc;
-    -o-box-shadow:1px 1px 6px 0px #ccc;
-    margin: 20px 20px; /* 外側の余白 上下・左右 */
-    padding: 10px 20px; /* 内側の余白 上下・左右 */
     position: relative;
-    z-index: 0;
+    background: #F8F0D7;
+    border-left:4px dotted rgba(0,0,0,.1);
+    border-right:4px dotted rgba(0,0,0,.1);
+    box-shadow:0 0 5px rgba(0,0,0,.2);
+    padding: 1em;
+    margin-top: 10px;
+    margin-left: 70px;
+    color: #65513f;
+    width: 300px;
+    height: 500px;
     overflow-y: scroll;
-    
 }
-#products:before {
-    border: 1px solid #fff; /* 白い実線 */
+/* #products:before {
+    border: 1px solid #fff; 白い実線
     border-radius: 5px;
     content: '';
     display: block;
@@ -272,31 +376,28 @@ export default {
     left: 0px;
     right: 0px;
     z-index: -1;
-}
+} */
 #tape:after {
-    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */
-    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */
-    background-position: 0 0, 8px 8px;  /* 水玉の距離 */
-    background-size: 15px 15px; /* 水玉の大きさ */
-    border-left: 2px dotted rgba(0,0,0,0.1);
-    border-right: 2px dotted rgba(0,0,0,0.1);
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    content: 'はしごリスト';
-    display: block;
-    margin-left: 150px;
-    padding: 5px 20px;  
-    text-align: center;
     position: absolute;
-    top: 10px;
-    left: 20px;
-    transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -webkit-transform: rotate(-3deg);
-    -o-transform: rotate(-3deg);
-    position: absolute;
-    z-index: 2;
+    top: -1em;
+    left: 26%;
+    width:100px;
+    height:30px;
+    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);
+    background-size: 20px 20px;
+    border-left:2px dotted rgba(0,0,0,.1);
+    border-right:2px dotted rgba(0,0,0,.1);
+    box-shadow:0 0 5px rgba(0,0,0,.2);
+    padding: 0.25em 2em;
+    color: #65513f;
+    transform: rotate(-4deg); 
 }
 #detail {
+    max-width: 200px;
+    min-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     display: inline-block;
     margin-top: 10px;
     padding: 0.5em 1em;
