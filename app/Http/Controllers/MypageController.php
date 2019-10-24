@@ -72,7 +72,6 @@ class MypageController extends Controller
             }
         }
         return view('mypage',compact('user_history'));
-
     }
     public function insert(Request $request){
         $first=$request->f_id;
