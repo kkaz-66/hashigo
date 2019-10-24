@@ -74,5 +74,11 @@ class MypageController extends Controller
         return view('mypage',compact('user_history'));
 
     }
-
+    public function insert(Request $request){
+        $first=$request->f_id;
+        $second=$request->s_id;
+        $id=Auth::id();
+        DB::table('hashigo_lists')->insert(['member_id'=>$id,'first_store_id'=>$first,'second_store_id'=>$second,'created_at'=>NOW()]);
+        return ture;
+    }
 }
