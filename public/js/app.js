@@ -2121,13 +2121,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     product: String,
     place: String,
-    arr: []
+    arr: [],
+    userid: String
   },
   data: function data() {
     return {
@@ -2171,7 +2183,10 @@ __webpack_require__.r(__webpack_exports__);
       //postするid
       f_id: "",
       s_id: "",
-      t_id: ""
+      t_id: "",
+      //ボタンのクリックアクション
+      isActive: true,
+      insertClick: false
     };
   },
   //1件目の詳細
@@ -2294,7 +2309,8 @@ __webpack_require__.r(__webpack_exports__);
       this.capa = this.marker_items[id].capacity;
       this.credit = this.marker_items[id].card;
       this.s_name = this.marker_items[id].title;
-      this.s_id = this.marker_items[id].id; //2件目、マーカー色チェンジ
+      this.s_id = this.marker_items[id].id;
+      this.isActive = false; //2件目、マーカー色チェンジ
 
       if (this.b_id !== null) {
         this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png';
@@ -2307,10 +2323,12 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.b_id = id;
     },
-    insertList: function insertList(f_id, s_id) {
+    insertList: function insertList(f_id, s_id, userid) {
+      this.insertClick = true;
       return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/insert', {
         f_id: f_id,
-        s_id: s_id
+        s_id: s_id,
+        userid: userid
       }).then(function (res) {
         console.log(res.data);
         return res.data;
@@ -48742,20 +48760,37 @@ var render = function() {
           [
             _c("br"),
             _vm._v(" "),
-            _c("p", [
-              _vm._v(_vm._s(_vm.f_name) + " > " + _vm._s(_vm.s_name) + "　"),
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.insertList(_vm.f_id, _vm.s_id)
-                    }
-                  }
-                },
-                [_vm._v("ほぞん保存")]
-              )
+            _c("div", [
+              _vm.isActive
+                ? _c("div")
+                : _c("div", [
+                    _vm._v(
+                      "\r\n                       " +
+                        _vm._s(_vm.f_name) +
+                        " > " +
+                        _vm._s(_vm.s_name) +
+                        "\r\n                    　 "
+                    ),
+                    _c(
+                      "button",
+                      {
+                        attrs: { disabled: _vm.insertClick },
+                        on: {
+                          click: function($event) {
+                            return _vm.insertList(
+                              _vm.f_id,
+                              _vm.s_id,
+                              _vm.userid
+                            )
+                          }
+                        }
+                      },
+                      [_vm._v("はしご保存")]
+                    )
+                  ])
             ]),
+            _vm._v(" "),
+            _c("br"),
             _vm._v("\r\n                住所：" + _vm._s(_vm.tel_add)),
             _c("br"),
             _c("hr"),

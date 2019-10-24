@@ -15,7 +15,18 @@
             <!--店詳細-->
             <div class="col-md-8" style="white-space: nowrap">
                 <br>
-                <p>{{ f_name }} > {{ s_name }}　<button v-on:click="insertList(f_id,s_id)">ほぞん保存</button></p>
+                <!-- ボタンのクリックアクション -->
+                <div>
+                   <div v-if="isActive">
+                    <!-- 隠す -->
+                   </div>
+                   <div v-else>
+                       {{ f_name }} > {{ s_name }}
+                    　 <button v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
+                   </div> 
+                </div>
+
+                <br>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
@@ -63,7 +74,8 @@ export default {
     props:{
         product:String,
         place:String,
-        arr:[]
+        arr:[],
+        userid:String
     },
 
     data () {
@@ -101,7 +113,10 @@ export default {
             //postするid
             f_id:"",
             s_id:"",
-            t_id:""
+            t_id:"",
+            //ボタンのクリックアクション
+            isActive:true,
+            insertClick:false
         }
     },
 
@@ -150,7 +165,6 @@ export default {
             })
         },
 
-        
         // shoplistピン立て
         setshopmarker(shoplist){
             shoplist.map((shopdata)=>{
@@ -186,6 +200,7 @@ export default {
             this.credit = this.marker_items[id].card
             this.s_name = this.marker_items[id].title
             this.s_id = this.marker_items[id].id
+            this.isActive = false;
 
             //2件目、マーカー色チェンジ
             if(this.b_id !== null){
@@ -196,12 +211,14 @@ export default {
             this.b_id = id
         },
 
-        insertList(f_id, s_id){
+        insertList(f_id, s_id,userid){
+            this.insertClick=true
             return axios.post('/api/insert',{
                 f_id:f_id,
                 s_id:s_id,
+                userid:userid,
             }).then((res)=>{
-                console.log(res.data)
+                console.log(res.data);
                 return res.data
             })
         }
