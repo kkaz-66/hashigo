@@ -24,6 +24,8 @@
           </li>
         </ul>
       </div>
+      <span class="hot_text">Powered by <a href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></span>
+      <span class="hot_text">画像提供：ホットペッパー グルメ</span>
   </div>
 </template>
 
@@ -116,5 +118,9 @@ html body {
   display: block;
 }
 
+
+.hot_text {
+  font-size: 0.3rem;
+}
 
 </style>

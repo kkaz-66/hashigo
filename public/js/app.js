@@ -2382,6 +2382,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 // import MypageHashigo from './MypageHashigo.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -9086,7 +9088,11 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
+<<<<<<< HEAD
+exports.push([module.i, "\n.row[data-v-332fccf4] {\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 10px;\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#shop[data-v-332fccf4] {\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 5px; /* 外側の余白 上下・左右 */\n    padding: 10px; /* 内側の余白 上・右・下・左 */\n    position: relative;\n    z-index: 0;\n}\n#shop[data-v-332fccf4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#shop[data-v-332fccf4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\5019\\88DC';\n    display: block;\n    margin-left: 160px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: -10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+=======
 exports.push([module.i, "\n.row[data-v-332fccf4] {\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 10px;\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#box[data-v-332fccf4] {\n    text-align: center;\n    position: relative;\n    background: #F8F0D7;\n    border-left:4px dotted rgba(0,0,0,.1);\n    border-right:4px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 1em;\n    margin-top: 10px;\n    margin-left: 30px;\n    color: #65513f;\n    width: 350px;\n    height: 400px;\n    /* overflow-x: scroll; */\n    word-wrap: break-word;\n}\n/* #box:before {\n    border: 1px solid #fff; 白い実線\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n} */\n#tape[data-v-332fccf4]:after {\n    position: absolute;\n    top: -1em;\n    left: 26%;\n    width:100px;\n    height:30px;\n    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);\n    background-size: 20px 20px;\n    border-left:2px dotted rgba(0,0,0,.1);\n    border-right:2px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 0.25em 2em;\n    color: #65513f;\n    transform: rotate(-4deg);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+>>>>>>> 31e006a029bb68804f1b0c6939f742662b038aed
 
 // exports
 
@@ -9162,7 +9168,11 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
+<<<<<<< HEAD
+exports.push([module.i, "\n.app[data-v-7e94e6d4] {\n    margin: 10px 50px;\n}\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\n    /* 左上の写真・店名の設定 */\n    text-align: center;\n    padding-left: 100px;\n    margin-top: 30px;\n}\n#name[data-v-7e94e6d4] {\n    padding: 20px;\n    overflow: auto;\n}\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    width: 100%;\n    height: 480px;\n    text-align: center;\n    background-color: rgb(255, 247, 170);\t/* 背景色 */\n    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */\n    box-shadow:1px 1px 6px 0px #ccc;\n    -moz-box-shadow:1px 1px 6px 0px #ccc;\n    -webkit-box-shadow:1px 1px 6px 0px #ccc;\n    -o-box-shadow:1px 1px 6px 0px #ccc;\n    margin: 20px 20px; /* 外側の余白 上下・左右 */\n    padding: 10px 20px; /* 内側の余白 上下・左右 */\n    position: relative;\n    z-index: 0;\n    overflow-y: scroll;\n}\n#products[data-v-7e94e6d4]:before {\n    border: 1px solid #fff; /* 白い実線 */\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n}\n#tape[data-v-7e94e6d4]:after {\n    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */\n    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */\n    background-position: 0 0, 8px 8px;  /* 水玉の距離 */\n    background-size: 15px 15px; /* 水玉の大きさ */\n    border-left: 2px dotted rgba(0,0,0,0.1);\n    border-right: 2px dotted rgba(0,0,0,0.1);\n    box-shadow: 0 0 5px rgba(0,0,0,0.2);\n    content: '\\306F\\3057\\3054\\30EA\\30B9\\30C8';\n    display: block;\n    margin-left: 150px;\n    padding: 5px 20px;  \n    text-align: center;\n    position: absolute;\n    top: 10px;\n    left: 20px;\n    transform: rotate(-3deg);\n    -moz-transform: rotate(-3deg);\n    -webkit-transform: rotate(-3deg);\n    -o-transform: rotate(-3deg);\n    position: absolute;\n    z-index: 2;\n}\n#detail[data-v-7e94e6d4] {\n    display: inline-block;\n    margin-top: 10px;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-7e94e6d4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+=======
 exports.push([module.i, "\n.body[data-v-7e94e6d4] {\n    width: 100%;\n    height: 920px;\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n}\n.app[data-v-7e94e6d4] {\n    margin:0px 50px;\n}\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\n    /* 左上の写真・店名の設定 */\n    text-align: center;\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n    background: -webkit-gradient(linear,\n        left top,\n        left bottom,\n        from(#091938),\n        to(#1e3971));\n    border-radius: 3px;\n    color: #fff;\n    font-size: 36px;\n    font-family:\"Haruhi Gakuen\", sans-serif;\n    letter-spacing: 2px;\n    margin: 0 auto;\n    padding: 10px;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n    height: 350px;\n}\n.col-md-8[data-v-7e94e6d4] {\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n    background: -webkit-gradient(linear,\n        left top,\n        left bottom,\n        from(#091938),\n        to(#1e3971));\n    border-radius: 3px;\n    color: #fff;\n    font-size: 14px;\n    font-family:\"Haruhi Gakuen\", sans-serif;\n    letter-spacing: 2px;\n    margin: 0 auto;\n    padding: 10px;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n    height: 350px;\n}\n.pan_name[data-v-7e94e6d4]{\n    max-width: 180px;\n    min-width: 100px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n}\n.pan_name a[data-v-7e94e6d4] {\n    color: #fff;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n}\n.pan_space[data-v-7e94e6d4] {\n    max-width: 20px;\n    min-width: 20px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n}\n#photo[data-v-7e94e6d4] {\n    color: #333;\n    text-shadow: 0 20px 10px rgba(0, 0, 0, .5);\n}\n#name[data-v-7e94e6d4] {\n    display: block;\n    font-size: 16px;\n    margin-top: 10px;\n    padding: 0 0 10px 0;\n    overflow-wrap: break-word;\n    /* display: inline-block;\n    padding: 20px;\n    overflow-wrap: break-word; */\n    /* overflow-wrap: break-word; */\n}\n.col-md-4 #name[data-v-7e94e6d4] {\n    display: block;\n    font-size: 16px;\n    margin-top: 10px;\n    padding: 0 0 10px 0;\n}\n/* .shop_name{\n    display: inline-block;\n    width: 100px;\n} */\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    text-align: center;\n    position: relative;\n    background: #F8F0D7;\n    border-left:4px dotted rgba(0,0,0,.1);\n    border-right:4px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 1em;\n    margin-top: 10px;\n    margin-left: 70px;\n    color: #65513f;\n    width: 300px;\n    height: 500px;\n    overflow-y: scroll;\n}\n/* #products:before {\n    border: 1px solid #fff; 白い実線\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n} */\n#tape[data-v-7e94e6d4]:after {\n    position: absolute;\n    top: -1em;\n    left: 26%;\n    width:100px;\n    height:30px;\n    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);\n    background-size: 20px 20px;\n    border-left:2px dotted rgba(0,0,0,.1);\n    border-right:2px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 0.25em 2em;\n    color: #65513f;\n    transform: rotate(-4deg);\n}\n#detail[data-v-7e94e6d4] {\n    max-width: 200px;\n    min-width: 200px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    display: inline-block;\n    margin-top: 10px;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-7e94e6d4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+>>>>>>> 31e006a029bb68804f1b0c6939f742662b038aed
 
 // exports
 
@@ -9181,7 +9191,11 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
+<<<<<<< HEAD
+exports.push([module.i, "\nhtml body[data-v-0eb05e18] {\n  margin:0;\n}\n.wrap[data-v-0eb05e18] {\n  width: 100%;\n  padding: 0;\n  /* background-color: tomato; */\n}\n.ul_wrap[data-v-0eb05e18] {\n  /* リストの幅、wrapを基準に70％、 */\n  /* width: 70%; */\n  margin: auto;\n  /* background-color: orange; */\n}\n.ul_wrap ul[data-v-0eb05e18] {\n  margin: 0;\n  padding: 0;\n}\n.ul_wrap ul .hashigo_date[data-v-0eb05e18] {\n  width: 100px;\n  /* background-color: aquamarine; */\n}\n.ul_wrap li[data-v-0eb05e18] {\n  list-style-type: none;\n  /* background-color: turquoise; */\n  /* margin-bottom: 20px; */\n  /* padding-left: 30px; */\n  padding: 5px;\n  display: flex;\n}\n.ul_wrap li .hashigo_li[data-v-0eb05e18] {\n  width: 468px;\n  /* background-color: aqua; */\n  display: flex;\n}\n.ul_wrap li .test[data-v-0eb05e18] {\n  display: block;\n  /* background-color: palegoldenrod; */\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  /* background-color: yellowgreen; */\n  display: block;\n}\n.hot_text[data-v-0eb05e18] {\n  font-size: 0.3rem;\n}\n\n", ""]);
+=======
 exports.push([module.i, "\nhtml body[data-v-0eb05e18] {\n  margin:0;\n}\n.wrap[data-v-0eb05e18] {\n  width: 100%;\n  padding: 0;\n  /* background-color: tomato; */\n}\n.ul_wrap[data-v-0eb05e18] {\n  /* リストの幅、wrapを基準に70％、 */\n  /* width: 70%; */\n  margin: auto;\n  /* background-color: orange; */\n}\n.ul_wrap ul[data-v-0eb05e18] {\n  margin: 0;\n  padding: 0;\n}\n.ul_wrap ul .hashigo_date[data-v-0eb05e18] {\n  width: 100px;\n  /* background-color: aquamarine; */\n}\n.ul_wrap li[data-v-0eb05e18] {\n  list-style-type: none;\n  /* background-color: turquoise; */\n  /* margin-bottom: 20px; */\n  /* padding-left: 30px; */\n  padding: 5px;\n  display: flex;\n}\n.ul_wrap li .hashigo_li[data-v-0eb05e18] {\n  width: 468px;\n  /* background-color: aqua; */\n  display: flex;\n}\n.ul_wrap li .test[data-v-0eb05e18] {\n  display: block;\n  /* background-color: palegoldenrod; */\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  /* background-color: yellowgreen; */\n  display: block;\n}\n\n\n", ""]);
+>>>>>>> 31e006a029bb68804f1b0c6939f742662b038aed
 
 // exports
 
@@ -48770,6 +48784,26 @@ var render = function() {
               _vm.isActive
                 ? _c("div")
                 : _c("div", [
+<<<<<<< HEAD
+                    _vm._v(
+                      "\n                       " +
+                        _vm._s(_vm.f_name) +
+                        " > " +
+                        _vm._s(_vm.s_name) +
+                        "\n                    　 "
+                    ),
+                    _c(
+                      "button",
+                      {
+                        attrs: { disabled: _vm.insertClick },
+                        on: {
+                          click: function($event) {
+                            return _vm.insertList(
+                              _vm.f_id,
+                              _vm.s_id,
+                              _vm.userid
+                            )
+=======
                     _c("p", [
                       _c("span", { staticClass: "pan_name" }, [
                         _vm._v(_vm._s(_vm.f_name))
@@ -48793,6 +48827,7 @@ var render = function() {
                                 _vm.userid
                               )
                             }
+>>>>>>> 31e006a029bb68804f1b0c6939f742662b038aed
                           }
                         },
                         [_vm._v("はしご保存")]
@@ -49013,7 +49048,13 @@ var render = function() {
             }),
             0
           )
-        ])
+        ]),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _c("span", { staticClass: "hot_text" }, [
+      _vm._v("画像提供：ホットペッパー グルメ")
+    ])
   ])
 }
 var staticRenderFns = [
@@ -49027,6 +49068,17 @@ var staticRenderFns = [
       _c("li", [_vm._v("2軒目：no store")]),
       _vm._v(" "),
       _c("li", [_vm._v("3軒目：no store")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "hot_text" }, [
+      _vm._v("Powered by "),
+      _c("a", { attrs: { href: "http://webservice.recruit.co.jp/" } }, [
+        _vm._v("ホットペッパー Webサービス")
+      ])
     ])
   }
 ]
