@@ -9,7 +9,7 @@
                     <img v-bind:src="f_photo"><br>
                 </div>
                 <div id="name">
-                    <h4>{{ shop_name }}</h4>
+                    <h3>{{ shop_name }}</h3>
                 </div>
             </div>
             <!--店詳細-->
@@ -21,8 +21,10 @@
                     <!-- 隠す -->
                    </div>
                    <div v-else>
-                       {{ f_name }} > {{ s_name }}
-                    　 <button v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
+                       <p><span class="pan_name">{{ f_name }}</span> 
+                          <span class="pan_space">></span>
+                          <span class="pan_name">{{ s_name }}</span>
+                    　 <button  v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></p>
                    </div> 
                 </div>
 
@@ -31,7 +33,7 @@
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
                 クレジット：{{ credit }}<br><hr>
-                <p>URL：<a v-bind:href="o_url" target="_blank">{{ shop_name }}の公式</a></p><hr>
+                <p>URL：<a v-bind:href="o_url" target="_blank"><span class="pan_name">{{ shop_name }}の公式</span></a></p><hr>
             </div>
         </div>
         <div class="row">
@@ -54,8 +56,8 @@
                     <table>
                     <tr v-for="(s,id) in marker_items" :key="id">
                         <div v-if="id >= 2">
-                            <img v-bind:src="s.photo"><br>
-                            <button  id="detail" v-on:click="s_click(id)">{{ s.title }}</button><br><br>
+                            <img v-bind:src="s.photo"><img><br>
+                            <button  id="detail" v-on:click="s_click(id)">{{ s.title }}</button><hr>
                         </div>
                     </tr>
                 </table>
@@ -228,8 +230,14 @@ export default {
 </script>
 
 <style scoped>
+.body {
+    width: 100%;
+    height: 920px;
+    background: #1e3971;
+    background: -moz-linear-gradient(top, #091938, #1e3971);
+}
 .app {
-    margin: 10px 50px;
+    margin:0px 50px;
 }
 #map {
     width: 100%;
@@ -238,14 +246,84 @@ export default {
 .col-md-4 {
     /* 左上の写真・店名の設定 */
     text-align: center;
-    padding-left: 100px;
-    margin-top: 30px;
+    background: #1e3971;
+    background: -moz-linear-gradient(top, #091938, #1e3971);
+    background: -webkit-gradient(linear,
+        left top,
+        left bottom,
+        from(#091938),
+        to(#1e3971));
+    border-radius: 3px;
+    color: #fff;
+    font-size: 36px;
+    font-family:"Haruhi Gakuen", sans-serif;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    padding: 10px;
+    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+    height: 350px;
 }
-
+.col-md-8 {
+    background: #1e3971;
+    background: -moz-linear-gradient(top, #091938, #1e3971);
+    background: -webkit-gradient(linear,
+        left top,
+        left bottom,
+        from(#091938),
+        to(#1e3971));
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+    font-family:"Haruhi Gakuen", sans-serif;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    padding: 10px;
+    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+    height: 350px;
+}
+.pan_name{
+    max-width: 180px;
+    min-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+.pan_name a {
+    color: #fff;
+    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+}
+.pan_space {
+    max-width: 20px;
+    min-width: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+#photo {
+    color: #333;
+    text-shadow: 0 20px 10px rgba(0, 0, 0, .5);
+}
 #name {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 0 0 10px 0;
+    overflow-wrap: break-word;
+    /* display: inline-block;
     padding: 20px;
-    overflow: auto;
+    overflow-wrap: break-word; */
+    /* overflow-wrap: break-word; */
 }
+.col-md-4 #name {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 0 0 10px 0;
+}
+/* .shop_name{
+    display: inline-block;
+    width: 100px;
+} */
 .col-md-9 {
     margin-left: 20px;
     margin-right: -20px;
@@ -272,24 +350,22 @@ export default {
     position: relative;
 }
 #products {
-    width: 100%;
-    height: 480px;
     text-align: center;
-    background-color: rgb(255, 247, 170);	/* 背景色 */
-    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */
-    box-shadow:1px 1px 6px 0px #ccc;
-    -moz-box-shadow:1px 1px 6px 0px #ccc;
-    -webkit-box-shadow:1px 1px 6px 0px #ccc;
-    -o-box-shadow:1px 1px 6px 0px #ccc;
-    margin: 20px 20px; /* 外側の余白 上下・左右 */
-    padding: 10px 20px; /* 内側の余白 上下・左右 */
     position: relative;
-    z-index: 0;
+    background: #F8F0D7;
+    border-left:4px dotted rgba(0,0,0,.1);
+    border-right:4px dotted rgba(0,0,0,.1);
+    box-shadow:0 0 5px rgba(0,0,0,.2);
+    padding: 1em;
+    margin-top: 10px;
+    margin-left: 70px;
+    color: #65513f;
+    width: 300px;
+    height: 500px;
     overflow-y: scroll;
-    
 }
-#products:before {
-    border: 1px solid #fff; /* 白い実線 */
+/* #products:before {
+    border: 1px solid #fff; 白い実線
     border-radius: 5px;
     content: '';
     display: block;
@@ -300,31 +376,28 @@ export default {
     left: 0px;
     right: 0px;
     z-index: -1;
-}
+} */
 #tape:after {
-    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */
-    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */
-    background-position: 0 0, 8px 8px;  /* 水玉の距離 */
-    background-size: 15px 15px; /* 水玉の大きさ */
-    border-left: 2px dotted rgba(0,0,0,0.1);
-    border-right: 2px dotted rgba(0,0,0,0.1);
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    content: 'はしごリスト';
-    display: block;
-    margin-left: 150px;
-    padding: 5px 20px;  
-    text-align: center;
     position: absolute;
-    top: 10px;
-    left: 20px;
-    transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -webkit-transform: rotate(-3deg);
-    -o-transform: rotate(-3deg);
-    position: absolute;
-    z-index: 2;
+    top: -1em;
+    left: 26%;
+    width:100px;
+    height:30px;
+    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);
+    background-size: 20px 20px;
+    border-left:2px dotted rgba(0,0,0,.1);
+    border-right:2px dotted rgba(0,0,0,.1);
+    box-shadow:0 0 5px rgba(0,0,0,.2);
+    padding: 0.25em 2em;
+    color: #65513f;
+    transform: rotate(-4deg); 
 }
 #detail {
+    max-width: 200px;
+    min-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     display: inline-block;
     margin-top: 10px;
     padding: 0.5em 1em;
