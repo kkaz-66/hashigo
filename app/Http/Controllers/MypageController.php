@@ -81,4 +81,15 @@ class MypageController extends Controller
         DB::table('hashigo_lists')->insert(['member_id'=>$id,'first_store_id'=>$first,'second_store_id'=>$second,'created_at'=>NOW()]);
         return ture;
     }
+    public function third_insert(){
+        $third=$request->t_id;
+        $id=$request->id;
+        DB::table('hashigo_lists')
+        ->where('id',$id)
+        ->update(['third_store_id'=>$third]);
+        return true;
+    }
+
+        // $created_at=DB::table('hashigo_lists')->orderby('created_at','desc')->limit(6)->get();
+        // var_dump($created_at);
 }
