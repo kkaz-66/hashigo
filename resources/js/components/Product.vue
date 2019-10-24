@@ -15,7 +15,18 @@
             <!--店詳細-->
             <div class="col-md-8" style="white-space: nowrap">
                 <br>
-                <p>{{ f_name }} > {{ s_name }}　　<a href="">はしご保存</a></p>
+                <!-- ボタンのクリックアクション -->
+                <div>
+                   <div v-if="isActive">
+                    <!-- 隠す -->
+                   </div>
+                   <div v-else>
+                       {{ f_name }} > {{ s_name }}
+                    　 <button v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
+                   </div> 
+                </div>
+
+                <br>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
@@ -63,7 +74,8 @@ export default {
     props:{
         product:String,
         place:String,
-        arr:[]
+        arr:[],
+        userid:String
     },
 
     data () {
@@ -97,13 +109,20 @@ export default {
             s_name:"",
             t_name:"",
             o_url:"",
+            b_id:null,
+            //postするid
+            f_id:"",
+            s_id:"",
+            t_id:"",
+            //ボタンのクリックアクション
+            isActive:true,
+            insertClick:false
         }
     },
 
     //1件目の詳細
     mounted (){
         let json = JSON.parse(this.product)
-        console.log(json[0])
         this.center = {lat:parseFloat(json[0].lat), lng:parseFloat(json[0].lng)}
         this.setcentermarker(parseFloat(json[0].lat),parseFloat(json[0].lng))
         this.setshopmarker(JSON.parse(this.place))
@@ -116,6 +135,7 @@ export default {
         this.o_url = json[0].urls.pc
         //パンくずリスト一件目（固定）
         this.f_name = json[0].name
+        this.f_id =json[0].id
     },
 
     methods: {
@@ -141,21 +161,10 @@ export default {
                 lng: lng,
                 lat: lat
             }).then((res)=>{
-                console.log(res.data);
                 return res.data
             })
         },
 
-        // 現在位置更新
-        // async setCurrentMarker(){
-        //     let position = await this.currentPosition()
-        //     let lat = position.latitude
-        //     let lng = position.longitude
-        //     this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
-        //     icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
-        //     //this.setcentermarker(lat,lng)
-        // },
-        
         // shoplistピン立て
         setshopmarker(shoplist){
             shoplist.map((shopdata)=>{
@@ -165,7 +174,7 @@ export default {
             let lat = shopdata.lat
             let lng = shopdata.lng
             this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo,
-                address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, card:shopdata.card,
+                address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, card:shopdata.card, id:shopdata.id,
                 icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png',scaledSize:{width:50,height:55} ,scaledColor: '#0000'}})
             });
         },
@@ -190,9 +199,28 @@ export default {
             this.capa = this.marker_items[id].capacity
             this.credit = this.marker_items[id].card
             this.s_name = this.marker_items[id].title
+            this.s_id = this.marker_items[id].id
+            this.isActive = false;
+
             //2件目、マーカー色チェンジ
+            if(this.b_id !== null){
+                this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png'
+            }
             this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png'
             this.$refs.map.panTo({lat: this.marker_items[id].position.lat, lng: this.marker_items[id].position.lng})
+            this.b_id = id
+        },
+
+        insertList(f_id, s_id,userid){
+            this.insertClick=true
+            return axios.post('/api/insert',{
+                f_id:f_id,
+                s_id:s_id,
+                userid:userid,
+            }).then((res)=>{
+                console.log(res.data);
+                return res.data
+            })
         }
     }
 
