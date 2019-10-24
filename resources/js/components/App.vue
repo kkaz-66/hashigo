@@ -36,7 +36,7 @@
                     <div id="shop" style="white-space: nowrap" v-else>
                         <img v-bind:src="photo"><br>
                         <h3><span class="shopname">{{name}}</span><br></h3><br>
-                        <a v-bind:href="url">ホットぺッパー</a><br>
+                        <a v-bind:href="url" target="_blank">ホットぺッパー</a><br>
                         
                         <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}} の詳細ヘ</a>
                     </div>
