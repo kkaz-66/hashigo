@@ -27,6 +27,12 @@ class hashigo_lists_seeder extends Seeder
         ]);
         DB::table('hashigo_lists')->insert([
             'member_id' => 1,
+            'first_store_id' => 'J000034029',
+            'second_store_id' => 'J000681372',
+            'created_at' => NOW(),
+        ]);
+        DB::table('hashigo_lists')->insert([
+            'member_id' => 1,
             'first_store_id' => 'J001162817',
             'second_store_id' => 'J001018368',
             'third_store_id' =>  'J000797077',
