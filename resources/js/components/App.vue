@@ -34,11 +34,14 @@
                     </div>
 
                     <div id="shop" style="white-space: nowrap" v-else>
-                        <img v-bind:src="photo"><br>
-                        <h3><span class="shopname">{{name}}</span><br></h3><br>
-                        <a v-bind:href="url" target="_blank">ホットぺッパー</a><br>
-                        
-                        <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}} の詳細ヘ</a>
+                        <div id="tape"></div>
+                        <div id ="box">
+                            <img v-bind:src="photo"><br>
+                            <h3><span class="shopname">{{name}}</span><br></h3><br>
+                            <a v-bind:href="url" target="_blank">ホットぺッパー</a><br>
+                            
+                            <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}} の詳細ヘ</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,21 +244,24 @@ export default {
 .shopname {
     background: linear-gradient(transparent 70%, #ff99ff 70%);
 }
-#shop {
+#box {
     text-align: center;
-    background-color: rgb(255, 247, 170);	/* 背景色 */
-    border: 1px solid rgb(255, 255, 255); /* 線の太さ・種類・色 */
-    box-shadow:1px 1px 6px 0px #ccc;
-    -moz-box-shadow:1px 1px 6px 0px #ccc;
-    -webkit-box-shadow:1px 1px 6px 0px #ccc;
-    -o-box-shadow:1px 1px 6px 0px #ccc;
-    margin: 20px 5px; /* 外側の余白 上下・左右 */
-    padding: 10px; /* 内側の余白 上・右・下・左 */
     position: relative;
-    z-index: 0;
+    background: #F8F0D7;
+    border-left:4px dotted rgba(0,0,0,.1);
+    border-right:4px dotted rgba(0,0,0,.1);
+    box-shadow:0 0 5px rgba(0,0,0,.2);
+    padding: 1em;
+    margin-top: 10px;
+    margin-left: 30px;
+    color: #65513f;
+    width: 350px;
+    height: 400px;
+    /* overflow-x: scroll; */
+    word-wrap: break-word;
 }
-#shop:before {
-    border: 1px solid #fff; /* 白い実線 */
+/* #box:before {
+    border: 1px solid #fff; 白い実線
     border-radius: 5px;
     content: '';
     display: block;
@@ -266,27 +272,21 @@ export default {
     left: 0px;
     right: 0px;
     z-index: -1;
-}
-#shop:after {
-    background-color: rgba(250, 178, 232, 0.979);  /* テープ背景色 */
-    background-image: radial-gradient(#fff 20%, transparent 0), radial-gradient(#fff 20%, transparent 0); /* 水玉の色 */
-    background-position: 0 0, 8px 8px;  /* 水玉の距離 */
-    background-size: 15px 15px; /* 水玉の大きさ */
-    border-left: 2px dotted rgba(0,0,0,0.1);
-    border-right: 2px dotted rgba(0,0,0,0.1);
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    content: '候補';
-    display: block;
-    margin-left: 160px;
-    padding: 5px 20px;  
-    text-align: center;
+} */
+#tape:after {
     position: absolute;
-    top: -10px;
-    left: 20px;
-    transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -webkit-transform: rotate(-3deg);
-    -o-transform: rotate(-3deg);
+    top: -1em;
+    left: 26%;
+    width:100px;
+    height:30px;
+    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);
+    background-size: 20px 20px;
+    border-left:2px dotted rgba(0,0,0,.1);
+    border-right:2px dotted rgba(0,0,0,.1);
+    box-shadow:0 0 5px rgba(0,0,0,.2);
+    padding: 0.25em 2em;
+    color: #65513f;
+    transform: rotate(-4deg); 
 }
 #hot {
     padding-left: 35px;
