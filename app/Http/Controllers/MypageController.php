@@ -38,38 +38,46 @@ class MypageController extends Controller
         $user = Auth::user();
         $hashigos = DB::table('hashigo_lists')->where('member_id',$user->id)->get();
         $url_ids = "";
-        foreach($hashigos as $hashigo){
-            
-            $first = "&id=".$hashigo->first_store_id;
-            $second = "&id=".$hashigo->second_store_id;
-            $third = isset($hashigo->third_store_id)?"&id=".$hashigo->third_store_id:'';
-            $url_ids = $url_ids.$first.$second.$third;
-
-        }
-
-        $hashigo_shops = $this->seach_shop($url_ids);
         $user_history = array();
-        foreach($hashigos as $hashigo){
-            
-            $user_history[$hashigo->id]["date"]= $hashigo->created_at;
-            foreach($hashigo_shops as $hashigo_shop){
-            
-                if($hashigo->first_store_id === $hashigo_shop["id"]){
+        if(count($hashigos) != 0){
+            foreach($hashigos as $hashigo){
+                
+                $first = "&id=".$hashigo->first_store_id;
+                $second = "&id=".$hashigo->second_store_id;
+                $third = isset($hashigo->third_store_id)?"&id=".$hashigo->third_store_id:'';
+                $url_ids = $url_ids.$first.$second.$third;
 
-                    $user_history[$hashigo->id]["first"] = $hashigo_shop;
-                }
-                if($hashigo->second_store_id === $hashigo_shop["id"]){
-             
-                    $user_history[$hashigo->id]["second"] = $hashigo_shop;
-                }
-                if($hashigo->third_store_id === $hashigo_shop["id"]){
-             
-                    $user_history[$hashigo->id]["third"] = $hashigo_shop;
+            }
+
+            $hashigo_shops = $this->seach_shop($url_ids);
+            
+            foreach($hashigos as $hashigo){
+                
+                $user_history[$hashigo->id]["date"]= $hashigo->created_at;
+                foreach($hashigo_shops as $hashigo_shop){
+                
+                    if($hashigo->first_store_id === $hashigo_shop["id"]){
+
+                        $user_history[$hashigo->id]["first"] = $hashigo_shop;
+                    }
+                    if($hashigo->second_store_id === $hashigo_shop["id"]){
+                
+                        $user_history[$hashigo->id]["second"] = $hashigo_shop;
+                    }
+                    if($hashigo->third_store_id === $hashigo_shop["id"]){
+                
+                        $user_history[$hashigo->id]["third"] = $hashigo_shop;
+                    }
                 }
             }
         }
         return view('mypage',compact('user_history'));
-
     }
-
+    public function insert(Request $request){
+        $first=$request->f_id;
+        $second=$request->s_id;
+        $user_id = $request->userid;
+        DB::table('hashigo_lists')->insert(['member_id'=>(int)$user_id,'first_store_id'=>$first,'second_store_id'=>$second,'created_at'=>NOW()]);
+        return $user_id;
+    }
 }

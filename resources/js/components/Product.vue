@@ -15,15 +15,25 @@
             <!--店詳細-->
             <div class="col-md-8" style="white-space: nowrap">
                 <br>
-                <p><span class="pan_name">{{ f_name }}</span> 
-                <span class="pan_space">></span>
-                <span class="pan_name">{{ s_name }}</span>
-                <span class="pan_name"><a href="">はしご保存</a></span></p>
+                <!-- ボタンのクリックアクション -->
+                <div>
+                   <div v-if="isActive">
+                    <!-- 隠す -->
+                   </div>
+                   <div v-else>
+                       <p><span class="pan_name">{{ f_name }}</span> 
+                          <span class="pan_space">></span>
+                          <span class="pan_name">{{ s_name }}</span>
+                    　 <button  v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></p>
+                   </div> 
+                </div>
+
+                <br>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
-                ペット連れ込み：{{ pet }}<br><hr>
                 クレジット：{{ credit }}<br><hr>
+                <p>URL：<a v-bind:href="o_url" target="_blank"><span class="pan_name">{{ shop_name }}の公式</span></a></p><hr>
             </div>
         </div>
         <div class="row">
@@ -35,7 +45,7 @@
                             :title="m.title"
                             :url="m.url"
                             :icon="m.icon"
-                            :clickable="true" :draggable="false" :key="id" @click="clickMarker(id)">
+                            :clickable="true" :draggable="false" :key="id" @click="clickMarker(id)" ref ="icon">
                         </GmapMarker>
                     </GmapMap>
                 </div>
@@ -66,7 +76,8 @@ export default {
     props:{
         product:String,
         place:String,
-        arr:[]
+        arr:[],
+        userid:String
     },
 
     data () {
@@ -95,18 +106,25 @@ export default {
             tel_add:"",
             time:"",
             capa:"",
-            pet:"",
             credit:"",
             f_name:"",
             s_name:"",
-            t_name:""
+            t_name:"",
+            o_url:"",
+            b_id:null,
+            //postするid
+            f_id:"",
+            s_id:"",
+            t_id:"",
+            //ボタンのクリックアクション
+            isActive:true,
+            insertClick:false
         }
     },
 
     //1件目の詳細
     mounted (){
         let json = JSON.parse(this.product)
-        console.log(json[0])
         this.center = {lat:parseFloat(json[0].lat), lng:parseFloat(json[0].lng)}
         this.setcentermarker(parseFloat(json[0].lat),parseFloat(json[0].lng))
         this.setshopmarker(JSON.parse(this.place))
@@ -115,10 +133,11 @@ export default {
         this.tel_add = json[0].address
         this.time = json[0].open
         this.capa = json[0].capacity
-        this.pet= json[0].pet
         this.credit = json[0].card
-        //this.setCurrentMarker()
+        this.o_url = json[0].urls.pc
+        //パンくずリスト一件目（固定）
         this.f_name = json[0].name
+        this.f_id =json[0].id
     },
 
     methods: {
@@ -134,7 +153,8 @@ export default {
         //ピン立て 中央
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地'})
+
+            this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/blue-dot.png',scaledSize:{width:50,height:55} ,scaledColor: '#0000'}})
         },
 
         // hotpepperから店情報取得
@@ -143,21 +163,10 @@ export default {
                 lng: lng,
                 lat: lat
             }).then((res)=>{
-                console.log(res.data);
                 return res.data
             })
         },
 
-        // // 現在位置更新
-        // async setCurrentMarker(){
-        //     let position = await this.currentPosition()
-        //     let lat = position.latitude
-        //     let lng = position.longitude
-        //     this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
-        //     icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
-        //     //this.setcentermarker(lat,lng)
-        // },
-        
         // shoplistピン立て
         setshopmarker(shoplist){
             shoplist.map((shopdata)=>{
@@ -166,8 +175,9 @@ export default {
             let photo = shopdata.photo.pc.l
             let lat = shopdata.lat
             let lng = shopdata.lng
-            this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},        title: name, url: url, photo: photo,
-                address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, pet:shopdata.pet, card:shopdata.card})
+            this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo,
+                address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, card:shopdata.card, id:shopdata.id,
+                icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png',scaledSize:{width:50,height:55} ,scaledColor: '#0000'}})
             });
         },
 
@@ -185,12 +195,34 @@ export default {
         s_click(id){
             this.shop_name = this.marker_items[id].title
             this.f_photo = this.marker_items[id].photo
+            this.o_url = this.marker_items[id].url
             this.tel_add = this.marker_items[id].address
             this.time = this.marker_items[id].open
             this.capa = this.marker_items[id].capacity
-            this.pet = this.marker_items[id].pet
             this.credit = this.marker_items[id].card
             this.s_name = this.marker_items[id].title
+            this.s_id = this.marker_items[id].id
+            this.isActive = false;
+
+            //2件目、マーカー色チェンジ
+            if(this.b_id !== null){
+                this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png'
+            }
+            this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png'
+            this.$refs.map.panTo({lat: this.marker_items[id].position.lat, lng: this.marker_items[id].position.lng})
+            this.b_id = id
+        },
+
+        insertList(f_id, s_id,userid){
+            this.insertClick=true
+            return axios.post('/api/insert',{
+                f_id:f_id,
+                s_id:s_id,
+                userid:userid,
+            }).then((res)=>{
+                console.log(res.data);
+                return res.data
+            })
         }
     }
 
