@@ -2296,14 +2296,13 @@ __webpack_require__.r(__webpack_exports__);
       this.time = this.marker_items[id].open;
       this.capa = this.marker_items[id].capacity;
       this.credit = this.marker_items[id].card;
-      this.s_name = this.marker_items[id].title; //this.marker_items[id].icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png' 
+      this.s_name = this.marker_items[id].title; //2件目、マーカー色チェンジ
 
       this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png';
       this.$refs.map.panTo({
         lat: this.marker_items[id].position.lat,
         lng: this.marker_items[id].position.lng
-      }); //console.log(this.marker_items)
-      //this.$refs.markerRefValue.$markerObject.setIcon('http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png')
+      });
     }
   }
 });
@@ -48520,7 +48519,7 @@ var render = function() {
                     ]),
                     _c("br"),
                     _vm._v(" "),
-                    _c("a", { attrs: { href: _vm.url } }, [
+                    _c("a", { attrs: { href: _vm.url, target: "_blank" } }, [
                       _vm._v("ホットぺッパー")
                     ]),
                     _c("br"),
@@ -48730,7 +48729,7 @@ var render = function() {
             _vm._v(" "),
             _c("p", [
               _vm._v("URL："),
-              _c("a", { attrs: { href: _vm.o_url } }, [
+              _c("a", { attrs: { href: _vm.o_url, target: "_blank" } }, [
                 _vm._v(_vm._s(_vm.shop_name) + "の公式")
               ])
             ]),

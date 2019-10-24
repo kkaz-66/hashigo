@@ -20,7 +20,7 @@
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
                 クレジット：{{ credit }}<br><hr>
-                <p>URL：<a v-bind:href="o_url">{{ shop_name }}の公式</a></p><hr>
+                <p>URL：<a v-bind:href="o_url" target="_blank">{{ shop_name }}の公式</a></p><hr>
             </div>
         </div>
         <div class="row">
