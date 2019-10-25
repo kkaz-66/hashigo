@@ -80,7 +80,7 @@ class MypageController extends Controller
         DB::table('hashigo_lists')->insert(['member_id'=>(int)$user_id,'first_store_id'=>$first,'second_store_id'=>$second,'created_at'=>NOW()]);
         return $user_id;
     }
-    public function third_insert(){
+    public function third_insert(Request $request){
         $third=$request->t_id;
         $id=$request->id;
         DB::table('hashigo_lists')

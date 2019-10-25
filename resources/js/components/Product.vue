@@ -5,18 +5,6 @@
         <div class="row">
             <!--店画像-->
             <div class="col-md-4"  style="white-space: nowrap">
-                <!-- <div>
-                   <div v-if="isActive">
-                    隠す
-                   </div>
-                   <div v-else>
-                        <span class="pan_name">{{ f_name }}</span> 
-                        <span class="pan_space">></span>
-                        <span class="pan_name">{{ s_name }}</span>
-                        <div v-if="isActive">ログインされてなければ隠す</div>
-                        <div v-else> <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
-                   </div> 
-                </div> -->
                 <div id="photo">
                     <img v-bind:src="f_photo"><br>
                 </div>
@@ -27,13 +15,14 @@
             </div>
             <!--店詳細-->
             <div class="col-md-8" style="white-space: nowrap">
+                <span class="pan_name">{{ f_name }}</span> 
+                <span class="pan_space">></span>
+                <span class="pan_name">{{ s_name }}</span>
+                <!-- <span v-if="third_id" class="pan_name"> > {{ t_name }}</span> -->
                 <div v-if="isActive">
                     <!-- 隠す -->
                    </div>
                    <div v-else>
-                        <span class="pan_name">{{ f_name }}</span> 
-                        <span class="pan_space">></span>
-                        <span class="pan_name">{{ s_name }}</span>
                         <div v-if="isActive"><!-- ログインされてなければ隠す --></div>
                         <div v-else> <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
                    </div> 
@@ -42,7 +31,6 @@
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr> 
                 クレジット：{{ credit }}<br><hr>
-               <!-- <span class="pan_space"> URL：<a v-bind:href="o_url" target="_blank">{{ shop_name }}の公式</a></span><hr> -->
             </div>
         </div>
         <div class="row">
@@ -86,12 +74,13 @@ export default {
         product:String,
         place:String,
         arr:[],
-        userid:String
+        userid:String,
+        listid:String,
+        hisname: String,
     },
 
     data () {
         return {
-            //追加事項
             name: "",
             url: "",
             photo: "",
@@ -116,9 +105,11 @@ export default {
             time:"",
             capa:"",
             credit:"",
+            //一件目～三件目
             f_name:"",
             s_name:"",
             t_name:"",
+            //URL＆アイコン関連
             o_url:"",
             b_id:null,
             //postするid
