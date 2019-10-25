@@ -2390,6 +2390,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 // import MypageHashigo from './MypageHashigo.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -9189,7 +9191,11 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
+<<<<<<< HEAD
 exports.push([module.i, "\nhtml body[data-v-0eb05e18] {\r\n  margin:0;\n}\n.wrap[data-v-0eb05e18] {\r\n  width: 100%;\r\n  padding: 0;\r\n  /* background-color: tomato; */\n}\n.ul_wrap[data-v-0eb05e18] {\r\n  /* リストの幅、wrapを基準に70％、 */\r\n  /* width: 70%; */\r\n  margin: auto;\r\n  /* background-color: orange; */\n}\n.ul_wrap ul[data-v-0eb05e18] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.ul_wrap ul .hashigo_date[data-v-0eb05e18] {\r\n  width: 100px;\r\n  /* background-color: aquamarine; */\n}\n.ul_wrap li[data-v-0eb05e18] {\r\n  list-style-type: none;\r\n  /* background-color: turquoise; */\r\n  /* margin-bottom: 20px; */\r\n  /* padding-left: 30px; */\r\n  padding: 5px;\r\n  display: flex;\n}\n.ul_wrap li .hashigo_li[data-v-0eb05e18] {\r\n  width: 468px;\r\n  /* background-color: aqua; */\r\n  display: flex;\n}\n.ul_wrap li .test[data-v-0eb05e18] {\r\n  display: block;\r\n  /* background-color: palegoldenrod; */\r\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  /* background-color: yellowgreen; */\r\n  display: block;\n}\r\n\r\n\r\n", ""]);
+=======
+exports.push([module.i, "\nhtml body[data-v-0eb05e18] {\n  margin:0;\n}\n.wrap[data-v-0eb05e18] {\n  width: 100%;\n  padding: 0;\n  /* background-color: tomato; */\n}\n.ul_wrap[data-v-0eb05e18] {\n  /* リストの幅、wrapを基準に70％、 */\n  /* width: 70%; */\n  margin: auto;\n  /* background-color: orange; */\n}\n.ul_wrap ul[data-v-0eb05e18] {\n  margin: 0;\n  padding: 0;\n}\n.ul_wrap ul .hashigo_date[data-v-0eb05e18] {\n  width: 100px;\n  /* background-color: aquamarine; */\n}\n.ul_wrap li[data-v-0eb05e18] {\n  list-style-type: none;\n  /* background-color: turquoise; */\n  /* margin-bottom: 20px; */\n  /* padding-left: 30px; */\n  padding: 5px;\n  display: flex;\n}\n.ul_wrap li .hashigo_li[data-v-0eb05e18] {\n  width: 468px;\n  /* background-color: aqua; */\n  display: flex;\n}\n.ul_wrap li .test[data-v-0eb05e18] {\n  display: block;\n  /* background-color: palegoldenrod; */\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  /* background-color: yellowgreen; */\n  display: block;\n}\n.hot_text[data-v-0eb05e18] {\n  font-size: 0.3rem;\n}\n\n", ""]);
+>>>>>>> 3d30b088cd8fd4596bd36236b654e9e94683cea1
 
 // exports
 
@@ -49021,7 +49027,13 @@ var render = function() {
             }),
             0
           )
-        ])
+        ]),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _c("span", { staticClass: "hot_text" }, [
+      _vm._v("画像提供：ホットペッパー グルメ")
+    ])
   ])
 }
 var staticRenderFns = [
@@ -49035,6 +49047,17 @@ var staticRenderFns = [
       _c("li", [_vm._v("2軒目：no store")]),
       _vm._v(" "),
       _c("li", [_vm._v("3軒目：no store")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "hot_text" }, [
+      _vm._v("Powered by "),
+      _c("a", { attrs: { href: "http://webservice.recruit.co.jp/" } }, [
+        _vm._v("ホットペッパー Webサービス")
+      ])
     ])
   }
 ]
