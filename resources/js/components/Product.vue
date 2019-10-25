@@ -40,7 +40,7 @@
                 <br>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
-                収容人数：{{ capa }}<br><hr>
+                収容人数：{{ capa }}<br><hr> 
                 クレジット：{{ credit }}<br><hr>
                <!-- <span class="pan_space"> URL：<a v-bind:href="o_url" target="_blank">{{ shop_name }}の公式</a></span><hr> -->
             </div>
