@@ -168,16 +168,12 @@ export default {
 
 <style scoped>
 .body {
-    width: 100%;
-    height: 915px;
+    width: auto;
+    height: 100%;
     /* background: #1e3971;
     background: -moz-linear-gradient(top, #091938, #1e3971); */
     background-size: cover;
-    background-image: url('https://hillslife.jp/wp-content/uploads/2017/12/1227_tenmon_main8-970x550.jpg')
-}
-.app {
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg')
 }
 .row {
     padding: 10px;
@@ -231,23 +227,32 @@ export default {
     margin-left: 20px;
     margin-right: -20px;
     position: relative;
-    border-top: solid 2px black;
-    border-bottom: solid 2px black;
+    /* margin: 2em auto; */
+    padding: 5px 5px 15px 5px;;
+    width: 90%; /* ボックス幅 */
+    height: 780px;
+    background-color: #fffff9; /* ボックス背景色 */
+    color: #000; /* 文章色 */
+    border: 5px solid #bd1818; /* 枠線 */
+    border-radius: 3px; /* 角の丸み */
+    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
 }
 .col-md-9:before, .col-md-9:after {
-    content: '';
     position: absolute;
-    top: -10px;
-    width: 2px;
-    height: -webkit-calc(100% + 20px);
-    height: calc(100% + 20px);
-    background-color: black;
+    content: '';
+    width: 25px; 
+    bottom: 3px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px #666;
 }
 .col-md-9:before {
-    left: 10px;
+    right: 55px;
+    border: solid 3px #333333; /*飾ペン黒 */
 }
 .col-md-9:after {
-    right: 10px;
+    right: 20px;
+    border: solid 3px #ff42a0; /*飾ペンピンク */
+    transform: rotate(8deg); /*飾ペン角度 */
 }
 #map {
     width: 100%;
@@ -260,18 +265,15 @@ export default {
 #box {
     text-align: center;
     position: relative;
-    background: rgb(255, 216, 100);
-    border-left:4px dotted rgba(0,0,0,.1);
-    border-right:4px dotted rgba(0,0,0,.1);
-    box-shadow:0 0 5px rgba(0,0,0,.2);
+    background: #fff9de;
+    /* margin: 1em 0; */
     padding: 1em;
-    margin-top: 10px;
-    margin-left: 30px;
-    color: #65513f;
-    width: 350px;
+    border: 5px solid #bd1818;
+    box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+    margin-left: 70px;
+    width: 300px;
     height: 400px;
-    overflow-x: scroll;
-    word-wrap: break-word;
+    overflow-y: scroll;
 }
 /* #box:before {
     border: 1px solid #fff; 白い実線
