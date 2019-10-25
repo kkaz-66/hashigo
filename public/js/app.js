@@ -2428,7 +2428,12 @@ __webpack_require__.r(__webpack_exports__);
     console.log(this.jsons);
     console.log(Object.keys(this.jsons).length);
   },
-  methods: {}
+  methods: {
+    thirdSearch: function thirdSearch(id) {
+      console.log(id);
+      console.log(this.jsons[id].second.id);
+    }
+  }
 });
 
 /***/ }),
@@ -49029,7 +49034,19 @@ var render = function() {
                     ? _c("span", [
                         _c("img", { attrs: { src: json.third.photo.pc.m } })
                       ])
-                    : _c("span", [_c("button", [_vm._v("3軒目を探す")])])
+                    : _c("span", [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.thirdSearch(id)
+                              }
+                            }
+                          },
+                          [_vm._v("3軒目を探す")]
+                        )
+                      ])
                 ])
               ])
             }),
