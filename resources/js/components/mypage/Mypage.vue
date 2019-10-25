@@ -19,7 +19,7 @@
             <div class="hashigo_li">
               <div class="test">3軒目：{{ (json.third)?json.third.name:'no store'}}<br>{{json.third?json.third.open:''}}</div>
               <span v-if="json.third"><img v-bind:src="json.third.photo.pc.m"></span>
-              <span v-else><button>3軒目を探す</button></span>
+              <span v-else><button @click="thirdSearch(id)">3軒目を探す</button></span>
             </div>
           </li>
         </ul>
@@ -57,6 +57,10 @@ export default {
   },
 
   methods: {
+    thirdSearch(id){
+      console.log(id);
+      console.log(this.jsons[id].second.id);
+    }
 
   },
 
