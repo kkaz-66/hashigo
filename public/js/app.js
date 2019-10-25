@@ -48848,7 +48848,7 @@ var render = function() {
             _vm._v("\n                収容人数：" + _vm._s(_vm.capa)),
             _c("br"),
             _c("hr"),
-            _vm._v("\n                クレジット：" + _vm._s(_vm.credit)),
+            _vm._v(" \n                クレジット：" + _vm._s(_vm.credit)),
             _c("br"),
             _c("hr")
           ]
