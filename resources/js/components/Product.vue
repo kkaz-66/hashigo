@@ -17,18 +17,13 @@
                 <br>
                 <!-- ボタンのクリックアクション -->
                 <p><span class="pan_name">{{ f_name }}</span> 
-                          <span class="pan_space">></span>
-                          <span class="pan_name">{{ s_name }}</span></p>
-                <div>
-                   <div v-if="marker_items[position_id].button">
-                    <!-- 隠す -->
-                   </div>
-                   <div v-else>
-                    <!-- 　<span v-html="save_button"></span> -->
-                    <button  v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
-                   </div> 
-                </div>
-
+                    <span class="pan_space">></span>
+                    <span class="pan_name">{{ s_name }}</span></p>
+                    <!--はしご保存-->
+                    <div>
+                        <div v-if="isActive"><!--ログインされてなければ隠す--></div>
+                        <div v-else> <button  v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
+                    </div>
                 <br>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
@@ -119,7 +114,8 @@ export default {
             t_id:"",
             //ボタンのクリックアクション
             position_id:0,
-            insertClick:false,
+            insertClick:true,
+            isActive:true,
         }
     },
 
@@ -139,6 +135,9 @@ export default {
         //パンくずリスト一件目（固定）
         this.f_name = json[0].name
         this.f_id =json[0].id
+        if(this.userid !== ""){
+            this.isActive = false
+        }
     },
 
     methods: {
@@ -179,7 +178,7 @@ export default {
             this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo,
                 address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, card:shopdata.card, id:shopdata.id,
                 icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png',scaledSize:{width:50,height:55} ,scaledColor: '#0000'}
-                , button:true})
+                , button:false})
             });
         },
 
@@ -204,8 +203,10 @@ export default {
             this.credit = this.marker_items[id].card
             this.s_name = this.marker_items[id].title
             this.s_id = this.marker_items[id].id
-
+            //ボタンの押す押せない
             this.position_id = id
+            this.insertClick = this.marker_items[id].button
+
             //2件目、マーカー色チェンジ
             if(this.b_id !== null){
                 this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png'
@@ -217,8 +218,10 @@ export default {
 
         //保存ボタン
         insertList(f_id, s_id,userid){
-            this.marker_items[this.position_id].button = false
+            //ボタンを連続で押せなくする
+            this.marker_items[this.position_id].button = true
             this.insertClick=true
+            //非同期通信
             return axios.post('/api/insert',{
                 f_id:f_id,
                 s_id:s_id,

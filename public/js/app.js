@@ -2133,11 +2133,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2192,7 +2187,8 @@ __webpack_require__.r(__webpack_exports__);
       t_id: "",
       //ボタンのクリックアクション
       position_id: 0,
-      insertClick: false
+      insertClick: true,
+      isActive: true
     };
   },
   //1件目の詳細
@@ -2214,6 +2210,10 @@ __webpack_require__.r(__webpack_exports__);
 
     this.f_name = json[0].name;
     this.f_id = json[0].id;
+
+    if (this.userid !== "") {
+      this.isActive = false;
+    }
   },
   methods: {
     // キーワード位置取得
@@ -2293,7 +2293,7 @@ __webpack_require__.r(__webpack_exports__);
             },
             scaledColor: '#0000'
           },
-          button: true
+          button: false
         });
       });
     },
@@ -2316,8 +2316,10 @@ __webpack_require__.r(__webpack_exports__);
       this.capa = this.marker_items[id].capacity;
       this.credit = this.marker_items[id].card;
       this.s_name = this.marker_items[id].title;
-      this.s_id = this.marker_items[id].id;
-      this.position_id = id; //2件目、マーカー色チェンジ
+      this.s_id = this.marker_items[id].id; //ボタンの押す押せない
+
+      this.position_id = id;
+      this.insertClick = this.marker_items[id].button; //2件目、マーカー色チェンジ
 
       if (this.b_id !== null) {
         this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png';
@@ -2332,8 +2334,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     //保存ボタン
     insertList: function insertList(f_id, s_id, userid) {
-      this.marker_items[this.position_id].button = false;
-      this.insertClick = true;
+      //ボタンを連続で押せなくする
+      this.marker_items[this.position_id].button = true;
+      this.insertClick = true; //非同期通信
+
       return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/insert', {
         f_id: f_id,
         s_id: s_id,
@@ -48783,7 +48787,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", [
-              _vm.marker_items[_vm.position_id].button
+              _vm.isActive
                 ? _c("div")
                 : _c("div", [
                     _c(
