@@ -2416,7 +2416,14 @@ __webpack_require__.r(__webpack_exports__);
       date: [],
       first_store: "",
       second_store: "",
-      thirs_store: ""
+      thirs_store: "",
+      shopid: "",
+      lat: "",
+      lng: "",
+      //送る情報
+      detail: "/detail?id=",
+      f_lat: "&lat=",
+      f_lng: "&lng="
     };
   },
   components: {// MypageHashigo,
@@ -2430,8 +2437,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     thirdSearch: function thirdSearch(id) {
-      console.log(id);
-      console.log(this.jsons[id].second.id);
+      this.shopid = this.jsons[id].second.id;
+      this.lat = this.jsons[id].second.lat;
+      this.lng = this.jsons[id].second.lng;
     }
   }
 });
@@ -49034,19 +49042,28 @@ var render = function() {
                     ? _c("span", [
                         _c("img", { attrs: { src: json.third.photo.pc.m } })
                       ])
-                    : _c("span", [
-                        _c(
-                          "button",
-                          {
-                            on: {
-                              click: function($event) {
-                                return _vm.thirdSearch(id)
-                              }
-                            }
-                          },
-                          [_vm._v("3軒目を探す")]
-                        )
-                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          _vm.detail +
+                          _vm.shopid +
+                          _vm.f_lat +
+                          _vm.lat +
+                          _vm.f_lng +
+                          _vm.lng
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.thirdSearch(id)
+                        }
+                      }
+                    },
+                    [_vm._v("3軒目を探す")]
+                  )
                 ])
               ])
             }),
