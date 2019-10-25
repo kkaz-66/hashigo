@@ -44,12 +44,19 @@ class MypageController extends Controller
                 
                 $first = "&id=".$hashigo->first_store_id;
                 $second = "&id=".$hashigo->second_store_id;
-                $third = isset($hashigo->third_store_id)?"&id=".$hashigo->third_store_id:'';
+                $third = mb_strlen($hashigo->third_store_id) != 0?"&id=".$hashigo->third_store_id:'';
+                // var_dump($hashigo->third_store_id);
+                // var_dump(gettype($hashigo->third_store_id));
+                // var_dump($third);
+                // var_dump(mb_strlen($hashigo->third_store_id));
                 $url_ids = $url_ids.$first.$second.$third;
-
             }
+            // var_dump($url_ids);
+            // exit;
 
             $hashigo_shops = $this->seach_shop($url_ids);
+            // var_dump($hashigo_shops);
+            // exit;
             
             foreach($hashigos as $hashigo){
                 
@@ -71,6 +78,8 @@ class MypageController extends Controller
                 }
             }
         }
+        // var_dump($user_history);
+        // exit;
         return view('mypage',compact('user_history'));
     }
     public function insert(Request $request){
