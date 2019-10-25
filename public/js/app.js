@@ -2141,7 +2141,9 @@ __webpack_require__.r(__webpack_exports__);
     product: String,
     place: String,
     arr: [],
-    userid: String
+    userid: String,
+    listid: String,
+    hisname: String
   },
   data: function data() {
     return {
@@ -2216,6 +2218,9 @@ __webpack_require__.r(__webpack_exports__);
     if (this.userid !== "") {
       this.isActive = false;
     }
+
+    console.log(this.listid);
+    console.log(this.hisname);
   },
   methods: {
     // キーワード位置取得
@@ -2405,7 +2410,18 @@ __webpack_require__.r(__webpack_exports__);
       date: [],
       first_store: "",
       second_store: "",
-      thirs_store: ""
+      thirs_store: "",
+      shopid: "",
+      lat: "",
+      lng: "",
+      //送る情報
+      detail: "/detail2?id=",
+      f_lat: "&lat=",
+      f_lng: "&lng=",
+      li: "&listid=",
+      listid: "",
+      his: "&hisname=",
+      hisname: ""
     };
   },
   components: {// MypageHashigo,
@@ -2419,8 +2435,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     thirdSearch: function thirdSearch(id) {
-      console.log(id);
-      console.log(this.jsons[id].second.id);
+      this.hisname = this.jsons[id].first.name;
+      this.shopid = this.jsons[id].second.id;
+      this.lat = this.jsons[id].second.lat;
+      this.lng = this.jsons[id].second.lng;
+      this.listid = id;
     }
   }
 });
@@ -49023,19 +49042,32 @@ var render = function() {
                     ? _c("span", [
                         _c("img", { attrs: { src: json.third.photo.pc.m } })
                       ])
-                    : _c("span", [
-                        _c(
-                          "button",
-                          {
-                            on: {
-                              click: function($event) {
-                                return _vm.thirdSearch(id)
-                              }
-                            }
-                          },
-                          [_vm._v("3軒目を探す")]
-                        )
-                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          _vm.detail +
+                          _vm.shopid +
+                          _vm.f_lat +
+                          _vm.lat +
+                          _vm.f_lng +
+                          _vm.lng +
+                          _vm.li +
+                          _vm.listid +
+                          _vm.his +
+                          _vm.hisname
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.thirdSearch(id)
+                        }
+                      }
+                    },
+                    [_vm._v("3軒目を探す")]
+                  )
                 ])
               ])
             }),

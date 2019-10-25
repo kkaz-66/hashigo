@@ -29,7 +29,6 @@ Route::group(['middleware' => 'api'], function() {
     Route::get('user',  'MypageController@hashigo_history');
 });
 
-//test
 Route::group(['middleware' => 'api'], function() {
     Route::post('insert',  'MypageController@insert');
 });

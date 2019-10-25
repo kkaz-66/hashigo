@@ -18,6 +18,7 @@
                 <span class="pan_name">{{ f_name }}</span> 
                 <span class="pan_space">></span>
                 <span class="pan_name">{{ s_name }}</span>
+                <!-- <span v-if="third_id" class="pan_name"> > {{ t_name }}</span> -->
                 <div v-if="isActive">
                     <!-- 隠す -->
                    </div>
@@ -73,7 +74,9 @@ export default {
         product:String,
         place:String,
         arr:[],
-        userid:String
+        userid:String,
+        listid:String,
+        hisname: String,
     },
 
     data () {
