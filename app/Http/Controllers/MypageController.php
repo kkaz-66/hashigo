@@ -19,7 +19,8 @@ class MypageController extends Controller
     public function seach_shop($id)
     {
         $hpg_key = config('apikey.hpg-key');
-        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key.$id."&format=json";
+        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key.$id."&count=20&format=json";
+       
         $hashigo_arr = $this->create_list($url);
         return $hashigo_arr;
     }
@@ -36,7 +37,7 @@ class MypageController extends Controller
     public function hashigo_history()
     {
         $user = Auth::user();
-        $hashigos = DB::table('hashigo_lists')->where('member_id',$user->id)->get();
+        $hashigos = DB::table('hashigo_lists')->where('member_id',$user->id)->orderBy('created_at','desc')->limit(6)->get();
         $url_ids = "";
         $user_history = array();
         if(count($hashigos) != 0){
@@ -45,18 +46,10 @@ class MypageController extends Controller
                 $first = "&id=".$hashigo->first_store_id;
                 $second = "&id=".$hashigo->second_store_id;
                 $third = mb_strlen($hashigo->third_store_id) != 0?"&id=".$hashigo->third_store_id:'';
-                // var_dump($hashigo->third_store_id);
-                // var_dump(gettype($hashigo->third_store_id));
-                // var_dump($third);
-                // var_dump(mb_strlen($hashigo->third_store_id));
                 $url_ids = $url_ids.$first.$second.$third;
             }
-            // var_dump($url_ids);
-            // exit;
 
             $hashigo_shops = $this->seach_shop($url_ids);
-            // var_dump($hashigo_shops);
-            // exit;
             
             foreach($hashigos as $hashigo){
                 
@@ -78,8 +71,6 @@ class MypageController extends Controller
                 }
             }
         }
-        // var_dump($user_history);
-        // exit;
         return view('mypage',compact('user_history'));
     }
     public function insert(Request $request){
