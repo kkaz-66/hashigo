@@ -37,7 +37,11 @@ class MypageController extends Controller
     public function hashigo_history()
     {
         $user = Auth::user();
+<<<<<<< HEAD
         $hashigos = DB::table('hashigo_lists')->where('member_id',$user->id)->orderBy('created_at','desc')->limit(6)->get();
+=======
+        $hashigos = DB::table('hashigo_lists')->where('member_id',$user->id)->orderby('created_at','desc')->limit(6)->get();
+>>>>>>> 557aba2c1d9f2aed1013c200e6f38d54c234a602
         $url_ids = "";
         $user_history = array();
         if(count($hashigos) != 0){
