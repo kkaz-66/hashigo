@@ -5,17 +5,6 @@
         <div class="row">
             <!--店画像-->
             <div class="col-md-4"  style="white-space: nowrap">
-                <div id="photo">
-                    <img v-bind:src="f_photo"><br>
-                </div>
-                <div id="name">
-                    <h3>{{ shop_name }}</h3>
-                </div>
-            </div>
-            <!--店詳細-->
-            <div class="col-md-8" style="white-space: nowrap">
-                <br>
-                <!-- ボタンのクリックアクション -->
                 <div>
                    <div v-if="isActive">
                     <!-- 隠す -->
@@ -24,16 +13,38 @@
                        <p><span class="pan_name">{{ f_name }}</span> 
                           <span class="pan_space">></span>
                           <span class="pan_name">{{ s_name }}</span>
-                    　 <button  v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></p>
+                    　 <button  id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></p>
                    </div> 
                 </div>
+                <div id="photo">
+                    <img v-bind:src="f_photo"><br>
+                </div>
+                <div id="name">
+                    <h4>{{ shop_name }}</h4>
+                </div>
+            </div>
+            <!--店詳細-->
+            <div class="col-md-8" style="white-space: nowrap">
+                <br>
+                <!-- ボタンのクリックアクション -->
+                <!-- <div>
+                   <div v-if="isActive">
+                    隠す
+                   </div>
+                   <div v-else>
+                       <p><span class="pan_name">{{ f_name }}</span> 
+                          <span class="pan_space">></span>
+                          <span class="pan_name">{{ s_name }}</span>
+                    　 <button  id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></p>
+                   </div> 
+                </div> -->
 
                 <br>
                 住所：{{ tel_add }}<br><hr>
                 営業時間：{{ time }}<br><hr>
                 収容人数：{{ capa }}<br><hr>
                 クレジット：{{ credit }}<br><hr>
-                <p>URL：<a v-bind:href="o_url" target="_blank"><span class="pan_name">{{ shop_name }}の公式</span></a></p><hr>
+               <span class="pan_space"> URL：<a v-bind:href="o_url" target="_blank">{{ shop_name }}の公式</a></span><hr>
             </div>
         </div>
         <div class="row">
@@ -245,6 +256,7 @@ export default {
 } 
 .col-md-4 {
     /* 左上の写真・店名の設定 */
+    margin-bottom: -10px;
     text-align: center;
     background: #1e3971;
     background: -moz-linear-gradient(top, #091938, #1e3971);
@@ -255,13 +267,17 @@ export default {
         to(#1e3971));
     border-radius: 3px;
     color: #fff;
-    font-size: 36px;
+    /* font-size: 36px; */
     font-family:"Haruhi Gakuen", sans-serif;
     letter-spacing: 2px;
     margin: 0 auto;
     padding: 10px;
     text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
     height: 350px;
+}
+.col-md-4 pan_name {
+    font-size: 14px;
+    margin-top: 20px;
 }
 .col-md-8 {
     background: #1e3971;
@@ -282,22 +298,34 @@ export default {
     height: 350px;
 }
 .pan_name{
+    margin-top: 20px;
     max-width: 180px;
     min-width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
 }
-.pan_name a {
-    color: #fff;
-    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
-}
 .pan_space {
-    max-width: 20px;
-    min-width: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+}
+.pan_space a {
+    color: rgb(9, 255, 0);
+    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+}
+#hashigo_save {
+    /* font-size: 5px; */
+    white-space: nowrap;
+    display: inline-block;
+    /* margin-top: 10px; */
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #0033a0;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
 }
 #photo {
     color: #333;
@@ -325,6 +353,7 @@ export default {
     width: 100px;
 } */
 .col-md-9 {
+    margin-top: 10px;
     margin-left: 20px;
     margin-right: -20px;
     position: relative;
@@ -352,7 +381,7 @@ export default {
 #products {
     text-align: center;
     position: relative;
-    background: #F8F0D7;
+    background: rgb(190, 166, 92);
     border-left:4px dotted rgba(0,0,0,.1);
     border-right:4px dotted rgba(0,0,0,.1);
     box-shadow:0 0 5px rgba(0,0,0,.2);
@@ -361,7 +390,7 @@ export default {
     margin-left: 70px;
     color: #65513f;
     width: 300px;
-    height: 500px;
+    height: 520px;
     overflow-y: scroll;
 }
 /* #products:before {
@@ -377,21 +406,6 @@ export default {
     right: 0px;
     z-index: -1;
 } */
-#tape:after {
-    position: absolute;
-    top: -1em;
-    left: 26%;
-    width:100px;
-    height:30px;
-    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);
-    background-size: 20px 20px;
-    border-left:2px dotted rgba(0,0,0,.1);
-    border-right:2px dotted rgba(0,0,0,.1);
-    box-shadow:0 0 5px rgba(0,0,0,.2);
-    padding: 0.25em 2em;
-    color: #65513f;
-    transform: rotate(-4deg); 
-}
 #detail {
     max-width: 200px;
     min-width: 200px;

@@ -167,6 +167,14 @@ export default {
 </script>
 
 <style scoped>
+.body {
+    width: 100%;
+    height: 915px;
+    /* background: #1e3971;
+    background: -moz-linear-gradient(top, #091938, #1e3971); */
+    background-image: url('https://www.pakutaso.com/shared/img/thumb/kazuhiro17810002_TP_V.jpg')
+    /* background-image: url('http://backgroundlabs.com/files/cute-stars-pattern-1638.png') */
+}
 .row {
     padding: 10px;
 }
@@ -185,6 +193,7 @@ export default {
     transform: translateY(4px);/*下に動く*/
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
     border-bottom: none;
+    
 }
 #textbox {
     width: 360px;
@@ -247,7 +256,7 @@ export default {
 #box {
     text-align: center;
     position: relative;
-    background: #F8F0D7;
+    background: rgb(255, 216, 100);
     border-left:4px dotted rgba(0,0,0,.1);
     border-right:4px dotted rgba(0,0,0,.1);
     box-shadow:0 0 5px rgba(0,0,0,.2);
@@ -257,7 +266,7 @@ export default {
     color: #65513f;
     width: 350px;
     height: 400px;
-    /* overflow-x: scroll; */
+    overflow-x: scroll;
     word-wrap: break-word;
 }
 /* #box:before {
@@ -273,21 +282,6 @@ export default {
     right: 0px;
     z-index: -1;
 } */
-#tape:after {
-    position: absolute;
-    top: -1em;
-    left: 26%;
-    width:100px;
-    height:30px;
-    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);
-    background-size: 20px 20px;
-    border-left:2px dotted rgba(0,0,0,.1);
-    border-right:2px dotted rgba(0,0,0,.1);
-    box-shadow:0 0 5px rgba(0,0,0,.2);
-    padding: 0.25em 2em;
-    color: #65513f;
-    transform: rotate(-4deg); 
-}
 #hot {
     padding-left: 35px;
     padding-top: 10px;

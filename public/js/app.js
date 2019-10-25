@@ -2137,6 +2137,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -9086,7 +9097,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.row[data-v-332fccf4] {\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 10px;\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#box[data-v-332fccf4] {\n    text-align: center;\n    position: relative;\n    background: #F8F0D7;\n    border-left:4px dotted rgba(0,0,0,.1);\n    border-right:4px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 1em;\n    margin-top: 10px;\n    margin-left: 30px;\n    color: #65513f;\n    width: 350px;\n    height: 400px;\n    /* overflow-x: scroll; */\n    word-wrap: break-word;\n}\n/* #box:before {\n    border: 1px solid #fff; 白い実線\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n} */\n#tape[data-v-332fccf4]:after {\n    position: absolute;\n    top: -1em;\n    left: 26%;\n    width:100px;\n    height:30px;\n    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);\n    background-size: 20px 20px;\n    border-left:2px dotted rgba(0,0,0,.1);\n    border-right:2px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 0.25em 2em;\n    color: #65513f;\n    transform: rotate(-4deg);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.body[data-v-332fccf4] {\n    width: 100%;\n    height: 915px;\n    /* background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971); */\n    background-image: url('https://www.pakutaso.com/shared/img/thumb/kazuhiro17810002_TP_V.jpg')\n    /* background-image: url('http://backgroundlabs.com/files/cute-stars-pattern-1638.png') */\n}\n.row[data-v-332fccf4] {\n    padding: 10px;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-332fccf4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 10px;\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n.shopname[data-v-332fccf4] {\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#box[data-v-332fccf4] {\n    text-align: center;\n    position: relative;\n    background: rgb(255, 216, 100);\n    border-left:4px dotted rgba(0,0,0,.1);\n    border-right:4px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 1em;\n    margin-top: 10px;\n    margin-left: 30px;\n    color: #65513f;\n    width: 350px;\n    height: 400px;\n    overflow-x: scroll;\n    word-wrap: break-word;\n}\n/* #box:before {\n    border: 1px solid #fff; 白い実線\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n} */\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -9162,7 +9173,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.body[data-v-7e94e6d4] {\n    width: 100%;\n    height: 920px;\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n}\n.app[data-v-7e94e6d4] {\n    margin:0px 50px;\n}\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\n    /* 左上の写真・店名の設定 */\n    text-align: center;\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n    background: -webkit-gradient(linear,\n        left top,\n        left bottom,\n        from(#091938),\n        to(#1e3971));\n    border-radius: 3px;\n    color: #fff;\n    font-size: 36px;\n    font-family:\"Haruhi Gakuen\", sans-serif;\n    letter-spacing: 2px;\n    margin: 0 auto;\n    padding: 10px;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n    height: 350px;\n}\n.col-md-8[data-v-7e94e6d4] {\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n    background: -webkit-gradient(linear,\n        left top,\n        left bottom,\n        from(#091938),\n        to(#1e3971));\n    border-radius: 3px;\n    color: #fff;\n    font-size: 14px;\n    font-family:\"Haruhi Gakuen\", sans-serif;\n    letter-spacing: 2px;\n    margin: 0 auto;\n    padding: 10px;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n    height: 350px;\n}\n.pan_name[data-v-7e94e6d4]{\n    max-width: 180px;\n    min-width: 100px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n}\n.pan_name a[data-v-7e94e6d4] {\n    color: #fff;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n}\n.pan_space[data-v-7e94e6d4] {\n    max-width: 20px;\n    min-width: 20px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n}\n#photo[data-v-7e94e6d4] {\n    color: #333;\n    text-shadow: 0 20px 10px rgba(0, 0, 0, .5);\n}\n#name[data-v-7e94e6d4] {\n    display: block;\n    font-size: 16px;\n    margin-top: 10px;\n    padding: 0 0 10px 0;\n    overflow-wrap: break-word;\n    /* display: inline-block;\n    padding: 20px;\n    overflow-wrap: break-word; */\n    /* overflow-wrap: break-word; */\n}\n.col-md-4 #name[data-v-7e94e6d4] {\n    display: block;\n    font-size: 16px;\n    margin-top: 10px;\n    padding: 0 0 10px 0;\n}\n/* .shop_name{\n    display: inline-block;\n    width: 100px;\n} */\n.col-md-9[data-v-7e94e6d4] {\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    text-align: center;\n    position: relative;\n    background: #F8F0D7;\n    border-left:4px dotted rgba(0,0,0,.1);\n    border-right:4px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 1em;\n    margin-top: 10px;\n    margin-left: 70px;\n    color: #65513f;\n    width: 300px;\n    height: 500px;\n    overflow-y: scroll;\n}\n/* #products:before {\n    border: 1px solid #fff; 白い実線\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n} */\n#tape[data-v-7e94e6d4]:after {\n    position: absolute;\n    top: -1em;\n    left: 26%;\n    width:100px;\n    height:30px;\n    background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);\n    background-size: 20px 20px;\n    border-left:2px dotted rgba(0,0,0,.1);\n    border-right:2px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 0.25em 2em;\n    color: #65513f;\n    transform: rotate(-4deg);\n}\n#detail[data-v-7e94e6d4] {\n    max-width: 200px;\n    min-width: 200px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    display: inline-block;\n    margin-top: 10px;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-7e94e6d4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.body[data-v-7e94e6d4] {\n    width: 100%;\n    height: 920px;\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n}\n.app[data-v-7e94e6d4] {\n    margin:0px 50px;\n}\n#map[data-v-7e94e6d4] {\n    width: 100%;\n    height: 520px;\n}\n.col-md-4[data-v-7e94e6d4] {\n    /* 左上の写真・店名の設定 */\n    margin-bottom: -10px;\n    text-align: center;\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n    background: -webkit-gradient(linear,\n        left top,\n        left bottom,\n        from(#091938),\n        to(#1e3971));\n    border-radius: 3px;\n    color: #fff;\n    /* font-size: 36px; */\n    font-family:\"Haruhi Gakuen\", sans-serif;\n    letter-spacing: 2px;\n    margin: 0 auto;\n    padding: 10px;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n    height: 350px;\n}\n.col-md-4 pan_name[data-v-7e94e6d4] {\n    font-size: 14px;\n    margin-top: 20px;\n}\n.col-md-8[data-v-7e94e6d4] {\n    background: #1e3971;\n    background: -moz-linear-gradient(top, #091938, #1e3971);\n    background: -webkit-gradient(linear,\n        left top,\n        left bottom,\n        from(#091938),\n        to(#1e3971));\n    border-radius: 3px;\n    color: #fff;\n    font-size: 14px;\n    font-family:\"Haruhi Gakuen\", sans-serif;\n    letter-spacing: 2px;\n    margin: 0 auto;\n    padding: 10px;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n    height: 350px;\n}\n.pan_name[data-v-7e94e6d4]{\n    margin-top: 20px;\n    max-width: 180px;\n    min-width: 100px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n}\n.pan_space[data-v-7e94e6d4] {\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n}\n.pan_space a[data-v-7e94e6d4] {\n    color: rgb(9, 255, 0);\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n}\n#hashigo_save[data-v-7e94e6d4] {\n    /* font-size: 5px; */\n    white-space: nowrap;\n    display: inline-block;\n    /* margin-top: 10px; */\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #0033a0;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;\n}\n#photo[data-v-7e94e6d4] {\n    color: #333;\n    text-shadow: 0 20px 10px rgba(0, 0, 0, .5);\n}\n#name[data-v-7e94e6d4] {\n    display: block;\n    font-size: 16px;\n    margin-top: 10px;\n    padding: 0 0 10px 0;\n    overflow-wrap: break-word;\n    /* display: inline-block;\n    padding: 20px;\n    overflow-wrap: break-word; */\n    /* overflow-wrap: break-word; */\n}\n.col-md-4 #name[data-v-7e94e6d4] {\n    display: block;\n    font-size: 16px;\n    margin-top: 10px;\n    padding: 0 0 10px 0;\n}\n/* .shop_name{\n    display: inline-block;\n    width: 100px;\n} */\n.col-md-9[data-v-7e94e6d4] {\n    margin-top: 10px;\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    border-top: solid 2px black;\n    border-bottom: solid 2px black;\n}\n.col-md-9[data-v-7e94e6d4]:before, .col-md-9[data-v-7e94e6d4]:after {\n    content: '';\n    position: absolute;\n    top: -10px;\n    width: 2px;\n    height: calc(100% + 20px);\n    background-color: black;\n}\n.col-md-9[data-v-7e94e6d4]:before {\n    left: 10px;\n}\n.col-md-9[data-v-7e94e6d4]:after {\n    right: 10px;\n}\n.col-mid-3[data-v-7e94e6d4] {\n    position: relative;\n}\n#products[data-v-7e94e6d4] {\n    text-align: center;\n    position: relative;\n    background: rgb(190, 166, 92);\n    border-left:4px dotted rgba(0,0,0,.1);\n    border-right:4px dotted rgba(0,0,0,.1);\n    box-shadow:0 0 5px rgba(0,0,0,.2);\n    padding: 1em;\n    margin-top: 10px;\n    margin-left: 70px;\n    color: #65513f;\n    width: 300px;\n    height: 520px;\n    overflow-y: scroll;\n}\n/* #products:before {\n    border: 1px solid #fff; 白い実線\n    border-radius: 5px;\n    content: '';\n    display: block;\n    margin: 4px;\n    position: absolute;\n    top: 0px;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    z-index: -1;\n} */\n#detail[data-v-7e94e6d4] {\n    max-width: 200px;\n    min-width: 200px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    display: inline-block;\n    margin-top: 10px;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-7e94e6d4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#hot[data-v-7e94e6d4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -48749,23 +48760,6 @@ var render = function() {
           "div",
           { staticClass: "col-md-4", staticStyle: { "white-space": "nowrap" } },
           [
-            _c("div", { attrs: { id: "photo" } }, [
-              _c("img", { attrs: { src: _vm.f_photo } }),
-              _c("br")
-            ]),
-            _vm._v(" "),
-            _c("div", { attrs: { id: "name" } }, [
-              _c("h3", [_vm._v(_vm._s(_vm.shop_name))])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-md-8", staticStyle: { "white-space": "nowrap" } },
-          [
-            _c("br"),
-            _vm._v(" "),
             _c("div", [
               _vm.isActive
                 ? _c("div")
@@ -48784,7 +48778,10 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          attrs: { disabled: _vm.insertClick },
+                          attrs: {
+                            id: "hashigo_save",
+                            disabled: _vm.insertClick
+                          },
                           on: {
                             click: function($event) {
                               return _vm.insertList(
@@ -48801,6 +48798,23 @@ var render = function() {
                   ])
             ]),
             _vm._v(" "),
+            _c("div", { attrs: { id: "photo" } }, [
+              _c("img", { attrs: { src: _vm.f_photo } }),
+              _c("br")
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "name" } }, [
+              _c("h4", [_vm._v(_vm._s(_vm.shop_name))])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-md-8", staticStyle: { "white-space": "nowrap" } },
+          [
+            _c("br"),
+            _vm._v(" "),
             _c("br"),
             _vm._v("\n                住所：" + _vm._s(_vm.tel_add)),
             _c("br"),
@@ -48815,12 +48829,10 @@ var render = function() {
             _c("br"),
             _c("hr"),
             _vm._v(" "),
-            _c("p", [
-              _vm._v("URL："),
+            _c("span", { staticClass: "pan_space" }, [
+              _vm._v(" URL："),
               _c("a", { attrs: { href: _vm.o_url, target: "_blank" } }, [
-                _c("span", { staticClass: "pan_name" }, [
-                  _vm._v(_vm._s(_vm.shop_name) + "の公式")
-                ])
+                _vm._v(_vm._s(_vm.shop_name) + "の公式")
               ])
             ]),
             _c("hr")
