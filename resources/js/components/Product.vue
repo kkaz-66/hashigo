@@ -81,7 +81,6 @@
 <script>
 import { METHODS } from 'http';
 import axios from 'axios';
-import { parse } from 'path';
 
 export default {
     props:{
@@ -267,7 +266,7 @@ export default {
             //非同期通信
             return axios.post('/api/update',{
                 s_id:s_id,
-                listid:parseInt(listid),
+                listid:listid,
                
             }).then((res)=>{
                 console.log(res.data);
