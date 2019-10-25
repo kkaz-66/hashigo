@@ -172,8 +172,12 @@ export default {
     height: 915px;
     /* background: #1e3971;
     background: -moz-linear-gradient(top, #091938, #1e3971); */
-    background-image: url('https://www.pakutaso.com/shared/img/thumb/kazuhiro17810002_TP_V.jpg')
-    /* background-image: url('http://backgroundlabs.com/files/cute-stars-pattern-1638.png') */
+    background-size: cover;
+    background-image: url('https://hillslife.jp/wp-content/uploads/2017/12/1227_tenmon_main8-970x550.jpg')
+}
+.app {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 .row {
     padding: 10px;

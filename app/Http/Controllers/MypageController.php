@@ -36,7 +36,7 @@ class MypageController extends Controller
     public function hashigo_history()
     {
         $user = Auth::user();
-        $hashigos = DB::table('hashigo_lists')->where('member_id',$user->id)->get();
+        $hashigos = DB::table('hashigo_lists')->where('member_id',$user->id)->orderby('created_at','desc')->limit(6)->get();
         $url_ids = "";
         $user_history = array();
         if(count($hashigos) != 0){
@@ -80,4 +80,14 @@ class MypageController extends Controller
         DB::table('hashigo_lists')->insert(['member_id'=>(int)$user_id,'first_store_id'=>$first,'second_store_id'=>$second,'created_at'=>NOW()]);
         return $user_id;
     }
+    public function third_insert(){
+        $third=$request->t_id;
+        $id=$request->id;
+        DB::table('hashigo_lists')
+        ->where('id',$id)
+        ->update(['third_store_id'=>$third]);
+        return true;
+    }
+        // $created_at=DB::table('hashigo_lists')->orderby('created_at','desc')->limit(6)->get();
+        // var_dump($created_at);
 }
