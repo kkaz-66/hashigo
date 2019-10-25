@@ -88,6 +88,4 @@ class MypageController extends Controller
         ->update(['third_store_id'=>$third]);
         return true;
     }
-        // $created_at=DB::table('hashigo_lists')->orderby('created_at','desc')->limit(6)->get();
-        // var_dump($created_at);
 }
