@@ -81,13 +81,11 @@ class MypageController extends Controller
         return $user_id;
     }
     public function third_insert(Request $request){
-        $third=$request->t_id;
-        $id=$request->id;
+        $third=$request->s_id;
+        $id=$request->listid;
         DB::table('hashigo_lists')
         ->where('id',$id)
         ->update(['third_store_id'=>$third]);
-        return true;
+         return true;
     }
-        // $created_at=DB::table('hashigo_lists')->orderby('created_at','desc')->limit(6)->get();
-        // var_dump($created_at);
 }
