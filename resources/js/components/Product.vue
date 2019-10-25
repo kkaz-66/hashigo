@@ -18,7 +18,9 @@
                 <!-- ボタンのクリックアクション -->
                 <p><span class="pan_name">{{ f_name }}</span> 
                     <span class="pan_space">></span>
-                    <span class="pan_name">{{ s_name }}</span></p>
+                    <span class="pan_name">{{ s_name }}</span>
+                    <span class = "pan_space">></span>
+                    <span class="pan_name">{{ t_name }}</span></p>
                     <!--はしご保存-->
                     <div>
                         <div v-if="isActive"><!--ログインされてなければ隠す--></div>
@@ -78,7 +80,6 @@ export default {
 
     data () {
         return {
-            //追加事項
             name: "",
             url: "",
             photo: "",
@@ -103,9 +104,11 @@ export default {
             time:"",
             capa:"",
             credit:"",
+            //一件目～三件目
             f_name:"",
             s_name:"",
             t_name:"",
+            //URL＆アイコン関連
             o_url:"",
             b_id:null,
             //postするid

@@ -2133,6 +2133,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2144,7 +2146,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      //追加事項
       name: "",
       url: "",
       photo: "",
@@ -2176,9 +2177,11 @@ __webpack_require__.r(__webpack_exports__);
       time: "",
       capa: "",
       credit: "",
+      //一件目～三件目
       f_name: "",
       s_name: "",
       t_name: "",
+      //URL＆アイコン関連
       o_url: "",
       b_id: null,
       //postするid
@@ -9191,11 +9194,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\nhtml body[data-v-0eb05e18] {\r\n  margin:0;\n}\n.wrap[data-v-0eb05e18] {\r\n  width: 100%;\r\n  padding: 0;\r\n  /* background-color: tomato; */\n}\n.ul_wrap[data-v-0eb05e18] {\r\n  /* リストの幅、wrapを基準に70％、 */\r\n  /* width: 70%; */\r\n  margin: auto;\r\n  /* background-color: orange; */\n}\n.ul_wrap ul[data-v-0eb05e18] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.ul_wrap ul .hashigo_date[data-v-0eb05e18] {\r\n  width: 100px;\r\n  /* background-color: aquamarine; */\n}\n.ul_wrap li[data-v-0eb05e18] {\r\n  list-style-type: none;\r\n  /* background-color: turquoise; */\r\n  /* margin-bottom: 20px; */\r\n  /* padding-left: 30px; */\r\n  padding: 5px;\r\n  display: flex;\n}\n.ul_wrap li .hashigo_li[data-v-0eb05e18] {\r\n  width: 468px;\r\n  /* background-color: aqua; */\r\n  display: flex;\n}\n.ul_wrap li .test[data-v-0eb05e18] {\r\n  display: block;\r\n  /* background-color: palegoldenrod; */\r\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  /* background-color: yellowgreen; */\r\n  display: block;\n}\r\n\r\n\r\n", ""]);
-=======
-exports.push([module.i, "\nhtml body[data-v-0eb05e18] {\n  margin:0;\n}\n.wrap[data-v-0eb05e18] {\n  width: 100%;\n  padding: 0;\n  /* background-color: tomato; */\n}\n.ul_wrap[data-v-0eb05e18] {\n  /* リストの幅、wrapを基準に70％、 */\n  /* width: 70%; */\n  margin: auto;\n  /* background-color: orange; */\n}\n.ul_wrap ul[data-v-0eb05e18] {\n  margin: 0;\n  padding: 0;\n}\n.ul_wrap ul .hashigo_date[data-v-0eb05e18] {\n  width: 100px;\n  /* background-color: aquamarine; */\n}\n.ul_wrap li[data-v-0eb05e18] {\n  list-style-type: none;\n  /* background-color: turquoise; */\n  /* margin-bottom: 20px; */\n  /* padding-left: 30px; */\n  padding: 5px;\n  display: flex;\n}\n.ul_wrap li .hashigo_li[data-v-0eb05e18] {\n  width: 468px;\n  /* background-color: aqua; */\n  display: flex;\n}\n.ul_wrap li .test[data-v-0eb05e18] {\n  display: block;\n  /* background-color: palegoldenrod; */\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  /* background-color: yellowgreen; */\n  display: block;\n}\n.hot_text[data-v-0eb05e18] {\n  font-size: 0.3rem;\n}\n\n", ""]);
->>>>>>> 3d30b088cd8fd4596bd36236b654e9e94683cea1
+exports.push([module.i, "\nhtml body[data-v-0eb05e18] {\r\n  margin:0;\n}\n.wrap[data-v-0eb05e18] {\r\n  width: 100%;\r\n  padding: 0;\r\n  /* background-color: tomato; */\n}\n.ul_wrap[data-v-0eb05e18] {\r\n  /* リストの幅、wrapを基準に70％、 */\r\n  /* width: 70%; */\r\n  margin: auto;\r\n  /* background-color: orange; */\n}\n.ul_wrap ul[data-v-0eb05e18] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.ul_wrap ul .hashigo_date[data-v-0eb05e18] {\r\n  width: 100px;\r\n  /* background-color: aquamarine; */\n}\n.ul_wrap li[data-v-0eb05e18] {\r\n  list-style-type: none;\r\n  /* background-color: turquoise; */\r\n  /* margin-bottom: 20px; */\r\n  /* padding-left: 30px; */\r\n  padding: 5px;\r\n  display: flex;\n}\n.ul_wrap li .hashigo_li[data-v-0eb05e18] {\r\n  width: 468px;\r\n  /* background-color: aqua; */\r\n  display: flex;\n}\n.ul_wrap li .test[data-v-0eb05e18] {\r\n  display: block;\r\n  /* background-color: palegoldenrod; */\r\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  /* background-color: yellowgreen; */\r\n  display: block;\n}\n.hot_text[data-v-0eb05e18] {\r\n  font-size: 0.3rem;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -48789,6 +48788,12 @@ var render = function() {
               _vm._v(" "),
               _c("span", { staticClass: "pan_name" }, [
                 _vm._v(_vm._s(_vm.s_name))
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "pan_space" }, [_vm._v(">")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "pan_name" }, [
+                _vm._v(_vm._s(_vm.t_name))
               ])
             ]),
             _vm._v(" "),
