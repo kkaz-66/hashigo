@@ -168,10 +168,7 @@ export default {
 
 <style scoped>
 .body {
-    width: auto;
     height: 100%;
-    /* background: #1e3971;
-    background: -moz-linear-gradient(top, #091938, #1e3971); */
     background-size: cover;
     background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg')
 }
@@ -270,7 +267,7 @@ export default {
     padding: 1em;
     border: 5px solid #bd1818;
     box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
-    margin-left: 70px;
+    margin-left: 50px;
     width: 300px;
     height: 400px;
     overflow-y: scroll;

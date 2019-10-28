@@ -5,18 +5,6 @@
         <div class="row">
             <!--店画像-->
             <div class="col-md-4">
-                <!-- <div>
-                   <div v-if="isActive">
-                    隠す
-                   </div>
-                   <div v-else>
-                        <span class="pan_name">{{ f_name }}</span> 
-                        <span class="pan_space">></span>
-                        <span class="pan_name">{{ s_name }}</span>
-                        <div v-if="isActive">ログインされてなければ隠す</div>
-                        <div v-else> <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
-                   </div> 
-                </div> -->
                 <div id="photo">
                     <img v-bind:src="f_photo"><br>
                 </div>
@@ -250,7 +238,6 @@ export default {
 
 <style scoped>
 .body {
-    width: auto;
     height: 100%;
     background-size: cover;
     background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
@@ -259,6 +246,7 @@ export default {
     padding:0px 50px;
     /* width: 100%; */
     height: 100%;
+    background-size: cover;
 }
 #map {
     width: 100%;
@@ -382,7 +370,7 @@ export default {
     /* margin: 2em auto; */
     padding: 5px 5px 15px 5px;;
     width: 90%; /* ボックス幅 */
-    height: 530px;
+    height: 100%;
     background-color: #fffff9; /* ボックス背景色 */
     color: #000; /* 文章色 */
     border: 5px solid #bd1818; /* 枠線 */
@@ -421,6 +409,17 @@ export default {
     width: 300px;
     height: 520px;
     overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    border-radius:  30px;
+    background: #eee;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background: #ff0000;
 }
 #products hr {
     background-color: #FFF;
@@ -463,7 +462,6 @@ export default {
     border-bottom: none;
 }
 #hot {
-    padding-left: 35px;
     padding-top: 10px;
 }
 </style>
