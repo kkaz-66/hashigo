@@ -170,8 +170,12 @@ export default {
         //ピン立て 中央
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
-
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/blue-dot.png',scaledSize:{width:50,height:55} ,scaledColor: '#0000'}})
+            //2軒目と3軒目で、現在地のicon変更
+            if(!this.hisname){
+                this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', icon: {url: 'http://pictogram2.com/p/p0115/1.png',scaledSize:{width:70,height:75} ,scaledColor: '#0000'}})
+            }else{
+                this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', icon: {url: 'http://pictogram2.com/p/p0958/3.png',scaledSize:{width:70,height:75} ,scaledColor: '#0000'}})
+            }
         },
 
         // hotpepperから店情報取得
@@ -194,7 +198,7 @@ export default {
             let lng = shopdata.lng
             this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo,
                 address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, card:shopdata.card, id:shopdata.id,
-                icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png',scaledSize:{width:50,height:55} ,scaledColor: '#0000'}
+                icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png',scaledSize:{width:40,height:40} ,scaledColor: '#0000'}
                 , button:false})
             });
         },
@@ -299,7 +303,7 @@ export default {
     letter-spacing: 2px;
     margin: 0 auto;
     padding: 10px;
-    white-space: nowrap;
+    white-space: pre-line;
 }
 .col-md-4 p {
     font-size: 24px;
@@ -310,7 +314,7 @@ export default {
     border: 4px #ff0000 solid;
 }
 #name {
-    height: 70px;
+    height: 76px;
     display: block;
     font-size: 16px;
     font-weight: bold;
@@ -459,7 +463,10 @@ export default {
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影*/
     border-bottom: none;
 }
-#hot {
-    padding-top: 10px;
+
+#hot a {
+    display: inline-block;
+    height: 60px;
+    background-color: tomato;
 }
 </style>

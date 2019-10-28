@@ -34,6 +34,8 @@
                             <img v-bind:src="photo"><br>
                             <h3><span class="shopname">{{name}}</span></h3><br>
                             <a v-bind:href="url" target="_blank">ホットぺッパー</a><br>
+                            予算：{{ budget }}<br>
+                            交通：{{ access }}<br>
                             <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}} の詳細ヘ</a>
                         </div>
                     </div>
@@ -71,6 +73,9 @@ export default {
             zoom: 18,
             marker_items: [],
             icon: {url: "", scaledSize:"", scaledColor: ""},
+            //お店表示内容
+            budget:"",
+            access:"",
         }
     },
     methods: {
@@ -95,7 +100,7 @@ export default {
             this.marker_items=[];
             this.$refs.map.panTo({lat: lat, lng: lng})
             this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
-            icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
+            icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(70, 75),scaledColor: '#0000'}})
         },
 
         // hotpepperから店情報取得(ほんとはPOSTlist)
@@ -129,7 +134,9 @@ export default {
                 let lng = shopdata.lng
                 let id = shopdata.id
 
-                this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo})
+                this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo,
+                budget:shopdata.budget.name, access:shopdata.mobile_access,
+                icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png',scaledSize:{width:40,height:40} ,scaledColor: '#0000'}})
             });
         },
         // 検索ボタンclick発火
@@ -150,6 +157,8 @@ export default {
             this.id =this.marker_items[id].id
             this.lat =this.marker_items[id].position.lat
             this.lng =this.marker_items[id].position.lng
+            this.budget = this.marker_items[id].budget
+            this.access = this.marker_items[id].access
             if(this.marker_items[id].title == '中心地'){
                 this.isActive = true
             }else{
@@ -259,9 +268,6 @@ export default {
     height: 750px;
     
 } 
-.shopname {
-    background: linear-gradient(transparent 70%, #ff99ff 70%);
-}
 #box {
     text-align: center;
     position: relative;
@@ -271,9 +277,16 @@ export default {
     box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
     margin-top: 10px;
     margin-left: 50px;
-    width: 300px;
-    height: 420px;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 400px;
+    height: 550px;
     white-space: pre-line;
+}
+.shopname {
+    font-weight: bold;
+    margin-top: 10px;
+    background: linear-gradient(transparent 70%, #ff99ff 70%);
 }
 #hot {
     padding-left: 35px;
