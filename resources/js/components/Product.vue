@@ -15,9 +15,6 @@
             </div>
             <!--店詳細-->
             <div class="col-md-8">
-                <!-- <span class="pan_name">{{ f_name }}</span> 
-                <span class="pan_space">></span> -->
-
                 <div v-if="!hisname">
                     <span class="pan_name">{{ f_name }}</span> 
                     <span class="pan_space">></span>
@@ -32,19 +29,6 @@
                     <span class="pan_name">{{ s_name }}</span><br>
                     <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button>
                 </div>
-
-
-
-                <!-- <div v-if="isActive">
-                    隠す
-                   </div>
-                   <div v-else>
-                        <div v-if="isActive">ログインされてなければ隠す</div>
-                        <div v-else>
-                            <div v-if="!hisname"><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
-                             <div v-else><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button></div>
-                             </div>
-                   </div>  -->
                 <br>
                 <div id="shop_info">
                     住所：{{ tel_add }}<br><hr>
@@ -293,16 +277,13 @@ export default {
     position: absolute;
     top: 0;
     z-index: -1;
-    background-size: cover;
+    background-size: contain;
     background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
 }
 .app {
     padding:0px 50px;
     margin-top: 60px;
     width: 100%;
-    /* height: 100vh; */
-    /* background-size: cover; */
-    /* background-color: tomato; */
 }
 #map {
     width: 100%;
@@ -321,51 +302,33 @@ export default {
     white-space: nowrap;
 }
 .col-md-4 p {
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: -5px;
 }
 #photo img {
     border: 4px #ff0000 solid;
 }
 #name {
+    height: 70px;
     display: block;
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
     padding: 0 0 10px 0;
-    overflow-wrap: break-word;
-    /* display: inline-block;
-    padding: 20px;
-    overflow-wrap: break-word; */
-    /* overflow-wrap: break-word; */
-}
-.col-md-4 #name {
-    display: block;
-    font-size: 16px;
-    margin-top: 10px;
-    padding: 0 0 10px 0;
+    overflow-y: scroll;
     white-space: pre-line;
-}
-.col-md-4 p {
-    font-size: 24px;
-    font-weight: bold;
 }
 .col-md-8 {
     width: 100%;
     height: 350px;
     border-radius: 3px;
     color: rgb(0, 0, 0);
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
-    /* font-family:"Haruhi Gakuen", sans-serif; */
     letter-spacing: 2px;
-    margin: 0 auto;
-    padding: 10px;
-    /* text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff; */
+    margin: -10px auto;
     white-space: pre-line;
-}
-.col-md-8 p {
-    font-size: 16px;
-    font-weight: bold;
 }
 .col-md-8 hr {
     background-color: #000;
@@ -389,47 +352,37 @@ export default {
 .pan_space a {
     color: rgb(0, 47, 255);
     font-weight: bold;
-    /* text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff; */
 }
 #hashigo_save {
-    /* font-size: 5px; */
     white-space: nowrap;
     display: inline-block;
-    /* margin-top: 10px; */
     padding: 0.5em 1em;
     text-decoration: none;
     background: blue;/*ボタン色*/
     color: rgb(255, 255, 255);
     border-bottom: solid 4px #627295;
     border-radius: 3px;
-    /* text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff; */
 }
 #hashigo_save:disabled {
-    /* font-size: 5px; */
     white-space: nowrap;
     display: inline-block;
-    /* margin-top: 10px; */
     padding: 0.5em 1em;
     text-decoration: none;
     background: grey;/*ボタン色*/
     color: rgb(255, 255, 255);
     border-bottom: solid 4px #627295;
     border-radius: 3px;
-    /* text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff; */
 }
 #shop_info {
     width: 100%;
     height: 200px;
+    margin: -10px;
+    padding: 30px;
     overflow-y: scroll; 
 }
-/* .shop_name{
-    display: inline-block;
-    width: 100px;
-} */
 .col-md-9 {
     position: relative;
-    /* margin: 2em auto; */
-    padding: 5px 5px 15px 5px;;
+    padding: 5px 5px 15px 5px;
     width: 90%; /* ボックス幅 */
     height: 100%;
     background-color: #fffff9; /* ボックス背景色 */
@@ -462,7 +415,6 @@ export default {
     text-align: center;
     position: relative;
     background: #77777734;
-    /* margin: 1em 0; */
     padding: 1em;
     border: 5px solid #bd1818;
     box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
@@ -485,29 +437,14 @@ export default {
 #products hr {
     background-color: #FFF;
 }
-/* #products:before {
-    border: 1px solid #fff; 白い実線
-    border-radius: 5px;
-    content: '';
-    display: block;
-    margin: 4px;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: -1;
-} */
 #detail {
     margin-top: 10px;
     max-width: 200px;
     min-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* font-size: 5px; */
     white-space: nowrap;
     display: inline-block;
-    /* margin-top: 10px; */
     padding: 0.5em 1em;
     text-decoration: none;
     background: blue;/*ボタン色*/
@@ -519,7 +456,7 @@ export default {
     /*ボタンを押したとき*/
     -webkit-transform: translateY(4px);
     transform: translateY(4px);/*下に動く*/
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影*/
     border-bottom: none;
 }
 #hot {

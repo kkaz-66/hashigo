@@ -1,11 +1,6 @@
 <template>
 <div class="body">
     <div class="app">
-        <!-- <div class="row">
-            <div class="col-md-12">
-
-            </div>
-        </div> -->
         <div class="row">
             <div class="col-md-12">
                     <button id="search" type="submit" @click="currentsearch">現在地へ移動</button>
@@ -33,13 +28,12 @@
                     <!--初期値の店情報を隠す-->
                     </div>
 
-                    <div id="shop" style="white-space: nowrap" v-else>
+                    <div id="shop" v-else>
                         <div id="tape"></div>
                         <div id ="box">
                             <img v-bind:src="photo"><br>
-                            <h3><span class="shopname">{{name}}</span><br></h3><br>
+                            <h3><span class="shopname">{{name}}</span></h3><br>
                             <a v-bind:href="url" target="_blank">ホットぺッパー</a><br>
-                            
                             <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}} の詳細ヘ</a>
                         </div>
                     </div>
@@ -170,12 +164,19 @@ export default {
 .body {
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
     z-index: -1;
-    background-size: cover;
-    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg')
+    background-size: contain;
+    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
 }
-.row {
-    padding: 10px;
+.app {
+    padding: 0 50px;
+    margin-top: 60px;
+    width: 100%;
+}
+.col-md-12 {
+    margin: 10px 0;
 }
 #search {
     display: inline-block;
@@ -223,14 +224,14 @@ export default {
     border-bottom: none;
 }
 .col-md-9 {
+    margin-top: 10px;
     margin-left: 20px;
     margin-right: -20px;
     position: relative;
-    /* margin: 2em auto; */
     padding: 5px 5px 15px 5px;;
     width: 90%; /* ボックス幅 */
     height: 780px;
-    background-color: #fffff9; /* ボックス背景色 */
+    background-color: #ffffff; /* ボックス背景色 */
     color: #000; /* 文章色 */
     border: 5px solid #bd1818; /* 枠線 */
     border-radius: 3px; /* 角の丸み */
@@ -264,29 +265,16 @@ export default {
 #box {
     text-align: center;
     position: relative;
-    background: #fff9de;
-    /* margin: 1em 0; */
-    padding: 1em;
+    background: #ffd000;
+    padding: 10px;
     border: 5px solid #bd1818;
     box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+    margin-top: 10px;
     margin-left: 50px;
     width: 300px;
-    height: 400px;
-    overflow-y: scroll;
+    height: 420px;
+    white-space: pre-line;
 }
-/* #box:before {
-    border: 1px solid #fff; 白い実線
-    border-radius: 5px;
-    content: '';
-    display: block;
-    margin: 4px;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: -1;
-} */
 #hot {
     padding-left: 35px;
     padding-top: 10px;
