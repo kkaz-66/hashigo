@@ -183,4 +183,48 @@ li .hashigo_shop {
   font-size: 0.3rem;
 }
 
+@media screen and (max-width:768px){
+  *{
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+  }
+
+  .wrap {
+    /* background-color: aqua; */
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .second_wrap {
+    width: 100%;
+  }
+
+  .ul_wrap {
+    width: 100%;
+  }
+
+  .ul_wrap ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ul_wrap ul li {
+    display: flex;
+    /* width: 49%; */
+    width: 100%;
+    flex-direction: column;
+  }
+
+  li .hashigo_li {
+    width: 100%;
+    justify-content: space-between;
+    /* background-color: blue; */
+    padding: 5px;
+  }
+
+}
+
 </style>
