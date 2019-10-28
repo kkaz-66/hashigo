@@ -2,14 +2,14 @@
 <div class="body">
     <div class="app">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xs-12">
                     <button id="search" type="submit" @click="currentsearch">現在地へ移動</button>
                     <input  id="textbox" type="text" v-model="address" placeholder="エリア検索">
                     <button id="area" type="submit" @click="keywordSearch">検索</button>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-xs-9">
                 <div id="map">
                     <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
                         <GmapMarker  v-for="(m,id) in marker_items"
@@ -22,7 +22,7 @@
                     </GmapMap>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3">
                 <div>
                     <div v-if="isActive">
                     <!--初期値の店情報を隠す-->
@@ -184,7 +184,7 @@ export default {
     margin-top: 60px;
     width: 100%;
 }
-.col-md-12 {
+.col-xs-12 {
     margin: 10px 0;
 }
 #search {
@@ -232,7 +232,7 @@ export default {
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
     border-bottom: none;
 }
-.col-md-9 {
+.col-xs-9 {
     margin-top: 10px;
     margin-left: 20px;
     margin-right: -20px;
@@ -246,7 +246,7 @@ export default {
     border-radius: 3px; /* 角の丸み */
     box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
 }
-.col-md-9:before, .col-md-9:after {
+.col-xs-9:before, .col-xs-9:after {
     position: absolute;
     content: '';
     width: 25px; 
@@ -254,11 +254,11 @@ export default {
     border-radius: 2px;
     box-shadow: 1px 1px 3px #666;
 }
-.col-md-9:before {
+.col-xs-9:before {
     right: 55px;
     border: solid 3px #333333; /*飾ペン黒 */
 }
-.col-md-9:after {
+.col-xs-9:after {
     right: 20px;
     border: solid 3px #ff42a0; /*飾ペンピンク */
     transform: rotate(8deg); /*飾ペン角度 */
@@ -292,4 +292,45 @@ export default {
     padding-left: 35px;
     padding-top: 10px;
 }
+
+/* スマホ */
+/* @media screen and (max-width:768px){
+  #map {
+      width: 650px;
+  }
+  .col-md-9 {
+      margin-top: 10px;
+      margin-left: 20px;
+      margin-right: -50px;
+      position: relative;
+      padding: 5px 5px 15px 5px;;
+      width: 670px;; /* ボックス幅 */
+      /* height: 780px;
+      background-color: #ffffff; ボックス背景色 */
+      /* color: #000; /* 文章色 */
+      /* border: 5px solid #bd1818; 枠線 */
+      /* border-radius: 3px; 角の丸み */
+      /* box-shadow: 0 0 8px #333, 0 0 2px #555 inset; */
+  /* } */
+  /* .col-md-9:before, .col-md-9:after { */
+      /* position: absolute; */
+      /* content: '';
+      width: 25px; 
+      bottom: 3px;
+      border-radius: 2px;
+      box-shadow: 1px 1px 3px #666;
+  }
+  .col-md-9:before {
+      right: 55px; */
+      /* border: solid 3px #333333; 飾ペン黒 */
+  /* }
+  .col-md-9:after {
+      right: 20px;
+      border: solid 3px #ff42a0; 飾ペンピンク
+      transform: rotate(8deg); 飾ペン角度 */
+  /* }
+  .col-md-3 {
+
+  }
+} */ 
 </style>
