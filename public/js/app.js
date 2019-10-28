@@ -2369,10 +2369,10 @@ __webpack_require__.r(__webpack_exports__);
       this.insertClick = this.marker_items[id].button; //2件目、マーカー色チェンジ
 
       if (this.b_id !== null) {
-        this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png';
+        this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png';
       }
 
-      this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png';
+      this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/ltblue-dot.png';
       this.$refs.map.panTo({
         lat: this.marker_items[id].position.lat,
         lng: this.marker_items[id].position.lng
@@ -2424,6 +2424,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -9287,7 +9288,11 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
+<<<<<<< HEAD
 exports.push([module.i, "\n*[data-v-0eb05e18] {\n  margin: 0;\n  padding: 0;\n}\n.wrap[data-v-0eb05e18] {\n  width: 100%;\n  padding: 0;\n  margin-top: 50px;\n}\n.second_wrap[data-v-0eb05e18] {\n  width: 80%;\n  margin: auto;\n}\n.ul_wrap[data-v-0eb05e18] {\n  margin: auto;\n}\nli[data-v-0eb05e18] {\n  list-style-type: none;\n  display: flex;\n  margin-bottom: 10px;\n  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);\n  transition: all 0.3s ease 0s;\n  justify-content: space-between;\n}\nli[data-v-0eb05e18]:hover {\n  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);\n  transform: translateY(-0.1875em);\n}\nli .hashigo_li[data-v-0eb05e18] {\n  width: 468px;\n  display: flex;\n}\nli .hashigo_shop[data-v-0eb05e18] {\n  display: block;\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n}\n.third_shop[data-v-0eb05e18]{\n  position: relative;\n}\n.third_shop a[data-v-0eb05e18],\n.third_shop a[data-v-0eb05e18]::before,\n.third_shop a[data-v-0eb05e18]::after {\n  box-sizing: border-box;\n  transition: all .3s;\n}\n.third_shop a[data-v-0eb05e18]:hover {\n  background-color: rgba(0, 0, 0, 0.09);\n}\n.third_shop a[data-v-0eb05e18]{\n  text-decoration: none;\n  display: flex;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n  /* background-color: aqua; */\n  position: absolute;\n  align-items: center;\n  justify-content: center;\n}\n.hot_text[data-v-0eb05e18] {\n  font-size: 0.3rem;\n}\n\n", ""]);
+=======
+exports.push([module.i, "\n*[data-v-0eb05e18] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.wrap[data-v-0eb05e18] {\r\n  width: 100%;\r\n  padding: 0;\r\n  margin-top: 30px;\n}\n.second_wrap[data-v-0eb05e18] {\r\n  width: 80%;\r\n  margin: auto;\n}\n.ul_wrap[data-v-0eb05e18] {\r\n  margin: auto;\n}\nli[data-v-0eb05e18] {\r\n  list-style-type: none;\r\n  display: flex;\r\n  margin-bottom: 10px;\r\n  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);\r\n  transition: all 0.3s ease 0s;\r\n  justify-content: space-between;\n}\nli[data-v-0eb05e18]:hover {\r\n  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);\r\n  transform: translateY(-0.1875em);\n}\nli .hashigo_li[data-v-0eb05e18] {\r\n  width: 468px;\r\n  display: flex;\n}\nli .hashigo_shop[data-v-0eb05e18] {\r\n  display: block;\r\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  display: block;\n}\n.third_shop[data-v-0eb05e18]{\r\n  position: relative;\n}\n.third_shop a[data-v-0eb05e18] {\r\n  text-decoration: none;\n}\n.third_shop_search[data-v-0eb05e18]{\r\n  text-decoration: none;\r\n  display: flex;\r\n  text-align: center;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* background-color: aqua; */\r\n  position: absolute;\r\n  align-items: center;\r\n  justify-content: center;\n}\n.third_shop_search[data-v-0eb05e18],\r\n.third_shop_search[data-v-0eb05e18]::before,\r\n.third_shop_search[data-v-0eb05e18]::after {\r\n  box-sizing: border-box;\r\n  transition: all .3s;\n}\n.third_shop_search[data-v-0eb05e18]:hover {\r\n  background-color: rgba(0, 0, 0, 0.09);\n}\n.hot_text[data-v-0eb05e18] {\r\n  font-size: 0.3rem;\n}\r\n\r\n", ""]);
+>>>>>>> a93f52d27aac7196774cb76cde60a6a8bfa353a2
 
 // exports
 
@@ -49144,11 +49149,31 @@ var render = function() {
                           _vm._s(json.third ? json.third.name : "no store")
                       ),
                       _c("br"),
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(json.third ? json.third.close : "") +
-                          "\n            "
-                      )
+                      _vm._v(" "),
+                      json.third
+                        ? _c("span", [
+                            _vm._v(
+                              "定休日：" +
+                                _vm._s(json.third ? json.third.close : "")
+                            )
+                          ])
+                        : _vm._e(),
+                      _c("br"),
+                      _vm._v(" "),
+                      json.third
+                        ? _c("span", [
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href: json.second.urls.pc,
+                                  target: "_blank"
+                                }
+                              },
+                              [_vm._v(_vm._s(json.second.name) + "の公式")]
+                            )
+                          ])
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     json.third
