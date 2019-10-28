@@ -19,7 +19,11 @@ class CreateHashigoListsTable extends Migration
             $table->string('first_store_id',255);
             $table->string('second_store_id',255);
             $table->string('third_store_id',255)->default("");
-            $table->timestamp('created_at');
+            // $table->timestamp('created_at');
+            // $table->timestamp('updated_at');
+            // update文実行された際に上書きされてしまうため
+            // created_at,updated_atを作成した
+            $table->timestamps();
 
             $table->unique(['member_id', 'id']);
         });
