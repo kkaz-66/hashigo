@@ -13,20 +13,26 @@
 
             <div class="hashigo_li">
               <div class="hashigo_shop">1軒目：{{ json.first?json.first.name:'no store'}}<br>
-              <a v-bind:src="json.first.urls.pc">詳細</a>
-              {{json.first.open}}</div>
+              定休日：{{json.first.close}}<br>
+              <a v-bind:href="json.first.urls.pc" target="_blank">{{ json.first.name }}の公式</a>
+              </div>
               <img v-bind:src="json.first.photo.pc.m">
             </div><!-- hashigo_li -->
 
             <div class="hashigo_li">
-              <div class="hashigo_shop">2軒目：{{ json.second?json.second.name:'no store'}}<br>{{json.second.open}}</div>
+              <div class="hashigo_shop">2軒目：{{ json.second?json.second.name:'no store'}}<br>
+              定休日：{{json.second.close}}<br>
+              <a v-bind:href="json.second.urls.pc" target="_blank">{{ json.second.name }}の公式</a>
+              </div>
               <img v-bind:src="json.second.photo.pc.m">
             </div><!-- hashigo_li -->
 
             <div class="hashigo_li third_shop">
-              <div class="hashigo_shop">3軒目：{{ (json.third)?json.third.name:'no store'}}<br>{{json.third?json.third.open:''}}</div>
+              <div class="hashigo_shop">3軒目：{{ (json.third)?json.third.name:'no store'}}<br>
+              {{json.third?json.third.close:''}}
+              </div>
               <span v-if="json.third"><img v-bind:src="json.third.photo.pc.m"></span>
-              <a class="third_shop_search" @click="thirdSearch(id)" v-bind:href="detail + shopid + f_lat + lat + f_lng + lng + li + listid + his + hisname" v-else>3軒目を探す</a>
+              <a v-else class="third_shop_search" @click="thirdSearch(id)" v-bind:href="detail + shopid + f_lat + lat + f_lng + lng + li + listid + his + hisname">3軒目を探す</a>
             </div><!-- hashigo_li -->
           </li>
         </ul>
@@ -98,10 +104,11 @@ export default {
 .wrap {
   width: 100%;
   padding: 0;
+  margin-top: 50px;
 }
 
 .second_wrap {
-  width: 70%;
+  width: 80%;
   margin: auto;
 }
 
