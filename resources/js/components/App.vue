@@ -1,11 +1,6 @@
 <template>
 <div class="body">
     <div class="app">
-        <!-- <div class="row">
-            <div class="col-md-12">
-
-            </div>
-        </div> -->
         <div class="row">
             <div class="col-md-12">
                     <button id="search" type="submit" @click="currentsearch">現在地へ移動</button>
@@ -33,13 +28,14 @@
                     <!--初期値の店情報を隠す-->
                     </div>
 
-                    <div id="shop" style="white-space: nowrap" v-else>
+                    <div id="shop" v-else>
                         <div id="tape"></div>
                         <div id ="box">
                             <img v-bind:src="photo"><br>
-                            <h3><span class="shopname">{{name}}</span><br></h3><br>
+                            <h3><span class="shopname">{{name}}</span></h3><br>
                             <a v-bind:href="url" target="_blank">ホットぺッパー</a><br>
-                            
+                            予算：{{ budget }}<br>
+                            交通：{{ access }}<br>
                             <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}} の詳細ヘ</a>
                         </div>
                     </div>
@@ -77,6 +73,9 @@ export default {
             zoom: 18,
             marker_items: [],
             icon: {url: "", scaledSize:"", scaledColor: ""},
+            //お店表示内容
+            budget:"",
+            access:"",
         }
     },
     methods: {
@@ -101,7 +100,7 @@ export default {
             this.marker_items=[];
             this.$refs.map.panTo({lat: lat, lng: lng})
             this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
-            icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
+            icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(70, 75),scaledColor: '#0000'}})
         },
 
         // hotpepperから店情報取得(ほんとはPOSTlist)
@@ -135,7 +134,9 @@ export default {
                 let lng = shopdata.lng
                 let id = shopdata.id
 
-                this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo})
+                this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo,
+                budget:shopdata.budget.name, access:shopdata.mobile_access,
+                icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png',scaledSize:{width:40,height:40} ,scaledColor: '#0000'}})
             });
         },
         // 検索ボタンclick発火
@@ -156,6 +157,8 @@ export default {
             this.id =this.marker_items[id].id
             this.lat =this.marker_items[id].position.lat
             this.lng =this.marker_items[id].position.lng
+            this.budget = this.marker_items[id].budget
+            this.access = this.marker_items[id].access
             if(this.marker_items[id].title == '中心地'){
                 this.isActive = true
             }else{
@@ -169,18 +172,20 @@ export default {
 <style scoped>
 .body {
     width: 100%;
-    height: 915px;
-    /* background: #1e3971;
-    background: -moz-linear-gradient(top, #091938, #1e3971); */
-    background-size: cover;
-    background-image: url('https://hillslife.jp/wp-content/uploads/2017/12/1227_tenmon_main8-970x550.jpg')
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    background-size: contain;
+    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
 }
 .app {
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0 50px;
+    margin-top: 60px;
+    width: 100%;
 }
-.row {
-    padding: 10px;
+.col-md-12 {
+    margin: 10px 0;
 }
 #search {
     display: inline-block;
@@ -228,64 +233,61 @@ export default {
     border-bottom: none;
 }
 .col-md-9 {
+    margin-top: 10px;
     margin-left: 20px;
     margin-right: -20px;
     position: relative;
-    border-top: solid 2px black;
-    border-bottom: solid 2px black;
+    padding: 5px 5px 15px 5px;;
+    width: 90%; /* ボックス幅 */
+    height: 780px;
+    background-color: #ffffff; /* ボックス背景色 */
+    color: #000; /* 文章色 */
+    border: 5px solid #bd1818; /* 枠線 */
+    border-radius: 3px; /* 角の丸み */
+    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
 }
 .col-md-9:before, .col-md-9:after {
-    content: '';
     position: absolute;
-    top: -10px;
-    width: 2px;
-    height: -webkit-calc(100% + 20px);
-    height: calc(100% + 20px);
-    background-color: black;
+    content: '';
+    width: 25px; 
+    bottom: 3px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px #666;
 }
 .col-md-9:before {
-    left: 10px;
+    right: 55px;
+    border: solid 3px #333333; /*飾ペン黒 */
 }
 .col-md-9:after {
-    right: 10px;
+    right: 20px;
+    border: solid 3px #ff42a0; /*飾ペンピンク */
+    transform: rotate(8deg); /*飾ペン角度 */
 }
 #map {
     width: 100%;
     height: 750px;
     
 } 
-.shopname {
-    background: linear-gradient(transparent 70%, #ff99ff 70%);
-}
 #box {
     text-align: center;
     position: relative;
-    background: rgb(255, 216, 100);
-    border-left:4px dotted rgba(0,0,0,.1);
-    border-right:4px dotted rgba(0,0,0,.1);
-    box-shadow:0 0 5px rgba(0,0,0,.2);
-    padding: 1em;
+    background: #ffd000;
+    padding: 10px;
+    border: 5px solid #bd1818;
+    box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
     margin-top: 10px;
-    margin-left: 30px;
-    color: #65513f;
-    width: 350px;
-    height: 400px;
-    overflow-x: scroll;
-    word-wrap: break-word;
+    margin-left: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 400px;
+    height: 550px;
+    white-space: pre-line;
 }
-/* #box:before {
-    border: 1px solid #fff; 白い実線
-    border-radius: 5px;
-    content: '';
-    display: block;
-    margin: 4px;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: -1;
-} */
+.shopname {
+    font-weight: bold;
+    margin-top: 10px;
+    background: linear-gradient(transparent 70%, #ff99ff 70%);
+}
 #hot {
     padding-left: 35px;
     padding-top: 10px;

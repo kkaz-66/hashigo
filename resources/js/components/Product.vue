@@ -4,46 +4,37 @@
         <!--詳細表示-->
         <div class="row">
             <!--店画像-->
-            <div class="col-md-4"  style="white-space: nowrap">
+            <div class="col-md-4">
                 <div id="photo">
                     <img v-bind:src="f_photo"><br>
                 </div>
                 <div id="name">
-                    <h4>{{ shop_name }}</h4>
-                    <span class="pan_space"> URL：<a v-bind:href="o_url" target="_blank">{{ shop_name }}の公式</a></span><hr>
+                    <p>{{ shop_name }}</p>
+                    <span class="pan_space"> URL：<a v-bind:href="o_url" target="_blank">{{ shop_name }}の公式</a></span>
                 </div>
             </div>
             <!--店詳細-->
-            <div class="col-md-8" style="white-space: nowrap">
-                <span class="pan_name">{{ f_name }}</span> 
-                <span class="pan_space">></span>
-
+            <div class="col-md-8">
                 <div v-if="!hisname">
-                     <span class="pan_name">{{ s_name }}</span>
+                    <span class="pan_name">{{ f_name }}</span> 
+                    <span class="pan_space">></span>
+                    <span class="pan_name">{{ s_name }}</span><br>
+                    <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
                 </div>
                 <div v-else>
-                     <span class="pan_name">{{ second_name }}</span>
-                     <span class="pan_space">></span>
-                     <span class="pan_name">{{ s_name }}</span>
+                    <span class="pan_name">{{ f_name }}</span> 
+                    <span class="pan_space">></span>
+                    <span class="pan_name">{{ second_name }}</span>
+                    <span class="pan_space">></span>
+                    <span class="pan_name">{{ s_name }}</span><br>
+                    <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button>
                 </div>
-
-
-
-                <div v-if="isActive">
-                    <!-- 隠す -->
-                   </div>
-                   <div v-else>
-                        <div v-if="isActive"><!-- ログインされてなければ隠す --></div>
-                        <div v-else>
-                            <div v-if="!hisname"><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
-                             <div v-else><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button></div>
-                             </div>
-                   </div> 
                 <br>
-                住所：{{ tel_add }}<br><hr>
-                営業時間：{{ time }}<br><hr>
-                収容人数：{{ capa }}<br><hr> 
-                クレジット：{{ credit }}<br><hr>
+                <div id="shop_info">
+                    住所：{{ tel_add }}<br><hr>
+                    営業時間：{{ time }}<br><hr>
+                    収容人数：{{ capa }}  /  クレジット：{{ credit }}<br><hr>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -60,7 +51,7 @@
                     </GmapMap>
                 </div>
             </div>
-            <div class="col-md-3" style="white-space: nowrap" >
+            <div class="col-md-3" >
                 <div id="tape"></div>
                 <div id="products">
                     <table>
@@ -179,8 +170,12 @@ export default {
         //ピン立て 中央
         setcentermarker(lat,lng){
             this.$refs.map.panTo({lat: lat, lng: lng})
-
-            this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/blue-dot.png',scaledSize:{width:50,height:55} ,scaledColor: '#0000'}})
+            //2軒目と3軒目で、現在地のicon変更
+            if(!this.hisname){
+                this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', icon: {url: 'http://pictogram2.com/p/p0115/1.png',scaledSize:{width:70,height:75} ,scaledColor: '#0000'}})
+            }else{
+                this.marker_items.push({position: {lat: lat, lng: lng}, title: '現在地', icon: {url: 'http://pictogram2.com/p/p0958/3.png',scaledSize:{width:70,height:75} ,scaledColor: '#0000'}})
+            }
         },
 
         // hotpepperから店情報取得
@@ -203,7 +198,7 @@ export default {
             let lng = shopdata.lng
             this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)}, title: name, url: url, photo: photo,
                 address:shopdata.address, open:shopdata.open, capacity:shopdata.capacity, card:shopdata.card, id:shopdata.id,
-                icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png',scaledSize:{width:50,height:55} ,scaledColor: '#0000'}
+                icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png',scaledSize:{width:40,height:40} ,scaledColor: '#0000'}
                 , button:false})
             });
         },
@@ -235,9 +230,9 @@ export default {
 
             //2件目、マーカー色チェンジ
             if(this.b_id !== null){
-                this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png'
+                this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png'
             }
-            this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png'
+            this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/ltblue-dot.png'
             this.$refs.map.panTo({lat: this.marker_items[id].position.lat, lng: this.marker_items[id].position.lng})
             this.b_id = id
         },
@@ -282,24 +277,17 @@ export default {
 <style scoped>
 .body {
     width: 100%;
-    height: 930px;
-    /* background: #1e3971;
-    background: -moz-linear-gradient(top, #091938, #1e3971); */
-    background-size: cover;
-    background-image: url('https://haletto.jp/wp/wp-content/uploads/2017/11/ae39f1eba412c75df6fd592500f696d9-1000x611.jpg')
-    /* background: #1e3971;
-    background: -moz-linear-gradient(top, #091938, #1e3971);
-    background: -webkit-gradient(linear,
-        left top,
-        left bottom,
-        from(#091938),
-        to(#1e3971)); */
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    background-size: contain;
+    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
 }
 .app {
     padding:0px 50px;
-    /* width: 100%; */
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 60px;
+    width: 100%;
 }
 #map {
     width: 100%;
@@ -307,98 +295,103 @@ export default {
 } 
 .col-md-4 {
     /* 左上の写真・店名の設定 */
-    margin-bottom: -10px;
+    width: 100%;
+    height: 350px;
     text-align: center;
     border-radius: 3px;
-    color: #fff;
-    /* font-size: 36px; */
-    font-family:"Haruhi Gakuen", sans-serif;
+    color: rgb(0, 0, 0);
     letter-spacing: 2px;
     margin: 0 auto;
     padding: 10px;
-    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
-    height: 350px;
+    white-space: pre-line;
 }
-.col-md-4 pan_name {
-    font-size: 14px;
-    margin-top: 20px;
+.col-md-4 p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: -5px;
+}
+#photo img {
+    border: 4px #ff0000 solid;
+}
+#name {
+    height: 76px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 0 0 10px 0;
+    overflow-y: scroll;
+    white-space: pre-line;
 }
 .col-md-8 {
-    border-radius: 3px;
-    color: #fff;
-    font-size: 14px;
-    font-family:"Haruhi Gakuen", sans-serif;
-    letter-spacing: 2px;
-    margin: 0 auto;
-    padding: 10px;
-    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+    width: 100%;
     height: 350px;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: -10px auto;
+    white-space: pre-line;
+}
+.col-md-8 hr {
+    background-color: #000;
 }
 .pan_name{
+    white-space: nowrap;
     margin-top: 20px;
     max-width: 180px;
     min-width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+    font-weight: bold;
 }
 .pan_space {
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+    font-weight: bold;
 }
 .pan_space a {
-    color: rgb(9, 255, 0);
-    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+    color: rgb(0, 47, 255);
+    font-weight: bold;
 }
 #hashigo_save {
-    /* font-size: 5px; */
     white-space: nowrap;
     display: inline-block;
-    /* margin-top: 10px; */
     padding: 0.5em 1em;
     text-decoration: none;
-    background: #0033a0;/*ボタン色*/
-    color: rgb(9, 255, 0);
-    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
+    background: blue;/*ボタン色*/
+    color: rgb(255, 255, 255);
     border-bottom: solid 4px #627295;
     border-radius: 3px;
-    text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff;
 }
-#photo {
-    color: #333;
-    text-shadow: 0 20px 10px rgba(0, 0, 0, .5);
-}
-#name {
-    display: block;
-    font-size: 16px;
-    margin-top: 10px;
-    padding: 0 0 10px 0;
-    overflow-wrap: break-word;
-    /* display: inline-block;
-    padding: 20px;
-    overflow-wrap: break-word; */
-    /* overflow-wrap: break-word; */
-}
-.col-md-4 #name {
-    display: block;
-    font-size: 16px;
-    margin-top: 10px;
-    padding: 0 0 10px 0;
-}
-/* .shop_name{
+#hashigo_save:disabled {
+    white-space: nowrap;
     display: inline-block;
-    width: 100px;
-} */
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: grey;/*ボタン色*/
+    color: rgb(255, 255, 255);
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+#shop_info {
+    width: 100%;
+    height: 200px;
+    margin: -10px;
+    padding: 30px;
+    overflow-y: scroll; 
+}
 .col-md-9 {
     position: relative;
-    /* margin: 2em auto; */
-    padding: 5px 5px 15px 5px;;
+    padding: 5px 5px 15px 5px;
     width: 90%; /* ボックス幅 */
-    height: 530px;
+    height: 100%;
     background-color: #fffff9; /* ボックス背景色 */
     color: #000; /* 文章色 */
-    border: 5px solid #e6b422; /* 枠線 */
+    border: 5px solid #bd1818; /* 枠線 */
     border-radius: 3px; /* 角の丸み */
     box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
 }
@@ -425,45 +418,40 @@ export default {
 #products {
     text-align: center;
     position: relative;
-    background: #616161a2;
-    /* margin: 1em 0; */
+    background: #77777734;
     padding: 1em;
-    border: 8px solid #a60;
+    border: 5px solid #bd1818;
     box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
     margin-left: 70px;
     width: 300px;
     height: 520px;
     overflow-y: scroll;
 }
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    border-radius:  30px;
+    background: #eee;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background: #ff0000;
+}
 #products hr {
     background-color: #FFF;
 }
-/* #products:before {
-    border: 1px solid #fff; 白い実線
-    border-radius: 5px;
-    content: '';
-    display: block;
-    margin: 4px;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: -1;
-} */
 #detail {
     margin-top: 10px;
     max-width: 200px;
     min-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* font-size: 5px; */
     white-space: nowrap;
     display: inline-block;
-    /* margin-top: 10px; */
     padding: 0.5em 1em;
     text-decoration: none;
-    background: #0033a0;/*ボタン色*/
+    background: blue;/*ボタン色*/
     color: rgb(255, 255, 255);
     border-bottom: solid 4px #627295;
     border-radius: 3px;
@@ -472,11 +460,13 @@ export default {
     /*ボタンを押したとき*/
     -webkit-transform: translateY(4px);
     transform: translateY(4px);/*下に動く*/
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影*/
     border-bottom: none;
 }
-#hot {
-    padding-left: 35px;
-    padding-top: 10px;
+
+#hot a {
+    display: inline-block;
+    height: 60px;
+    background-color: tomato;
 }
 </style>
