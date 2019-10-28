@@ -19,7 +19,7 @@
             <div class="hashigo_li">
               <div class="test">3軒目：{{ (json.third)?json.third.name:'no store'}}<br>{{json.third?json.third.open:''}}</div>
               <span v-if="json.third"><img v-bind:src="json.third.photo.pc.m"></span>
-              <a @click="thirdSearch(id)" v-bind:href="detail + shopid + f_lat + lat + f_lng + lng + li + listid + his + hisname">3軒目を探す</a>
+              <a @click="thirdSearch(id)" v-bind:href="detail + shopid + f_lat + lat + f_lng + lng + li + listid + his + hisname" v-else>3軒目を探す</a>
             </div>
           </li>
         </ul>

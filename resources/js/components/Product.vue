@@ -125,10 +125,10 @@ export default {
             time:"",
             capa:"",
             credit:"",
-            //一件目～三件目
+            //一件目
             f_name:"",
+            //二件目と三件目
             s_name:"",
-            t_name:"",
             //URL＆アイコン関連
             o_url:"",
             b_id:null,
@@ -140,7 +140,6 @@ export default {
             position_id:0,
             insertClick:true,
             isActive:true,
-
             second_name:"",
         }
     },
@@ -255,6 +254,7 @@ export default {
             //ボタンを連続で押せなくする
             this.marker_items[this.position_id].button = true
             this.insertClick=true
+            alert(this.f_name + 'と' + this.s_name + 'を保存しました')
             //非同期通信
             return axios.post('/api/insert',{
                 f_id:f_id,
@@ -270,6 +270,7 @@ export default {
             //ボタンを連続で押せなくする
             this.marker_items[this.position_id].button = true
             this.insertClick=true
+            alert(this.s_name + 'を3軒目に追加')
             //非同期通信
             return axios.post('/api/update',{
                 s_id:s_id,
