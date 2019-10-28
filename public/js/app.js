@@ -2377,10 +2377,10 @@ __webpack_require__.r(__webpack_exports__);
       this.insertClick = this.marker_items[id].button; //2件目、マーカー色チェンジ
 
       if (this.b_id !== null) {
-        this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png';
+        this.$refs.icon[this.b_id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png';
       }
 
-      this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png';
+      this.$refs.icon[id].$markerObject.icon.url = 'http://maps.google.co.jp/mapfiles/ms/icons/ltblue-dot.png';
       this.$refs.map.panTo({
         lat: this.marker_items[id].position.lat,
         lng: this.marker_items[id].position.lng
