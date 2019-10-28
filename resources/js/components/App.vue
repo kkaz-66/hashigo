@@ -39,7 +39,8 @@
                             <img v-bind:src="photo"><br>
                             <h3><span class="shopname">{{name}}</span><br></h3><br>
                             <a v-bind:href="url" target="_blank">ホットぺッパー</a><br>
-                            
+                            予算：{{ budget }}<br>
+                            交通：{{ access }}<br>
                             <a v-bind:href="detail + id + f_lat + lat + f_lng + lng">{{name}} の詳細ヘ</a>
                         </div>
                     </div>
@@ -77,6 +78,9 @@ export default {
             zoom: 18,
             marker_items: [],
             icon: {url: "", scaledSize:"", scaledColor: ""},
+            //お店表示内容
+            budget:"",
+            access:"",
         }
     },
     methods: {
@@ -135,7 +139,8 @@ export default {
                 let lng = shopdata.lng
                 let id = shopdata.id
 
-                this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo})
+                this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo,
+                budget:shopdata.budget.name, access:shopdata.mobile_access})
             });
         },
         // 検索ボタンclick発火
@@ -156,6 +161,8 @@ export default {
             this.id =this.marker_items[id].id
             this.lat =this.marker_items[id].position.lat
             this.lng =this.marker_items[id].position.lng
+            this.budget = this.marker_items[id].budget
+            this.access = this.marker_items[id].access
             if(this.marker_items[id].title == '中心地'){
                 this.isActive = true
             }else{
