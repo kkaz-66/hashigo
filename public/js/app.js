@@ -1850,7 +1850,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         title: '中心地',
         icon: {
           url: 'http://pictogram2.com/p/p0957/3.png',
-          scaledSize: new google.maps.Size(50, 55),
+          scaledSize: new google.maps.Size(70, 75),
           scaledColor: '#0000'
         }
       });
@@ -1926,7 +1926,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           url: url,
           photo: photo,
           budget: shopdata.budget.name,
-          access: shopdata.mobile_access
+          access: shopdata.mobile_access,
+          icon: {
+            url: 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png',
+            scaledSize: {
+              width: 40,
+              height: 40
+            },
+            scaledColor: '#0000'
+          }
         });
       });
     },
@@ -2149,19 +2157,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2276,22 +2271,41 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.map.panTo({
         lat: lat,
         lng: lng
-      });
-      this.marker_items.push({
-        position: {
-          lat: lat,
-          lng: lng
-        },
-        title: '現在地',
-        icon: {
-          url: 'http://maps.google.co.jp/mapfiles/ms/icons/blue-dot.png',
-          scaledSize: {
-            width: 50,
-            height: 55
+      }); //2軒目と3軒目で、現在地のicon変更
+
+      if (!this.hisname) {
+        this.marker_items.push({
+          position: {
+            lat: lat,
+            lng: lng
           },
-          scaledColor: '#0000'
-        }
-      });
+          title: '現在地',
+          icon: {
+            url: 'http://pictogram2.com/p/p0115/1.png',
+            scaledSize: {
+              width: 70,
+              height: 75
+            },
+            scaledColor: '#0000'
+          }
+        });
+      } else {
+        this.marker_items.push({
+          position: {
+            lat: lat,
+            lng: lng
+          },
+          title: '現在地',
+          icon: {
+            url: 'http://pictogram2.com/p/p0958/3.png',
+            scaledSize: {
+              width: 70,
+              height: 75
+            },
+            scaledColor: '#0000'
+          }
+        });
+      }
     },
     // hotpepperから店情報取得
     getList: function getList(lat, lng) {
@@ -2327,10 +2341,10 @@ __webpack_require__.r(__webpack_exports__);
           card: shopdata.card,
           id: shopdata.id,
           icon: {
-            url: 'http://maps.google.co.jp/mapfiles/ms/icons/green-dot.png',
+            url: 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png',
             scaledSize: {
-              width: 50,
-              height: 55
+              width: 40,
+              height: 40
             },
             scaledColor: '#0000'
           },

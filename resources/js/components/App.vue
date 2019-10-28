@@ -105,7 +105,7 @@ export default {
             this.marker_items=[];
             this.$refs.map.panTo({lat: lat, lng: lng})
             this.marker_items.push({position: {lat: lat, lng: lng}, title: '中心地', 
-            icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(50, 55),scaledColor: '#0000'}})
+            icon: {url: 'http://pictogram2.com/p/p0957/3.png', scaledSize: new google.maps.Size(70, 75),scaledColor: '#0000'}})
         },
 
         // hotpepperから店情報取得(ほんとはPOSTlist)
@@ -140,7 +140,8 @@ export default {
                 let id = shopdata.id
 
                 this.marker_items.push({position: {lat: parseFloat(lat), lng: parseFloat(lng)},id:id, title: name, url: url, photo: photo,
-                budget:shopdata.budget.name, access:shopdata.mobile_access})
+                budget:shopdata.budget.name, access:shopdata.mobile_access,
+                icon: {url: 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png',scaledSize:{width:40,height:40} ,scaledColor: '#0000'}})
             });
         },
         // 検索ボタンclick発火
