@@ -19,7 +19,8 @@ class MypageController extends Controller
     public function seach_shop($id)
     {
         $hpg_key = config('apikey.hpg-key');
-        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key.$id."&format=json";
+        $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key.$id."&count=20&format=json";
+       
         $hashigo_arr = $this->create_list($url);
         return $hashigo_arr;
     }
@@ -44,9 +45,8 @@ class MypageController extends Controller
                 
                 $first = "&id=".$hashigo->first_store_id;
                 $second = "&id=".$hashigo->second_store_id;
-                $third = isset($hashigo->third_store_id)?"&id=".$hashigo->third_store_id:'';
+                $third = mb_strlen($hashigo->third_store_id) != 0?"&id=".$hashigo->third_store_id:'';
                 $url_ids = $url_ids.$first.$second.$third;
-
             }
 
             $hashigo_shops = $this->seach_shop($url_ids);
@@ -80,14 +80,10 @@ class MypageController extends Controller
         DB::table('hashigo_lists')->insert(['member_id'=>(int)$user_id,'first_store_id'=>$first,'second_store_id'=>$second,'created_at'=>NOW()]);
         return $user_id;
     }
-    public function third_insert(){
-        $third=$request->t_id;
-        $id=$request->id;
-        DB::table('hashigo_lists')
-        ->where('id',$id)
-        ->update(['third_store_id'=>$third]);
-        return true;
+    public function third_insert(Request $request){
+        $third=$request->s_id;
+        $id=$request->listid;
+        DB::table('hashigo_lists')->where('id',$id)->update(['third_store_id'=>$third]);
+        return $id;
     }
-        // $created_at=DB::table('hashigo_lists')->orderby('created_at','desc')->limit(6)->get();
-        // var_dump($created_at);
 }

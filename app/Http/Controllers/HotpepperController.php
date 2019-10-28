@@ -49,6 +49,18 @@ class HotpepperController extends Controller
         return view('product',compact('product','place'));
     }
 
+    public function thirdSearch(Request $request)
+    {
+        $id= $request->id;
+        $lat= $request->lat;
+        $lng= $request->lng;
+        $listid = $request->listid;
+        $hisname = $request->hisname;
+        $product = $this->seach_shop($id);
+        $place = $this->seach_range($lat,$lng);
+        return view('product',compact('product','place','listid','hisname'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

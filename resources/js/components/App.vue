@@ -168,7 +168,9 @@ export default {
 
 <style scoped>
 .body {
+    width: 100%;
     height: 100%;
+    z-index: -1;
     background-size: cover;
     background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg')
 }

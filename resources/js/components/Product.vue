@@ -15,21 +15,42 @@
             </div>
             <!--店詳細-->
             <div class="col-md-8">
-                <span class="pan_name">{{ f_name }}</span> 
-                <span class="pan_space">></span>
-                <span class="pan_name">{{ s_name }}</span>
-                <div v-if="isActive">
-                    <!-- 隠す -->
+                <!-- <span class="pan_name">{{ f_name }}</span> 
+                <span class="pan_space">></span> -->
+
+                <div v-if="!hisname">
+                    <span class="pan_name">{{ f_name }}</span> 
+                    <span class="pan_space">></span>
+                    <span class="pan_name">{{ s_name }}</span><br>
+                    <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
                 </div>
-                <div v-else></div>
-                    <div v-if="isActive"><!-- ログインされてなければ隠す --></div>
-                    <div v-else> <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
+                <div v-else>
+                    <span class="pan_name">{{ f_name }}</span> 
+                    <span class="pan_space">></span>
+                    <span class="pan_name">{{ second_name }}</span>
+                    <span class="pan_space">></span>
+                    <span class="pan_name">{{ s_name }}</span><br>
+                    <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button>
+                </div>
+
+
+
+                <!-- <div v-if="isActive">
+                    隠す
+                   </div>
+                   <div v-else>
+                        <div v-if="isActive">ログインされてなければ隠す</div>
+                        <div v-else>
+                            <div v-if="!hisname"><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
+                             <div v-else><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button></div>
+                             </div>
+                   </div>  -->
                 <br>
-                <p>住所：{{ tel_add }}</p><hr>
-                <p>営業時間：{{ time }}</p><hr>
-                <p>収容人数：{{ capa }}</p><hr> 
-                <p>クレジット：{{ credit }}</p><hr>
-               <!-- <span class="pan_space"> URL：<a v-bind:href="o_url" target="_blank">{{ shop_name }}の公式</a></span><hr> -->
+                <div id="shop_info">
+                    住所：{{ tel_add }}<br><hr>
+                    営業時間：{{ time }}<br><hr>
+                    収容人数：{{ capa }}  /  クレジット：{{ credit }}<br><hr>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -73,12 +94,13 @@ export default {
         product:String,
         place:String,
         arr:[],
-        userid:String
+        userid:String,
+        listid:String,
+        hisname: String,
     },
 
     data () {
         return {
-            //追加事項
             name: "",
             url: "",
             photo: "",
@@ -103,9 +125,11 @@ export default {
             time:"",
             capa:"",
             credit:"",
+            //一件目～三件目
             f_name:"",
             s_name:"",
             t_name:"",
+            //URL＆アイコン関連
             o_url:"",
             b_id:null,
             //postするid
@@ -116,6 +140,8 @@ export default {
             position_id:0,
             insertClick:true,
             isActive:true,
+
+            second_name:"",
         }
     },
 
@@ -127,13 +153,21 @@ export default {
         this.setshopmarker(JSON.parse(this.place))
         this.f_photo = json[0].photo.pc.l
         this.shop_name = json[0].name
+        //２件目
+        this.second_name= json[0].name
+
         this.tel_add = json[0].address
         this.time = json[0].open
         this.capa = json[0].capacity
         this.credit = json[0].card
         this.o_url = json[0].urls.pc
         //パンくずリスト一件目（固定）
-        this.f_name = json[0].name
+        if(!this.hisname){
+            this.f_name = json[0].name
+        }else{
+            this.f_name = this.hisname
+        }
+        //ボタンの可視化
         this.f_id =json[0].id
         if(this.userid !== ""){
             this.isActive = false
@@ -230,6 +264,21 @@ export default {
                 console.log(res.data);
                 return res.data
             })
+        },
+        //3軒目保存
+         t_save(s_id,listid){
+            //ボタンを連続で押せなくする
+            this.marker_items[this.position_id].button = true
+            this.insertClick=true
+            //非同期通信
+            return axios.post('/api/update',{
+                s_id:s_id,
+                listid:listid,
+               
+            }).then((res)=>{
+                console.log(res.data);
+                return res.data
+            })
         }
     }
 
@@ -238,15 +287,21 @@ export default {
 
 <style scoped>
 .body {
+    width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
     background-size: cover;
     background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
 }
 .app {
     padding:0px 50px;
-    /* width: 100%; */
-    height: 100%;
-    background-size: cover;
+    margin-top: 60px;
+    width: 100%;
+    /* height: 100vh; */
+    /* background-size: cover; */
+    /* background-color: tomato; */
 }
 #map {
     width: 100%;
@@ -254,16 +309,14 @@ export default {
 } 
 .col-md-4 {
     /* 左上の写真・店名の設定 */
+    width: 100%;
+    height: 350px;
     text-align: center;
     border-radius: 3px;
     color: rgb(0, 0, 0);
-    /* font-size: 36px; */
-    /* font-family:"Haruhi Gakuen", sans-serif; */
     letter-spacing: 2px;
     margin: 0 auto;
     padding: 10px;
-    /* text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff; */
-    height: 350px;
     white-space: nowrap;
 }
 .col-md-4 p {
@@ -296,15 +349,17 @@ export default {
     font-weight: bold;
 }
 .col-md-8 {
+    width: 100%;
+    height: 350px;
     border-radius: 3px;
     color: rgb(0, 0, 0);
     font-size: 14px;
+    font-weight: bold;
     /* font-family:"Haruhi Gakuen", sans-serif; */
     letter-spacing: 2px;
     margin: 0 auto;
     padding: 10px;
     /* text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff; */
-    height: 350px;
     white-space: pre-line;
 }
 .col-md-8 p {
@@ -360,6 +415,11 @@ export default {
     border-bottom: solid 4px #627295;
     border-radius: 3px;
     /* text-shadow: 0 0 15px #ffdd65, 0 0 10px #ffdd65,0 0 5px #fff; */
+}
+#shop_info {
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll; 
 }
 /* .shop_name{
     display: inline-block;
