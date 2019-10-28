@@ -36,7 +36,7 @@
                         <div v-if="isActive"><!-- ログインされてなければ隠す --></div>
                         <div v-else>
                             <div v-if="!hisname"><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
-                             <div v-else><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList2(s_id,listid)">三軒目保存</button></div>
+                             <div v-else><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button></div>
                              </div>
                    </div> 
                 <br>
@@ -259,7 +259,7 @@ export default {
             })
         },
         //3軒目保存
-         insertList2(s_id,listid){
+         t_save(s_id,listid){
             //ボタンを連続で押せなくする
             this.marker_items[this.position_id].button = true
             this.insertClick=true

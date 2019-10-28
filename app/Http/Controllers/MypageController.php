@@ -83,9 +83,7 @@ class MypageController extends Controller
     public function third_insert(Request $request){
         $third=$request->s_id;
         $id=$request->listid;
-        DB::table('hashigo_lists')
-        ->where('id',$id)
-        ->update(['third_store_id'=>$third]);
-         return true;
+        DB::table('hashigo_lists')->where('id',$id)->update(['third_store_id'=>$third]);
+        return $id;
     }
 }

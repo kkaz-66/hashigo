@@ -2374,7 +2374,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     //3軒目保存
-    insertList2: function insertList2(s_id, listid) {
+    t_save: function t_save(s_id, listid) {
       //ボタンを連続で押せなくする
       this.marker_items[this.position_id].button = true;
       this.insertClick = true; //非同期通信
@@ -48903,10 +48903,7 @@ var render = function() {
                                   },
                                   on: {
                                     click: function($event) {
-                                      return _vm.insertList2(
-                                        _vm.s_id,
-                                        _vm.listid
-                                      )
+                                      return _vm.t_save(_vm.s_id, _vm.listid)
                                     }
                                   }
                                 },
