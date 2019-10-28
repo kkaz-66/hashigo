@@ -2191,10 +2191,10 @@ __webpack_require__.r(__webpack_exports__);
       time: "",
       capa: "",
       credit: "",
-      //一件目～三件目
+      //一件目
       f_name: "",
+      //二件目と三件目
       s_name: "",
-      t_name: "",
       //URL＆アイコン関連
       o_url: "",
       b_id: null,
@@ -2362,7 +2362,8 @@ __webpack_require__.r(__webpack_exports__);
     insertList: function insertList(f_id, s_id, userid) {
       //ボタンを連続で押せなくする
       this.marker_items[this.position_id].button = true;
-      this.insertClick = true; //非同期通信
+      this.insertClick = true;
+      alert(this.f_name + 'と' + this.s_name + 'を保存しました'); //非同期通信
 
       return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/insert', {
         f_id: f_id,
@@ -2377,7 +2378,8 @@ __webpack_require__.r(__webpack_exports__);
     t_save: function t_save(s_id, listid) {
       //ボタンを連続で押せなくする
       this.marker_items[this.position_id].button = true;
-      this.insertClick = true; //非同期通信
+      this.insertClick = true;
+      alert(this.s_name + 'を3軒目に追加'); //非同期通信
 
       return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/update', {
         s_id: s_id,
