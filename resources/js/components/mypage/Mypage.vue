@@ -29,7 +29,8 @@
 
             <div class="hashigo_li third_shop">
               <div class="hashigo_shop">3軒目：{{ (json.third)?json.third.name:'no store'}}<br>
-              {{json.third?json.third.close:''}}
+              <span v-if="json.third">定休日：{{json.third?json.third.close:''}}</span><br>
+              <span v-if="json.third"><a v-bind:href="json.second.urls.pc" target="_blank">{{ json.second.name }}の公式</a></span>
               </div>
               <span v-if="json.third"><img v-bind:src="json.third.photo.pc.m"></span>
               <a v-else class="third_shop_search" @click="thirdSearch(id)" v-bind:href="detail + shopid + f_lat + lat + f_lng + lng + li + listid + his + hisname">3軒目を探す</a>
@@ -104,7 +105,7 @@ export default {
 .wrap {
   width: 100%;
   padding: 0;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .second_wrap {
@@ -149,20 +150,11 @@ li .hashigo_shop {
   position: relative;
 }
 
-.third_shop a,
-.third_shop a::before,
-.third_shop a::after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-}
-.third_shop a:hover {
-  background-color: rgba(0, 0, 0, 0.09);
+.third_shop a {
+  text-decoration: none;
 }
 
-.third_shop a{
+.third_shop_search{
   text-decoration: none;
   display: flex;
   text-align: center;
@@ -172,6 +164,19 @@ li .hashigo_shop {
   position: absolute;
   align-items: center;
   justify-content: center; 
+}
+
+.third_shop_search,
+.third_shop_search::before,
+.third_shop_search::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.third_shop_search:hover {
+  background-color: rgba(0, 0, 0, 0.09);
 }
 
 .hot_text {
