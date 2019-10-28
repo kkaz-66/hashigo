@@ -2134,6 +2134,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2192,7 +2205,8 @@ __webpack_require__.r(__webpack_exports__);
       //ボタンのクリックアクション
       position_id: 0,
       insertClick: true,
-      isActive: true
+      isActive: true,
+      second_name: ""
     };
   },
   //1件目の詳細
@@ -2205,22 +2219,27 @@ __webpack_require__.r(__webpack_exports__);
     this.setcentermarker(parseFloat(json[0].lat), parseFloat(json[0].lng));
     this.setshopmarker(JSON.parse(this.place));
     this.f_photo = json[0].photo.pc.l;
-    this.shop_name = json[0].name;
+    this.shop_name = json[0].name; //２件目
+
+    this.second_name = json[0].name;
     this.tel_add = json[0].address;
     this.time = json[0].open;
     this.capa = json[0].capacity;
     this.credit = json[0].card;
     this.o_url = json[0].urls.pc; //パンくずリスト一件目（固定）
 
-    this.f_name = json[0].name;
+    if (!this.hisname) {
+      this.f_name = json[0].name;
+    } else {
+      this.f_name = this.hisname;
+    } //ボタンの可視化
+
+
     this.f_id = json[0].id;
 
     if (this.userid !== "") {
       this.isActive = false;
     }
-
-    console.log(this.listid);
-    console.log(this.hisname);
   },
   methods: {
     // キーワード位置取得
@@ -2349,6 +2368,20 @@ __webpack_require__.r(__webpack_exports__);
         f_id: f_id,
         s_id: s_id,
         userid: userid
+      }).then(function (res) {
+        console.log(res.data);
+        return res.data;
+      });
+    },
+    //3軒目保存
+    t_save: function t_save(s_id, listid) {
+      //ボタンを連続で押せなくする
+      this.marker_items[this.position_id].button = true;
+      this.insertClick = true; //非同期通信
+
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/update', {
+        s_id: s_id,
+        listid: listid
       }).then(function (res) {
         console.log(res.data);
         return res.data;
@@ -48814,9 +48847,23 @@ var render = function() {
             _vm._v(" "),
             _c("span", { staticClass: "pan_space" }, [_vm._v(">")]),
             _vm._v(" "),
-            _c("span", { staticClass: "pan_name" }, [
-              _vm._v(_vm._s(_vm.s_name))
-            ]),
+            !_vm.hisname
+              ? _c("div", [
+                  _c("span", { staticClass: "pan_name" }, [
+                    _vm._v(_vm._s(_vm.s_name))
+                  ])
+                ])
+              : _c("div", [
+                  _c("span", { staticClass: "pan_name" }, [
+                    _vm._v(_vm._s(_vm.second_name))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "pan_space" }, [_vm._v(">")]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "pan_name" }, [
+                    _vm._v(_vm._s(_vm.s_name))
+                  ])
+                ]),
             _vm._v(" "),
             _vm.isActive
               ? _c("div")
@@ -48824,25 +48871,45 @@ var render = function() {
                   _vm.isActive
                     ? _c("div")
                     : _c("div", [
-                        _c(
-                          "button",
-                          {
-                            attrs: {
-                              id: "hashigo_save",
-                              disabled: _vm.insertClick
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.insertList(
-                                  _vm.f_id,
-                                  _vm.s_id,
-                                  _vm.userid
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("はしご保存")]
-                        )
+                        !_vm.hisname
+                          ? _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  attrs: {
+                                    id: "hashigo_save",
+                                    disabled: _vm.insertClick
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.insertList(
+                                        _vm.f_id,
+                                        _vm.s_id,
+                                        _vm.userid
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("はしご保存")]
+                              )
+                            ])
+                          : _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  attrs: {
+                                    id: "hashigo_save",
+                                    disabled: _vm.insertClick
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.t_save(_vm.s_id, _vm.listid)
+                                    }
+                                  }
+                                },
+                                [_vm._v("三軒目保存")]
+                              )
+                            ])
                       ])
                 ]),
             _vm._v(" "),

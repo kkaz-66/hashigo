@@ -28,3 +28,7 @@ Route::group(['middleware' => 'api'], function() {
 Route::group(['middleware' => 'api'], function() {
     Route::post('insert',  'MypageController@insert');
 });
+
+Route::group(['middleware' => 'api'], function() {
+    Route::post('update',  'MypageController@third_insert');
+});

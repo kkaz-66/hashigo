@@ -17,14 +17,27 @@
             <div class="col-md-8" style="white-space: nowrap">
                 <span class="pan_name">{{ f_name }}</span> 
                 <span class="pan_space">></span>
-                <span class="pan_name">{{ s_name }}</span>
-                <!-- <span v-if="third_id" class="pan_name"> > {{ t_name }}</span> -->
+
+                <div v-if="!hisname">
+                     <span class="pan_name">{{ s_name }}</span>
+                </div>
+                <div v-else>
+                     <span class="pan_name">{{ second_name }}</span>
+                     <span class="pan_space">></span>
+                     <span class="pan_name">{{ s_name }}</span>
+                </div>
+
+
+
                 <div v-if="isActive">
                     <!-- 隠す -->
                    </div>
                    <div v-else>
                         <div v-if="isActive"><!-- ログインされてなければ隠す --></div>
-                        <div v-else> <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
+                        <div v-else>
+                            <div v-if="!hisname"><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button></div>
+                             <div v-else><button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button></div>
+                             </div>
                    </div> 
                 <br>
                 住所：{{ tel_add }}<br><hr>
@@ -120,6 +133,8 @@ export default {
             position_id:0,
             insertClick:true,
             isActive:true,
+
+            second_name:"",
         }
     },
 
@@ -131,13 +146,21 @@ export default {
         this.setshopmarker(JSON.parse(this.place))
         this.f_photo = json[0].photo.pc.l
         this.shop_name = json[0].name
+        //２件目
+        this.second_name= json[0].name
+
         this.tel_add = json[0].address
         this.time = json[0].open
         this.capa = json[0].capacity
         this.credit = json[0].card
         this.o_url = json[0].urls.pc
         //パンくずリスト一件目（固定）
-        this.f_name = json[0].name
+        if(!this.hisname){
+            this.f_name = json[0].name
+        }else{
+            this.f_name = this.hisname
+        }
+        //ボタンの可視化
         this.f_id =json[0].id
         if(this.userid !== ""){
             this.isActive = false
@@ -230,6 +253,21 @@ export default {
                 f_id:f_id,
                 s_id:s_id,
                 userid:userid,
+            }).then((res)=>{
+                console.log(res.data);
+                return res.data
+            })
+        },
+        //3軒目保存
+         t_save(s_id,listid){
+            //ボタンを連続で押せなくする
+            this.marker_items[this.position_id].button = true
+            this.insertClick=true
+            //非同期通信
+            return axios.post('/api/update',{
+                s_id:s_id,
+                listid:listid,
+               
             }).then((res)=>{
                 console.log(res.data);
                 return res.data
