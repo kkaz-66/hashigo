@@ -1,32 +1,40 @@
 <template>
   <div class="wrap">
+    <div class="second_wrap">
       <!-- jsonのlengthで判定 -->
       <div v-if="Object.keys(this.jsons).length == 0">
-        <ul>
-          <li>1軒目：no store</li>
-          <li>2軒目：no store</li>
-          <li>3軒目：no store</li>
-        </ul>
+        はしご登録がされていません
       </div>
       <div v-else class="ul_wrap">
         <ul>
           <li v-for="(json,id) in jsons" :key="id">
-            <div class="hashigo_date">{{ json.date }}</div>
+
+            <div class="date">{{ json.date }}</div>
+
             <div class="hashigo_li">
-              <div class="test">1軒目：{{ json.first?json.first.name:'no store'}}<br>{{json.first.open}}</div><img v-bind:src="json.first.photo.pc.m"></div>
+              <div class="hashigo_shop">1軒目：{{ json.first?json.first.name:'no store'}}<br>
+              <a v-bind:src="json.first.urls.pc">詳細</a>
+              {{json.first.open}}</div>
+              <img v-bind:src="json.first.photo.pc.m">
+            </div><!-- hashigo_li -->
+
             <div class="hashigo_li">
-              <div class="test">2軒目：{{ json.second?json.second.name:'no store'}}<br>{{json.second.open}}</div><img v-bind:src="json.second.photo.pc.m"></div>
-            <div class="hashigo_li">
-              <div class="test">3軒目：{{ (json.third)?json.third.name:'no store'}}<br>{{json.third?json.third.open:''}}</div>
+              <div class="hashigo_shop">2軒目：{{ json.second?json.second.name:'no store'}}<br>{{json.second.open}}</div>
+              <img v-bind:src="json.second.photo.pc.m">
+            </div><!-- hashigo_li -->
+
+            <div class="hashigo_li third_shop">
+              <div class="hashigo_shop">3軒目：{{ (json.third)?json.third.name:'no store'}}<br>{{json.third?json.third.open:''}}</div>
               <span v-if="json.third"><img v-bind:src="json.third.photo.pc.m"></span>
-              <a @click="thirdSearch(id)" v-bind:href="detail + shopid + f_lat + lat + f_lng + lng + li + listid + his + hisname" v-else>3軒目を探す</a>
-            </div>
+              <a class="third_shop_search" @click="thirdSearch(id)" v-bind:href="detail + shopid + f_lat + lat + f_lng + lng + li + listid + his + hisname" v-else>3軒目を探す</a>
+            </div><!-- hashigo_li -->
           </li>
         </ul>
-      </div>
+      </div><!-- ul_wrap -->
       <span class="hot_text">Powered by <a href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></span>
       <span class="hot_text">画像提供：ホットペッパー グルメ</span>
-  </div>
+    </div><!-- second wrap -->
+  </div><!-- wrap -->
 </template>
 
 <script>
@@ -82,60 +90,82 @@ export default {
 </script>
 
 <style scoped>
-html body {
-  margin:0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .wrap {
   width: 100%;
   padding: 0;
-  /* background-color: tomato; */
+}
+
+.second_wrap {
+  width: 70%;
+  margin: auto;
 }
 
 .ul_wrap {
-  /* リストの幅、wrapを基準に70％、 */
-  /* width: 70%; */
   margin: auto;
-  /* background-color: orange; */
 }
 
-.ul_wrap ul {
-  margin: 0;
-  padding: 0;
-}
 
-.ul_wrap ul .hashigo_date {
-  width: 100px;
-  /* background-color: aquamarine; */
-}
-
-.ul_wrap li {
+li {
   list-style-type: none;
-  /* background-color: turquoise; */
-  /* margin-bottom: 20px; */
-  /* padding-left: 30px; */
-  padding: 5px;
   display: flex;
+  margin-bottom: 10px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease 0s;
+  justify-content: space-between;
+}
+li:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.1875em);
 }
 
-.ul_wrap li .hashigo_li {
+li .hashigo_li {
   width: 468px;
-  /* background-color: aqua; */
   display: flex;
 }
 
-.ul_wrap li .test {
+li .hashigo_shop {
   display: block;
-  /* background-color: palegoldenrod; */
   width: 250px;
 }
 
 .hashigo_li img {
   object-fit: cover;
-  /* background-color: yellowgreen; */
   display: block;
 }
 
+.third_shop{
+  position: relative;
+}
+
+.third_shop a,
+.third_shop a::before,
+.third_shop a::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.third_shop a:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+
+.third_shop a{
+  text-decoration: none;
+  display: flex;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  /* background-color: aqua; */
+  position: absolute;
+  align-items: center;
+  justify-content: center; 
+}
 
 .hot_text {
   font-size: 0.3rem;
