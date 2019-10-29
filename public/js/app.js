@@ -2494,6 +2494,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 // import MypageHashigo from './MypageHashigo.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -9307,12 +9308,13 @@ exports.push([module.i, "\n.body[data-v-7e94e6d4] {\n    width: 100%;\n    heigh
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+var escape = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n*[data-v-0eb05e18] {\n  margin: 0;\n  padding: 0;\n}\n.wrap[data-v-0eb05e18] {\n  width: 100%;\n  padding: 0;\n  margin-top: 30px;\n}\n.second_wrap[data-v-0eb05e18] {\n  width: 80%;\n  margin: auto;\n}\n.ul_wrap[data-v-0eb05e18] {\n  margin: auto;\n}\nli[data-v-0eb05e18] {\n  list-style-type: none;\n  display: flex;\n  margin-bottom: 10px;\n  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);\n  transition: all 0.3s ease 0s;\n  justify-content: space-between;\n}\nli[data-v-0eb05e18]:hover {\n  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);\n  transform: translateY(-0.1875em);\n}\nli .hashigo_li[data-v-0eb05e18] {\n  width: 468px;\n  display: flex;\n}\nli .hashigo_shop[data-v-0eb05e18] {\n  display: block;\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n}\n.third_shop[data-v-0eb05e18]{\n  position: relative;\n}\n.third_shop a[data-v-0eb05e18] {\n  text-decoration: none;\n}\n.third_shop_search[data-v-0eb05e18]{\n  text-decoration: none;\n  display: flex;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n  /* background-color: aqua; */\n  position: absolute;\n  align-items: center;\n  justify-content: center;\n}\n.third_shop_search[data-v-0eb05e18],\n.third_shop_search[data-v-0eb05e18]::before,\n.third_shop_search[data-v-0eb05e18]::after {\n  box-sizing: border-box;\n  transition: all .3s;\n}\n.third_shop_search[data-v-0eb05e18]:hover {\n  background-color: rgba(0, 0, 0, 0.09);\n}\n.hot_text[data-v-0eb05e18] {\n  font-size: 0.3rem;\n}\n@media screen and (max-width:768px){\n*[data-v-0eb05e18]{\n    margin: 0;\n    padding: 0;\n    width: auto;\n    height: auto;\n}\n.wrap[data-v-0eb05e18] {\n    /* background-color: aqua; */\n    width: 100%;\n    margin-top: 10px;\n}\n.second_wrap[data-v-0eb05e18] {\n    width: 100%;\n}\n.ul_wrap[data-v-0eb05e18] {\n    width: 100%;\n}\n.ul_wrap ul[data-v-0eb05e18] {\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n}\n.ul_wrap ul li[data-v-0eb05e18] {\n    display: flex;\n    /* width: 49%; */\n    width: 100%;\n    flex-direction: column;\n}\nli .hashigo_li[data-v-0eb05e18] {\n    width: 100%;\n    justify-content: space-between;\n    /* background-color: blue; */\n    padding: 5px;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n*[data-v-0eb05e18] {\n  margin: 0;\n  padding: 0;\n  color: #3e3e3e;\n}\nhtml[data-v-0eb05e18],body[data-v-0eb05e18] {\n  height: 100%;\n  background-color: aqua;\n}\n.wrap[data-v-0eb05e18] {\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  padding-bottom: 5rem;\n  margin-top: 30px;\n  margin-bottom: 0;\n  background-image: url(" + escape(__webpack_require__(/*! ../../../assets/images/BGbeer.png */ "./resources/assets/images/BGbeer.png")) + ");\n}\n.second_wrap[data-v-0eb05e18] {\n  width: 80%;\n  margin: auto;\n}\n.mypage_h2[data-v-0eb05e18]{\n  color: #3e3e3e;\n  text-align: center;\n  margin-bottom: 2rem;\n  border-bottom: solid #3e3e3e;\n}\n.ul_wrap[data-v-0eb05e18] {\n  margin: auto;\n}\nli[data-v-0eb05e18] {\n  list-style-type: none;\n  display: flex;\n  margin-bottom: 10px;\n  background-color: rgba(255,255,255,0.4);\n  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);\n  transition: all 0.3s ease 0s;\n  justify-content: space-between;\n}\nli[data-v-0eb05e18]:hover {\n  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);\n  transform: translateY(-0.1875em);\n}\nli .hashigo_li[data-v-0eb05e18] {\n  width: 468px;\n  display: flex;\n}\nli .hashigo_shop[data-v-0eb05e18] {\n  display: block;\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n}\n.third_shop[data-v-0eb05e18]{\n  position: relative;\n}\n.third_shop a[data-v-0eb05e18] {\n  text-decoration: none;\n}\n.third_shop_search[data-v-0eb05e18]{\n  text-decoration: none;\n  display: flex;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n  /* background-color: aqua; */\n  position: absolute;\n  align-items: center;\n  justify-content: center;\n}\n.third_shop_search[data-v-0eb05e18],\n.third_shop_search[data-v-0eb05e18]::before,\n.third_shop_search[data-v-0eb05e18]::after {\n  box-sizing: border-box;\n  transition: all .3s;\n}\n.third_shop_search[data-v-0eb05e18]:hover {\n  background-color: rgba(0, 0, 0, 0.09);\n}\n.hot_text[data-v-0eb05e18] {\n  font-size: 0.3rem;\n}\n@media screen and (max-width:768px){\n*[data-v-0eb05e18]{\n    margin: 0;\n    padding: 0;\n    width: auto;\n    height: auto;\n}\n.wrap[data-v-0eb05e18] {\n    /* background-color: aqua; */\n    width: 100%;\n    margin-top: 10px;\n}\n.second_wrap[data-v-0eb05e18] {\n    width: 100%;\n}\n.ul_wrap[data-v-0eb05e18] {\n    width: 100%;\n}\n.ul_wrap ul[data-v-0eb05e18] {\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n}\n.ul_wrap ul li[data-v-0eb05e18] {\n    display: flex;\n    /* width: 49%; */\n    width: 100%;\n    flex-direction: column;\n}\nli .hashigo_li[data-v-0eb05e18] {\n    width: 100%;\n    justify-content: space-between;\n    /* background-color: blue; */\n    padding: 5px;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -9420,6 +9422,33 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/url/escape.js":
+/*!***************************************************!*\
+  !*** ./node_modules/css-loader/lib/url/escape.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
 }
 
 
@@ -49131,6 +49160,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrap" }, [
     _c("div", { staticClass: "second_wrap" }, [
+      _c("h2", { staticClass: "mypage_h2" }, [_vm._v("はしご履歴")]),
+      _vm._v(" "),
       Object.keys(this.jsons).length == 0
         ? _c("div", [_vm._v("\n      はしご登録がされていません\n    ")])
         : _c("div", { staticClass: "ul_wrap" }, [
@@ -64008,6 +64039,17 @@ function extend() {
     return target
 }
 
+
+/***/ }),
+
+/***/ "./resources/assets/images/BGbeer.png":
+/*!********************************************!*\
+  !*** ./resources/assets/images/BGbeer.png ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/BGbeer.png?ce660a69dc1f5729be4b780d7943a708";
 
 /***/ }),
 

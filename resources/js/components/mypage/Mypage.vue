@@ -1,6 +1,7 @@
 <template>
   <div class="wrap">
     <div class="second_wrap">
+      <h2 class="mypage_h2">はしご履歴</h2>
       <!-- jsonのlengthで判定 -->
       <div v-if="Object.keys(this.jsons).length == 0">
         はしご登録がされていません
@@ -100,17 +101,33 @@ export default {
 * {
   margin: 0;
   padding: 0;
+  color: #3e3e3e;
+}
+html,body {
+  height: 100%;
+  background-color: aqua;
 }
 
 .wrap {
   width: 100%;
+  height: 100%;
   padding: 0;
+  padding-bottom: 5rem;
   margin-top: 30px;
+  margin-bottom: 0;
+  background-image: url("../../../assets/images/BGbeer.png");
 }
 
 .second_wrap {
   width: 80%;
   margin: auto;
+}
+
+.mypage_h2{
+  color: #3e3e3e;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: solid #3e3e3e;
 }
 
 .ul_wrap {
@@ -122,6 +139,7 @@ li {
   list-style-type: none;
   display: flex;
   margin-bottom: 10px;
+  background-color: rgba(255,255,255,0.4);
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease 0s;
   justify-content: space-between;
