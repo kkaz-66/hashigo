@@ -191,11 +191,14 @@ button{
 }
 
 .col-lg-12 {
+    width: 300px;
+    position: relative;
     margin: 10px 0;
 }
 /* 現在地ボタン */
 .col-lg-12 #search {
     display: inline-block;
+    width: 20%;
     padding: 0.5em 1em;
     text-decoration: none;
     background: #668ad8;/*ボタン色*/
@@ -212,7 +215,7 @@ button{
 }
 /* エリア入力欄 */
 .col-lg-12 #textbox {
-    width: 360px;
+    width: 80%;
     padding: 5px 8px;
     border-radius: 6px;
     border-top: 1px solid #aaa;
@@ -225,6 +228,8 @@ button{
 }
 /* エリア検索ボタン */
 .col-lg-12 #area {
+    position: absolute;
+    right: 0;
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
@@ -323,8 +328,9 @@ button{
         margin: 10px 0;
     }
 
-    /* 検索ボタン */
+    /* 現在地検索ボタン */
     .col-xs-12 #search {
+        width: 20%;
         display: inline-block;
         padding: 0.5em 1em;
         text-decoration: none;
@@ -333,7 +339,7 @@ button{
         border-bottom: solid 4px #627295;
         border-radius: 3px;
     }
-    .col-lg-12 #search:active {
+    .col-xs-12 #search:active {
         /*ボタンを押したとき*/
         -webkit-transform: translateY(4px);
         transform: translateY(4px);/*下に動く*/
@@ -343,7 +349,7 @@ button{
 
     /* エリア入力欄 */
     .col-xs-12 #textbox {
-        width: 340px;
+        width: 80%;
         padding: 5px 8px;
         border-radius: 6px;
         border-top: 1px solid #aaa;
@@ -357,6 +363,8 @@ button{
 
     /* エリア検索ボタン */
     .col-xs-12 #area {
+        position: absolute;
+        right: 0;
         display: inline-block;
         padding: 0.5em 1em;
         text-decoration: none;
