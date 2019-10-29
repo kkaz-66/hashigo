@@ -2154,6 +2154,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2213,6 +2216,7 @@ __webpack_require__.r(__webpack_exports__);
       position_id: 0,
       insertClick: true,
       isActive: true,
+      alert_click: false,
       second_name: ""
     };
   },
@@ -2358,6 +2362,21 @@ __webpack_require__.r(__webpack_exports__);
       this.lat = this.marker_items[id].position.lat;
       this.lng = this.marker_items[id].position.lng;
     },
+    //非ログイン時のボタン
+    alert: function (_alert) {
+      function alert() {
+        return _alert.apply(this, arguments);
+      }
+
+      alert.toString = function () {
+        return _alert.toString();
+      };
+
+      return alert;
+    }(function () {
+      alert('ログインしてください');
+      this.alert_click = true;
+    }),
     //2件目
     s_click: function s_click(id) {
       this.shop_name = this.marker_items[id].title;
@@ -48890,7 +48909,19 @@ var render = function() {
                 _c("br"),
                 _vm._v(" "),
                 _vm.isActive
-                  ? _c("div")
+                  ? _c("div", [
+                      _c(
+                        "button",
+                        {
+                          attrs: {
+                            id: "hashigo_save",
+                            disabled: _vm.alert_click
+                          },
+                          on: { click: _vm.alert }
+                        },
+                        [_vm._v("はしご保存")]
+                      )
+                    ])
                   : _c("div", [
                       _c(
                         "button",
