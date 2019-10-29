@@ -19,7 +19,10 @@
                     <span class="pan_name">{{ f_name }}</span> 
                     <span class="pan_space">></span>
                     <span class="pan_name">{{ s_name }}</span><br>
-                    <div v-if="isActive"></div>
+                    <!--非ログインとログイン-->
+                    <div v-if="isActive">
+                        <button id="hashigo_save" v-on:click="alert" v-bind:disabled="alert_click">はしご保存</button>
+                    </div>
                     <div v-else>
                         <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
                     </div>
@@ -130,6 +133,7 @@ export default {
             position_id:0,
             insertClick:true,
             isActive:true,
+            alert_click:false,
             second_name:"",
         }
     },
@@ -217,6 +221,12 @@ export default {
            this.id =this.marker_items[id].id
            this.lat =this.marker_items[id].position.lat
            this.lng =this.marker_items[id].position.lng
+        },
+        
+        //非ログイン時のボタン
+        alert(){
+            alert('ログインしてください')
+            this.alert_click = true
         },
 
         //2件目
