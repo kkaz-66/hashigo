@@ -309,7 +309,7 @@ export default {
     width: 100%;
     height: 500px;
 } 
-.col-md-4 {
+.col-lg-4 {
     /* 左上の写真・店名の設定 */
     width: 100%;
     height: 350px;
@@ -321,7 +321,7 @@ export default {
     padding: 10px;
     white-space: pre-line;
 }
-.col-md-4 p {
+.col-lg-4 p {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: -5px;
@@ -339,7 +339,7 @@ export default {
     overflow-y: scroll;
     white-space: pre-line;
 }
-.col-md-8 {
+.col-lg-8 {
     width: 100%;
     height: 350px;
     border-radius: 3px;
@@ -350,7 +350,7 @@ export default {
     margin: -10px auto;
     white-space: pre-line;
 }
-.col-md-8 hr {
+.col-lg-8 hr {
     background-color: #000;
 }
 .pan_name{
@@ -400,7 +400,7 @@ export default {
     padding: 30px;
     overflow-y: scroll; 
 }
-.col-md-9 {
+.col-lg-9 {
     position: relative;
     padding: 5px 5px 15px 5px;
     width: 90%; /* ボックス幅 */
@@ -411,7 +411,7 @@ export default {
     border-radius: 3px; /* 角の丸み */
     box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
 }
-.col-md-9:before, .col-md-9:after {
+.col-lg-9:before, .col-lg-9:after {
     position: absolute;
     content: '';
     width: 25px; 
@@ -419,16 +419,16 @@ export default {
     border-radius: 2px;
     box-shadow: 1px 1px 3px #666;
 }
-.col-md-9:before {
+.col-lg-9:before {
     right: 55px;
     border: solid 3px #333333; /*飾ペン黒 */
 }
-.col-md-9:after {
+.col-lg-9:after {
     right: 20px;
     border: solid 3px #ff42a0; /*飾ペンピンク */
     transform: rotate(8deg); /*飾ペン角度 */
 }
-.col-mid-3 {
+.col-lg-3 {
     position: relative;
 }
 #products {
@@ -484,5 +484,140 @@ export default {
     display: inline-block;
     height: 60px;
     background-color: tomato;
+}
+
+
+/* スマホ対応 */
+@media screen and (max-width: 781px){
+    .app {
+        padding:0px 20px;
+        margin-top: 60px;
+        width: 100%;
+    }
+
+    .col-xs-4 {
+        /* 左上の写真・店名の設定 */
+        width: 100%;
+        height: 350px;
+        text-align: center;
+        border-radius: 3px;
+        color: rgb(0, 0, 0);
+        letter-spacing: 2px;
+        margin: 0 auto;
+        padding: 10px;
+        white-space: pre-line;
+    }
+
+    .col-xs-4 p {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: -5px;
+    }
+
+    .col-xs-8 {
+        width: 100%;
+        height: 350px;
+        border-radius: 3px;
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin: -10px auto;
+        white-space: pre-line;
+    }
+    .col-xs-8 hr {
+        background-color: #000;
+    }
+    .col-xs-8 .pan_name{
+        white-space: nowrap;
+        margin-top: 20px;
+        max-width: 100px;
+        min-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .col-xs-8 .pan_space {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        font-weight: bold;
+    }
+    .col-xs-8 .pan_space a {
+        color: rgb(0, 47, 255);
+        font-weight: bold;
+    }
+    .col-xs-8 #hashigo_save {
+        white-space: nowrap;
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        background: blue;/*ボタン色*/
+        color: rgb(255, 255, 255);
+        border-bottom: solid 4px #627295;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+    .col-xs-8 #hashigo_save:disabled {
+        white-space: nowrap;
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        background: grey;/*ボタン色*/
+        color: rgb(255, 255, 255);
+        border-bottom: solid 4px #627295;
+        border-radius: 3px;
+    }
+
+    .col-xs-9 {
+        position: relative;
+        padding: 5px 5px 5px 5px;
+        width: 90%; /* ボックス幅 */
+        height: 350px;
+        background-color: #fffff9; /* ボックス背景色 */
+        color: #000; /* 文章色 */
+        border: 5px solid #bd1818; /* 枠線 */
+        border-radius: 3px; /* 角の丸み */
+        box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
+    }
+    .col-xs-9:before, .col-xs-9:after {
+        position: absolute;
+        content: '';
+        width: 25px; 
+        bottom: 3px;
+        border-radius: 2px;
+        box-shadow: 1px 1px 3px #666;
+    }
+    .col-xs-9:before {
+        right: 55px;
+        border: solid 3px #333333; /*飾ペン黒 */
+    }
+    .col-xs-9:after {
+        right: 20px;
+        border: solid 3px #ff42a0; /*飾ペンピンク */
+        transform: rotate(8deg); /*飾ペン角度 */
+    }
+    .col-xs-9 #map {
+        width: 100%;
+        height: 320px;
+    }
+    .col-xs-3 {
+        position: relative;
+    }
+    .col-xs-3 #products {
+        text-align: center;
+        position: relative;
+        background: #77777734;
+        padding: 1em;
+        border: 5px solid #bd1818;
+        box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+        margin-top: 10px;
+        margin-left: -20px;
+        width: 280px;
+        height: 520px;
+        overflow-y: scroll;
+    }
 }
 </style>
