@@ -1,4 +1,9 @@
 body {
-    background-image: url("../images/BGbeer.png");
-    object-fit: contain;
+    background-image: url("../images/trimBGbeer2.png");
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+
+.bg-white {
+    background-color: rgba(255, 255, 255, 0.6) !important;
 }
