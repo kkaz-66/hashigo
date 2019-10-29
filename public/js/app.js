@@ -1768,7 +1768,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -9199,7 +9198,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.body[data-v-332fccf4] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 0;\n    z-index: -1;\n    background-size: contain;\n    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');\n}\n.app[data-v-332fccf4] {\n    padding: 0 50px;\n    margin-top: 60px;\n    width: 100%;\n}\n.col-xs-12[data-v-332fccf4] {\n    margin: 10px 0;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-xs-9[data-v-332fccf4] {\n    margin-top: 10px;\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    padding: 5px 5px 15px 5px;;\n    width: 90%; /* ボックス幅 */\n    height: 780px;\n    background-color: #ffffff; /* ボックス背景色 */\n    color: #000; /* 文章色 */\n    border: 5px solid #bd1818; /* 枠線 */\n    border-radius: 3px; /* 角の丸み */\n    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;\n}\n.col-xs-9[data-v-332fccf4]:before, .col-xs-9[data-v-332fccf4]:after {\n    position: absolute;\n    content: '';\n    width: 25px; \n    bottom: 3px;\n    border-radius: 2px;\n    box-shadow: 1px 1px 3px #666;\n}\n.col-xs-9[data-v-332fccf4]:before {\n    right: 55px;\n    border: solid 3px #333333; /*飾ペン黒 */\n}\n.col-xs-9[data-v-332fccf4]:after {\n    right: 20px;\n    border: solid 3px #ff42a0; /*飾ペンピンク */\n    transform: rotate(8deg); /*飾ペン角度 */\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n#box[data-v-332fccf4] {\n    text-align: center;\n    position: relative;\n    background: #ffd000;\n    padding: 10px;\n    border: 5px solid #bd1818;\n    box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;\n    margin-top: 10px;\n    margin-left: 50px;\n    font-size: 1rem;\n    font-weight: bold;\n    width: 400px;\n    height: 550px;\n    white-space: pre-line;\n}\n.shopname[data-v-332fccf4] {\n    font-weight: bold;\n    margin-top: 10px;\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n\n/* スマホ */\n/* @media screen and (max-width:768px){\n  #map {\n      width: 650px;\n  }\n  .col-md-9 {\n      margin-top: 10px;\n      margin-left: 20px;\n      margin-right: -50px;\n      position: relative;\n      padding: 5px 5px 15px 5px;;\n      width: 670px;; /* ボックス幅 */\n      /* height: 780px;\n      background-color: #ffffff; ボックス背景色 */\n      /* color: #000; /* 文章色 */\n      /* border: 5px solid #bd1818; 枠線 */\n      /* border-radius: 3px; 角の丸み */\n      /* box-shadow: 0 0 8px #333, 0 0 2px #555 inset; */\n  /* } */\n  /* .col-md-9:before, .col-md-9:after { */\n      /* position: absolute; */\n      /* content: '';\n      width: 25px; \n      bottom: 3px;\n      border-radius: 2px;\n      box-shadow: 1px 1px 3px #666;\n  }\n  .col-md-9:before {\n      right: 55px; */\n      /* border: solid 3px #333333; 飾ペン黒 */\n  /* }\n  .col-md-9:after {\n      right: 20px;\n      border: solid 3px #ff42a0; 飾ペンピンク\n      transform: rotate(8deg); 飾ペン角度 */\n  /* }\n  .col-md-3 {\n\n  }\n} */ \n", ""]);
+exports.push([module.i, "\nbutton[data-v-332fccf4]{\n    border:none;\n    outline:none;\n}\n.body[data-v-332fccf4] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 0;\n    z-index: -1;\n    background-size: contain;\n    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');\n}\n.app[data-v-332fccf4] {\n    padding: 0 50px;\n    margin-top: 60px;\n    width: 100%;\n}\n.col-lg-12[data-v-332fccf4] {\n    margin: 10px 0;\n}\n/* 現在地ボタン */\n.col-lg-12 #search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n.col-lg-12 #search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n/* エリア入力欄 */\n.col-lg-12 #textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n/* エリア検索ボタン */\n.col-lg-12 #area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n.col-lg-12 #area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n\n/* マップ表示欄 */\n.col-lg-9[data-v-332fccf4] {\n    margin-top: 10px;\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    padding: 5px 5px 15px 5px;;\n    width: 90%; /* ボックス幅 */\n    height: 780px;\n    background-color: #ffffff; /* ボックス背景色 */\n    color: #000; /* 文章色 */\n    border: 5px solid #bd1818; /* 枠線 */\n    border-radius: 3px; /* 角の丸み */\n    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;\n}\n.col-lg-9[data-v-332fccf4]:before, .col-lg-9[data-v-332fccf4]:after {\n    position: absolute;\n    content: '';\n    width: 25px; \n    bottom: 3px;\n    border-radius: 2px;\n    box-shadow: 1px 1px 3px #666;\n}\n.col-lg-9[data-v-332fccf4]:before {\n    right: 55px;\n    border: solid 3px #333333; /*飾ペン黒 */\n}\n.col-lg-9[data-v-332fccf4]:after {\n    right: 20px;\n    border: solid 3px #ff42a0; /*飾ペンピンク */\n    transform: rotate(8deg); /*飾ペン角度 */\n}\n/* マップ設定 */\n.col-lg-9 #map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n\n/* 店舗情報表示欄 */\n.col-lg-3 #box[data-v-332fccf4] {\n    text-align: center;\n    position: relative;\n    background: #ffd000;\n    padding: 10px;\n    border: 5px solid #bd1818;\n    box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;\n    margin-top: 10px;\n    margin-left: 50px;\n    font-size: 1rem;\n    font-weight: bold;\n    width: 350px;\n    height: 550px;\n    white-space: pre-line;\n}\n\n/* 店舗名設定  */\n.shopname[data-v-332fccf4] {\n    font-weight: bold;\n    margin-top: 10px;\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n\n/* ホットペッパーロゴ */\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n\n\n/* スマホ対応 */\n@media screen and (max-width:781px){\n.app[data-v-332fccf4] {\n        padding: 0 20px;\n        margin-top: 60px;\n        width: 100%;\n}\n.col-xs-12[data-v-332fccf4] {\n        width: 100%;\n        margin: 10px 0;\n}\n\n    /* 検索ボタン */\n.col-xs-12 #search[data-v-332fccf4] {\n        display: inline-block;\n        padding: 0.5em 1em;\n        text-decoration: none;\n        background: #668ad8;/*ボタン色*/\n        color: #FFF;\n        border-bottom: solid 4px #627295;\n        border-radius: 3px;\n}\n.col-lg-12 #search[data-v-332fccf4]:active {\n        /*ボタンを押したとき*/\n        transform: translateY(4px);/*下に動く*/\n        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n        border-bottom: none;\n}\n\n    /* エリア入力欄 */\n.col-xs-12 #textbox[data-v-332fccf4] {\n        width: 340px;\n        padding: 5px 8px;\n        border-radius: 6px;\n        border-top: 1px solid #aaa;\n        border-left: 1px solid #aaa;\n        border-right: 2px solid #aaa;\n        border-bottom: 2px solid #aaa;\n        background-image: none;\n        background-color: rgb(255, 254, 254);\n        font-size: 16px;\n}\n\n    /* エリア検索ボタン */\n.col-xs-12 #area[data-v-332fccf4] {\n        display: inline-block;\n        padding: 0.5em 1em;\n        text-decoration: none;\n        background: #668ad8;/*ボタン色*/\n        color: #FFF;\n        border-bottom: solid 4px #627295;\n        border-radius: 3px;\n}\n.col-xs-12 #area[data-v-332fccf4]:active {\n        /*ボタンを押したとき*/\n        transform: translateY(4px);/*下に動く*/\n        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n        border-bottom: none;\n}\n\n    /* マップ表示欄設定 */\n.col-xs-6[data-v-332fccf4] {\n        margin-top: 10px;\n        margin-left: 20px;\n        margin-right: -20px;\n        position: relative;\n        padding: 5px 5px 15px 5px;;\n        width: 90%; /* ボックス幅 */\n        height: 350px;\n        background-color: #ffffff; /* ボックス背景色 */\n        color: #000; /* 文章色 */\n        border: 5px solid #bd1818; /* 枠線 */\n        border-radius: 3px; /* 角の丸み */\n        box-shadow: 0 0 8px #333, 0 0 2px #555 inset;\n}\n.col-xs-6[data-v-332fccf4]:before , .col-xs-6[data-v-332fccf4]:after {\n        position: absolute;\n        content: '';\n        width: 25px; \n        bottom: 3px;\n        border-radius: 2px;\n        box-shadow: 1px 1px 3px #666;\n}\n.col-xs-6[data-v-332fccf4]:before {\n        right: 55px;\n        border: solid 3px #333333; /*飾ペン黒 */\n}\n.col-xs-6[data-v-332fccf4]:after {\n        right: 20px;\n        border: solid 3px #ff42a0; /*飾ペンピンク */\n        transform: rotate(8deg); /*飾ペン角度 */\n}\n    /* マップ設定 */\n.col-xs-6 #map[data-v-332fccf4] {\n        width: 100%;\n        height: 330px;\n} \n\n    /* 店舗情報表示欄 */\n.col-xs-2 #box[data-v-332fccf4] {\n        text-align: center;\n        position: relative;\n        background: #ffd000;\n        padding: 10px;\n        border: 5px solid #bd1818;\n        box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;\n        margin-top: 10px;\n        margin-left: 5px;\n        font-size: 1rem;\n        font-weight: bold;\n        width: 100%;\n        height: 550px;\n        white-space: pre-line;\n}\n}\n", ""]);
 
 // exports
 
@@ -48582,7 +48581,7 @@ var render = function() {
   return _c("div", { staticClass: "body" }, [
     _c("div", { staticClass: "app" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xs-12" }, [
+        _c("div", { staticClass: "col-xs-12 col-lg-12" }, [
           _c(
             "button",
             {
@@ -48625,7 +48624,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xs-9" }, [
+        _c("div", { staticClass: "col-xs-6 col-lg-9" }, [
           _c(
             "div",
             { attrs: { id: "map" } },
@@ -48662,13 +48661,11 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3" }, [
+        _c("div", { staticClass: "col-xs-2 col-lg-3" }, [
           _c("div", [
             _vm.isActive
               ? _c("div")
               : _c("div", { attrs: { id: "shop" } }, [
-                  _c("div", { attrs: { id: "tape" } }),
-                  _vm._v(" "),
                   _c("div", { attrs: { id: "box" } }, [
                     _c("img", { attrs: { src: _vm.photo } }),
                     _c("br"),
@@ -48860,7 +48857,7 @@ var render = function() {
   return _c("div", { staticClass: "body" }, [
     _c("div", { staticClass: "app" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "col-xs-4 col-lg-4" }, [
           _c("div", { attrs: { id: "photo" } }, [
             _c("img", { attrs: { src: _vm.f_photo } }),
             _c("br")
@@ -48878,7 +48875,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "col-xs-8 col-lg-8" }, [
           !_vm.hisname
             ? _c("div", [
                 _c("span", { staticClass: "pan_name" }, [
@@ -48977,7 +48974,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-9" }, [
+        _c("div", { staticClass: "col-xs-9 col-lg-9" }, [
           _c(
             "div",
             { attrs: { id: "map" } },
@@ -49016,7 +49013,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "col-xs-3 col-lg-3" }, [
           _c("div", { attrs: { id: "tape" } }),
           _vm._v(" "),
           _c("div", { attrs: { id: "products" } }, [
