@@ -93,7 +93,6 @@ export default {
     }
 
   },
-
 }
 </script>
 
@@ -103,19 +102,12 @@ export default {
   padding: 0;
   color: #3e3e3e;
 }
-html,body {
-  height: 100%;
-  background-color: aqua;
-}
 
 .wrap {
   width: 100%;
   height: 100%;
   padding: 0;
-  padding-bottom: 5rem;
   margin-top: 30px;
-  margin-bottom: 0;
-  background-image: url("../../../assets/images/BGbeer.png");
 }
 
 .second_wrap {
