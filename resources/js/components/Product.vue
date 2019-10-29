@@ -4,7 +4,7 @@
         <!--詳細表示-->
         <div class="row">
             <!--店画像-->
-            <div class="col-md-4">
+            <div class="col-xs-4 col-lg-4">
                 <div id="photo">
                     <img v-bind:src="f_photo"><br>
                 </div>
@@ -14,12 +14,18 @@
                 </div>
             </div>
             <!--店詳細-->
-            <div class="col-md-8">
+            <div class="col-xs-8 col-lg-8">
                 <div v-if="!hisname">
                     <span class="pan_name">{{ f_name }}</span> 
                     <span class="pan_space">></span>
                     <span class="pan_name">{{ s_name }}</span><br>
-                    <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
+                    <!--非ログインとログイン-->
+                    <div v-if="isActive">
+                        <button id="hashigo_save" v-on:click="alert" v-bind:disabled="alert_click">はしご保存</button>
+                    </div>
+                    <div v-else>
+                        <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
+                    </div>
                 </div>
                 <div v-else>
                     <span class="pan_name">{{ f_name }}</span> 
@@ -27,7 +33,10 @@
                     <span class="pan_name">{{ second_name }}</span>
                     <span class="pan_space">></span>
                     <span class="pan_name">{{ s_name }}</span><br>
-                    <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button>
+                    <div v-if="isActive"></div>
+                    <div v-else>
+                        <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button>
+                    </div>
                 </div>
                 <br>
                 <div id="shop_info">
@@ -38,7 +47,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-xs-9 col-lg-9">
                 <div id="map">
                     <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
                         <GmapMarker  v-for="(m,id) in marker_items"
@@ -51,7 +60,7 @@
                     </GmapMap>
                 </div>
             </div>
-            <div class="col-md-3" >
+            <div class="col-xs-3 col-lg-3" >
                 <div id="tape"></div>
                 <div id="products">
                     <table>
@@ -124,6 +133,7 @@ export default {
             position_id:0,
             insertClick:true,
             isActive:true,
+            alert_click:false,
             second_name:"",
         }
     },
@@ -212,6 +222,12 @@ export default {
            this.lat =this.marker_items[id].position.lat
            this.lng =this.marker_items[id].position.lng
         },
+        
+        //非ログイン時のボタン
+        alert(){
+            alert('ログインしてください')
+            this.alert_click = true
+        },
 
         //2件目
         s_click(id){
@@ -281,8 +297,8 @@ export default {
     position: absolute;
     top: 0;
     z-index: -1;
-    background-size: contain;
-    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
+    /* background-size: contain; */
+    /* background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg'); */
 }
 .app {
     padding:0px 50px;

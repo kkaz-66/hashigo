@@ -2,14 +2,14 @@
 <div class="body">
     <div class="app">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xs-12 col-lg-12">
                     <button id="search" type="submit" @click="currentsearch">現在地へ移動</button>
                     <input  id="textbox" type="text" v-model="address" placeholder="エリア検索">
                     <button id="area" type="submit" @click="keywordSearch">検索</button>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-xs-6 col-lg-9">
                 <div id="map">
                     <GmapMap :center="center" :zoom="zoom" style="width: 100%; height: 100%;" ref="map">
                         <GmapMarker  v-for="(m,id) in marker_items"
@@ -22,14 +22,13 @@
                     </GmapMap>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-xs-2 col-lg-3">
                 <div>
                     <div v-if="isActive">
                     <!--初期値の店情報を隠す-->
                     </div>
 
                     <div id="shop" v-else>
-                        <div id="tape"></div>
                         <div id ="box">
                             <img v-bind:src="photo"><br>
                             <h3><span class="shopname">{{name}}</span></h3><br>
@@ -170,24 +169,32 @@ export default {
 </script>
 
 <style scoped>
+button{
+    border:none;
+    outline:none;
+}
+
 .body {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     z-index: -1;
-    background-size: contain;
-    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
+    /* background-size: contain; */
+    /* background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg'); */
 }
+
 .app {
     padding: 0 50px;
     margin-top: 60px;
     width: 100%;
 }
-.col-md-12 {
+
+.col-lg-12 {
     margin: 10px 0;
 }
-#search {
+/* 現在地ボタン */
+.col-lg-12 #search {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
@@ -196,15 +203,15 @@ export default {
     border-bottom: solid 4px #627295;
     border-radius: 3px;
 }
-#search:active {
+.col-lg-12 #search:active {
     /*ボタンを押したとき*/
-    -webkit-transform: translateY(4px);
+     -webkit-transform: translateY(4px);
     transform: translateY(4px);/*下に動く*/
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
-    border-bottom: none;
-    
+    border-bottom: none; 
 }
-#textbox {
+/* エリア入力欄 */
+.col-lg-12 #textbox {
     width: 360px;
     padding: 5px 8px;
     border-radius: 6px;
@@ -216,7 +223,8 @@ export default {
     background-color: rgb(255, 254, 254);
     font-size: 16px;
 }
-#area {
+/* エリア検索ボタン */
+.col-lg-12 #area {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
@@ -225,14 +233,16 @@ export default {
     border-bottom: solid 4px #627295;
     border-radius: 3px;
 }
-#area:active {
+.col-lg-12 #area:active {
     /*ボタンを押したとき*/
     -webkit-transform: translateY(4px);
     transform: translateY(4px);/*下に動く*/
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
     border-bottom: none;
 }
-.col-md-9 {
+
+/* マップ表示欄 */
+.col-lg-9 {
     margin-top: 10px;
     margin-left: 20px;
     margin-right: -20px;
@@ -246,7 +256,7 @@ export default {
     border-radius: 3px; /* 角の丸み */
     box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
 }
-.col-md-9:before, .col-md-9:after {
+.col-lg-9:before, .col-lg-9:after {
     position: absolute;
     content: '';
     width: 25px; 
@@ -254,21 +264,23 @@ export default {
     border-radius: 2px;
     box-shadow: 1px 1px 3px #666;
 }
-.col-md-9:before {
+.col-lg-9:before {
     right: 55px;
     border: solid 3px #333333; /*飾ペン黒 */
 }
-.col-md-9:after {
+.col-lg-9:after {
     right: 20px;
     border: solid 3px #ff42a0; /*飾ペンピンク */
     transform: rotate(8deg); /*飾ペン角度 */
 }
-#map {
+/* マップ設定 */
+.col-lg-9 #map {
     width: 100%;
     height: 750px;
-    
-} 
-#box {
+}
+
+/* 店舗情報表示欄 */
+.col-lg-3 #box {
     text-align: center;
     position: relative;
     background: #ffd000;
@@ -279,17 +291,142 @@ export default {
     margin-left: 50px;
     font-size: 1rem;
     font-weight: bold;
-    width: 400px;
+    width: 350px;
     height: 550px;
     white-space: pre-line;
 }
+
+/* 店舗名設定  */
 .shopname {
     font-weight: bold;
     margin-top: 10px;
     background: linear-gradient(transparent 70%, #ff99ff 70%);
 }
+
+/* ホットペッパーロゴ */
 #hot {
     padding-left: 35px;
     padding-top: 10px;
+}
+
+
+/* スマホ対応 */
+@media screen and (max-width:781px){
+    .app {
+        padding: 0 20px;
+        margin-top: 60px;
+        width: 100%;
+    }
+
+    .col-xs-12 {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    /* 検索ボタン */
+    .col-xs-12 #search {
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        background: #668ad8;/*ボタン色*/
+        color: #FFF;
+        border-bottom: solid 4px #627295;
+        border-radius: 3px;
+    }
+    .col-lg-12 #search:active {
+        /*ボタンを押したとき*/
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);/*下に動く*/
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+        border-bottom: none;
+    }
+
+    /* エリア入力欄 */
+    .col-xs-12 #textbox {
+        width: 340px;
+        padding: 5px 8px;
+        border-radius: 6px;
+        border-top: 1px solid #aaa;
+        border-left: 1px solid #aaa;
+        border-right: 2px solid #aaa;
+        border-bottom: 2px solid #aaa;
+        background-image: none;
+        background-color: rgb(255, 254, 254);
+        font-size: 16px;
+    }
+
+    /* エリア検索ボタン */
+    .col-xs-12 #area {
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        background: #668ad8;/*ボタン色*/
+        color: #FFF;
+        border-bottom: solid 4px #627295;
+        border-radius: 3px;
+    }
+    .col-xs-12 #area:active {
+        /*ボタンを押したとき*/
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);/*下に動く*/
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+        border-bottom: none;
+    }
+
+    /* マップ表示欄設定 */
+    .col-xs-6 {
+        margin-top: 10px;
+        margin-left: 20px;
+        margin-right: -20px;
+        position: relative;
+        padding: 5px 5px 15px 5px;;
+        width: 90%; /* ボックス幅 */
+        height: 350px;
+        background-color: #ffffff; /* ボックス背景色 */
+        color: #000; /* 文章色 */
+        border: 5px solid #bd1818; /* 枠線 */
+        border-radius: 3px; /* 角の丸み */
+        box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
+    }
+    .col-xs-6:before , .col-xs-6:after {
+        position: absolute;
+        content: '';
+        width: 25px; 
+        bottom: 3px;
+        border-radius: 2px;
+        box-shadow: 1px 1px 3px #666;
+    }
+    .col-xs-6:before {
+        right: 55px;
+        border: solid 3px #333333; /*飾ペン黒 */
+    }
+    .col-xs-6:after {
+        right: 20px;
+        border: solid 3px #ff42a0; /*飾ペンピンク */
+        transform: rotate(8deg); /*飾ペン角度 */
+    }
+    /* マップ設定 */
+    .col-xs-6 #map {
+        width: 100%;
+        height: 330px;
+        
+    } 
+
+    /* 店舗情報表示欄 */
+    .col-xs-2 #box {
+        text-align: center;
+        position: relative;
+        background: #ffd000;
+        padding: 10px;
+        border: 5px solid #bd1818;
+        box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+        margin-top: 10px;
+        margin-left: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        height: 550px;
+        white-space: pre-line;
+    }
 }
 </style>
