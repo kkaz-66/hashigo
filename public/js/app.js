@@ -2149,6 +2149,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -9193,7 +9199,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.body[data-v-332fccf4] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 0;\n    z-index: -1;\n    background-size: contain;\n    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');\n}\n.app[data-v-332fccf4] {\n    padding: 0 50px;\n    margin-top: 60px;\n    width: 100%;\n}\n.col-md-12[data-v-332fccf4] {\n    margin: 10px 0;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-md-9[data-v-332fccf4] {\n    margin-top: 10px;\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    padding: 5px 5px 15px 5px;;\n    width: 90%; /* ボックス幅 */\n    height: 780px;\n    background-color: #ffffff; /* ボックス背景色 */\n    color: #000; /* 文章色 */\n    border: 5px solid #bd1818; /* 枠線 */\n    border-radius: 3px; /* 角の丸み */\n    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;\n}\n.col-md-9[data-v-332fccf4]:before, .col-md-9[data-v-332fccf4]:after {\n    position: absolute;\n    content: '';\n    width: 25px; \n    bottom: 3px;\n    border-radius: 2px;\n    box-shadow: 1px 1px 3px #666;\n}\n.col-md-9[data-v-332fccf4]:before {\n    right: 55px;\n    border: solid 3px #333333; /*飾ペン黒 */\n}\n.col-md-9[data-v-332fccf4]:after {\n    right: 20px;\n    border: solid 3px #ff42a0; /*飾ペンピンク */\n    transform: rotate(8deg); /*飾ペン角度 */\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n#box[data-v-332fccf4] {\n    text-align: center;\n    position: relative;\n    background: #ffd000;\n    padding: 10px;\n    border: 5px solid #bd1818;\n    box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;\n    margin-top: 10px;\n    margin-left: 50px;\n    font-size: 1rem;\n    font-weight: bold;\n    width: 400px;\n    height: 550px;\n    white-space: pre-line;\n}\n.shopname[data-v-332fccf4] {\n    font-weight: bold;\n    margin-top: 10px;\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.body[data-v-332fccf4] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 0;\n    z-index: -1;\n    background-size: contain;\n    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');\n}\n.app[data-v-332fccf4] {\n    padding: 0 50px;\n    margin-top: 60px;\n    width: 100%;\n}\n.col-xs-12[data-v-332fccf4] {\n    margin: 10px 0;\n}\n#search[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#search[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n#textbox[data-v-332fccf4] {\n    width: 360px;\n    padding: 5px 8px;\n    border-radius: 6px;\n    border-top: 1px solid #aaa;\n    border-left: 1px solid #aaa;\n    border-right: 2px solid #aaa;\n    border-bottom: 2px solid #aaa;\n    background-image: none;\n    background-color: rgb(255, 254, 254);\n    font-size: 16px;\n}\n#area[data-v-332fccf4] {\n    display: inline-block;\n    padding: 0.5em 1em;\n    text-decoration: none;\n    background: #668ad8;/*ボタン色*/\n    color: #FFF;\n    border-bottom: solid 4px #627295;\n    border-radius: 3px;\n}\n#area[data-v-332fccf4]:active {\n    /*ボタンを押したとき*/\n    transform: translateY(4px);/*下に動く*/\n    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/\n    border-bottom: none;\n}\n.col-xs-9[data-v-332fccf4] {\n    margin-top: 10px;\n    margin-left: 20px;\n    margin-right: -20px;\n    position: relative;\n    padding: 5px 5px 15px 5px;;\n    width: 90%; /* ボックス幅 */\n    height: 780px;\n    background-color: #ffffff; /* ボックス背景色 */\n    color: #000; /* 文章色 */\n    border: 5px solid #bd1818; /* 枠線 */\n    border-radius: 3px; /* 角の丸み */\n    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;\n}\n.col-xs-9[data-v-332fccf4]:before, .col-xs-9[data-v-332fccf4]:after {\n    position: absolute;\n    content: '';\n    width: 25px; \n    bottom: 3px;\n    border-radius: 2px;\n    box-shadow: 1px 1px 3px #666;\n}\n.col-xs-9[data-v-332fccf4]:before {\n    right: 55px;\n    border: solid 3px #333333; /*飾ペン黒 */\n}\n.col-xs-9[data-v-332fccf4]:after {\n    right: 20px;\n    border: solid 3px #ff42a0; /*飾ペンピンク */\n    transform: rotate(8deg); /*飾ペン角度 */\n}\n#map[data-v-332fccf4] {\n    width: 100%;\n    height: 750px;\n}\n#box[data-v-332fccf4] {\n    text-align: center;\n    position: relative;\n    background: #ffd000;\n    padding: 10px;\n    border: 5px solid #bd1818;\n    box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;\n    margin-top: 10px;\n    margin-left: 50px;\n    font-size: 1rem;\n    font-weight: bold;\n    width: 400px;\n    height: 550px;\n    white-space: pre-line;\n}\n.shopname[data-v-332fccf4] {\n    font-weight: bold;\n    margin-top: 10px;\n    background: linear-gradient(transparent 70%, #ff99ff 70%);\n}\n#hot[data-v-332fccf4] {\n    padding-left: 35px;\n    padding-top: 10px;\n}\n\n/* スマホ */\n/* @media screen and (max-width:768px){\n  #map {\n      width: 650px;\n  }\n  .col-md-9 {\n      margin-top: 10px;\n      margin-left: 20px;\n      margin-right: -50px;\n      position: relative;\n      padding: 5px 5px 15px 5px;;\n      width: 670px;; /* ボックス幅 */\n      /* height: 780px;\n      background-color: #ffffff; ボックス背景色 */\n      /* color: #000; /* 文章色 */\n      /* border: 5px solid #bd1818; 枠線 */\n      /* border-radius: 3px; 角の丸み */\n      /* box-shadow: 0 0 8px #333, 0 0 2px #555 inset; */\n  /* } */\n  /* .col-md-9:before, .col-md-9:after { */\n      /* position: absolute; */\n      /* content: '';\n      width: 25px; \n      bottom: 3px;\n      border-radius: 2px;\n      box-shadow: 1px 1px 3px #666;\n  }\n  .col-md-9:before {\n      right: 55px; */\n      /* border: solid 3px #333333; 飾ペン黒 */\n  /* }\n  .col-md-9:after {\n      right: 20px;\n      border: solid 3px #ff42a0; 飾ペンピンク\n      transform: rotate(8deg); 飾ペン角度 */\n  /* }\n  .col-md-3 {\n\n  }\n} */ \n", ""]);
 
 // exports
 
@@ -9288,15 +9294,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-<<<<<<< HEAD
 exports.push([module.i, "\n*[data-v-0eb05e18] {\n  margin: 0;\n  padding: 0;\n}\n.wrap[data-v-0eb05e18] {\n  width: 100%;\n  padding: 0;\n  margin-top: 30px;\n}\n.second_wrap[data-v-0eb05e18] {\n  width: 80%;\n  margin: auto;\n}\n.ul_wrap[data-v-0eb05e18] {\n  margin: auto;\n}\nli[data-v-0eb05e18] {\n  list-style-type: none;\n  display: flex;\n  margin-bottom: 10px;\n  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);\n  transition: all 0.3s ease 0s;\n  justify-content: space-between;\n}\nli[data-v-0eb05e18]:hover {\n  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);\n  transform: translateY(-0.1875em);\n}\nli .hashigo_li[data-v-0eb05e18] {\n  width: 468px;\n  display: flex;\n}\nli .hashigo_shop[data-v-0eb05e18] {\n  display: block;\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n}\n.third_shop[data-v-0eb05e18]{\n  position: relative;\n}\n.third_shop a[data-v-0eb05e18] {\n  text-decoration: none;\n}\n.third_shop_search[data-v-0eb05e18]{\n  text-decoration: none;\n  display: flex;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n  /* background-color: aqua; */\n  position: absolute;\n  align-items: center;\n  justify-content: center;\n}\n.third_shop_search[data-v-0eb05e18],\n.third_shop_search[data-v-0eb05e18]::before,\n.third_shop_search[data-v-0eb05e18]::after {\n  box-sizing: border-box;\n  transition: all .3s;\n}\n.third_shop_search[data-v-0eb05e18]:hover {\n  background-color: rgba(0, 0, 0, 0.09);\n}\n.hot_text[data-v-0eb05e18] {\n  font-size: 0.3rem;\n}\n@media screen and (max-width:768px){\n*[data-v-0eb05e18]{\n    margin: 0;\n    padding: 0;\n    width: auto;\n    height: auto;\n}\n.wrap[data-v-0eb05e18] {\n    /* background-color: aqua; */\n    width: 100%;\n    margin-top: 10px;\n}\n.second_wrap[data-v-0eb05e18] {\n    width: 100%;\n}\n.ul_wrap[data-v-0eb05e18] {\n    width: 100%;\n}\n.ul_wrap ul[data-v-0eb05e18] {\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n}\n.ul_wrap ul li[data-v-0eb05e18] {\n    display: flex;\n    /* width: 49%; */\n    width: 100%;\n    flex-direction: column;\n}\nli .hashigo_li[data-v-0eb05e18] {\n    width: 100%;\n    justify-content: space-between;\n    /* background-color: blue; */\n    padding: 5px;\n}\n}\n\n", ""]);
-=======
-<<<<<<< HEAD
-exports.push([module.i, "\n*[data-v-0eb05e18] {\n  margin: 0;\n  padding: 0;\n}\n.wrap[data-v-0eb05e18] {\n  width: 100%;\n  padding: 0;\n  margin-top: 50px;\n}\n.second_wrap[data-v-0eb05e18] {\n  width: 80%;\n  margin: auto;\n}\n.ul_wrap[data-v-0eb05e18] {\n  margin: auto;\n}\nli[data-v-0eb05e18] {\n  list-style-type: none;\n  display: flex;\n  margin-bottom: 10px;\n  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);\n  transition: all 0.3s ease 0s;\n  justify-content: space-between;\n}\nli[data-v-0eb05e18]:hover {\n  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);\n  transform: translateY(-0.1875em);\n}\nli .hashigo_li[data-v-0eb05e18] {\n  width: 468px;\n  display: flex;\n}\nli .hashigo_shop[data-v-0eb05e18] {\n  display: block;\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n}\n.third_shop[data-v-0eb05e18]{\n  position: relative;\n}\n.third_shop a[data-v-0eb05e18],\n.third_shop a[data-v-0eb05e18]::before,\n.third_shop a[data-v-0eb05e18]::after {\n  box-sizing: border-box;\n  transition: all .3s;\n}\n.third_shop a[data-v-0eb05e18]:hover {\n  background-color: rgba(0, 0, 0, 0.09);\n}\n.third_shop a[data-v-0eb05e18]{\n  text-decoration: none;\n  display: flex;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n  /* background-color: aqua; */\n  position: absolute;\n  align-items: center;\n  justify-content: center;\n}\n.hot_text[data-v-0eb05e18] {\n  font-size: 0.3rem;\n}\n\n", ""]);
-=======
-exports.push([module.i, "\n*[data-v-0eb05e18] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.wrap[data-v-0eb05e18] {\r\n  width: 100%;\r\n  padding: 0;\r\n  margin-top: 30px;\n}\n.second_wrap[data-v-0eb05e18] {\r\n  width: 80%;\r\n  margin: auto;\n}\n.ul_wrap[data-v-0eb05e18] {\r\n  margin: auto;\n}\nli[data-v-0eb05e18] {\r\n  list-style-type: none;\r\n  display: flex;\r\n  margin-bottom: 10px;\r\n  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);\r\n  transition: all 0.3s ease 0s;\r\n  justify-content: space-between;\n}\nli[data-v-0eb05e18]:hover {\r\n  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);\r\n  transform: translateY(-0.1875em);\n}\nli .hashigo_li[data-v-0eb05e18] {\r\n  width: 468px;\r\n  display: flex;\n}\nli .hashigo_shop[data-v-0eb05e18] {\r\n  display: block;\r\n  width: 250px;\n}\n.hashigo_li img[data-v-0eb05e18] {\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  display: block;\n}\n.third_shop[data-v-0eb05e18]{\r\n  position: relative;\n}\n.third_shop a[data-v-0eb05e18] {\r\n  text-decoration: none;\n}\n.third_shop_search[data-v-0eb05e18]{\r\n  text-decoration: none;\r\n  display: flex;\r\n  text-align: center;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* background-color: aqua; */\r\n  position: absolute;\r\n  align-items: center;\r\n  justify-content: center;\n}\n.third_shop_search[data-v-0eb05e18],\r\n.third_shop_search[data-v-0eb05e18]::before,\r\n.third_shop_search[data-v-0eb05e18]::after {\r\n  box-sizing: border-box;\r\n  transition: all .3s;\n}\n.third_shop_search[data-v-0eb05e18]:hover {\r\n  background-color: rgba(0, 0, 0, 0.09);\n}\n.hot_text[data-v-0eb05e18] {\r\n  font-size: 0.3rem;\n}\r\n\r\n", ""]);
->>>>>>> a93f52d27aac7196774cb76cde60a6a8bfa353a2
->>>>>>> 9ec5bb156db027ec5720b688b61a0ac344655caa
 
 // exports
 
@@ -48584,7 +48582,7 @@ var render = function() {
   return _c("div", { staticClass: "body" }, [
     _c("div", { staticClass: "app" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "col-xs-12" }, [
           _c(
             "button",
             {
@@ -48627,7 +48625,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-9" }, [
+        _c("div", { staticClass: "col-xs-9" }, [
           _c(
             "div",
             { attrs: { id: "map" } },
@@ -48664,7 +48662,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "col-lg-3" }, [
           _c("div", [
             _vm.isActive
               ? _c("div")
@@ -48894,18 +48892,29 @@ var render = function() {
                 ]),
                 _c("br"),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    attrs: { id: "hashigo_save", disabled: _vm.insertClick },
-                    on: {
-                      click: function($event) {
-                        return _vm.insertList(_vm.f_id, _vm.s_id, _vm.userid)
-                      }
-                    }
-                  },
-                  [_vm._v("はしご保存")]
-                )
+                _vm.isActive
+                  ? _c("div")
+                  : _c("div", [
+                      _c(
+                        "button",
+                        {
+                          attrs: {
+                            id: "hashigo_save",
+                            disabled: _vm.insertClick
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.insertList(
+                                _vm.f_id,
+                                _vm.s_id,
+                                _vm.userid
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("はしご保存")]
+                      )
+                    ])
               ])
             : _c("div", [
                 _c("span", { staticClass: "pan_name" }, [
@@ -48925,18 +48934,25 @@ var render = function() {
                 ]),
                 _c("br"),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    attrs: { id: "hashigo_save", disabled: _vm.insertClick },
-                    on: {
-                      click: function($event) {
-                        return _vm.t_save(_vm.s_id, _vm.listid)
-                      }
-                    }
-                  },
-                  [_vm._v("三軒目保存")]
-                )
+                _vm.isActive
+                  ? _c("div")
+                  : _c("div", [
+                      _c(
+                        "button",
+                        {
+                          attrs: {
+                            id: "hashigo_save",
+                            disabled: _vm.insertClick
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.t_save(_vm.s_id, _vm.listid)
+                            }
+                          }
+                        },
+                        [_vm._v("三軒目保存")]
+                      )
+                    ])
               ]),
           _vm._v(" "),
           _c("br"),
