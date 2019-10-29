@@ -19,7 +19,10 @@
                     <span class="pan_name">{{ f_name }}</span> 
                     <span class="pan_space">></span>
                     <span class="pan_name">{{ s_name }}</span><br>
-                    <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
+                    <div v-if="isActive"></div>
+                    <div v-else>
+                        <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="insertList(f_id,s_id,userid)">はしご保存</button>
+                    </div>
                 </div>
                 <div v-else>
                     <span class="pan_name">{{ f_name }}</span> 
@@ -27,7 +30,10 @@
                     <span class="pan_name">{{ second_name }}</span>
                     <span class="pan_space">></span>
                     <span class="pan_name">{{ s_name }}</span><br>
-                    <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button>
+                    <div v-if="isActive"></div>
+                    <div v-else>
+                        <button id="hashigo_save" v-bind:disabled="insertClick" v-on:click="t_save(s_id,listid)">三軒目保存</button>
+                    </div>
                 </div>
                 <br>
                 <div id="shop_info">
