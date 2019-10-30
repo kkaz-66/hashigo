@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>HashiGO!!</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -17,7 +17,7 @@
             <a href="/top" class="welcome_link"></a>
             <div class="content">
                 <div class="welcome_hashigo">
-                    HashiGO!
+                    HashiGO!!
                 </div>
             </div>
         </div>
