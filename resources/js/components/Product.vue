@@ -73,7 +73,8 @@
                 </div>
             </div>
         </div>
-            <a id="hot" href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス"></a>
+            <span class="hot_text">Powered by <a href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></span>
+            <span class="hot_text">画像提供：ホットペッパー グルメ</span>
     </div>
 </div>
 </template> 
@@ -312,7 +313,7 @@ button{
 }
 #map {
     width: 100%;
-    height: 500px;
+    height: 480px;
 } 
 .col-lg-4 {
     /* 左上の写真・店名の設定 */
@@ -448,9 +449,9 @@ button{
     border-bottom: 10px solid orangered;
     padding-top: 30px;
     padding-left: 30px;
-    margin-left: 70px;
+    margin-left: 10%;
     width: 300px;
-    height: 520px;
+    height: 510px;
     overflow-y: scroll;
 }
 ::-webkit-scrollbar {
@@ -486,10 +487,9 @@ button{
     transition: background-color 1s;
 }
 
-#hot a {
-    display: inline-block;
-    height: 60px;
-    background-color: tomato;
+.hot_text {
+  margin-top: 0%;
+  font-size: 0.3rem;
 }
 
 
