@@ -305,7 +305,7 @@ button{
     border-bottom: 10px solid orangered;
     padding-top: 30px;
     margin-top: 10px;
-    margin-left: 50px;
+    margin-left: 10%;
     font-size: 1rem;
     font-weight: bold;
     width: 350px;
@@ -348,11 +348,6 @@ button{
         text-decoration: none;
         background: orangered;/*ボタン色*/
         color: #FFF;
-        transition: background-color 0.5s;
-    }
-    .col-xs-12 #search:hover {
-        background-color: orange;
-        transition: background-color 1s;
     }
 
     /* エリア入力欄 */
@@ -373,16 +368,10 @@ button{
         position: absolute;
         width: 20%;
         display: inline-block;
-        margin-left: -10px;
         padding: 0.5em 1em;
         text-decoration: none;
         background: orangered;/*ボタン色*/
         color: #FFF;
-        transition: background-color 0.5s;
-    }
-    .col-lg-12 #area:hover {
-        background-color: orange;
-        transition: background-color 1s;
     }
     .col-xs-12 #area .searchImg {
         padding: 5px;
@@ -390,13 +379,6 @@ button{
         height: 100%;
         object-fit: contain;
     }
-    /* .col-xs-12 #area:active { */
-        /*ボタンを押したとき*/
-        /* -webkit-transform: translateY(4px); */
-        /* transform: translateY(4px);下に動く */
-        /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);影を小さく */
-        /* border-bottom: none; */
-    /* } */
 
     /* マップ表示欄設定 */
     .col-xs-6 {
@@ -433,7 +415,7 @@ button{
     /* マップ設定 */
     .col-xs-6 #map {
         width: 100%;
-        height: 330px;
+        height: 320px;
         
     } 
 
