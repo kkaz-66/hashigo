@@ -40,7 +40,8 @@
                     </div>
                 </div>
             </div>
-            <a id="hot" href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス"></a>
+            <span class="hot_text">Powered by <a href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></span>
+            <span class="hot_text">画像提供：ホットペッパー グルメ</span>
         </div>
     </div>
 </div>
@@ -207,13 +208,7 @@ button{
     background-color: orange;
     transition: background-color 1s;
 }
-/* .col-lg-12 #search:active { */
-    /*ボタンを押したとき*/
-     /* -webkit-transform: translateY(4px); */
-    /* transform: translateY(4px);下に動く */
-    /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);影を小さく */
-    /* border-bottom: none;  */
-/* } */
+
 /* エリア入力欄 */
 .col-lg-12 #textbox {
     width: 30%;
@@ -249,13 +244,6 @@ button{
     height: 100%;
     object-fit: contain;
 }
-/* .col-lg-12 #area:active { */
-    /*ボタンを押したとき*/
-    /* -webkit-transform: translateY(4px); */
-    /* transform: translateY(4px);下に動く */
-    /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);影を小さく */
-    /* border-bottom: none; */
-/* } */
 
 /* マップ表示欄 */
 .col-lg-9 {
@@ -305,7 +293,7 @@ button{
     border-bottom: 10px solid orangered;
     padding-top: 30px;
     margin-top: 10px;
-    margin-left: 50px;
+    margin-left: 10%;
     font-size: 1rem;
     font-weight: bold;
     width: 350px;
@@ -321,11 +309,10 @@ button{
 }
 
 /* ホットペッパーロゴ */
-#hot {
-    padding-left: 35px;
-    padding-top: 10px;
+.hot_text {
+    margin-left: 20px;
+    font-size: 0.3rem;
 }
-
 
 /* スマホ対応 */
 @media screen and (max-width:781px){
@@ -348,11 +335,6 @@ button{
         text-decoration: none;
         background: orangered;/*ボタン色*/
         color: #FFF;
-        transition: background-color 0.5s;
-    }
-    .col-xs-12 #search:hover {
-        background-color: orange;
-        transition: background-color 1s;
     }
 
     /* エリア入力欄 */
@@ -373,16 +355,10 @@ button{
         position: absolute;
         width: 20%;
         display: inline-block;
-        margin-left: -10px;
         padding: 0.5em 1em;
         text-decoration: none;
         background: orangered;/*ボタン色*/
         color: #FFF;
-        transition: background-color 0.5s;
-    }
-    .col-lg-12 #area:hover {
-        background-color: orange;
-        transition: background-color 1s;
     }
     .col-xs-12 #area .searchImg {
         padding: 5px;
@@ -390,13 +366,6 @@ button{
         height: 100%;
         object-fit: contain;
     }
-    /* .col-xs-12 #area:active { */
-        /*ボタンを押したとき*/
-        /* -webkit-transform: translateY(4px); */
-        /* transform: translateY(4px);下に動く */
-        /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);影を小さく */
-        /* border-bottom: none; */
-    /* } */
 
     /* マップ表示欄設定 */
     .col-xs-6 {
@@ -433,7 +402,7 @@ button{
     /* マップ設定 */
     .col-xs-6 #map {
         width: 100%;
-        height: 330px;
+        height: 320px;
         
     } 
 
