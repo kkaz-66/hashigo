@@ -291,14 +291,20 @@ export default {
 </script>
 
 <style scoped>
+button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
+}
 .body {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     z-index: -1;
-    /* background-size: contain; */
-    /* background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg'); */
 }
 .app {
     padding:0px 50px;
@@ -380,10 +386,13 @@ export default {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
-    background: blue;/*ボタン色*/
+    background: orangered;/*ボタン色*/
     color: rgb(255, 255, 255);
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+    transition: background-color 0.5s;
+}
+#hashigo_save:hover {
+    background-color: orange;
+    transition: 1s;
 }
 #hashigo_save:disabled {
     white-space: nowrap;
@@ -392,8 +401,6 @@ export default {
     text-decoration: none;
     background: grey;/*ボタン色*/
     color: rgb(255, 255, 255);
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
 }
 #shop_info {
     width: 100%;
@@ -409,9 +416,9 @@ export default {
     height: 100%;
     background-color: #fffff9; /* ボックス背景色 */
     color: #000; /* 文章色 */
-    border: 5px solid #bd1818; /* 枠線 */
+    border: 5px solid orangered; /* 枠線 */
     border-radius: 3px; /* 角の丸み */
-    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
+    box-shadow:  0 0 8px rgb(126, 126, 126), 0 0 2px rgb(150, 150, 150) inset;
 }
 .col-lg-9:before, .col-lg-9:after {
     position: absolute;
@@ -437,9 +444,11 @@ export default {
     text-align: center;
     position: relative;
     background-color:  rgba(255, 255, 255, 0.788);
-    padding: 1em;
-    border: 5px solid #bd1818;
-    box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+    /* padding: 1em; */
+    border-top: 10px solid orangered;
+    border-bottom: 10px solid orangered;
+    padding-top: 30px;
+    padding-left: 30px;
     margin-left: 70px;
     width: 300px;
     height: 520px;
@@ -469,17 +478,13 @@ export default {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
-    background: blue;/*ボタン色*/
+    background: orangered;/*ボタン色*/
     color: rgb(255, 255, 255);
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+    transition: background-color 0.5s;
 }
-#area:active {
-    /*ボタンを押したとき*/
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影*/
-    border-bottom: none;
+#detail:hover {
+    background-color: orange;
+    transition: background-color 1s;
 }
 
 #hot a {
@@ -556,11 +561,14 @@ export default {
         display: inline-block;
         padding: 0.5em 1em;
         text-decoration: none;
-        background: blue;/*ボタン色*/
+        background: orangered;/*ボタン色*/
         color: rgb(255, 255, 255);
-        border-bottom: solid 4px #627295;
-        border-radius: 3px;
         font-size: 14px;
+        transition: background-color 0.5s;
+    }
+    .col-xs-8 #hashigo_save:hover {
+        background-color: orange;
+        transition: background-color 1s;
     }
     .col-xs-8 #hashigo_save:disabled {
         white-space: nowrap;
@@ -569,20 +577,20 @@ export default {
         text-decoration: none;
         background: grey;/*ボタン色*/
         color: rgb(255, 255, 255);
-        border-bottom: solid 4px #627295;
-        border-radius: 3px;
     }
 
     .col-xs-9 {
+        margin: 10px;
+        margin-top: 20px;
         position: relative;
         padding: 5px 5px 5px 5px;
         width: 90%; /* ボックス幅 */
         height: 350px;
         background-color: #fffff9; /* ボックス背景色 */
         color: #000; /* 文章色 */
-        border: 5px solid #bd1818; /* 枠線 */
+        border: 5px solid orangered; /* 枠線 */
         border-radius: 3px; /* 角の丸み */
-        box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
+        box-shadow:  0 0 8px rgb(126, 126, 126), 0 0 2px rgb(150, 150, 150) inset;
     }
     .col-xs-9:before, .col-xs-9:after {
         position: absolute;
@@ -611,12 +619,13 @@ export default {
     .col-xs-3 #products {
         text-align: center;
         position: relative;
-        background: #77777734;
+        background-color: #ffffffa9;
         padding: 1em;
-        border: 5px solid #bd1818;
-        box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+        border-top: 10px solid orangered;
+        border-bottom: 10px solid orangered;
+        padding-top: 30px; 
         margin-top: 10px;
-        margin-left: -20px;
+        margin-left: 20px;
         width: 280px;
         height: 520px;
         overflow-y: scroll;

@@ -3,9 +3,9 @@
     <div class="app">
         <div class="row">
             <div class="col-xs-12 col-lg-12">
-                    <button id="search" type="submit" @click="currentsearch">現在地へ移動</button>
+                    <button id="search" type="submit" @click="currentsearch">現在地</button>
                     <input  id="textbox" type="text" v-model="address" placeholder="エリア検索">
-                    <button id="area" type="submit" @click="keywordSearch"></button>
+                    <button id="area" type="submit" @click="keywordSearch"><img src="../../assets/images/SearchIcon.png" class="searchImg"></button>
             </div>
         </div>
         <div class="row">
@@ -180,8 +180,6 @@ button{
     position: absolute;
     top: 0;
     z-index: -1;
-    /* background-size: contain; */
-    /* background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg'); */
 }
 
 .app {
@@ -201,23 +199,25 @@ button{
     margin-right: -10px;
     padding: 0.5em 1em;
     text-decoration: none;
-    background: #668ad8;/*ボタン色*/
+    background-color: orangered;/*ボタン色*/
     color: #FFF;
-    /* border-bottom: solid 4px #627295;
-    border-radius: 3px; */
+    transition: background-color 0.5s;
 }
-.col-lg-12 #search:active {
+.col-lg-12 #search:hover {
+    background-color: orange;
+    transition: background-color 1s;
+}
+/* .col-lg-12 #search:active { */
     /*ボタンを押したとき*/
-     -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
-    border-bottom: none; 
-}
+     /* -webkit-transform: translateY(4px); */
+    /* transform: translateY(4px);下に動く */
+    /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);影を小さく */
+    /* border-bottom: none;  */
+/* } */
 /* エリア入力欄 */
 .col-lg-12 #textbox {
     width: 30%;
     padding: 5px 8px;
-    /* border-radius: 6px; */
     border-top: 1px solid #aaa;
     border-left: 1px solid #aaa;
     border-right: 1px solid #aaa;
@@ -229,23 +229,33 @@ button{
 /* エリア検索ボタン */
 .col-lg-12 #area {
     position: absolute;
-    /* right: 0; */
-    width: -50%;
+    width: 3%;
+    height: 100%;
     display: inline-block;
+    margin-left: -10px;
     padding: 0.5em 1em;
     text-decoration: none;
-    background: #668ad8;/*ボタン色*/
+    background-color: orangered;/*ボタン色*/
     color: #FFF;
-    /* border-bottom: solid 4px #627295; */
-    /* border-radius: 3px; */
+    transition: background-color 0.5s;
 }
-.col-lg-12 #area:active {
+.col-lg-12 #area:hover {
+    background-color: orange;
+    transition: background-color 1s;
+}
+.col-lg-12 #area .searchImg {
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+/* .col-lg-12 #area:active { */
     /*ボタンを押したとき*/
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
-    border-bottom: none;
-}
+    /* -webkit-transform: translateY(4px); */
+    /* transform: translateY(4px);下に動く */
+    /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);影を小さく */
+    /* border-bottom: none; */
+/* } */
 
 /* マップ表示欄 */
 .col-lg-9 {
@@ -258,9 +268,9 @@ button{
     height: 780px;
     background-color: #ffffff; /* ボックス背景色 */
     color: #000; /* 文章色 */
-    border: 5px solid #bd1818; /* 枠線 */
+    border: 5px solid orangered; /* 枠線 */
     border-radius: 3px; /* 角の丸み */
-    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
+    box-shadow: 0 0 8px rgb(126, 126, 126), 0 0 2px rgb(150, 150, 150) inset;
 }
 .col-lg-9:before, .col-lg-9:after {
     position: absolute;
@@ -289,10 +299,11 @@ button{
 .col-lg-3 #box {
     text-align: center;
     position: relative;
-    background: #ffd000;
+    background: #ffffffa4;
     padding: 10px;
-    border: 5px solid #bd1818;
-    box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+    border-top: 10px solid orangered;
+    border-bottom: 10px solid orangered;
+    padding-top: 30px;
     margin-top: 10px;
     margin-left: 50px;
     font-size: 1rem;
@@ -331,32 +342,27 @@ button{
 
     /* 現在地検索ボタン */
     .col-xs-12 #search {
-        width: 10%;
+        width: 30%;
         display: inline-block;
         padding: 0.5em 1em;
         text-decoration: none;
-        background: #668ad8;/*ボタン色*/
+        background: orangered;/*ボタン色*/
         color: #FFF;
-        /* border-bottom: solid 4px #627295;
-        border-radius: 3px; */
+        transition: background-color 0.5s;
     }
-    /* .col-xs-12 #search:active {
-        /*ボタンを押したとき*/
-        /* -webkit-transform: translateY(4px); */
-        /* transform: translateY(4px);下に動く */
-        /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);影を小さく */
-        /* border-bottom: none; */
-    /* }  */
+    .col-xs-12 #search:hover {
+        background-color: orange;
+        transition: background-color 1s;
+    }
 
     /* エリア入力欄 */
     .col-xs-12 #textbox {
-        width: 30%;
+        width: 50%;
         padding: 5px 8px;
-        /* border-radius: 6px; */
         border-top: 1px solid #aaa;
         border-left: 1px solid #aaa;
-        border-right: 2px solid #aaa;
-        border-bottom: 2px solid #aaa;
+        border-right: 1px solid #aaa;
+        border-bottom: 1px solid #aaa;
         background-image: none;
         background-color: rgb(255, 254, 254);
         font-size: 16px;
@@ -365,38 +371,47 @@ button{
     /* エリア検索ボタン */
     .col-xs-12 #area {
         position: absolute;
-        /* right: 0; */
-        width: -50%;
+        width: 20%;
         display: inline-block;
+        margin-left: -10px;
         padding: 0.5em 1em;
         text-decoration: none;
-        background: #668ad8;/*ボタン色*/
+        background: orangered;/*ボタン色*/
         color: #FFF;
-        /* border-bottom: solid 4px #627295;
-        border-radius: 3px; */
+        transition: background-color 0.5s;
     }
-    .col-xs-12 #area:active {
+    .col-lg-12 #area:hover {
+        background-color: orange;
+        transition: background-color 1s;
+    }
+    .col-xs-12 #area .searchImg {
+        padding: 5px;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    /* .col-xs-12 #area:active { */
         /*ボタンを押したとき*/
-        -webkit-transform: translateY(4px);
-        transform: translateY(4px);/*下に動く*/
-        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
-        border-bottom: none;
-    }
+        /* -webkit-transform: translateY(4px); */
+        /* transform: translateY(4px);下に動く */
+        /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);影を小さく */
+        /* border-bottom: none; */
+    /* } */
 
     /* マップ表示欄設定 */
     .col-xs-6 {
-        margin-top: 10px;
-        margin-left: 20px;
-        margin-right: -20px;
+        margin: 10px;
+        /* margin-left: 20px;
+        margin-right: -20px; */
         position: relative;
         padding: 5px 5px 15px 5px;;
-        width: 90%; /* ボックス幅 */
+        width: 100%; /* ボックス幅 */
         height: 350px;
         background-color: #ffffff; /* ボックス背景色 */
         color: #000; /* 文章色 */
-        border: 5px solid #bd1818; /* 枠線 */
+        border: 5px solid orangered; /* 枠線 */
         border-radius: 3px; /* 角の丸み */
-        box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
+        box-shadow:  0 0 8px rgb(126, 126, 126), 0 0 2px rgb(150, 150, 150) inset;
     }
     .col-xs-6:before , .col-xs-6:after {
         position: absolute;
@@ -426,10 +441,11 @@ button{
     .col-xs-2 #box {
         text-align: center;
         position: relative;
-        background: #ffd000;
+        background: #ffffff9c;
         padding: 10px;
-        border: 5px solid #bd1818;
-        box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+        border-top: 10px solid orangered;
+        border-bottom: 10px solid orangered;
+        padding-top: 30px;
         margin-top: 10px;
         margin-left: 5px;
         font-size: 1rem;
