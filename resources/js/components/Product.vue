@@ -291,14 +291,20 @@ export default {
 </script>
 
 <style scoped>
+button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
+}
 .body {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     z-index: -1;
-    /* background-size: contain; */
-    /* background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg'); */
 }
 .app {
     padding:0px 50px;
@@ -309,19 +315,20 @@ export default {
     width: 100%;
     height: 500px;
 } 
-.col-md-4 {
+.col-lg-4 {
     /* 左上の写真・店名の設定 */
     width: 100%;
     height: 350px;
     text-align: center;
     border-radius: 3px;
+    background-color:  rgba(255, 255, 255, 0.788);
     color: rgb(0, 0, 0);
     letter-spacing: 2px;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 10px;
     white-space: pre-line;
 }
-.col-md-4 p {
+.col-lg-4 p {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: -5px;
@@ -339,18 +346,19 @@ export default {
     overflow-y: scroll;
     white-space: pre-line;
 }
-.col-md-8 {
+.col-lg-8 {
     width: 100%;
     height: 350px;
     border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.788);
     color: rgb(0, 0, 0);
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 2px;
-    margin: -10px auto;
+    margin-top: 10px;
     white-space: pre-line;
 }
-.col-md-8 hr {
+.col-lg-8 hr {
     background-color: #000;
 }
 .pan_name{
@@ -378,10 +386,13 @@ export default {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
-    background: blue;/*ボタン色*/
+    background: orangered;/*ボタン色*/
     color: rgb(255, 255, 255);
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+    transition: background-color 0.5s;
+}
+#hashigo_save:hover {
+    background-color: orange;
+    transition: 1s;
 }
 #hashigo_save:disabled {
     white-space: nowrap;
@@ -390,8 +401,6 @@ export default {
     text-decoration: none;
     background: grey;/*ボタン色*/
     color: rgb(255, 255, 255);
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
 }
 #shop_info {
     width: 100%;
@@ -400,18 +409,18 @@ export default {
     padding: 30px;
     overflow-y: scroll; 
 }
-.col-md-9 {
+.col-lg-9 {
     position: relative;
     padding: 5px 5px 15px 5px;
     width: 90%; /* ボックス幅 */
     height: 100%;
     background-color: #fffff9; /* ボックス背景色 */
     color: #000; /* 文章色 */
-    border: 5px solid #bd1818; /* 枠線 */
+    border: 5px solid orangered; /* 枠線 */
     border-radius: 3px; /* 角の丸み */
-    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
+    box-shadow:  0 0 8px rgb(126, 126, 126), 0 0 2px rgb(150, 150, 150) inset;
 }
-.col-md-9:before, .col-md-9:after {
+.col-lg-9:before, .col-lg-9:after {
     position: absolute;
     content: '';
     width: 25px; 
@@ -419,25 +428,27 @@ export default {
     border-radius: 2px;
     box-shadow: 1px 1px 3px #666;
 }
-.col-md-9:before {
+.col-lg-9:before {
     right: 55px;
     border: solid 3px #333333; /*飾ペン黒 */
 }
-.col-md-9:after {
+.col-lg-9:after {
     right: 20px;
     border: solid 3px #ff42a0; /*飾ペンピンク */
     transform: rotate(8deg); /*飾ペン角度 */
 }
-.col-mid-3 {
+.col-lg-3 {
     position: relative;
 }
 #products {
     text-align: center;
     position: relative;
-    background: #77777734;
-    padding: 1em;
-    border: 5px solid #bd1818;
-    box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+    background-color:  rgba(255, 255, 255, 0.788);
+    /* padding: 1em; */
+    border-top: 10px solid orangered;
+    border-bottom: 10px solid orangered;
+    padding-top: 30px;
+    padding-left: 30px;
     margin-left: 70px;
     width: 300px;
     height: 520px;
@@ -467,22 +478,157 @@ export default {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
-    background: blue;/*ボタン色*/
+    background: orangered;/*ボタン色*/
     color: rgb(255, 255, 255);
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+    transition: background-color 0.5s;
 }
-#area:active {
-    /*ボタンを押したとき*/
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影*/
-    border-bottom: none;
+#detail:hover {
+    background-color: orange;
+    transition: background-color 1s;
 }
 
 #hot a {
     display: inline-block;
     height: 60px;
     background-color: tomato;
+}
+
+
+/* スマホ対応 */
+@media screen and (max-width: 781px){
+    .app {
+        padding:0px 20px;
+        margin-top: 60px;
+        width: 100%;
+    }
+
+    .col-xs-4 {
+        /* 左上の写真・店名の設定 */
+        width: 100%;
+        height: 350px;
+        text-align: center;
+        border-radius: 3px;
+        color: rgb(0, 0, 0);
+        letter-spacing: 2px;
+        margin: 0 auto;
+        padding: 10px;
+        white-space: pre-line;
+    }
+
+    .col-xs-4 p {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: -5px;
+    }
+
+    .col-xs-8 {
+        width: 100%;
+        height: 350px;
+        border-radius: 3px;
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin: -10px auto;
+        white-space: pre-line;
+    }
+    .col-xs-8 hr {
+        background-color: #000;
+    }
+    .col-xs-8 .pan_name{
+        white-space: nowrap;
+        margin-top: 20px;
+        max-width: 100px;
+        min-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .col-xs-8 .pan_space {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        font-weight: bold;
+    }
+    .col-xs-8 .pan_space a {
+        color: rgb(0, 47, 255);
+        font-weight: bold;
+    }
+    .col-xs-8 #hashigo_save {
+        white-space: nowrap;
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        background: orangered;/*ボタン色*/
+        color: rgb(255, 255, 255);
+        font-size: 14px;
+        transition: background-color 0.5s;
+    }
+    .col-xs-8 #hashigo_save:hover {
+        background-color: orange;
+        transition: background-color 1s;
+    }
+    .col-xs-8 #hashigo_save:disabled {
+        white-space: nowrap;
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        background: grey;/*ボタン色*/
+        color: rgb(255, 255, 255);
+    }
+
+    .col-xs-9 {
+        margin: 10px;
+        margin-top: 20px;
+        position: relative;
+        padding: 5px 5px 5px 5px;
+        width: 90%; /* ボックス幅 */
+        height: 350px;
+        background-color: #fffff9; /* ボックス背景色 */
+        color: #000; /* 文章色 */
+        border: 5px solid orangered; /* 枠線 */
+        border-radius: 3px; /* 角の丸み */
+        box-shadow:  0 0 8px rgb(126, 126, 126), 0 0 2px rgb(150, 150, 150) inset;
+    }
+    .col-xs-9:before, .col-xs-9:after {
+        position: absolute;
+        content: '';
+        width: 25px; 
+        bottom: 3px;
+        border-radius: 2px;
+        box-shadow: 1px 1px 3px #666;
+    }
+    .col-xs-9:before {
+        right: 55px;
+        border: solid 3px #333333; /*飾ペン黒 */
+    }
+    .col-xs-9:after {
+        right: 20px;
+        border: solid 3px #ff42a0; /*飾ペンピンク */
+        transform: rotate(8deg); /*飾ペン角度 */
+    }
+    .col-xs-9 #map {
+        width: 100%;
+        height: 320px;
+    }
+    .col-xs-3 {
+        position: relative;
+    }
+    .col-xs-3 #products {
+        text-align: center;
+        position: relative;
+        background-color: #ffffffa9;
+        padding: 1em;
+        border-top: 10px solid orangered;
+        border-bottom: 10px solid orangered;
+        padding-top: 30px; 
+        margin-top: 10px;
+        margin-left: 20px;
+        width: 280px;
+        height: 520px;
+        overflow-y: scroll;
+    }
 }
 </style>

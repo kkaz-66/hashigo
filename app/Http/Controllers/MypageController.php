@@ -73,6 +73,7 @@ class MypageController extends Controller
         }
         return view('mypage',compact('user_history'));
     }
+    //はしごリストテーブルにユーザIDと1軒目→2軒目の店舗情報を記録しタイムスタンプを押す
     public function insert(Request $request){
         $first=$request->f_id;
         $second=$request->s_id;
@@ -80,6 +81,7 @@ class MypageController extends Controller
         DB::table('hashigo_lists')->insert(['member_id'=>(int)$user_id,'first_store_id'=>$first,'second_store_id'=>$second,'created_at'=>NOW()]);
         return $user_id;
     }
+    //受け取ったIDを元にはしごリストに3軒目の情報を追記する
     public function third_insert(Request $request){
         $third=$request->s_id;
         $id=$request->listid;
