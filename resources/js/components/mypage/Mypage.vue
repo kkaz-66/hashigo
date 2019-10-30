@@ -4,7 +4,7 @@
       <h2 class="mypage_h2">はしご履歴</h2>
       <!-- jsonのlengthで判定 -->
       <div v-if="Object.keys(this.jsons).length == 0">
-        はしご登録がされていません
+        <span class="nohashigo_message">はしご登録がされていません</span>
       </div>
       <div v-else class="ul_wrap">
         <ul>
@@ -121,6 +121,11 @@ export default {
   text-align: center;
   margin-bottom: 2rem;
   border-bottom: solid #3e3e3e;
+}
+
+.nohashigo_message {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .ul_wrap {
