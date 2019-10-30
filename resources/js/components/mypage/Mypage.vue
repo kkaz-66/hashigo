@@ -107,7 +107,8 @@ export default {
   width: 100%;
   height: 100%;
   padding: 0;
-  margin-top: 30px;
+  padding-top: 30px;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .second_wrap {
