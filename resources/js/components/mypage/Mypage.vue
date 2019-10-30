@@ -13,7 +13,7 @@
             <div class="date">{{ json.date }}</div>
 
             <div class="hashigo_li">
-              <div class="hashigo_shop">1軒目：{{ json.first?json.first.name:'no store'}}<br>
+              <div class="hashigo_shop">1軒目：{{ json.first?json.first.name:'未登録です'}}<br>
               定休日：{{json.first.close}}<br>
               <a v-bind:href="json.first.urls.pc" target="_blank">{{ json.first.name }}の公式</a>
               </div>
@@ -21,7 +21,7 @@
             </div><!-- hashigo_li -->
 
             <div class="hashigo_li">
-              <div class="hashigo_shop">2軒目：{{ json.second?json.second.name:'no store'}}<br>
+              <div class="hashigo_shop">2軒目：{{ json.second?json.second.name:'未登録です'}}<br>
               定休日：{{json.second.close}}<br>
               <a v-bind:href="json.second.urls.pc" target="_blank">{{ json.second.name }}の公式</a>
               </div>
@@ -29,7 +29,7 @@
             </div><!-- hashigo_li -->
 
             <div class="hashigo_li third_shop">
-              <div class="hashigo_shop">3軒目：{{ (json.third)?json.third.name:'no store'}}<br>
+              <div class="hashigo_shop">3軒目：{{ (json.third)?json.third.name:'未登録です'}}<br>
               <span v-if="json.third">定休日：{{json.third?json.third.close:''}}</span><br>
               <span v-if="json.third"><a v-bind:href="json.second.urls.pc" target="_blank">{{ json.second.name }}の公式</a></span>
               </div>
@@ -93,7 +93,6 @@ export default {
     }
 
   },
-
 }
 </script>
 
@@ -103,19 +102,12 @@ export default {
   padding: 0;
   color: #3e3e3e;
 }
-html,body {
-  height: 100%;
-  background-color: aqua;
-}
 
 .wrap {
   width: 100%;
   height: 100%;
   padding: 0;
-  padding-bottom: 5rem;
   margin-top: 30px;
-  margin-bottom: 0;
-  background-image: url("../../../assets/images/BGbeer.png");
 }
 
 .second_wrap {
@@ -139,7 +131,7 @@ li {
   list-style-type: none;
   display: flex;
   margin-bottom: 10px;
-  background-color: rgba(255,255,255,0.4);
+  background-color: rgba(255,255,255,0.7);
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease 0s;
   justify-content: space-between;
@@ -194,7 +186,7 @@ li .hashigo_shop {
   transition: all .3s;
 }
 .third_shop_search:hover {
-  background-color: rgba(0, 0, 0, 0.09);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .hot_text {

@@ -5,7 +5,7 @@
             <div class="col-xs-12 col-lg-12">
                     <button id="search" type="submit" @click="currentsearch">現在地へ移動</button>
                     <input  id="textbox" type="text" v-model="address" placeholder="エリア検索">
-                    <button id="area" type="submit" @click="keywordSearch">検索</button>
+                    <button id="area" type="submit" @click="keywordSearch"></button>
             </div>
         </div>
         <div class="row">
@@ -180,8 +180,8 @@ button{
     position: absolute;
     top: 0;
     z-index: -1;
-    background-size: contain;
-    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
+    /* background-size: contain; */
+    /* background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg'); */
 }
 
 .app {
@@ -191,20 +191,20 @@ button{
 }
 
 .col-lg-12 {
-    width: 300px;
     position: relative;
     margin: 10px 0;
 }
 /* 現在地ボタン */
 .col-lg-12 #search {
     display: inline-block;
-    width: 20%;
+    width: 10%;
+    margin-right: -10px;
     padding: 0.5em 1em;
     text-decoration: none;
     background: #668ad8;/*ボタン色*/
     color: #FFF;
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+    /* border-bottom: solid 4px #627295;
+    border-radius: 3px; */
 }
 .col-lg-12 #search:active {
     /*ボタンを押したとき*/
@@ -215,13 +215,13 @@ button{
 }
 /* エリア入力欄 */
 .col-lg-12 #textbox {
-    width: 80%;
+    width: 30%;
     padding: 5px 8px;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     border-top: 1px solid #aaa;
     border-left: 1px solid #aaa;
-    border-right: 2px solid #aaa;
-    border-bottom: 2px solid #aaa;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
     background-image: none;
     background-color: rgb(255, 254, 254);
     font-size: 16px;
@@ -229,14 +229,15 @@ button{
 /* エリア検索ボタン */
 .col-lg-12 #area {
     position: absolute;
-    right: 0;
+    /* right: 0; */
+    width: -50%;
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
     background: #668ad8;/*ボタン色*/
     color: #FFF;
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+    /* border-bottom: solid 4px #627295; */
+    /* border-radius: 3px; */
 }
 .col-lg-12 #area:active {
     /*ボタンを押したとき*/
@@ -330,28 +331,28 @@ button{
 
     /* 現在地検索ボタン */
     .col-xs-12 #search {
-        width: 20%;
+        width: 10%;
         display: inline-block;
         padding: 0.5em 1em;
         text-decoration: none;
         background: #668ad8;/*ボタン色*/
         color: #FFF;
-        border-bottom: solid 4px #627295;
-        border-radius: 3px;
+        /* border-bottom: solid 4px #627295;
+        border-radius: 3px; */
     }
-    .col-xs-12 #search:active {
+    /* .col-xs-12 #search:active {
         /*ボタンを押したとき*/
-        -webkit-transform: translateY(4px);
-        transform: translateY(4px);/*下に動く*/
-        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
-        border-bottom: none;
-    }
+        /* -webkit-transform: translateY(4px); */
+        /* transform: translateY(4px);下に動く */
+        /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);影を小さく */
+        /* border-bottom: none; */
+    /* }  */
 
     /* エリア入力欄 */
     .col-xs-12 #textbox {
-        width: 80%;
+        width: 30%;
         padding: 5px 8px;
-        border-radius: 6px;
+        /* border-radius: 6px; */
         border-top: 1px solid #aaa;
         border-left: 1px solid #aaa;
         border-right: 2px solid #aaa;
@@ -364,14 +365,15 @@ button{
     /* エリア検索ボタン */
     .col-xs-12 #area {
         position: absolute;
-        right: 0;
+        /* right: 0; */
+        width: -50%;
         display: inline-block;
         padding: 0.5em 1em;
         text-decoration: none;
         background: #668ad8;/*ボタン色*/
         color: #FFF;
-        border-bottom: solid 4px #627295;
-        border-radius: 3px;
+        /* border-bottom: solid 4px #627295;
+        border-radius: 3px; */
     }
     .col-xs-12 #area:active {
         /*ボタンを押したとき*/

@@ -297,8 +297,8 @@ export default {
     position: absolute;
     top: 0;
     z-index: -1;
-    background-size: contain;
-    background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg');
+    /* background-size: contain; */
+    /* background-image: url('https://i.pinimg.com/564x/5e/4e/ab/5e4eab5e15f0f7b38ce23b91ef28c49f.jpg'); */
 }
 .app {
     padding:0px 50px;
@@ -315,9 +315,10 @@ export default {
     height: 350px;
     text-align: center;
     border-radius: 3px;
+    background-color:  rgba(255, 255, 255, 0.788);
     color: rgb(0, 0, 0);
     letter-spacing: 2px;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 10px;
     white-space: pre-line;
 }
@@ -343,11 +344,12 @@ export default {
     width: 100%;
     height: 350px;
     border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.788);
     color: rgb(0, 0, 0);
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 2px;
-    margin: -10px auto;
+    margin-top: 10px;
     white-space: pre-line;
 }
 .col-lg-8 hr {
@@ -434,7 +436,7 @@ export default {
 #products {
     text-align: center;
     position: relative;
-    background: #77777734;
+    background-color:  rgba(255, 255, 255, 0.788);
     padding: 1em;
     border: 5px solid #bd1818;
     box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
