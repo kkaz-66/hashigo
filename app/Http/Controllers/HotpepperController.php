@@ -11,6 +11,7 @@ class HotpepperController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //受け取ったデータを配列に変換する
     public function create_list($url)
     {
         $json = array();
@@ -19,26 +20,28 @@ class HotpepperController extends Controller
         $arr = json_decode($json,true);
         return $arr['results']['shop'];
     }
+    //範囲内の居酒屋を検索する
     public function seach_range($lat,$lng)
     {
         $hpg_key = config('apikey.hpg-key');
         $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&lat=".$lat."&lng=".$lng."&code=g001&keyword=居酒屋&start=2&range=4&count=20&format=json";
         return $this->create_list($url);
     }
+    //idから店舗を検索する
     public function seach_shop($id)
     {
         $hpg_key = config('apikey.hpg-key');
         $url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=".$hpg_key."&id=".$id."&format=json";
         return $this->create_list($url);
     }
-
-    public function location(Request $request)//変数名Location_clickに変更
+    //位置情報を受け取り範囲検索する
+    public function location(Request $request)
     {
         $lat= $request->lat;
         $lng= $request->lng;
         return $this->seach_range($lat,$lng);
     }
-
+    //1軒目のidと1軒目周辺の店舗情報をproductに送る
     public function detail(Request $request)
     {
         $id= $request->id;
@@ -48,7 +51,7 @@ class HotpepperController extends Controller
         $place = $this->seach_range($lat,$lng);
         return view('product',compact('product','place'));
     }
-
+    //送られてきた情報を元に2軒目のidと2軒目周辺の店舗情報をproductに送る
     public function thirdSearch(Request $request)
     {
         $id= $request->id;
