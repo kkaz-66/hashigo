@@ -61,7 +61,6 @@
                 </div>
             </div>
             <div class="col-xs-3 col-lg-3" >
-                <div id="tape"></div>
                 <div id="products">
                     <table>
                     <tr v-for="(s,id) in marker_items" :key="id">
@@ -564,11 +563,6 @@ button{
         background: orangered;/*ボタン色*/
         color: rgb(255, 255, 255);
         font-size: 14px;
-        transition: background-color 0.5s;
-    }
-    .col-xs-8 #hashigo_save:hover {
-        background-color: orange;
-        transition: background-color 1s;
     }
     .col-xs-8 #hashigo_save:disabled {
         white-space: nowrap;
@@ -583,8 +577,8 @@ button{
         margin: 10px;
         margin-top: 20px;
         position: relative;
-        padding: 5px 5px 5px 5px;
-        width: 90%; /* ボックス幅 */
+        padding: 5px 5px 15px 5px;
+        width: 100%; /* ボックス幅 */
         height: 350px;
         background-color: #fffff9; /* ボックス背景色 */
         color: #000; /* 文章色 */
@@ -615,19 +609,19 @@ button{
     }
     .col-xs-3 {
         position: relative;
+        width: 100%;
     }
     .col-xs-3 #products {
         text-align: center;
         position: relative;
         background-color: #ffffffa9;
-        padding: 1em;
         border-top: 10px solid orangered;
         border-bottom: 10px solid orangered;
-        padding-top: 30px; 
+        padding: 30px;
         margin-top: 10px;
-        margin-left: 20px;
-        width: 280px;
-        height: 520px;
+        margin-left: 5px;
+        width: 100%;
+        height: 550px;
         overflow-y: scroll;
     }
 }

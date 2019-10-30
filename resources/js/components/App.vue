@@ -348,11 +348,6 @@ button{
         text-decoration: none;
         background: orangered;/*ボタン色*/
         color: #FFF;
-        transition: background-color 0.5s;
-    }
-    .col-xs-12 #search:hover {
-        background-color: orange;
-        transition: background-color 1s;
     }
 
     /* エリア入力欄 */
@@ -378,11 +373,6 @@ button{
         text-decoration: none;
         background: orangered;/*ボタン色*/
         color: #FFF;
-        transition: background-color 0.5s;
-    }
-    .col-lg-12 #area:hover {
-        background-color: orange;
-        transition: background-color 1s;
     }
     .col-xs-12 #area .searchImg {
         padding: 5px;
