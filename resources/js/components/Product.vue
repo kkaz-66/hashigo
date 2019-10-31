@@ -61,7 +61,6 @@
                 </div>
             </div>
             <div class="col-xs-3 col-lg-3" >
-                <div id="tape"></div>
                 <div id="products">
                     <table>
                     <tr v-for="(s,id) in marker_items" :key="id">
@@ -74,7 +73,8 @@
                 </div>
             </div>
         </div>
-            <a id="hot" href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス"></a>
+            <span class="hot_text">Powered by <a href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></span>
+            <span class="hot_text">画像提供：ホットペッパー グルメ</span>
     </div>
 </div>
 </template> 
@@ -313,7 +313,7 @@ button{
 }
 #map {
     width: 100%;
-    height: 500px;
+    height: 480px;
 } 
 .col-lg-4 {
     /* 左上の写真・店名の設定 */
@@ -449,9 +449,9 @@ button{
     border-bottom: 10px solid orangered;
     padding-top: 30px;
     padding-left: 30px;
-    margin-left: 70px;
+    margin-left: 10%;
     width: 300px;
-    height: 520px;
+    height: 510px;
     overflow-y: scroll;
 }
 ::-webkit-scrollbar {
@@ -487,10 +487,9 @@ button{
     transition: background-color 1s;
 }
 
-#hot a {
-    display: inline-block;
-    height: 60px;
-    background-color: tomato;
+.hot_text {
+  margin-top: 0%;
+  font-size: 0.3rem;
 }
 
 
@@ -564,11 +563,6 @@ button{
         background: orangered;/*ボタン色*/
         color: rgb(255, 255, 255);
         font-size: 14px;
-        transition: background-color 0.5s;
-    }
-    .col-xs-8 #hashigo_save:hover {
-        background-color: orange;
-        transition: background-color 1s;
     }
     .col-xs-8 #hashigo_save:disabled {
         white-space: nowrap;
@@ -583,8 +577,8 @@ button{
         margin: 10px;
         margin-top: 20px;
         position: relative;
-        padding: 5px 5px 5px 5px;
-        width: 90%; /* ボックス幅 */
+        padding: 5px 5px 15px 5px;
+        width: 100%; /* ボックス幅 */
         height: 350px;
         background-color: #fffff9; /* ボックス背景色 */
         color: #000; /* 文章色 */
@@ -615,19 +609,19 @@ button{
     }
     .col-xs-3 {
         position: relative;
+        width: 100%;
     }
     .col-xs-3 #products {
         text-align: center;
         position: relative;
         background-color: #ffffffa9;
-        padding: 1em;
         border-top: 10px solid orangered;
         border-bottom: 10px solid orangered;
-        padding-top: 30px; 
+        padding: 30px;
         margin-top: 10px;
-        margin-left: 20px;
-        width: 280px;
-        height: 520px;
+        margin-left: 5px;
+        width: 100%;
+        height: 550px;
         overflow-y: scroll;
     }
 }
